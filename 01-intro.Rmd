@@ -1,0 +1,46 @@
+# What is a directional Venn diagram?
+
+## Problem Statement
+
+*"What problem are you trying to solve?" -- Lazar Arulnayagam*
+
+When comparing biological changes across two experiments, the direction
+of change is very important to the interpretation of results.
+Specifically, when genes are affected by disease, or treatment,
+some genes may increase in abundance, other genes may decrease.
+In a Venn diagram, it is very useful to see when the directionality
+is concordant (shared), or discordant (not shared).
+
+## Slightly more detail
+
+I often study gene expression, which is a huge topic in itself.
+Stated as simply as I know how, gene expression is the process by
+which a living organism "expresses" the information encoded in its
+genome. The genome contains many individual units referred to as "genes",
+which represents the instructions for each functional gene locus.
+A gene is "expressed" by copying the genome DNA to a "transcript" RNA.
+The transcript RNA may be in the form of "messenger RNA" or mRNA,
+which is also later translated in the cell into a corresponding protein.
+
+The particular genes which are expressed, and the quantity of those
+expressed genes, collectively determines the functional state of a living
+system. For multi-cellular organisms like human, each living cell has a unique
+signature of gene expression, defined by the overall gene abundances
+which are expressed in that cell.
+Significant changes to the gene expression occur during natural conditions
+like exercise, after eating a meal, or as consequence of disease like
+viral infection, injury, or cancer.
+
+During our experiments, we frequently want to identify "which genes changed"
+when compared to some normal reference state. For example, when we compare
+viral infected cells to normal cells, we identify which genes are different
+from normal. Here comes the directionality: Some genes will be higher than
+normal, and other genes with be lower than normal.
+
+
+
+### Examples {-}
+
+Show example Venn without directionality.
+
+Show example Venn with directionality.

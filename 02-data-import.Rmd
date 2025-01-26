@@ -1,0 +1,42 @@
+# Data Import
+
+The first key step in using Venndir is to import data in a
+recognized format. There are several formats available:
+
+* R `list` of `character` vectors containing the items.
+* R `list` of `numeric` vectors, whose `names()` represent items.
+The numeric values are `1` is "Up", and `-1` is "Down".
+If all items in all sets are `1`, then the data is assumed to
+be non-directional.
+* Incidence `matrix`, which is a `numeric` matrix where the items
+are `rownames()`, and sets are `colnames()`, and the matrix values
+are `0` when there is no item, and `1` when there is a value.
+* Overlap counts, a `numeric` vector with the number of counts in each
+unique overlap set. This input is non-directional, meaning there
+is no "Up" nor "Down" to display.
+For example, `c(A=15, B=20, "A&B"=5)` is sufficient to define a
+Venn diagram.
+* Signed overlap counts, a list that contains `numeric` vectors.
+This is an advanced form of "Overlap counts", using the same `names()`
+format: "A", "B", "A&B". However, each element is a `numeric` vector
+named by the directionality. This is an advanced topic and not
+generally recommended.
+
+
+## Import using a `list`
+
+
+## Convert to `list`
+
+
+### Incidence matrix
+
+
+### Signed incidence matrix
+
+
+### Overlap counts
+
+
+### Signed overlap counts
+

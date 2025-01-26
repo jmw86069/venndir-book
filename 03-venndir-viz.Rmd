@@ -1,0 +1,26 @@
+# Venndir Visualization
+
+*"How did we end up here?" - James M. Ward*
+
+The core features of a Venn diagram seem so simple and straightforward.
+A Venn diagram uses circles, and sometimes ellipses, to organize shared
+and distinct summary counts in each set.
+
+Proportional Venn diagrams are called Euler diagrams, and use circles
+or ellipses whose area is sizes proportional to the size of each set.
+These circles are placed so that the overlapping area is very close
+to the proportional number of items shared between two sets.
+
+## Venn Basics
+
+
+### Colors and Styles
+
+
+### Fonts and Font Sizes
+
+
+### Venn Legend
+
+
+

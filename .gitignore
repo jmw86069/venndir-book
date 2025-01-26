@@ -9,8 +9,10 @@ node_modules
 
 # Book build output
 _book
+_main*
 
 # eBook build output
 *.epub
 *.mobi
 *.pdf
+.Rproj.user

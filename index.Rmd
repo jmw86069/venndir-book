@@ -1,0 +1,50 @@
+--- 
+title: "Venndir Book"
+author: "James M. Ward"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [packages.bib]
+url: https://jmw86069.github.com/venndir-book
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  Venndir Book - Directional Venn Diagrams
+  The HTML output format for this example is bookdown::gitbook,
+  set in the _output.yml file.
+link-citations: yes
+github-repo: jmw86069/venndir-book
+---
+
+# About
+
+This book describes the `venndir` R package, intended for the display
+of Venn diagrams with directionality. The visualizations are the product
+of many years creating Venn diagrams, working many fantastic colleagues
+and incorporating their ideas and mine together.
+
+*The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.*
+
+## Render book
+
+You can render the HTML version of this example book without changing anything:
+
+1. Find the **Build** pane in the RStudio IDE, and
+
+1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
+
+
+## Preview book
+
+As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
+
+```{r eval=FALSE}
+bookdown::serve_book()
+```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
