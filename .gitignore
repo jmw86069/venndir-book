@@ -8,8 +8,10 @@
 node_modules
 
 # Book build output
-_book
-_main*
+_book/*
+_main.Rmd
+_main.tex
+_main.log
 
 # eBook build output
 *.epub
