@@ -5,37 +5,31 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Page not found | Venndir Book</title>
-  <meta name="description" content="<p>Venndir Book - Directional Venn Diagrams
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="description" content="Venn Diagrams with Directionality" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Page not found | Venndir Book" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="<p>Venndir Book - Directional Venn Diagrams
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta property="og:image" content="/images/venndir-cover.png" />
+  <meta property="og:description" content="Venn Diagrams with Directionality" />
   <meta name="github-repo" content="jmw86069/venndir-book" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Page not found | Venndir Book" />
   
-  <meta name="twitter:description" content="<p>Venndir Book - Directional Venn Diagrams
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
-  
+  <meta name="twitter:description" content="Venn Diagrams with Directionality" />
+  <meta name="twitter:image" content="/images/venndir-cover.png" />
 
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-01-25" />
+<meta name="date" content="2025-06-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -58,11 +52,16 @@ set in the _output.yml file.</p>" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -72,7 +71,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -129,6 +128,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -146,39 +168,133 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Venndir Book</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<li class="chapter" data-level="1" data-path="what-is-a-venn-diagram.html"><a href="what-is-a-venn-diagram.html"><i class="fa fa-check"></i><b>1</b> What is a Venn diagram?</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#render-book"><i class="fa fa-check"></i><b>1.1</b> Render book</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i><b>1.2</b> Preview book</a></li>
+<li class="chapter" data-level="1.1" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>1.1</b> Problem Statement</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="what-is-a-directional-venn-diagram.html"><a href="what-is-a-directional-venn-diagram.html"><i class="fa fa-check"></i><b>2</b> What is a directional Venn diagram?</a>
+<li class="chapter" data-level="2" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>2</b> Data Import</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="what-is-a-directional-venn-diagram.html"><a href="what-is-a-directional-venn-diagram.html#problem-statement"><i class="fa fa-check"></i><b>2.1</b> Problem Statement</a></li>
-<li class="chapter" data-level="2.2" data-path="what-is-a-directional-venn-diagram.html"><a href="what-is-a-directional-venn-diagram.html#slightly-more-detail"><i class="fa fa-check"></i><b>2.2</b> Slightly more detail</a>
+<li class="chapter" data-level="2.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html"><i class="fa fa-check"></i><b>2.1</b> Common Data Input Types</a>
 <ul>
-<li class="chapter" data-level="" data-path="what-is-a-directional-venn-diagram.html"><a href="what-is-a-directional-venn-diagram.html#examples"><i class="fa fa-check"></i>Examples</a></li>
+<li class="chapter" data-level="2.1.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-sets"><i class="fa fa-check"></i><b>2.1.1</b> List of sets</a></li>
+<li class="chapter" data-level="2.1.2" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-signed-sets"><i class="fa fa-check"></i><b>2.1.2</b> List of signed sets</a></li>
+<li class="chapter" data-level="2.1.3" data-path="common-data-input-types.html"><a href="common-data-input-types.html#incidence-matrix"><i class="fa fa-check"></i><b>2.1.3</b> Incidence matrix</a></li>
+<li class="chapter" data-level="2.1.4" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-incidence-matrix"><i class="fa fa-check"></i><b>2.1.4</b> Signed incidence matrix</a></li>
+<li class="chapter" data-level="2.1.5" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-counts"><i class="fa fa-check"></i><b>2.1.5</b> Overlap counts</a></li>
+<li class="chapter" data-level="2.1.6" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-counts"><i class="fa fa-check"></i><b>2.1.6</b> Signed overlap counts</a></li>
+<li class="chapter" data-level="2.1.7" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-list"><i class="fa fa-check"></i><b>2.1.7</b> Overlap list</a></li>
+<li class="chapter" data-level="2.1.8" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-list"><i class="fa fa-check"></i><b>2.1.8</b> Signed overlap list</a></li>
+<li class="chapter" data-level="2.1.9" data-path="common-data-input-types.html"><a href="common-data-input-types.html#items"><i class="fa fa-check"></i><b>2.1.9</b> Items</a></li>
+<li class="chapter" data-level="2.1.10" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-data-frames"><i class="fa fa-check"></i><b>2.1.10</b> List of data frames</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>3</b> Data Import</a>
+<li class="chapter" data-level="2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html"><i class="fa fa-check"></i><b>2.2</b> Specialized Input Types</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="data-import.html"><a href="data-import.html#import-using-a-list"><i class="fa fa-check"></i><b>3.1</b> Import using a <code>list</code></a></li>
-<li class="chapter" data-level="3.2" data-path="data-import.html"><a href="data-import.html#convert-to-list"><i class="fa fa-check"></i><b>3.2</b> Convert to <code>list</code></a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="data-import.html"><a href="data-import.html#incidence-matrix"><i class="fa fa-check"></i><b>3.2.1</b> Incidence matrix</a></li>
-<li class="chapter" data-level="3.2.2" data-path="data-import.html"><a href="data-import.html#signed-incidence-matrix"><i class="fa fa-check"></i><b>3.2.2</b> Signed incidence matrix</a></li>
-<li class="chapter" data-level="3.2.3" data-path="data-import.html"><a href="data-import.html#overlap-counts"><i class="fa fa-check"></i><b>3.2.3</b> Overlap counts</a></li>
-<li class="chapter" data-level="3.2.4" data-path="data-import.html"><a href="data-import.html#signed-overlap-counts"><i class="fa fa-check"></i><b>3.2.4</b> Signed overlap counts</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="venndir-visualization.html"><a href="venndir-visualization.html"><i class="fa fa-check"></i><b>4</b> Venndir Visualization</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="venndir-visualization.html"><a href="venndir-visualization.html#venn-basics"><i class="fa fa-check"></i><b>4.1</b> Venn Basics</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="venndir-visualization.html"><a href="venndir-visualization.html#colors-and-styles"><i class="fa fa-check"></i><b>4.1.1</b> Colors and Styles</a></li>
-<li class="chapter" data-level="4.1.2" data-path="venndir-visualization.html"><a href="venndir-visualization.html#fonts-and-font-sizes"><i class="fa fa-check"></i><b>4.1.2</b> Fonts and Font Sizes</a></li>
-<li class="chapter" data-level="4.1.3" data-path="venndir-visualization.html"><a href="venndir-visualization.html#venn-legend"><i class="fa fa-check"></i><b>4.1.3</b> Venn Legend</a></li>
+<li class="chapter" data-level="2.2.1" data-path="specialized-input-types.html"><a href="specialized-input-types.html#limma"><i class="fa fa-check"></i><b>2.2.1</b> limma</a></li>
+<li class="chapter" data-level="2.2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html#deseq2"><i class="fa fa-check"></i><b>2.2.2</b> DESeq2</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="venndir-basics.html"><a href="venndir-basics.html"><i class="fa fa-check"></i><b>3</b> Venndir Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="default-venndir.html"><a href="default-venndir.html"><i class="fa fa-check"></i><b>3.1</b> Default Venndir</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="default-venndir.html"><a href="default-venndir.html#data-for-testing"><i class="fa fa-check"></i><b>3.1.1</b> Data for Testing</a></li>
+<li class="chapter" data-level="3.1.2" data-path="default-venndir.html"><a href="default-venndir.html#create-the-venn"><i class="fa fa-check"></i><b>3.1.2</b> Create the Venn</a></li>
+<li class="chapter" data-level="3.1.3" data-path="default-venndir.html"><a href="default-venndir.html#create-the-euler"><i class="fa fa-check"></i><b>3.1.3</b> Create the Euler</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html"><i class="fa fa-check"></i><b>3.2</b> Venn Set Colors</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="venn-set-colors.html"><a href="venn-set-colors.html#consistent-set-colors"><i class="fa fa-check"></i><b>3.2.1</b> Consistent Set Colors</a></li>
+<li class="chapter" data-level="3.2.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html#venndir-without-color"><i class="fa fa-check"></i><b>3.2.2</b> Venndir Without Color</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="venndir-labels.html"><a href="venndir-labels.html"><i class="fa fa-check"></i><b>3.3</b> Venndir Labels</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="venndir-labels.html"><a href="venndir-labels.html#label-content"><i class="fa fa-check"></i><b>3.3.1</b> Label Content</a></li>
+<li class="chapter" data-level="3.3.2" data-path="venndir-labels.html"><a href="venndir-labels.html#overlap-type"><i class="fa fa-check"></i><b>3.3.2</b> Overlap Type</a></li>
+<li class="chapter" data-level="3.3.3" data-path="venndir-labels.html"><a href="venndir-labels.html#signed-label-placement"><i class="fa fa-check"></i><b>3.3.3</b> Signed Label Placement</a></li>
+<li class="chapter" data-level="3.3.4" data-path="venndir-labels.html"><a href="venndir-labels.html#visual-styles"><i class="fa fa-check"></i><b>3.3.4</b> Visual Styles</a></li>
+<li class="chapter" data-level="3.3.5" data-path="venndir-labels.html"><a href="venndir-labels.html#nudge-a-venn-label"><i class="fa fa-check"></i><b>3.3.5</b> Nudge a Venn Label</a></li>
+<li class="chapter" data-level="3.3.6" data-path="venndir-labels.html"><a href="venndir-labels.html#details-for-label-placement"><i class="fa fa-check"></i><b>3.3.6</b> Details for Label Placement</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="item-labels.html"><a href="item-labels.html"><i class="fa fa-check"></i><b>3.4</b> Item Labels</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="item-labels.html"><a href="item-labels.html#overview-of-item-labeling"><i class="fa fa-check"></i><b>3.4.1</b> Overview of item labeling</a></li>
+<li class="chapter" data-level="3.4.2" data-path="item-labels.html"><a href="item-labels.html#venn-memes"><i class="fa fa-check"></i><b>3.4.2</b> Venn Memes</a></li>
+<li class="chapter" data-level="3.4.3" data-path="item-labels.html"><a href="item-labels.html#item-label-basics"><i class="fa fa-check"></i><b>3.4.3</b> Item Label Basics</a></li>
+<li class="chapter" data-level="3.4.4" data-path="item-labels.html"><a href="item-labels.html#item-layout-adjustments"><i class="fa fa-check"></i><b>3.4.4</b> Item layout adjustments</a></li>
+<li class="chapter" data-level="3.4.5" data-path="item-labels.html"><a href="item-labels.html#item-buffer"><i class="fa fa-check"></i><b>3.4.5</b> Item buffer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html"><i class="fa fa-check"></i><b>3.5</b> Fonts and Font Sizes</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#font-sizes"><i class="fa fa-check"></i><b>3.5.1</b> Font Sizes</a></li>
+<li class="chapter" data-level="3.5.2" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#overall-font-family"><i class="fa fa-check"></i><b>3.5.2</b> Overall Font Family</a></li>
+<li class="chapter" data-level="3.5.3" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#individual-font-families"><i class="fa fa-check"></i><b>3.5.3</b> Individual Font Families</a></li>
+<li class="chapter" data-level="3.5.4" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#available-font-families"><i class="fa fa-check"></i><b>3.5.4</b> Available Font Families</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="venn-legends.html"><a href="venn-legends.html"><i class="fa fa-check"></i><b>3.6</b> Venn Legends</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="venn-legends.html"><a href="venn-legends.html#hide-percent-or-signed-labels"><i class="fa fa-check"></i><b>3.6.1</b> Hide percent or signed labels</a></li>
+<li class="chapter" data-level="3.6.2" data-path="venn-legends.html"><a href="venn-legends.html#custom-legend-labels"><i class="fa fa-check"></i><b>3.6.2</b> Custom legend labels</a></li>
+<li class="chapter" data-level="3.6.3" data-path="venn-legends.html"><a href="venn-legends.html#additional-alias-labels"><i class="fa fa-check"></i><b>3.6.3</b> Additional alias labels</a></li>
+<li class="chapter" data-level="3.6.4" data-path="venn-legends.html"><a href="venn-legends.html#separate-size-and-sign"><i class="fa fa-check"></i><b>3.6.4</b> Separate Size and Sign</a></li>
+<li class="chapter" data-level="3.6.5" data-path="venn-legends.html"><a href="venn-legends.html#legend-color-style"><i class="fa fa-check"></i><b>3.6.5</b> Legend color style</a></li>
+<li class="chapter" data-level="3.6.6" data-path="venn-legends.html"><a href="venn-legends.html#legend-position"><i class="fa fa-check"></i><b>3.6.6</b> Legend position</a></li>
+<li class="chapter" data-level="3.6.7" data-path="venn-legends.html"><a href="venn-legends.html#legend-font-size"><i class="fa fa-check"></i><b>3.6.7</b> Legend font size</a></li>
+<li class="chapter" data-level="3.6.8" data-path="venn-legends.html"><a href="venn-legends.html#legend-custom-fontfamily"><i class="fa fa-check"></i><b>3.6.8</b> Legend custom fontfamily</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="deeper-customizations.html"><a href="deeper-customizations.html"><i class="fa fa-check"></i><b>4</b> Deeper Customizations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="venndir-borders.html"><a href="venndir-borders.html"><i class="fa fa-check"></i><b>4.1</b> Venndir Borders</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="venndir-borders.html"><a href="venndir-borders.html#venndir-rendering-steps"><i class="fa fa-check"></i><b>4.1.1</b> Venndir Rendering Steps</a></li>
+<li class="chapter" data-level="4.1.2" data-path="venndir-borders.html"><a href="venndir-borders.html#customize-venndir-borders"><i class="fa fa-check"></i><b>4.1.2</b> Customize Venndir borders</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html"><i class="fa fa-check"></i><b>4.2</b> Modify Venn Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html#overlap-attributes"><i class="fa fa-check"></i><b>4.2.1</b> Overlap Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="customize-any-label.html"><a href="customize-any-label.html"><i class="fa fa-check"></i><b>4.3</b> Customize Any Label</a></li>
+<li class="chapter" data-level="4.4" data-path="automatic-text-contrast.html"><a href="automatic-text-contrast.html"><i class="fa fa-check"></i><b>4.4</b> Automatic Text Contrast</a></li>
+<li class="chapter" data-level="4.5" data-path="highlight-venn-overlaps.html"><a href="highlight-venn-overlaps.html"><i class="fa fa-check"></i><b>4.5</b> Highlight Venn Overlaps</a></li>
+<li class="chapter" data-level="4.6" data-path="rotate-the-venndir.html"><a href="rotate-the-venndir.html"><i class="fa fa-check"></i><b>4.6</b> Rotate the Venndir</a></li>
+<li class="chapter" data-level="4.7" data-path="nudge-the-legend.html"><a href="nudge-the-legend.html"><i class="fa fa-check"></i><b>4.7</b> Nudge the Legend</a></li>
+<li class="chapter" data-level="4.8" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html"><i class="fa fa-check"></i><b>4.8</b> Hidden Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html#nudge-venndir-circles"><i class="fa fa-check"></i><b>4.8.1</b> Nudge Venndir Circles</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="nudge-specific-labels.html"><a href="nudge-specific-labels.html"><i class="fa fa-check"></i><b>4.9</b> Nudge specific labels</a></li>
+<li class="chapter" data-level="4.10" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html"><i class="fa fa-check"></i><b>4.10</b> Venndir Markdown Support</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-styles"><i class="fa fa-check"></i><b>4.10.1</b> Inline styles</a></li>
+<li class="chapter" data-level="4.10.2" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-images"><i class="fa fa-check"></i><b>4.10.2</b> Inline Images</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="patchwork-with-venndir.html"><a href="patchwork-with-venndir.html"><i class="fa fa-check"></i><b>4.11</b> Patchwork with Venndir</a></li>
+<li class="chapter" data-level="4.12" data-path="custom-signs.html"><a href="custom-signs.html"><i class="fa fa-check"></i><b>4.12</b> Custom Signs</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="custom-signs.html"><a href="custom-signs.html#review-sign-curation"><i class="fa fa-check"></i><b>4.12.1</b> Review Sign Curation</a></li>
+<li class="chapter" data-level="4.12.2" data-path="custom-signs.html"><a href="custom-signs.html#customize-the-symbols"><i class="fa fa-check"></i><b>4.12.2</b> Customize the Symbols</a></li>
+<li class="chapter" data-level="4.12.3" data-path="custom-signs.html"><a href="custom-signs.html#more-advanced-signs"><i class="fa fa-check"></i><b>4.12.3</b> More Advanced Signs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html"><i class="fa fa-check"></i><b>4.13</b> Venndir Graphics Objects</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
+<li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="figure-boosting.html"><a href="figure-boosting.html"><i class="fa fa-check"></i><b>5.1</b> Figure Boosting</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="figure-boosting.html"><a href="figure-boosting.html#me---electron"><i class="fa fa-check"></i><b>5.1.1</b> Me - Electron</a></li>
+<li class="chapter" data-level="5.1.2" data-path="figure-boosting.html"><a href="figure-boosting.html#eulerglyphs"><i class="fa fa-check"></i><b>5.1.2</b> eulerGlyphs</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html"><i class="fa fa-check"></i><b>5.2</b> Venndir Case Studies</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html#seehawer-kmt2-gene-venns"><i class="fa fa-check"></i><b>5.2.1</b> Seehawer Kmt2 Gene Venns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>6</b> Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -225,46 +341,62 @@ the table of contents to find the page you are looking for.</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/jmw86069/venndir-book/edit/main/%s",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jmw86069/venndir-book/edit/main/%s",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/jmw86069/venndir-book/blob/main/%s",
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "favicon": "favicon.ico"
 });
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

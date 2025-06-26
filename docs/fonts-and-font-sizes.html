@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.5 Fonts and Font Sizes | Venndir Book</title>
+  <meta name="description" content="Venn Diagrams with Directionality" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.5 Fonts and Font Sizes | Venndir Book" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/venndir-cover.png" />
+  <meta property="og:description" content="Venn Diagrams with Directionality" />
+  <meta name="github-repo" content="jmw86069/venndir-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.5 Fonts and Font Sizes | Venndir Book" />
+  
+  <meta name="twitter:description" content="Venn Diagrams with Directionality" />
+  <meta name="twitter:image" content="/images/venndir-cover.png" />
+
+<meta name="author" content="James M. Ward" />
+
+
+<meta name="date" content="2025-06-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="item-labels.html"/>
+<link rel="next" href="venn-legends.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Venndir Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="what-is-a-venn-diagram.html"><a href="what-is-a-venn-diagram.html"><i class="fa fa-check"></i><b>1</b> What is a Venn diagram?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>1.1</b> Problem Statement</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>2</b> Data Import</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html"><i class="fa fa-check"></i><b>2.1</b> Common Data Input Types</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-sets"><i class="fa fa-check"></i><b>2.1.1</b> List of sets</a></li>
+<li class="chapter" data-level="2.1.2" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-signed-sets"><i class="fa fa-check"></i><b>2.1.2</b> List of signed sets</a></li>
+<li class="chapter" data-level="2.1.3" data-path="common-data-input-types.html"><a href="common-data-input-types.html#incidence-matrix"><i class="fa fa-check"></i><b>2.1.3</b> Incidence matrix</a></li>
+<li class="chapter" data-level="2.1.4" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-incidence-matrix"><i class="fa fa-check"></i><b>2.1.4</b> Signed incidence matrix</a></li>
+<li class="chapter" data-level="2.1.5" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-counts"><i class="fa fa-check"></i><b>2.1.5</b> Overlap counts</a></li>
+<li class="chapter" data-level="2.1.6" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-counts"><i class="fa fa-check"></i><b>2.1.6</b> Signed overlap counts</a></li>
+<li class="chapter" data-level="2.1.7" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-list"><i class="fa fa-check"></i><b>2.1.7</b> Overlap list</a></li>
+<li class="chapter" data-level="2.1.8" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-list"><i class="fa fa-check"></i><b>2.1.8</b> Signed overlap list</a></li>
+<li class="chapter" data-level="2.1.9" data-path="common-data-input-types.html"><a href="common-data-input-types.html#items"><i class="fa fa-check"></i><b>2.1.9</b> Items</a></li>
+<li class="chapter" data-level="2.1.10" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-data-frames"><i class="fa fa-check"></i><b>2.1.10</b> List of data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html"><i class="fa fa-check"></i><b>2.2</b> Specialized Input Types</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="specialized-input-types.html"><a href="specialized-input-types.html#limma"><i class="fa fa-check"></i><b>2.2.1</b> limma</a></li>
+<li class="chapter" data-level="2.2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html#deseq2"><i class="fa fa-check"></i><b>2.2.2</b> DESeq2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="venndir-basics.html"><a href="venndir-basics.html"><i class="fa fa-check"></i><b>3</b> Venndir Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="default-venndir.html"><a href="default-venndir.html"><i class="fa fa-check"></i><b>3.1</b> Default Venndir</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="default-venndir.html"><a href="default-venndir.html#data-for-testing"><i class="fa fa-check"></i><b>3.1.1</b> Data for Testing</a></li>
+<li class="chapter" data-level="3.1.2" data-path="default-venndir.html"><a href="default-venndir.html#create-the-venn"><i class="fa fa-check"></i><b>3.1.2</b> Create the Venn</a></li>
+<li class="chapter" data-level="3.1.3" data-path="default-venndir.html"><a href="default-venndir.html#create-the-euler"><i class="fa fa-check"></i><b>3.1.3</b> Create the Euler</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html"><i class="fa fa-check"></i><b>3.2</b> Venn Set Colors</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="venn-set-colors.html"><a href="venn-set-colors.html#consistent-set-colors"><i class="fa fa-check"></i><b>3.2.1</b> Consistent Set Colors</a></li>
+<li class="chapter" data-level="3.2.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html#venndir-without-color"><i class="fa fa-check"></i><b>3.2.2</b> Venndir Without Color</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="venndir-labels.html"><a href="venndir-labels.html"><i class="fa fa-check"></i><b>3.3</b> Venndir Labels</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="venndir-labels.html"><a href="venndir-labels.html#label-content"><i class="fa fa-check"></i><b>3.3.1</b> Label Content</a></li>
+<li class="chapter" data-level="3.3.2" data-path="venndir-labels.html"><a href="venndir-labels.html#overlap-type"><i class="fa fa-check"></i><b>3.3.2</b> Overlap Type</a></li>
+<li class="chapter" data-level="3.3.3" data-path="venndir-labels.html"><a href="venndir-labels.html#signed-label-placement"><i class="fa fa-check"></i><b>3.3.3</b> Signed Label Placement</a></li>
+<li class="chapter" data-level="3.3.4" data-path="venndir-labels.html"><a href="venndir-labels.html#visual-styles"><i class="fa fa-check"></i><b>3.3.4</b> Visual Styles</a></li>
+<li class="chapter" data-level="3.3.5" data-path="venndir-labels.html"><a href="venndir-labels.html#nudge-a-venn-label"><i class="fa fa-check"></i><b>3.3.5</b> Nudge a Venn Label</a></li>
+<li class="chapter" data-level="3.3.6" data-path="venndir-labels.html"><a href="venndir-labels.html#details-for-label-placement"><i class="fa fa-check"></i><b>3.3.6</b> Details for Label Placement</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="item-labels.html"><a href="item-labels.html"><i class="fa fa-check"></i><b>3.4</b> Item Labels</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="item-labels.html"><a href="item-labels.html#overview-of-item-labeling"><i class="fa fa-check"></i><b>3.4.1</b> Overview of item labeling</a></li>
+<li class="chapter" data-level="3.4.2" data-path="item-labels.html"><a href="item-labels.html#venn-memes"><i class="fa fa-check"></i><b>3.4.2</b> Venn Memes</a></li>
+<li class="chapter" data-level="3.4.3" data-path="item-labels.html"><a href="item-labels.html#item-label-basics"><i class="fa fa-check"></i><b>3.4.3</b> Item Label Basics</a></li>
+<li class="chapter" data-level="3.4.4" data-path="item-labels.html"><a href="item-labels.html#item-layout-adjustments"><i class="fa fa-check"></i><b>3.4.4</b> Item layout adjustments</a></li>
+<li class="chapter" data-level="3.4.5" data-path="item-labels.html"><a href="item-labels.html#item-buffer"><i class="fa fa-check"></i><b>3.4.5</b> Item buffer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html"><i class="fa fa-check"></i><b>3.5</b> Fonts and Font Sizes</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#font-sizes"><i class="fa fa-check"></i><b>3.5.1</b> Font Sizes</a></li>
+<li class="chapter" data-level="3.5.2" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#overall-font-family"><i class="fa fa-check"></i><b>3.5.2</b> Overall Font Family</a></li>
+<li class="chapter" data-level="3.5.3" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#individual-font-families"><i class="fa fa-check"></i><b>3.5.3</b> Individual Font Families</a></li>
+<li class="chapter" data-level="3.5.4" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#available-font-families"><i class="fa fa-check"></i><b>3.5.4</b> Available Font Families</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="venn-legends.html"><a href="venn-legends.html"><i class="fa fa-check"></i><b>3.6</b> Venn Legends</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="venn-legends.html"><a href="venn-legends.html#hide-percent-or-signed-labels"><i class="fa fa-check"></i><b>3.6.1</b> Hide percent or signed labels</a></li>
+<li class="chapter" data-level="3.6.2" data-path="venn-legends.html"><a href="venn-legends.html#custom-legend-labels"><i class="fa fa-check"></i><b>3.6.2</b> Custom legend labels</a></li>
+<li class="chapter" data-level="3.6.3" data-path="venn-legends.html"><a href="venn-legends.html#additional-alias-labels"><i class="fa fa-check"></i><b>3.6.3</b> Additional alias labels</a></li>
+<li class="chapter" data-level="3.6.4" data-path="venn-legends.html"><a href="venn-legends.html#separate-size-and-sign"><i class="fa fa-check"></i><b>3.6.4</b> Separate Size and Sign</a></li>
+<li class="chapter" data-level="3.6.5" data-path="venn-legends.html"><a href="venn-legends.html#legend-color-style"><i class="fa fa-check"></i><b>3.6.5</b> Legend color style</a></li>
+<li class="chapter" data-level="3.6.6" data-path="venn-legends.html"><a href="venn-legends.html#legend-position"><i class="fa fa-check"></i><b>3.6.6</b> Legend position</a></li>
+<li class="chapter" data-level="3.6.7" data-path="venn-legends.html"><a href="venn-legends.html#legend-font-size"><i class="fa fa-check"></i><b>3.6.7</b> Legend font size</a></li>
+<li class="chapter" data-level="3.6.8" data-path="venn-legends.html"><a href="venn-legends.html#legend-custom-fontfamily"><i class="fa fa-check"></i><b>3.6.8</b> Legend custom fontfamily</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="deeper-customizations.html"><a href="deeper-customizations.html"><i class="fa fa-check"></i><b>4</b> Deeper Customizations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="venndir-borders.html"><a href="venndir-borders.html"><i class="fa fa-check"></i><b>4.1</b> Venndir Borders</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="venndir-borders.html"><a href="venndir-borders.html#venndir-rendering-steps"><i class="fa fa-check"></i><b>4.1.1</b> Venndir Rendering Steps</a></li>
+<li class="chapter" data-level="4.1.2" data-path="venndir-borders.html"><a href="venndir-borders.html#customize-venndir-borders"><i class="fa fa-check"></i><b>4.1.2</b> Customize Venndir borders</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html"><i class="fa fa-check"></i><b>4.2</b> Modify Venn Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html#overlap-attributes"><i class="fa fa-check"></i><b>4.2.1</b> Overlap Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="customize-any-label.html"><a href="customize-any-label.html"><i class="fa fa-check"></i><b>4.3</b> Customize Any Label</a></li>
+<li class="chapter" data-level="4.4" data-path="automatic-text-contrast.html"><a href="automatic-text-contrast.html"><i class="fa fa-check"></i><b>4.4</b> Automatic Text Contrast</a></li>
+<li class="chapter" data-level="4.5" data-path="highlight-venn-overlaps.html"><a href="highlight-venn-overlaps.html"><i class="fa fa-check"></i><b>4.5</b> Highlight Venn Overlaps</a></li>
+<li class="chapter" data-level="4.6" data-path="rotate-the-venndir.html"><a href="rotate-the-venndir.html"><i class="fa fa-check"></i><b>4.6</b> Rotate the Venndir</a></li>
+<li class="chapter" data-level="4.7" data-path="nudge-the-legend.html"><a href="nudge-the-legend.html"><i class="fa fa-check"></i><b>4.7</b> Nudge the Legend</a></li>
+<li class="chapter" data-level="4.8" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html"><i class="fa fa-check"></i><b>4.8</b> Hidden Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html#nudge-venndir-circles"><i class="fa fa-check"></i><b>4.8.1</b> Nudge Venndir Circles</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="nudge-specific-labels.html"><a href="nudge-specific-labels.html"><i class="fa fa-check"></i><b>4.9</b> Nudge specific labels</a></li>
+<li class="chapter" data-level="4.10" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html"><i class="fa fa-check"></i><b>4.10</b> Venndir Markdown Support</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-styles"><i class="fa fa-check"></i><b>4.10.1</b> Inline styles</a></li>
+<li class="chapter" data-level="4.10.2" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-images"><i class="fa fa-check"></i><b>4.10.2</b> Inline Images</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="patchwork-with-venndir.html"><a href="patchwork-with-venndir.html"><i class="fa fa-check"></i><b>4.11</b> Patchwork with Venndir</a></li>
+<li class="chapter" data-level="4.12" data-path="custom-signs.html"><a href="custom-signs.html"><i class="fa fa-check"></i><b>4.12</b> Custom Signs</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="custom-signs.html"><a href="custom-signs.html#review-sign-curation"><i class="fa fa-check"></i><b>4.12.1</b> Review Sign Curation</a></li>
+<li class="chapter" data-level="4.12.2" data-path="custom-signs.html"><a href="custom-signs.html#customize-the-symbols"><i class="fa fa-check"></i><b>4.12.2</b> Customize the Symbols</a></li>
+<li class="chapter" data-level="4.12.3" data-path="custom-signs.html"><a href="custom-signs.html#more-advanced-signs"><i class="fa fa-check"></i><b>4.12.3</b> More Advanced Signs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html"><i class="fa fa-check"></i><b>4.13</b> Venndir Graphics Objects</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
+<li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="figure-boosting.html"><a href="figure-boosting.html"><i class="fa fa-check"></i><b>5.1</b> Figure Boosting</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="figure-boosting.html"><a href="figure-boosting.html#me---electron"><i class="fa fa-check"></i><b>5.1.1</b> Me - Electron</a></li>
+<li class="chapter" data-level="5.1.2" data-path="figure-boosting.html"><a href="figure-boosting.html#eulerglyphs"><i class="fa fa-check"></i><b>5.1.2</b> eulerGlyphs</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html"><i class="fa fa-check"></i><b>5.2</b> Venndir Case Studies</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html#seehawer-kmt2-gene-venns"><i class="fa fa-check"></i><b>5.2.1</b> Seehawer Kmt2 Gene Venns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>6</b> Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Venndir Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="fonts-and-font-sizes" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Fonts and Font Sizes<a href="fonts-and-font-sizes.html#fonts-and-font-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If the most challenging aspects of Venndir were the intricacies
+of placing labels, surely the next big challenge
+was ensuring any chosen font rendered correctly.</p>
+<p>Particularly for signed count labels, the default output
+uses Unicode up and down arrows: <span class="math inline">\(↑\)</span> and <span class="math inline">\(↓\)</span>.
+These Unicode characters have caused the most heartache,
+for various reasons related to Unicode font support and
+computer platform locale.</p>
+<p>Most* font rendering issues are handled smoothly by the combination of
+<a href="https://marquee.r-lib.org">marquee</a>,
+<a href="https://systemfonts.r-lib.org">systemfonts</a>, and
+<a href="https://textshaping.r-lib.org">textshaping</a>.
+These R packages strive to "make it work" by finding each
+character glyph in the specified font, or by using a suitable font
+substitution.</p>
+<p>Particularly for PDF output, it may be necessary to embed
+the font into the PDF file using <code>grDevices::embedFonts()</code> or
+<code>grDevices::embedGlyphs()</code>. Using <code>cairo_pdf()</code> should embed
+fonts automatically, but has rare exceptions.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:marquee-1"></span>
+<img src="_main_files/figure-html/marquee-1-1.png" alt="Most fonts 'just work' thanks to R package marquee, with enough flexibility to keep the focus on effective and artistic choices, and away from any annoyances." width="100%" />
+<p class="caption">
+Figure 3.30: Most fonts 'just work' thanks to R package marquee, with enough flexibility to keep the focus on effective and artistic choices, and away from any annoyances.
+</p>
+</div>
+<div id="font-sizes" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Font Sizes<a href="fonts-and-font-sizes.html#font-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The default font size used in Venndir is <code>16</code> points, and is adjusted
+with the argument <code>font_cex</code>. Default <code>font_cex=c(1, 1, 0.75)</code> therefore
+defines values <code>16, 16, 12</code>, which are applied in order as follows:</p>
+<ul>
+<li>Set label</li>
+<li>Count label</li>
+<li>Signed count label(s)</li>
+</ul>
+<p>The text is defined with a fixed font size, and is therefore
+independent of the size of the figure. If the figure itself is drawn
+on a small graphics device, the font sizes will remain the same,
+so some care should be taken to select font sizes appropriate for
+the output figure dimensions.</p>
+<p>Ideally, the output device dimensions should be defined with fixed units,
+such as inches ('in'), or centimeters ('cm'), so that the final
+figure is clearly defined.</p>
+<p>The argument <code>font_cex</code> has specific behavior based upon the number
+of values supplied in the argument:</p>
+<ul>
+<li><strong><code>font_cex</code> with one value</strong>: It is multiplied by <code>c(1, 1, 0.75)</code>
+to be an easy adjustment to the typical defaults. Thus <code>font_cex=2</code> will
+double all font sizes.</li>
+<li><strong><code>font_cex</code> with two values</strong>: The second value is repeated to make a vector
+of three values. This vector is multiplied by <code>c(1, 1, 0.75)</code>, again as
+convenient way to adjust Set and Count labels
+proportional to their default values.<br />
+<code>font_cex=c(2, 1)</code> will double the Set label, keeping Count and Signed
+at their defaults.</li>
+<li><strong><code>font_cex</code> with three values</strong>: Three values are used directly.</li>
+</ul>
+<p>The adjusted <code>font_cex</code> is multiplied by <code>16</code> to define the font point size.
+Several examples are shown in Figure <a href="fonts-and-font-sizes.html#fig:font-size-1">3.31</a>.</p>
+
+
+
+
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:font-size-1"></span>
+<img src="_main_files/figure-html/font-size-1-1.png" alt="Venn diagram showing modifications to font sizes by adjusting the argument font_cex." width="50%" /><img src="_main_files/figure-html/font-size-1-2.png" alt="Venn diagram showing modifications to font sizes by adjusting the argument font_cex." width="50%" /><img src="_main_files/figure-html/font-size-1-3.png" alt="Venn diagram showing modifications to font sizes by adjusting the argument font_cex." width="50%" /><img src="_main_files/figure-html/font-size-1-4.png" alt="Venn diagram showing modifications to font sizes by adjusting the argument font_cex." width="50%" />
+<p class="caption">
+Figure 3.31: Venn diagram showing modifications to font sizes by adjusting the argument <code>font_cex</code>.
+</p>
+</div>
+<p>The last example (bottom-right panel) was created using the following code:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="fonts-and-font-sizes.html#cb72-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>),</span>
+<span id="cb72-2"><a href="fonts-and-font-sizes.html#cb72-2" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">1.3</span>, <span class="fl">0.8</span>))</span></code></pre></div>
+</div>
+<div id="overall-font-family" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Overall Font Family<a href="fonts-and-font-sizes.html#overall-font-family" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The overall font typeface used by <code>venndir()</code> is defined with
+the argument <code>fontfamily</code>, for which the default is <code>fontfamily="Arial"</code>.</p>
+<p>See <a href="fonts-and-font-sizes.html#available-font-families">Available Font Families</a> to review other fonts available.</p>
+<p>Figure <a href="fonts-and-font-sizes.html#fig:family-1">3.32</a> uses the R 'serif' font, with <code>fontfamily='serif'</code>.
+.</p>
+
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="fonts-and-font-sizes.html#cb73-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">n_sets=</span><span class="dv">3</span>, <span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
+<span id="cb73-2"><a href="fonts-and-font-sizes.html#cb73-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
+<span id="cb73-3"><a href="fonts-and-font-sizes.html#cb73-3" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;fontfamily=&#39;serif&#39;&quot;</span>,</span>
+<span id="cb73-4"><a href="fonts-and-font-sizes.html#cb73-4" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;serif&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:family-1"></span>
+<img src="_main_files/figure-html/family-1-1.png" alt="Venn diagram showing two sets, with all labels shown using a serif font, such as 'Times'." width="80%" />
+<p class="caption">
+Figure 3.32: Venn diagram showing two sets, with all labels shown using a serif font, such as 'Times'.
+</p>
+</div>
+<p>Note that all the labels use 'serif' now, including in the legend.</p>
+<p>Similarly, for Venn diagrams which show item labels,
+the item font is adjusted with <code>fontfamily</code>.
+This type of plot can be created using <code>venndir()</code>
+with argument <code>show_labels="Ni"</code>, to place set name 'N' outside,
+and item labels 'i' inside.</p>
+
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="fonts-and-font-sizes.html#cb74-1" tabindex="-1"></a>petlist <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb74-2"><a href="fonts-and-font-sizes.html#cb74-2" tabindex="-1"></a>   <span class="at">Dog=</span><span class="fu">c</span>(<span class="st">&quot;Needs walks&quot;</span>, <span class="st">&quot;Barks&quot;</span>, <span class="st">&quot;Round eyes&quot;</span>),</span>
+<span id="cb74-3"><a href="fonts-and-font-sizes.html#cb74-3" tabindex="-1"></a>   <span class="at">Cat=</span><span class="fu">c</span>(<span class="st">&quot;Free roam&quot;</span>, <span class="st">&quot;Meows&quot;</span>, <span class="st">&quot;Thin pupils&quot;</span>),</span>
+<span id="cb74-4"><a href="fonts-and-font-sizes.html#cb74-4" tabindex="-1"></a>   <span class="st">&quot;Dog&amp;Cat&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Furry&quot;</span>, <span class="st">&quot;Has claws&quot;</span>, <span class="st">&quot;Lovable&quot;</span>))</span>
+<span id="cb74-5"><a href="fonts-and-font-sizes.html#cb74-5" tabindex="-1"></a>petsetlist <span class="ot">&lt;-</span> <span class="fu">overlaplist2setlist</span>(petlist)</span>
+<span id="cb74-6"><a href="fonts-and-font-sizes.html#cb74-6" tabindex="-1"></a></span>
+<span id="cb74-7"><a href="fonts-and-font-sizes.html#cb74-7" tabindex="-1"></a>petv <span class="ot">&lt;-</span> <span class="fu">venndir</span>(petsetlist,</span>
+<span id="cb74-8"><a href="fonts-and-font-sizes.html#cb74-8" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">1.5</span>,</span>
+<span id="cb74-9"><a href="fonts-and-font-sizes.html#cb74-9" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fl">0.8</span>,</span>
+<span id="cb74-10"><a href="fonts-and-font-sizes.html#cb74-10" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
+<span id="cb74-11"><a href="fonts-and-font-sizes.html#cb74-11" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
+<span id="cb74-12"><a href="fonts-and-font-sizes.html#cb74-12" tabindex="-1"></a>   <span class="at">show_segment=</span><span class="cn">FALSE</span>,</span>
+<span id="cb74-13"><a href="fonts-and-font-sizes.html#cb74-13" tabindex="-1"></a>   <span class="at">keep_item_order=</span><span class="cn">TRUE</span>,</span>
+<span id="cb74-14"><a href="fonts-and-font-sizes.html#cb74-14" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="dv">0</span>, <span class="at">xyratio=</span><span class="dv">2</span>,</span>
+<span id="cb74-15"><a href="fonts-and-font-sizes.html#cb74-15" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;Optima&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:family-2"></span>
+<img src="_main_files/figure-html/family-2-1.png" alt="Venn diagram showing Two sets 'Dogs' and 'Cats' with some attributes unique to each, and shared by both. The item labels use the 'Optima' font." width="80%" />
+<p class="caption">
+Figure 3.33: Venn diagram showing Two sets 'Dogs' and 'Cats' with some attributes unique to each, and shared by both. The item labels use the 'Optima' font.
+</p>
+</div>
+<p>The example above includes some other useful customizations, discussed
+in detail later in the book. For now, here is a brief description:</p>
+<ul>
+<li><code>font_cex=1.5</code> enlarges the set name font.</li>
+<li><code>draw_legend=FALSE</code> hides the color legend.</li>
+<li><code>show_segment=FALSE</code> hides the line segments.</li>
+<li><code>keep_item_order=TRUE</code> maintains the original order of item labels,
+therefore not sorting items alphabetically.</li>
+<li><code>item_buffer=0</code> reduces the buffer zone of each Venn region before
+determining item label positions.</li>
+<li><code>xyratio=2</code> increases the x:y ratio during item label placement,
+higher values tend to produce single column output.</li>
+</ul>
+<p>Item labels can be displayed using <code>venn_meme()</code>.</p>
+
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="fonts-and-font-sizes.html#cb75-1" tabindex="-1"></a>petlist <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb75-2"><a href="fonts-and-font-sizes.html#cb75-2" tabindex="-1"></a>   <span class="at">Dog=</span><span class="fu">c</span>(<span class="st">&quot;Needs walks&quot;</span>, <span class="st">&quot;Barks&quot;</span>, <span class="st">&quot;Round eyes&quot;</span>),</span>
+<span id="cb75-3"><a href="fonts-and-font-sizes.html#cb75-3" tabindex="-1"></a>   <span class="at">Cat=</span><span class="fu">c</span>(<span class="st">&quot;Free roam&quot;</span>, <span class="st">&quot;Meows&quot;</span>, <span class="st">&quot;Thin pupils&quot;</span>),</span>
+<span id="cb75-4"><a href="fonts-and-font-sizes.html#cb75-4" tabindex="-1"></a>   <span class="st">&quot;Dog&amp;Cat&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Furry&quot;</span>, <span class="st">&quot;Has claws&quot;</span>, <span class="st">&quot;Lovable&quot;</span>))</span>
+<span id="cb75-5"><a href="fonts-and-font-sizes.html#cb75-5" tabindex="-1"></a><span class="fu">venn_meme</span>(petlist,</span>
+<span id="cb75-6"><a href="fonts-and-font-sizes.html#cb75-6" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">1.5</span>,</span>
+<span id="cb75-7"><a href="fonts-and-font-sizes.html#cb75-7" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fl">0.8</span>,</span>
+<span id="cb75-8"><a href="fonts-and-font-sizes.html#cb75-8" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="dv">0</span>, <span class="at">xyratio=</span><span class="fl">1.5</span>,</span>
+<span id="cb75-9"><a href="fonts-and-font-sizes.html#cb75-9" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;Optima&quot;</span>,</span>
+<span id="cb75-10"><a href="fonts-and-font-sizes.html#cb75-10" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:family-3"></span>
+<img src="_main_files/figure-html/family-3-1.png" alt="Venn diagram showing Two sets 'Dogs' and 'Cats', this time created using venn_meme(). The item labels use the 'Optima' font." width="80%" />
+<p class="caption">
+Figure 3.34: Venn diagram showing Two sets 'Dogs' and 'Cats', this time created using <code>venn_meme()</code>. The item labels use the 'Optima' font.
+</p>
+</div>
+</div>
+<div id="individual-font-families" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Individual Font Families<a href="fonts-and-font-sizes.html#individual-font-families" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For more control over specific fonts, use argument <code>fontfamilies</code>.
+This argument expects a <code>list</code> with these elements:</p>
+<ul>
+<li>overlap - fontfamily to use for set or overlap labels</li>
+<li>count - fontfamily to use for main count labels</li>
+<li>signed - fontfamily to use for signed count labels</li>
+</ul>
+<p>Any value not customized will use the default <code>fontfamily</code> value.</p>
+<p>This example shows distinct fonts for each element, in fact it shows
+two fonts for "count" which corresponds to the <a href="glossary.html#main-counts">main counts</a>, and
+the percentage of counts, in order.</p>
+
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="fonts-and-font-sizes.html#cb76-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
+<span id="cb76-2"><a href="fonts-and-font-sizes.html#cb76-2" tabindex="-1"></a><span class="fu">venndir</span>(setlist,</span>
+<span id="cb76-3"><a href="fonts-and-font-sizes.html#cb76-3" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ncps&quot;</span>,</span>
+<span id="cb76-4"><a href="fonts-and-font-sizes.html#cb76-4" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Main Title (Times New Roman)&quot;</span>,</span>
+<span id="cb76-5"><a href="fonts-and-font-sizes.html#cb76-5" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;Times New Roman&quot;</span>,</span>
+<span id="cb76-6"><a href="fonts-and-font-sizes.html#cb76-6" tabindex="-1"></a>   <span class="at">y_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;lines&quot;</span>),</span>
+<span id="cb76-7"><a href="fonts-and-font-sizes.html#cb76-7" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="fl">0.15</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb76-8"><a href="fonts-and-font-sizes.html#cb76-8" tabindex="-1"></a>   <span class="at">fontfamilies=</span><span class="fu">list</span>(<span class="at">overlap=</span><span class="st">&quot;Optima&quot;</span>,</span>
+<span id="cb76-9"><a href="fonts-and-font-sizes.html#cb76-9" tabindex="-1"></a>      <span class="at">count=</span><span class="fu">c</span>(<span class="st">&quot;Arial Black&quot;</span>, <span class="st">&quot;Times&quot;</span>),</span>
+<span id="cb76-10"><a href="fonts-and-font-sizes.html#cb76-10" tabindex="-1"></a>      <span class="at">signed=</span><span class="st">&quot;Arial Narrow&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:fontfamilies-1"></span>
+<img src="_main_files/figure-html/fontfamilies-1-1.png" alt="Venn diagram showing distinct font families used for each type of label: overlap, count, and signed." width="80%" />
+<p class="caption">
+Figure 3.35: Venn diagram showing distinct font families used for each type of label: overlap, count, and signed.
+</p>
+</div>
+<p>The arguments to <code>assemble_venndir_label()</code> also include <code>fontfaces</code> which
+may also be customized to control whether each font is 'plain', 'bold',
+'italic', or 'bold.italic' for example. These customizations are rather
+advanced, and are discussed in more detail later.</p>
+</div>
+<div id="available-font-families" class="section level3 hasAnchor" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Available Font Families<a href="fonts-and-font-sizes.html#available-font-families" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before getting into details with fonts, some useful terminology should
+be defined. Thomas Pederson wrote an excellent overview of font
+terms specific to R in
+<a href="https://systemfonts.r-lib.org/articles/fonts_basics.html">Typography and R</a>,
+as part of the <strong>systemfonts</strong> <span class="citation">(<a href="#ref-R-systemfonts">Pedersen, Ooms, and Govett 2025</a>)</span> package.</p>
+<p>To paraphrase, the commonly used term "font" typically refers to a 'typeface',
+for example 'Arial' and 'Helvetica' are each typefaces.
+The typeface may have several variations that may include width
+(normal, bold, or thin), and style (normal, italic, or oblique).
+Each variation represents its own "font" within the typeface.
+Some typefaces such as 'Helvetica Neue' may have 18 or more
+individual fonts!</p>
+<p>With these terms in mind, R refers to a typeface with either the term
+<code>'fontfamily'</code> or <code>'family'</code>, and this convention is followed
+in Venndir.</p>
+<p>The <a href="https://systemfonts.r-lib.org">systemfonts</a> R package <span class="citation">(<a href="#ref-R-systemfonts">Pedersen, Ooms, and Govett 2025</a>)</span>
+is used by Venndir, by way of the <a href="https://marquee.r-lib.org">marquee</a>
+R package <span class="citation">(<a href="#ref-R-marquee">Pedersen and Mitáš 2025</a>)</span>.</p>
+<p>A function <code>subset_systemfonts()</code> may be helpful to browse the available
+fonts on the system running R. The following example demonstrates how
+to summarize available fonts for 'Helvetica Neue', shown in
+Table <a href="fonts-and-font-sizes.html#tab:systemfonts-1">3.5</a>.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="fonts-and-font-sizes.html#cb77-1" tabindex="-1"></a><span class="fu">subset_systemfonts</span>(<span class="fu">grepl</span>(<span class="st">&quot;Helvetica Neue&quot;</span>, family))</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:systemfonts-1">Table 3.5: </span><span id="tab:systemfonts-1">Table 3.6: </span>Partial summary of 'Helvetica Neue' fonts via systemfonts.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+name
+</th>
+<th style="text-align:left;">
+family
+</th>
+<th style="text-align:left;">
+style
+</th>
+<th style="text-align:left;">
+weight
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-UltraLight
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+UltraLight
+</td>
+<td style="text-align:left;">
+thin
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-Thin
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Thin
+</td>
+<td style="text-align:left;">
+ultralight
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-Light
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Light
+</td>
+<td style="text-align:left;">
+light
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Regular
+</td>
+<td style="text-align:left;">
+normal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-Medium
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:left;">
+medium
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-Bold
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Bold
+</td>
+<td style="text-align:left;">
+bold
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-CondensedBold
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Condensed Bold
+</td>
+<td style="text-align:left;">
+bold
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-CondensedBlack
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Condensed Black
+</td>
+<td style="text-align:left;">
+heavy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-UltraLightItalic
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+UltraLight Italic
+</td>
+<td style="text-align:left;">
+thin
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-ThinItalic
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Thin Italic
+</td>
+<td style="text-align:left;">
+ultralight
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-LightItalic
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Light Italic
+</td>
+<td style="text-align:left;">
+light
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-Italic
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Italic
+</td>
+<td style="text-align:left;">
+normal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-MediumItalic
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Medium Italic
+</td>
+<td style="text-align:left;">
+medium
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HelveticaNeue-BoldItalic
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica Neue
+</td>
+<td style="text-align:left;">
+Bold Italic
+</td>
+<td style="text-align:left;">
+bold
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that it uses <code>grepl()</code> on the column <code>'family'</code> to subset the
+set of all available fonts. To list all fonts, use: <code>subset_systemfonts()</code>.</p>
+<div id="font-family-visualization" class="section level4 hasAnchor" number="3.5.4.1">
+<h4><span class="header-section-number">3.5.4.1</span> Font family visualization<a href="fonts-and-font-sizes.html#font-family-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The results can be plotted by adding <code>do_plot=TRUE</code>, as a
+basic way of viewing the resulting fonts. Note that there are no provisions
+to prevent overlapping labels, so this approach is considered as a
+"quick check" to view only a few fonts.</p>
+
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="fonts-and-font-sizes.html#cb78-1" tabindex="-1"></a>ss <span class="ot">&lt;-</span> <span class="fu">subset_systemfonts</span>(<span class="fu">grepl</span>(<span class="st">&quot;Helvetica&quot;</span>, family), <span class="at">do_plot=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:systemfonts-2"></span>
+<img src="_main_files/figure-html/systemfonts-2-1.png" alt="Quick check of available fonts where the family name contains 'Helvetica'." width="80%" />
+<p class="caption">
+Figure 3.36: Quick check of available fonts where the family name contains 'Helvetica'.
+</p>
+</div>
+</div>
+<div id="automatic-font-substitution" class="section level4 hasAnchor" number="3.5.4.2">
+<h4><span class="header-section-number">3.5.4.2</span> Automatic font substitution<a href="fonts-and-font-sizes.html#automatic-font-substitution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Another helpful feature of <code>systemfonts</code> is that it will substitute
+a font, or a glyph within a font, when it cannot otherwise be found.
+In Venndir, this approach helps ensure suitable Unicode characters
+are used by default for example.</p>
+<p>For example, the font family <code>'sans'</code> is replaced with the
+appropriate corresponding font, which is important because it
+differs on Windows, Mac, and linux architectures.
+The typical defaults, for example:
+'Arial' on Windows; 'Helvetica' on MacOS; 'DejaVu Sans' on Linux.</p>
+<p>Similarly, when trying to use 'Arial' on a machine which lacks 'Arial',
+<code>systemfonts</code> will substitute a suitable replacement,
+for example 'DejaVu Sans' or 'Helvetica'.</p>
+<p>The font substitutions can be pre-defined, see <code>systemfonts::font_fallback()</code>.</p>
+<p>To review the font substitution, one can use <code>systemfonts::font_info()</code>
+in the simple example below, however there is much more capability
+described in the systemfonts documentation.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="fonts-and-font-sizes.html#cb79-1" tabindex="-1"></a><span class="fu">data.frame</span>(systemfonts<span class="sc">::</span><span class="fu">font_info</span>(<span class="st">&quot;sans&quot;</span>)[, <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>])</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:systemfonts-3">Table 3.7: </span><span id="tab:systemfonts-3">Table 3.8: </span>Output from the font info function in systemfonts showing the font substitution for 'sans'.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+path
+</th>
+<th style="text-align:right;">
+index
+</th>
+<th style="text-align:left;">
+family
+</th>
+<th style="text-align:left;">
+style
+</th>
+<th style="text-align:left;">
+italic
+</th>
+<th style="text-align:left;">
+bold
+</th>
+<th style="text-align:left;">
+monospace
+</th>
+<th style="text-align:left;">
+weight
+</th>
+<th style="text-align:left;">
+width
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+/System/Library/Fonts/Helvetica.ttc
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;font-weight: bold;">
+Helvetica
+</td>
+<td style="text-align:left;">
+Regular
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+normal
+</td>
+<td style="text-align:left;">
+normal
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-R-marquee" class="csl-entry">
+Pedersen, Thomas Lin, and Martin Mitáš. 2025. <em>Marquee: Markdown Parser and Renderer for r Graphics</em>. <a href="https://marquee.r-lib.org">https://marquee.r-lib.org</a>.
+</div>
+<div id="ref-R-systemfonts" class="csl-entry">
+Pedersen, Thomas Lin, Jeroen Ooms, and Devon Govett. 2025. <em>Systemfonts: System Native Font Finding</em>. <a href="https://github.com/r-lib/systemfonts">https://github.com/r-lib/systemfonts</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="item-labels.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="venn-legends.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jmw86069/venndir-book/edit/main/03-venndir-viz.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/jmw86069/venndir-book/blob/main/03-venndir-viz.Rmd",
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "favicon": "favicon.ico"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

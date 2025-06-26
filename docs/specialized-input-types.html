@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.2 Specialized Input Types | Venndir Book</title>
+  <meta name="description" content="Venn Diagrams with Directionality" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.2 Specialized Input Types | Venndir Book" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/venndir-cover.png" />
+  <meta property="og:description" content="Venn Diagrams with Directionality" />
+  <meta name="github-repo" content="jmw86069/venndir-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.2 Specialized Input Types | Venndir Book" />
+  
+  <meta name="twitter:description" content="Venn Diagrams with Directionality" />
+  <meta name="twitter:image" content="/images/venndir-cover.png" />
+
+<meta name="author" content="James M. Ward" />
+
+
+<meta name="date" content="2025-06-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="common-data-input-types.html"/>
+<link rel="next" href="venndir-basics.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Venndir Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="what-is-a-venn-diagram.html"><a href="what-is-a-venn-diagram.html"><i class="fa fa-check"></i><b>1</b> What is a Venn diagram?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>1.1</b> Problem Statement</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>2</b> Data Import</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html"><i class="fa fa-check"></i><b>2.1</b> Common Data Input Types</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-sets"><i class="fa fa-check"></i><b>2.1.1</b> List of sets</a></li>
+<li class="chapter" data-level="2.1.2" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-signed-sets"><i class="fa fa-check"></i><b>2.1.2</b> List of signed sets</a></li>
+<li class="chapter" data-level="2.1.3" data-path="common-data-input-types.html"><a href="common-data-input-types.html#incidence-matrix"><i class="fa fa-check"></i><b>2.1.3</b> Incidence matrix</a></li>
+<li class="chapter" data-level="2.1.4" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-incidence-matrix"><i class="fa fa-check"></i><b>2.1.4</b> Signed incidence matrix</a></li>
+<li class="chapter" data-level="2.1.5" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-counts"><i class="fa fa-check"></i><b>2.1.5</b> Overlap counts</a></li>
+<li class="chapter" data-level="2.1.6" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-counts"><i class="fa fa-check"></i><b>2.1.6</b> Signed overlap counts</a></li>
+<li class="chapter" data-level="2.1.7" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-list"><i class="fa fa-check"></i><b>2.1.7</b> Overlap list</a></li>
+<li class="chapter" data-level="2.1.8" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-list"><i class="fa fa-check"></i><b>2.1.8</b> Signed overlap list</a></li>
+<li class="chapter" data-level="2.1.9" data-path="common-data-input-types.html"><a href="common-data-input-types.html#items"><i class="fa fa-check"></i><b>2.1.9</b> Items</a></li>
+<li class="chapter" data-level="2.1.10" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-data-frames"><i class="fa fa-check"></i><b>2.1.10</b> List of data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html"><i class="fa fa-check"></i><b>2.2</b> Specialized Input Types</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="specialized-input-types.html"><a href="specialized-input-types.html#limma"><i class="fa fa-check"></i><b>2.2.1</b> limma</a></li>
+<li class="chapter" data-level="2.2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html#deseq2"><i class="fa fa-check"></i><b>2.2.2</b> DESeq2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="venndir-basics.html"><a href="venndir-basics.html"><i class="fa fa-check"></i><b>3</b> Venndir Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="default-venndir.html"><a href="default-venndir.html"><i class="fa fa-check"></i><b>3.1</b> Default Venndir</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="default-venndir.html"><a href="default-venndir.html#data-for-testing"><i class="fa fa-check"></i><b>3.1.1</b> Data for Testing</a></li>
+<li class="chapter" data-level="3.1.2" data-path="default-venndir.html"><a href="default-venndir.html#create-the-venn"><i class="fa fa-check"></i><b>3.1.2</b> Create the Venn</a></li>
+<li class="chapter" data-level="3.1.3" data-path="default-venndir.html"><a href="default-venndir.html#create-the-euler"><i class="fa fa-check"></i><b>3.1.3</b> Create the Euler</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html"><i class="fa fa-check"></i><b>3.2</b> Venn Set Colors</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="venn-set-colors.html"><a href="venn-set-colors.html#consistent-set-colors"><i class="fa fa-check"></i><b>3.2.1</b> Consistent Set Colors</a></li>
+<li class="chapter" data-level="3.2.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html#venndir-without-color"><i class="fa fa-check"></i><b>3.2.2</b> Venndir Without Color</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="venndir-labels.html"><a href="venndir-labels.html"><i class="fa fa-check"></i><b>3.3</b> Venndir Labels</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="venndir-labels.html"><a href="venndir-labels.html#label-content"><i class="fa fa-check"></i><b>3.3.1</b> Label Content</a></li>
+<li class="chapter" data-level="3.3.2" data-path="venndir-labels.html"><a href="venndir-labels.html#overlap-type"><i class="fa fa-check"></i><b>3.3.2</b> Overlap Type</a></li>
+<li class="chapter" data-level="3.3.3" data-path="venndir-labels.html"><a href="venndir-labels.html#signed-label-placement"><i class="fa fa-check"></i><b>3.3.3</b> Signed Label Placement</a></li>
+<li class="chapter" data-level="3.3.4" data-path="venndir-labels.html"><a href="venndir-labels.html#visual-styles"><i class="fa fa-check"></i><b>3.3.4</b> Visual Styles</a></li>
+<li class="chapter" data-level="3.3.5" data-path="venndir-labels.html"><a href="venndir-labels.html#nudge-a-venn-label"><i class="fa fa-check"></i><b>3.3.5</b> Nudge a Venn Label</a></li>
+<li class="chapter" data-level="3.3.6" data-path="venndir-labels.html"><a href="venndir-labels.html#details-for-label-placement"><i class="fa fa-check"></i><b>3.3.6</b> Details for Label Placement</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="item-labels.html"><a href="item-labels.html"><i class="fa fa-check"></i><b>3.4</b> Item Labels</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="item-labels.html"><a href="item-labels.html#overview-of-item-labeling"><i class="fa fa-check"></i><b>3.4.1</b> Overview of item labeling</a></li>
+<li class="chapter" data-level="3.4.2" data-path="item-labels.html"><a href="item-labels.html#venn-memes"><i class="fa fa-check"></i><b>3.4.2</b> Venn Memes</a></li>
+<li class="chapter" data-level="3.4.3" data-path="item-labels.html"><a href="item-labels.html#item-label-basics"><i class="fa fa-check"></i><b>3.4.3</b> Item Label Basics</a></li>
+<li class="chapter" data-level="3.4.4" data-path="item-labels.html"><a href="item-labels.html#item-layout-adjustments"><i class="fa fa-check"></i><b>3.4.4</b> Item layout adjustments</a></li>
+<li class="chapter" data-level="3.4.5" data-path="item-labels.html"><a href="item-labels.html#item-buffer"><i class="fa fa-check"></i><b>3.4.5</b> Item buffer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html"><i class="fa fa-check"></i><b>3.5</b> Fonts and Font Sizes</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#font-sizes"><i class="fa fa-check"></i><b>3.5.1</b> Font Sizes</a></li>
+<li class="chapter" data-level="3.5.2" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#overall-font-family"><i class="fa fa-check"></i><b>3.5.2</b> Overall Font Family</a></li>
+<li class="chapter" data-level="3.5.3" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#individual-font-families"><i class="fa fa-check"></i><b>3.5.3</b> Individual Font Families</a></li>
+<li class="chapter" data-level="3.5.4" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#available-font-families"><i class="fa fa-check"></i><b>3.5.4</b> Available Font Families</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="venn-legends.html"><a href="venn-legends.html"><i class="fa fa-check"></i><b>3.6</b> Venn Legends</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="venn-legends.html"><a href="venn-legends.html#hide-percent-or-signed-labels"><i class="fa fa-check"></i><b>3.6.1</b> Hide percent or signed labels</a></li>
+<li class="chapter" data-level="3.6.2" data-path="venn-legends.html"><a href="venn-legends.html#custom-legend-labels"><i class="fa fa-check"></i><b>3.6.2</b> Custom legend labels</a></li>
+<li class="chapter" data-level="3.6.3" data-path="venn-legends.html"><a href="venn-legends.html#additional-alias-labels"><i class="fa fa-check"></i><b>3.6.3</b> Additional alias labels</a></li>
+<li class="chapter" data-level="3.6.4" data-path="venn-legends.html"><a href="venn-legends.html#separate-size-and-sign"><i class="fa fa-check"></i><b>3.6.4</b> Separate Size and Sign</a></li>
+<li class="chapter" data-level="3.6.5" data-path="venn-legends.html"><a href="venn-legends.html#legend-color-style"><i class="fa fa-check"></i><b>3.6.5</b> Legend color style</a></li>
+<li class="chapter" data-level="3.6.6" data-path="venn-legends.html"><a href="venn-legends.html#legend-position"><i class="fa fa-check"></i><b>3.6.6</b> Legend position</a></li>
+<li class="chapter" data-level="3.6.7" data-path="venn-legends.html"><a href="venn-legends.html#legend-font-size"><i class="fa fa-check"></i><b>3.6.7</b> Legend font size</a></li>
+<li class="chapter" data-level="3.6.8" data-path="venn-legends.html"><a href="venn-legends.html#legend-custom-fontfamily"><i class="fa fa-check"></i><b>3.6.8</b> Legend custom fontfamily</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="deeper-customizations.html"><a href="deeper-customizations.html"><i class="fa fa-check"></i><b>4</b> Deeper Customizations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="venndir-borders.html"><a href="venndir-borders.html"><i class="fa fa-check"></i><b>4.1</b> Venndir Borders</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="venndir-borders.html"><a href="venndir-borders.html#venndir-rendering-steps"><i class="fa fa-check"></i><b>4.1.1</b> Venndir Rendering Steps</a></li>
+<li class="chapter" data-level="4.1.2" data-path="venndir-borders.html"><a href="venndir-borders.html#customize-venndir-borders"><i class="fa fa-check"></i><b>4.1.2</b> Customize Venndir borders</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html"><i class="fa fa-check"></i><b>4.2</b> Modify Venn Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html#overlap-attributes"><i class="fa fa-check"></i><b>4.2.1</b> Overlap Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="customize-any-label.html"><a href="customize-any-label.html"><i class="fa fa-check"></i><b>4.3</b> Customize Any Label</a></li>
+<li class="chapter" data-level="4.4" data-path="automatic-text-contrast.html"><a href="automatic-text-contrast.html"><i class="fa fa-check"></i><b>4.4</b> Automatic Text Contrast</a></li>
+<li class="chapter" data-level="4.5" data-path="highlight-venn-overlaps.html"><a href="highlight-venn-overlaps.html"><i class="fa fa-check"></i><b>4.5</b> Highlight Venn Overlaps</a></li>
+<li class="chapter" data-level="4.6" data-path="rotate-the-venndir.html"><a href="rotate-the-venndir.html"><i class="fa fa-check"></i><b>4.6</b> Rotate the Venndir</a></li>
+<li class="chapter" data-level="4.7" data-path="nudge-the-legend.html"><a href="nudge-the-legend.html"><i class="fa fa-check"></i><b>4.7</b> Nudge the Legend</a></li>
+<li class="chapter" data-level="4.8" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html"><i class="fa fa-check"></i><b>4.8</b> Hidden Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html#nudge-venndir-circles"><i class="fa fa-check"></i><b>4.8.1</b> Nudge Venndir Circles</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="nudge-specific-labels.html"><a href="nudge-specific-labels.html"><i class="fa fa-check"></i><b>4.9</b> Nudge specific labels</a></li>
+<li class="chapter" data-level="4.10" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html"><i class="fa fa-check"></i><b>4.10</b> Venndir Markdown Support</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-styles"><i class="fa fa-check"></i><b>4.10.1</b> Inline styles</a></li>
+<li class="chapter" data-level="4.10.2" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-images"><i class="fa fa-check"></i><b>4.10.2</b> Inline Images</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="patchwork-with-venndir.html"><a href="patchwork-with-venndir.html"><i class="fa fa-check"></i><b>4.11</b> Patchwork with Venndir</a></li>
+<li class="chapter" data-level="4.12" data-path="custom-signs.html"><a href="custom-signs.html"><i class="fa fa-check"></i><b>4.12</b> Custom Signs</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="custom-signs.html"><a href="custom-signs.html#review-sign-curation"><i class="fa fa-check"></i><b>4.12.1</b> Review Sign Curation</a></li>
+<li class="chapter" data-level="4.12.2" data-path="custom-signs.html"><a href="custom-signs.html#customize-the-symbols"><i class="fa fa-check"></i><b>4.12.2</b> Customize the Symbols</a></li>
+<li class="chapter" data-level="4.12.3" data-path="custom-signs.html"><a href="custom-signs.html#more-advanced-signs"><i class="fa fa-check"></i><b>4.12.3</b> More Advanced Signs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html"><i class="fa fa-check"></i><b>4.13</b> Venndir Graphics Objects</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
+<li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="figure-boosting.html"><a href="figure-boosting.html"><i class="fa fa-check"></i><b>5.1</b> Figure Boosting</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="figure-boosting.html"><a href="figure-boosting.html#me---electron"><i class="fa fa-check"></i><b>5.1.1</b> Me - Electron</a></li>
+<li class="chapter" data-level="5.1.2" data-path="figure-boosting.html"><a href="figure-boosting.html#eulerglyphs"><i class="fa fa-check"></i><b>5.1.2</b> eulerGlyphs</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html"><i class="fa fa-check"></i><b>5.2</b> Venndir Case Studies</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html#seehawer-kmt2-gene-venns"><i class="fa fa-check"></i><b>5.2.1</b> Seehawer Kmt2 Gene Venns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>6</b> Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Venndir Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="specialized-input-types" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Specialized Input Types<a href="specialized-input-types.html#specialized-input-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The driving motivation for Venndir involved gene expression data,
+and there are several common methods to import differentially
+expressed genes.</p>
+<div id="limma" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> limma<a href="specialized-input-types.html#limma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <strong>limma</strong> <span class="citation">(<a href="#ref-R-limma">Smyth et al. 2025</a>)</span> package covers an amazing array of gene and
+Omics expression analysis methods, spanning transcript and proteomics
+microarray data, transcriptomics RNA sequencing (RNA-seq) data, and
+a broad range of other data types including proteomics, lipidomics,
+metabolomics, and DNA methylation.</p>
+<p>The common paradigm, beginning with <code>x</code> as expression data.
+See <code>limma::getEAWP()</code> for a description of all recognized data
+object types.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="specialized-input-types.html#cb42-1" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
+<span id="cb42-2"><a href="specialized-input-types.html#cb42-2" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="specialized-input-types.html#cb42-3" tabindex="-1"></a><span class="co"># fit linear model</span></span>
+<span id="cb42-4"><a href="specialized-input-types.html#cb42-4" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lmFit</span>(x, <span class="at">design=</span>design)</span>
+<span id="cb42-5"><a href="specialized-input-types.html#cb42-5" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="specialized-input-types.html#cb42-6" tabindex="-1"></a><span class="co"># apply contrasts</span></span>
+<span id="cb42-7"><a href="specialized-input-types.html#cb42-7" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">contrasts.fit</span>(fit, <span class="at">contrasts=</span>contrasts)</span>
+<span id="cb42-8"><a href="specialized-input-types.html#cb42-8" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="specialized-input-types.html#cb42-9" tabindex="-1"></a><span class="co"># Optional Empirical Bayes moderated t-statistic</span></span>
+<span id="cb42-10"><a href="specialized-input-types.html#cb42-10" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">eBayes</span>(fit)</span></code></pre></div>
+<p>Now one would use <code>fit3</code>, or <code>fit2</code> if eBayes was not necessary, to
+summarize the statistical contrasts.</p>
+<p>Two common approaches are used here, both can be valid:</p>
+<ol style="list-style-type: decimal">
+<li>Extract each contrast into a <code>data.frame</code> using <code>limma::topTable()</code>,
+then follow <a href="common-data-input-types.html#list-of-data-frames">List of data frames</a>.</li>
+<li>Use <code>limma::decideTests()</code> to filter all contrasts together.
+This function returns <code>limma::TestResults-class</code> which is equivalent to
+<a href="common-data-input-types.html#signed-incidence-matrix">Signed incidence matrix</a>.</li>
+</ol>
+<p>For example, to filter by adjusted P-value 0.05, and 1.5-fold change:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="specialized-input-types.html#cb43-1" tabindex="-1"></a>im <span class="ot">&lt;-</span> limma<span class="sc">::</span><span class="fu">decideTests</span>(fit3,</span>
+<span id="cb43-2"><a href="specialized-input-types.html#cb43-2" tabindex="-1"></a>   <span class="at">p.value=</span><span class="fl">0.05</span>,</span>
+<span id="cb43-3"><a href="specialized-input-types.html#cb43-3" tabindex="-1"></a>   <span class="at">lfc=</span><span class="fu">log2</span>(<span class="fl">1.5</span>))</span></code></pre></div>
+<p>The resulting <a href="common-data-input-types.html#incidence-matrix">incidence matrix</a> <code>im</code> contains one
+column per contrast.</p>
+<p>When using only a subset of contrasts, use the argument <code>sets</code> as
+described in <a href="venn-set-colors.html#consistent-set-colors">Consistent Set Colors</a>.
+The example below chooses <code>sets=c(1, 3)</code>.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="specialized-input-types.html#cb44-1" tabindex="-1"></a><span class="fu">venndir</span>(im, <span class="at">sets=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
+</div>
+<div id="deseq2" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> DESeq2<a href="specialized-input-types.html#deseq2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>DESeq2</strong> <span class="citation">(<a href="#ref-R-DESeq2">Love, Anders, and Huber 2025</a>)</span> is widely used and excellent for RNA-seq analysis.
+The example below is adapted from <code>DESeq2::DESeq()</code> to use three groups:
+<code>'A'</code>, <code>'B'</code>, <code>'C'</code>.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="specialized-input-types.html#cb45-1" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(DESeq2))</span>
+<span id="cb45-2"><a href="specialized-input-types.html#cb45-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb45-3"><a href="specialized-input-types.html#cb45-3" tabindex="-1"></a>cnts <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnbinom</span>(<span class="at">n=</span><span class="dv">1500</span>, <span class="at">mu=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span><span class="sc">/</span><span class="fl">0.5</span>), <span class="at">ncol=</span><span class="dv">15</span>)</span>
+<span id="cb45-4"><a href="specialized-input-types.html#cb45-4" tabindex="-1"></a><span class="fu">rownames</span>(cnts) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;row&quot;</span>, jamba<span class="sc">::</span><span class="fu">padInteger</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>))</span>
+<span id="cb45-5"><a href="specialized-input-types.html#cb45-5" tabindex="-1"></a>cond <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">rep</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="at">each=</span><span class="dv">5</span>))</span>
+<span id="cb45-6"><a href="specialized-input-types.html#cb45-6" tabindex="-1"></a><span class="fu">colnames</span>(cnts) <span class="ot">&lt;-</span> jamba<span class="sc">::</span><span class="fu">makeNames</span>(cond, <span class="at">suffix=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb45-7"><a href="specialized-input-types.html#cb45-7" tabindex="-1"></a>cnts[<span class="dv">1</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> cnts[<span class="dv">1</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] <span class="sc">+</span> <span class="dv">275</span>;</span>
+<span id="cb45-8"><a href="specialized-input-types.html#cb45-8" tabindex="-1"></a>cnts[<span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">5</span>] <span class="ot">&lt;-</span> cnts[<span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">5</span>] <span class="sc">+</span> <span class="dv">355</span>;</span>
+<span id="cb45-9"><a href="specialized-input-types.html#cb45-9" tabindex="-1"></a>cnts[<span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">10</span>] <span class="ot">&lt;-</span> cnts[<span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">10</span>] <span class="sc">+</span> <span class="dv">425</span>;</span>
+<span id="cb45-10"><a href="specialized-input-types.html#cb45-10" tabindex="-1"></a>cnts[<span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">10</span>] <span class="ot">&lt;-</span> cnts[<span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">10</span>] <span class="sc">+</span> <span class="dv">655</span>;</span>
+<span id="cb45-11"><a href="specialized-input-types.html#cb45-11" tabindex="-1"></a></span>
+<span id="cb45-12"><a href="specialized-input-types.html#cb45-12" tabindex="-1"></a><span class="co"># object construction</span></span>
+<span id="cb45-13"><a href="specialized-input-types.html#cb45-13" tabindex="-1"></a><span class="fu">suppressMessages</span>(</span>
+<span id="cb45-14"><a href="specialized-input-types.html#cb45-14" tabindex="-1"></a>   dds <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(cnts, <span class="fu">DataFrame</span>(cond), <span class="sc">~</span> cond)</span>
+<span id="cb45-15"><a href="specialized-input-types.html#cb45-15" tabindex="-1"></a>)</span>
+<span id="cb45-16"><a href="specialized-input-types.html#cb45-16" tabindex="-1"></a></span>
+<span id="cb45-17"><a href="specialized-input-types.html#cb45-17" tabindex="-1"></a><span class="co"># standard analysis</span></span>
+<span id="cb45-18"><a href="specialized-input-types.html#cb45-18" tabindex="-1"></a><span class="fu">suppressMessages</span>(</span>
+<span id="cb45-19"><a href="specialized-input-types.html#cb45-19" tabindex="-1"></a>   dds <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(dds)</span>
+<span id="cb45-20"><a href="specialized-input-types.html#cb45-20" tabindex="-1"></a>)</span></code></pre></div>
+<p>The object <code>dds</code> can be used to extract statistical results
+for each contrast, for example see <code>DESeq2::resultsNames(dds)</code>.</p>
+<p>The next steps extract a <code>DESeqResults</code> object for each contrast
+of interest. Note: Use whichever method you typically use at
+this point, there are too many possible workflows to cover here.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="specialized-input-types.html#cb46-1" tabindex="-1"></a><span class="co"># Contrast: &#39;B - A&#39;</span></span>
+<span id="cb46-2"><a href="specialized-input-types.html#cb46-2" tabindex="-1"></a>resBA <span class="ot">&lt;-</span> <span class="fu">results</span>(dds, <span class="at">contrast=</span><span class="fu">c</span>(<span class="st">&quot;cond&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>))</span>
+<span id="cb46-3"><a href="specialized-input-types.html#cb46-3" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="specialized-input-types.html#cb46-4" tabindex="-1"></a><span class="co"># Contrast: &#39;C - A&#39;</span></span>
+<span id="cb46-5"><a href="specialized-input-types.html#cb46-5" tabindex="-1"></a>resCA <span class="ot">&lt;-</span> <span class="fu">results</span>(dds, <span class="at">contrast=</span><span class="fu">c</span>(<span class="st">&quot;cond&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>))</span>
+<span id="cb46-6"><a href="specialized-input-types.html#cb46-6" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="specialized-input-types.html#cb46-7" tabindex="-1"></a><span class="co"># Print the first few rows of the &quot;C - A&quot; contrast results</span></span>
+<span id="cb46-8"><a href="specialized-input-types.html#cb46-8" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">check.names=</span><span class="cn">FALSE</span>, resCA))</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="specialized-input-types.html#cb47-1" tabindex="-1"></a><span class="co"># Contrast: &#39;B - A&#39;</span></span>
+<span id="cb47-2"><a href="specialized-input-types.html#cb47-2" tabindex="-1"></a>resBA <span class="ot">&lt;-</span> <span class="fu">results</span>(dds, <span class="at">contrast=</span><span class="fu">c</span>(<span class="st">&quot;cond&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>))</span>
+<span id="cb47-3"><a href="specialized-input-types.html#cb47-3" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="specialized-input-types.html#cb47-4" tabindex="-1"></a><span class="co"># Contrast: &#39;C - A&#39;</span></span>
+<span id="cb47-5"><a href="specialized-input-types.html#cb47-5" tabindex="-1"></a>resCA <span class="ot">&lt;-</span> <span class="fu">results</span>(dds, <span class="at">contrast=</span><span class="fu">c</span>(<span class="st">&quot;cond&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>))</span>
+<span id="cb47-6"><a href="specialized-input-types.html#cb47-6" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="specialized-input-types.html#cb47-7" tabindex="-1"></a><span class="co"># Print the first few rows of the &quot;C - A&quot; contrast results</span></span>
+<span id="cb47-8"><a href="specialized-input-types.html#cb47-8" tabindex="-1"></a>idf <span class="ot">&lt;-</span> <span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">check.names=</span><span class="cn">FALSE</span>, resCA))</span>
+<span id="cb47-9"><a href="specialized-input-types.html#cb47-9" tabindex="-1"></a>idf<span class="sc">$</span>baseMean <span class="ot">&lt;-</span> <span class="fu">round</span>(idf<span class="sc">$</span>baseMean, <span class="at">digits=</span><span class="dv">1</span>)</span>
+<span id="cb47-10"><a href="specialized-input-types.html#cb47-10" tabindex="-1"></a>idf<span class="sc">$</span>log2FoldChange <span class="ot">&lt;-</span> <span class="fu">round</span>(idf<span class="sc">$</span>log2FoldChange, <span class="at">digits=</span><span class="dv">2</span>)</span>
+<span id="cb47-11"><a href="specialized-input-types.html#cb47-11" tabindex="-1"></a>idf<span class="sc">$</span>lfcSE <span class="ot">&lt;-</span> <span class="fu">round</span>(idf<span class="sc">$</span>lfcSE, <span class="at">digits=</span><span class="dv">2</span>)</span>
+<span id="cb47-12"><a href="specialized-input-types.html#cb47-12" tabindex="-1"></a>idf<span class="sc">$</span>stat <span class="ot">&lt;-</span> <span class="fu">round</span>(idf<span class="sc">$</span>stat, <span class="at">digits=</span><span class="dv">2</span>)</span>
+<span id="cb47-13"><a href="specialized-input-types.html#cb47-13" tabindex="-1"></a>kdf <span class="ot">&lt;-</span> knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb47-14"><a href="specialized-input-types.html#cb47-14" tabindex="-1"></a>   <span class="at">booktabs=</span><span class="cn">TRUE</span>,</span>
+<span id="cb47-15"><a href="specialized-input-types.html#cb47-15" tabindex="-1"></a>   idf,</span>
+<span id="cb47-16"><a href="specialized-input-types.html#cb47-16" tabindex="-1"></a>   <span class="at">caption=</span><span class="st">&quot;The first 6 rows following DESeq2 statistical analysis.&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb47-17"><a href="specialized-input-types.html#cb47-17" tabindex="-1"></a>   kableExtra<span class="sc">::</span><span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold=</span><span class="cn">TRUE</span>)</span>
+<span id="cb47-18"><a href="specialized-input-types.html#cb47-18" tabindex="-1"></a>kdf</span></code></pre></div>
+<table>
+<caption>
+<span id="tab:deseq2-example2-real">Table 2.1: </span><span id="tab:deseq2-example2-real">Table 2.2: </span>The first 6 rows following DESeq2 statistical analysis.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+baseMean
+</th>
+<th style="text-align:right;">
+log2FoldChange
+</th>
+<th style="text-align:right;">
+lfcSE
+</th>
+<th style="text-align:right;">
+stat
+</th>
+<th style="text-align:right;">
+pvalue
+</th>
+<th style="text-align:right;">
+padj
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+row001
+</td>
+<td style="text-align:right;">
+176.5
+</td>
+<td style="text-align:right;">
+-1.48
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+<td style="text-align:right;">
+-2.36
+</td>
+<td style="text-align:right;">
+0.0181392
+</td>
+<td style="text-align:right;">
+0.3023208
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+row002
+</td>
+<td style="text-align:right;">
+188.8
+</td>
+<td style="text-align:right;">
+-0.24
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+<td style="text-align:right;">
+-0.37
+</td>
+<td style="text-align:right;">
+0.7096112
+</td>
+<td style="text-align:right;">
+0.9355705
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+row003
+</td>
+<td style="text-align:right;">
+262.0
+</td>
+<td style="text-align:right;">
+1.85
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+<td style="text-align:right;">
+4.08
+</td>
+<td style="text-align:right;">
+0.0000453
+</td>
+<td style="text-align:right;">
+0.0022649
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+row004
+</td>
+<td style="text-align:right;">
+294.1
+</td>
+<td style="text-align:right;">
+3.11
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+<td style="text-align:right;">
+5.30
+</td>
+<td style="text-align:right;">
+0.0000001
+</td>
+<td style="text-align:right;">
+0.0000118
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+row005
+</td>
+<td style="text-align:right;">
+82.5
+</td>
+<td style="text-align:right;">
+-0.47
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+-0.93
+</td>
+<td style="text-align:right;">
+0.3502942
+</td>
+<td style="text-align:right;">
+0.7961232
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+row006
+</td>
+<td style="text-align:right;">
+87.5
+</td>
+<td style="text-align:right;">
+-0.16
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+<td style="text-align:right;">
+-0.24
+</td>
+<td style="text-align:right;">
+0.8121139
+</td>
+<td style="text-align:right;">
+0.9443185
+</td>
+</tr>
+</tbody>
+</table>
+<p>Two steps are applied, intentionally lenient for this example:</p>
+<ol style="list-style-type: decimal">
+<li>Filter by statistical thresholds
+<ul>
+<li>adjusted P-value <code>padj &lt; 0.20</code></li>
+<li>fold change <code>abs(log2FoldChange) &gt; log2(1)</code></li>
+</ul></li>
+<li>Convert to <a href="glossary.html#signed-set">signed set</a>, assigning names using the DESeq2
+result rownames.</li>
+</ol>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="specialized-input-types.html#cb48-1" tabindex="-1"></a><span class="co"># filter statistics</span></span>
+<span id="cb48-2"><a href="specialized-input-types.html#cb48-2" tabindex="-1"></a>resBA_hitdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(resBA, </span>
+<span id="cb48-3"><a href="specialized-input-types.html#cb48-3" tabindex="-1"></a>   padj <span class="sc">&lt;=</span> <span class="fl">0.2</span> <span class="sc">&amp;</span> </span>
+<span id="cb48-4"><a href="specialized-input-types.html#cb48-4" tabindex="-1"></a>   <span class="fu">abs</span>(log2FoldChange) <span class="sc">&gt;</span> <span class="fu">log2</span>(<span class="dv">1</span>))</span>
+<span id="cb48-5"><a href="specialized-input-types.html#cb48-5" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="specialized-input-types.html#cb48-6" tabindex="-1"></a><span class="co"># generate named vector</span></span>
+<span id="cb48-7"><a href="specialized-input-types.html#cb48-7" tabindex="-1"></a>resBA_hits <span class="ot">&lt;-</span> <span class="fu">setNames</span>(</span>
+<span id="cb48-8"><a href="specialized-input-types.html#cb48-8" tabindex="-1"></a>   <span class="fu">sign</span>(resBA_hitdf<span class="sc">$</span>log2FoldChange),</span>
+<span id="cb48-9"><a href="specialized-input-types.html#cb48-9" tabindex="-1"></a>   <span class="fu">rownames</span>(resBA_hitdf))</span>
+<span id="cb48-10"><a href="specialized-input-types.html#cb48-10" tabindex="-1"></a></span>
+<span id="cb48-11"><a href="specialized-input-types.html#cb48-11" tabindex="-1"></a>resBA_hits</span></code></pre></div>
+<pre><code>## row001 row002 row022 row023 row040 row045 row096 
+##     -1      1      1      1     -1      1      1</code></pre>
+<p>The same steps are performed for contrast 'C - A'.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="specialized-input-types.html#cb50-1" tabindex="-1"></a>resCA_hitdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(resCA,</span>
+<span id="cb50-2"><a href="specialized-input-types.html#cb50-2" tabindex="-1"></a>   padj <span class="sc">&lt;=</span> <span class="fl">0.2</span> <span class="sc">&amp;</span></span>
+<span id="cb50-3"><a href="specialized-input-types.html#cb50-3" tabindex="-1"></a>   <span class="fu">abs</span>(log2FoldChange) <span class="sc">&gt;</span> <span class="fu">log2</span>(<span class="dv">1</span>))</span>
+<span id="cb50-4"><a href="specialized-input-types.html#cb50-4" tabindex="-1"></a>resCA_hits <span class="ot">&lt;-</span> <span class="fu">setNames</span>(</span>
+<span id="cb50-5"><a href="specialized-input-types.html#cb50-5" tabindex="-1"></a>   <span class="fu">sign</span>(resCA_hitdf<span class="sc">$</span>log2FoldChange),</span>
+<span id="cb50-6"><a href="specialized-input-types.html#cb50-6" tabindex="-1"></a>   <span class="fu">rownames</span>(resCA_hitdf))</span>
+<span id="cb50-7"><a href="specialized-input-types.html#cb50-7" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="specialized-input-types.html#cb50-8" tabindex="-1"></a>resCA_hits</span></code></pre></div>
+<pre><code>## row003 row004 row023 row045 row056 
+##      1      1      1      1      1</code></pre>
+<p>The two <a href="glossary.html#signed-set">signed sets</a> are combined into a <code>list</code> then
+visualized with <code>venndir()</code> in Figure <a href="specialized-input-types.html#fig:deseq2-example4">2.12</a>.</p>
+
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="specialized-input-types.html#cb52-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb52-2"><a href="specialized-input-types.html#cb52-2" tabindex="-1"></a>   <span class="st">&quot;B-A&quot;</span><span class="ot">=</span>resBA_hits,</span>
+<span id="cb52-3"><a href="specialized-input-types.html#cb52-3" tabindex="-1"></a>   <span class="st">&quot;C-A&quot;</span><span class="ot">=</span>resCA_hits)</span>
+<span id="cb52-4"><a href="specialized-input-types.html#cb52-4" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
+<span id="cb52-5"><a href="specialized-input-types.html#cb52-5" tabindex="-1"></a>   <span class="at">legend_headers=</span><span class="fu">c</span>(<span class="at">Set=</span><span class="st">&quot;Contrast&quot;</span>, <span class="at">Size=</span><span class="st">&quot;Differential Genes&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:deseq2-example4"></span>
+<img src="_main_files/figure-html/deseq2-example4-1.png" alt="Directional Venn diagram comparing statistical hits from two contrasts analyzed using DESeq2." width="80%" />
+<p class="caption">
+Figure 2.12: Directional Venn diagram comparing statistical hits from two contrasts analyzed using DESeq2.
+</p>
+</div>
+<p>To view the genes in the Venn diagram, skip ahead to <a href="item-labels.html#item-labels">Item labels</a> and
+<a href="item-labels.html#signed-items">Signed items</a>, or to extract the genes use <code>overlaplist(v)</code>.</p>
+
+</div>
+</div>
+<!-- </div> -->
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-R-DESeq2" class="csl-entry">
+Love, Michael, Simon Anders, and Wolfgang Huber. 2025. <em>DESeq2: Differential Gene Expression Analysis Based on the Negative Binomial Distribution</em>. <a href="https://doi.org/10.18129/B9.bioc.DESeq2">https://doi.org/10.18129/B9.bioc.DESeq2</a>.
+</div>
+<div id="ref-R-limma" class="csl-entry">
+Smyth, Gordon, Yifang Hu, Matthew Ritchie, Jeremy Silver, James Wettenhall, Davis McCarthy, Di Wu, et al. 2025. <em>Limma: Linear Models for Microarray and Omics Data</em>. <a href="https://doi.org/10.18129/B9.bioc.limma">https://doi.org/10.18129/B9.bioc.limma</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="common-data-input-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="venndir-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jmw86069/venndir-book/edit/main/02-data-import.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/jmw86069/venndir-book/blob/main/02-data-import.Rmd",
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "favicon": "favicon.ico"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,239 @@
+
+# Venndir Ebook Graveyard
+
+### Font Challenges
+
+R has a long, storied history with font compatibility.
+To be fair, font rendering is difficult, has changed
+over time, and involves multiple slightly different
+goals. However, just 
+
+The issues were numerous:
+
+* Not all fonts have Unicode characters. Some fonts only have
+a subset of Unicode. When a Unicode character is not found,
+R usually displays an empty box: $`r "\uEEEA"`$
+* Each R graphics device has access to its own set of fonts, and
+they are not always identical. As a result, the same font is not
+consistently used for `png()` as for `pdf()`.
+* Further, even when R recognizes a font for the given graphical device,
+it still may not recognize Unicode due to the locale as defined by
+`Sys.getlocale()`. Using `"C"` for example, often prevents using
+special Unicode characters.
+* Of course, every computer is slightly different, and when switching
+between local computers (Mac or Windows) and remote servers
+(most often linux), all the previous issues were compounded.
+* The overall situation is quite complicated, and in hindsight
+very little of the research time was valuable time spent.
+
+After developing and using venndir for over ten years, most of that
+time spent chasing obscure edge cases of font usage, locales,
+terminal compatibility, there was developed a Better Way.
+A fantastic R package `systemfonts` was developed by
+Thomas Pederson for these same reasons, enabling his other package
+`marquee` which handles the bulk of the font rendering in Venndir.
+
+(ref:unicode-heartache) Two Venn diagrams showing default text output on the left, and marquee output on the right. The left plot shows open boxes instead of nice Unicode up and down arrows, as shown on the right.
+
+```{r unicode-heartache, fig.height=3.5, fig.width=9, echo=FALSE, fig.cap="(ref:unicode-heartache)", fig.alt="(ref:unicode-heartache)"}
+setlist <- make_venn_test(n_sets=2, do_signed=TRUE)
+v1 <- venndir(setlist, fontfamily="sans", do_plot=FALSE)
+v2 <- venndir(setlist, fontfamily="sans", do_plot=FALSE)
+
+v1gt <- attr(plot(v1,
+   expand_fraction=c(-0.2, -0.1, -0.1, -0.1),
+   main="Unicode arrows failed.",
+   text_grob_type="text", draw_legend=FALSE, do_draw=FALSE), "gtree")
+v2gt <- attr(plot(v2,
+   expand_fraction=c(-0.2, -0.1, -0.1, -0.1),
+   main="Unicode arrows shown.",
+   draw_legend=FALSE, do_draw=FALSE), "gtree")
+
+uh3 <- (wrap_elements(v1gt) +
+   wrap_elements(v2gt)) +
+   plot_layout(widths=c(1, 1));
+uh3
+```
+
+
+
+### venndir_legender() arguments
+
+The function `venndir_legender()` has many customization options,
+although hopefully most are not necessary because the defaults
+are well chosen. We shall see.
+
+```{r legender-args, results='asis', comment=''}
+jamba::jargs(venndir_legender)
+```
+
+
+
+
+Figure \@ref(fig:euler-glyphs-2) shows the technique described in
+[Customize the Symbols].
+
+(ref:euler-glyphs-2) Second attempt at re-creating the EulerGlyphs figure.
+
+```{r euler-glyphs-2, echo=FALSE, fig.height=7, fig.width=8, fig.cap="(ref:euler-glyphs-2)", fig.alt="(ref:euler-glyphs-2)"}
+# eval=knitr::pandoc_to("epub3")
+# knitr::opts_knit$get('rmarkdown.pandoc.to')
+v_mammo@label_df$items <- lapply(v_mammo@label_df$items, function(i){
+   rep("\u25CF", length(i))
+})
+curate_df <- get_venndir_curate_df()
+agg <- which(curate_df$from %in% "agreement")
+
+curate_df[agg, "sign"] <- "\U25C9";
+curate_df[agg, "sign"] <- "\U1F518";
+# curate_df[agg, "sign"] <- "🔘";
+curate_df[agg, "color"] <- NA;
+
+v_mammo2 <- venndir(mammo_list,
+   do_plot=FALSE,
+   circle_nudge=list(
+      wwbc=c(-1.4, 0),
+      wwpm=c(-2, 0)),
+   innerborder.lwd=1, outerborder.lwd=1,
+   overlap_type="agreement",
+   poly_alpha=0.3,
+   set_colors=mammo_colors,
+   curate_df=curate_df,
+   setlist_labels=mammo_labels,
+   xyratio=0.6,
+   show_labels="Ni",
+   show_items="sign",
+   jitter_cex=0, jitter_color=0,
+   item_buffer=-0.02,
+   vector_method="label",
+   item_cex=c(1, 1, 1, 1, 1) * 0.6,
+   segment_distance=0.02,
+   rotate_degrees=180,
+   draw_legend=FALSE,
+   proportional=TRUE)
+v_mammo2n <- nudge_venndir_label(v_mammo2,
+   label_location="outside",
+   offset_list=list(wwpm=c(-0.1, 0.02),
+      wwbc=c(-0.05, -0.07)))
+plot(v_mammo2n,
+   jitter_color=0,
+   expand_fraction=c(-0.1, -0.2, 0.0, -0.2),
+   innerborder.lwd=0, outerborder.lwd=1.5)
+```
+
+
+
+## Google fonts
+
+Placeholder only
+
+```{r google-fonts}
+# Example using Google fonts in Venndir
+
+library(venndir)
+
+ff <- "Spectral";
+grid::grid.newpage();
+grid::grid.text(paste0(ff, " 🎉 \u2191\u2193"),
+   gp = grid::gpar(fontfamily=ff, fontface=2, fontsize=30)
+)
+
+
+# Add font from Google Fonts
+(systemfonts::get_from_google_fonts("Roboto Flex"))
+(systemfonts::get_from_google_fonts("Roboto Condensed"))
+(systemfonts::get_from_google_fonts("Roboto"))
+(systemfonts::get_from_google_fonts("IBM Plex Sans"))
+(systemfonts::get_from_google_fonts("Lunasima"))
+subset_systemfonts(grepl("Lunasima", family))
+
+(systemfonts::get_from_google_fonts("Encode Sans Semi Condensed"))
+(systemfonts::get_from_google_fonts("Mandali"))
+(systemfonts::get_from_google_fonts("Asap"))
+(systemfonts::get_from_google_fonts("Prompt"))
+subset_systemfonts(grepl("Prompt", family))
+(systemfonts::get_from_google_fonts("RocknRoll One"))
+subset_systemfonts(grepl("RocknRoll One", family))
+
+ff <- "Roboto Flex";
+ff <- "IBM Plex Sans";
+ff <- "Lunasima";
+ff <- "Encode Sans Semi Condensed";
+ff <- "Prompt";
+ff <- "RocknRoll One";
+grid::grid.newpage();
+grid::grid.text(paste0(ff, " 🎉 \u2191\u2193"),
+   gp = grid::gpar(fontfamily=ff, fontface=1, fontsize=30)
+)
+
+systemfonts::font_info(ff)
+
+venndir(make_venn_test(do_signed=TRUE),
+   fontfamily=ff)
+
+venndir(make_venn_test(do_signed=TRUE),
+   fontfamily=ff,
+   fontfaces=list(overlap="bold", count="plain", signed="bold"))
+
+venndir(make_venn_test(do_signed=TRUE), show_labels="Ncps",
+   fontfaces=list(overlap="bold", count="plain", signed="bold"))
+   # fontfamily=ff,
+
+
+```
+
+
+
+:::: {.venndirquote data-latex=""}
+
+You may think the world has enough Venn.  
+Venndir boldly suggests there is room for more,  
+with arrows and a point to make.
+
+::::
+
+### The world lacks a tool for directional Venn diagrams. {-}
+
+### Born of curiosity, fueled by caffeine. {-}
+
+### Solving the Overlap You Didn’t Know You Missed. {-}
+
+### Little Arrows. Big Implications. {-}
+
+### The only thing better than a union is annotated directionality. {-}
+
+### Other packages: ‘maybe we’ll show one label.’ Venndir: ‘all of them. centered. aligned. with dignity.’ {-}
+
+### Venndir: because every item has a story. And a label. {-}
+
+
+
+# JamPolygon R objects
+
+In the process of creating Venndir, some straightforward
+geometric capabilities were necessary, most of which were provided
+by existing R packages.
+Over time, a few of these R packages were removed from the
+Comprehensive R Archive Network [CRAN](https://cran.r-project.org),
+which necessitated a new approach.
+
+
+Nonetheless, alternative methods were required, and ultimately
+the outcome spurred the creation of `JamPolygon`.
+
+A `JamPolygon` object is intended to support these basic functions:
+
+1. Ability to encode an enclosed polygon.
+2. Ability for one polygon to contain one or more internal holes.
+3. Ability for one polygon to be represented in multiple pieces.
+
+Because the target user was essentially me,
+I pursued what interested me as a user.
+
+At about this time, some core R dependencies were transitioned
+out due to non-support, which necessitated replacement.
+In the search for a lightweight replacement, ultimately
+JamPolygons was created.
+
+
+

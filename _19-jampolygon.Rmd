@@ -1,0 +1,204 @@
+
+# JamPolygon geometry
+
+
+> *"I always thought quicksand was going to be a much bigger problem than it turned out to be" -- John Mulaney*
+
+At some point along the journey creating Venndir, it became apparent
+that geometry was going to be much more of an issue than I thought.
+The quicksand of Venn diagrams turned out to be the geometry.
+
+In an effort to minimize R dependencies used by Venndir, so that
+using Venndir would be lightweight and convenient, a simple
+object was created to support the geometry: `JamPolygon`
+
+`JamPolygon` is a simple S4 class intended to store geometric objects,
+and to enable a few basic features, summarized below:
+
+1. Store coordinates for a closed polygon in a reliable way.
+   * Support the ability to describe a "hole" inside a polygon.
+
+2. Allow multiple polygons to be described as "one feature."
+   * Polygons should always be "disjoint". That is, no two solid pieces
+   are permitted to overlap, they would be combined using [union](#union).
+
+3. Enable visualization in some convenient way.
+   * Maintain correct aspect ratio, so that circles remain circular.
+   * Utilize `grid` graphics for compatibility with other plots.
+
+4. Add two specialized borders: inner, outer.
+   * Display two adjacent borders without overlapping.
+   * `innerborder` - appears just inside the boundary
+   * `outerborder` - appears just outside the boundary
+   * `border` - appears on the boundary directly
+   * To be fair, this is a pet project. Don't judge.
+
+5. Expand or shrink polygons by fixed size.
+   * Respect multiple pieces, and holes, during the process.
+   * Most of these functions are performed by a fantastic C++ library
+   provided through an R package **polyclip** [@R-polyclip].
+
+6. Enable other geometric functions.
+   * Calculate: solid area, nearest point.
+   * Transform: Rotate, transpose, resize.
+   * Overlap: union, intersect, subtract.
+   * Detect: point-in-polygon, nearest/farthest point.
+   * Orient: clockwise or counterclockwise, solid or hole.
+   * Label: outside, inside, filled.
+
+Many of the features were necessary to use R package **polyclip** [@R-polyclip]
+together with grid path grobs. `JamPolygon` provides a protective barrier
+from some very detailed, very nuanced exceptions to the standard processing.
+
+
+## Structure
+
+`JamPolygon` is an S4 R object with one slot 'polygons' that contains
+a `data.frame`. The `data.frame` has the following essential columns:
+
+```{r jp_columns_essential, out.width="70%", echo=FALSE}
+jp_cols1 <- data.frame(
+   "Essential columns"=c(
+      "'name'",
+      "'x', 'y'"
+   ),
+   "Class"=c(
+      "character",
+      "list"
+   ),
+   "Content"=c(
+      paste0("Unique identifier assigned to each polygon. ",
+         "When 'label' is not present, this column is used as the default label."),
+      paste0("Numeric coordinates in form of a list, with x,and y ",
+         "coordinates for each polygon entry. One polygon entry per row, ",
+         "which may contain one or more disjoint polygons.")
+   )
+)
+jp_cols1
+```
+
+The `data.frame` may recognize any columns relevant to its use,
+however the following optional columns are recognized by `plot()`
+and other related functions.
+
+```{r jp_columns_optional, out.width="70%", echo=FALSE}
+jp_cols2 <- data.frame(
+   "Optional columns"=c(
+      "'label'",
+      "'label_x', 'label_y'",
+      "'label_color'",
+      "'family'",
+      "'fontsize'",
+      "'fill'",
+      "'border'",
+      "'border.lwd'",
+      "'border.lty'",
+      "'innerborder'",
+      "'innerborder.lwd'",
+      "'outerborder'",
+      "'outerborder.lwd'"
+   ),
+   "Class"=c(
+      "character",
+      "numeric",
+      "character",
+      "character",
+      "numeric",
+      "character",
+      "character",
+      "numeric",
+      "character",
+      "character",
+      "numeric",
+      "character",
+      "numeric"
+   ),
+   "Content"=c(
+      "Label associated with each polygon, used by plot() by default.",
+      paste0("x,y coordinates used to place the label, ",
+         "or NULL will use labelr_JamPolygon() to define coordinates dynamically. ",
+         "Only one x,y coordinate is permitted per polygon row."),
+      "R color used for text color when rendering labels.",
+      paste0("String used as 'fontfamily' when rendering labels. ",
+         "Note that labels are drawn using grid::textGrob() and not marquee::marquee_grob()."),
+      "Font size used when rendering labels.",
+      "R color used to fill the solid portion of the polygon, or NA for no color fill.",
+      "R color used as the direct on-edge border for each polygon.",
+      "Border line width",
+      "Border line type, compatible with 'lty'.",
+      "R color used as the inner solid region border, or NA for no inner border.",
+      "Inner border line width",
+      "R color used as the outer non-solid region border, or NA for no outer border.",
+      "Outer border line width"
+   )
+)
+jp_cols2
+```
+
+In most cases, calling `plot()` with extra arguments in ellipses `'...'`
+will override the corresponding column values in the `JamPolygon`
+object, and can be used to provide those values when they do not
+already exist.
+
+
+## Rules
+
+* Each polygon is encoded into one row of the `jp@polygons` slot.
+* Within one "polygon" - there may be multiple polygon pieces.
+* Multi-part polygons can be split into the component parts
+using `split_JamPolygon()`.
+* All polygon pieces are subject to the "even-odd" rule, which
+therefore has other requirements:
+   * This rule essentially means each successive overlapping region
+   flips from solid to transparent, then to solid, et cetera.
+      * A figure "8" encodes two solid regions.
+      * A circle "O" itself is solid, and a circle "o" inside that circle
+      would therefore represent a hole. Another solid small circle may
+      be placed within the hole, and so on.
+
+   * For the purpose of `JamPolygon`, all polygon pieces should already
+   be "disjoint" with no overlapping regions except when necessary
+   to define a "hole".
+   * No two solid polygons should have any regions that overlap, otherwise
+   it would create a hole.
+   * JamPolygon classifies every independent polygon "part" as either
+   completely 'solid' or completely 'hole'.
+   Any weird polygons that could otherwise be used to
+   create solids and holes should be "flattened" and split into the
+   component solid and hole parts.
+   * These details are generally well beyond the scope of what
+   is used by Venndir, but may be useful nonetheless.
+
+* JamPolygon objects can be combined using `rbind2()` which appends
+rows together, while expanding optional columns where present.
+
+
+## Assembling a basic JamPolygon
+
+The following example contains two polygons: 'polygon1', and 'polygon2'.
+The columns 
+The 'polygon1' is composed of two separate
+
+```{r basic_jp}
+df <- data.frame(
+   name=c(
+      "polygon1",
+      "polygon2"),
+    x=I(list(
+        list(c(1, 4, 4, 1),
+             c(2, 3, 3, 2)),
+        c(5, 6, 6, 5))),
+    y=I(list(
+        list(c(1, 1, 4, 4),
+             c(2, 2, 3, 3)),
+        c(1, 1, 2, 2))),
+    fill=c(
+       "gold",
+       "firebrick"))
+jpdf <- new("JamPolygon",
+   polygons=df)
+plot(jpdf)
+```
+
+
+

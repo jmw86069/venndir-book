@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.2 Venndir Case Studies | Venndir Book</title>
+  <meta name="description" content="Venn Diagrams with Directionality" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.2 Venndir Case Studies | Venndir Book" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/venndir-cover.png" />
+  <meta property="og:description" content="Venn Diagrams with Directionality" />
+  <meta name="github-repo" content="jmw86069/venndir-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.2 Venndir Case Studies | Venndir Book" />
+  
+  <meta name="twitter:description" content="Venn Diagrams with Directionality" />
+  <meta name="twitter:image" content="/images/venndir-cover.png" />
+
+<meta name="author" content="James M. Ward" />
+
+
+<meta name="date" content="2025-06-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="figure-boosting.html"/>
+<link rel="next" href="glossary.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Venndir Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="what-is-a-venn-diagram.html"><a href="what-is-a-venn-diagram.html"><i class="fa fa-check"></i><b>1</b> What is a Venn diagram?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>1.1</b> Problem Statement</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>2</b> Data Import</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html"><i class="fa fa-check"></i><b>2.1</b> Common Data Input Types</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-sets"><i class="fa fa-check"></i><b>2.1.1</b> List of sets</a></li>
+<li class="chapter" data-level="2.1.2" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-signed-sets"><i class="fa fa-check"></i><b>2.1.2</b> List of signed sets</a></li>
+<li class="chapter" data-level="2.1.3" data-path="common-data-input-types.html"><a href="common-data-input-types.html#incidence-matrix"><i class="fa fa-check"></i><b>2.1.3</b> Incidence matrix</a></li>
+<li class="chapter" data-level="2.1.4" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-incidence-matrix"><i class="fa fa-check"></i><b>2.1.4</b> Signed incidence matrix</a></li>
+<li class="chapter" data-level="2.1.5" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-counts"><i class="fa fa-check"></i><b>2.1.5</b> Overlap counts</a></li>
+<li class="chapter" data-level="2.1.6" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-counts"><i class="fa fa-check"></i><b>2.1.6</b> Signed overlap counts</a></li>
+<li class="chapter" data-level="2.1.7" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-list"><i class="fa fa-check"></i><b>2.1.7</b> Overlap list</a></li>
+<li class="chapter" data-level="2.1.8" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-list"><i class="fa fa-check"></i><b>2.1.8</b> Signed overlap list</a></li>
+<li class="chapter" data-level="2.1.9" data-path="common-data-input-types.html"><a href="common-data-input-types.html#items"><i class="fa fa-check"></i><b>2.1.9</b> Items</a></li>
+<li class="chapter" data-level="2.1.10" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-data-frames"><i class="fa fa-check"></i><b>2.1.10</b> List of data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html"><i class="fa fa-check"></i><b>2.2</b> Specialized Input Types</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="specialized-input-types.html"><a href="specialized-input-types.html#limma"><i class="fa fa-check"></i><b>2.2.1</b> limma</a></li>
+<li class="chapter" data-level="2.2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html#deseq2"><i class="fa fa-check"></i><b>2.2.2</b> DESeq2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="venndir-basics.html"><a href="venndir-basics.html"><i class="fa fa-check"></i><b>3</b> Venndir Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="default-venndir.html"><a href="default-venndir.html"><i class="fa fa-check"></i><b>3.1</b> Default Venndir</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="default-venndir.html"><a href="default-venndir.html#data-for-testing"><i class="fa fa-check"></i><b>3.1.1</b> Data for Testing</a></li>
+<li class="chapter" data-level="3.1.2" data-path="default-venndir.html"><a href="default-venndir.html#create-the-venn"><i class="fa fa-check"></i><b>3.1.2</b> Create the Venn</a></li>
+<li class="chapter" data-level="3.1.3" data-path="default-venndir.html"><a href="default-venndir.html#create-the-euler"><i class="fa fa-check"></i><b>3.1.3</b> Create the Euler</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html"><i class="fa fa-check"></i><b>3.2</b> Venn Set Colors</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="venn-set-colors.html"><a href="venn-set-colors.html#consistent-set-colors"><i class="fa fa-check"></i><b>3.2.1</b> Consistent Set Colors</a></li>
+<li class="chapter" data-level="3.2.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html#venndir-without-color"><i class="fa fa-check"></i><b>3.2.2</b> Venndir Without Color</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="venndir-labels.html"><a href="venndir-labels.html"><i class="fa fa-check"></i><b>3.3</b> Venndir Labels</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="venndir-labels.html"><a href="venndir-labels.html#label-content"><i class="fa fa-check"></i><b>3.3.1</b> Label Content</a></li>
+<li class="chapter" data-level="3.3.2" data-path="venndir-labels.html"><a href="venndir-labels.html#overlap-type"><i class="fa fa-check"></i><b>3.3.2</b> Overlap Type</a></li>
+<li class="chapter" data-level="3.3.3" data-path="venndir-labels.html"><a href="venndir-labels.html#signed-label-placement"><i class="fa fa-check"></i><b>3.3.3</b> Signed Label Placement</a></li>
+<li class="chapter" data-level="3.3.4" data-path="venndir-labels.html"><a href="venndir-labels.html#visual-styles"><i class="fa fa-check"></i><b>3.3.4</b> Visual Styles</a></li>
+<li class="chapter" data-level="3.3.5" data-path="venndir-labels.html"><a href="venndir-labels.html#nudge-a-venn-label"><i class="fa fa-check"></i><b>3.3.5</b> Nudge a Venn Label</a></li>
+<li class="chapter" data-level="3.3.6" data-path="venndir-labels.html"><a href="venndir-labels.html#details-for-label-placement"><i class="fa fa-check"></i><b>3.3.6</b> Details for Label Placement</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="item-labels.html"><a href="item-labels.html"><i class="fa fa-check"></i><b>3.4</b> Item Labels</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="item-labels.html"><a href="item-labels.html#overview-of-item-labeling"><i class="fa fa-check"></i><b>3.4.1</b> Overview of item labeling</a></li>
+<li class="chapter" data-level="3.4.2" data-path="item-labels.html"><a href="item-labels.html#venn-memes"><i class="fa fa-check"></i><b>3.4.2</b> Venn Memes</a></li>
+<li class="chapter" data-level="3.4.3" data-path="item-labels.html"><a href="item-labels.html#item-label-basics"><i class="fa fa-check"></i><b>3.4.3</b> Item Label Basics</a></li>
+<li class="chapter" data-level="3.4.4" data-path="item-labels.html"><a href="item-labels.html#item-layout-adjustments"><i class="fa fa-check"></i><b>3.4.4</b> Item layout adjustments</a></li>
+<li class="chapter" data-level="3.4.5" data-path="item-labels.html"><a href="item-labels.html#item-buffer"><i class="fa fa-check"></i><b>3.4.5</b> Item buffer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html"><i class="fa fa-check"></i><b>3.5</b> Fonts and Font Sizes</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#font-sizes"><i class="fa fa-check"></i><b>3.5.1</b> Font Sizes</a></li>
+<li class="chapter" data-level="3.5.2" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#overall-font-family"><i class="fa fa-check"></i><b>3.5.2</b> Overall Font Family</a></li>
+<li class="chapter" data-level="3.5.3" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#individual-font-families"><i class="fa fa-check"></i><b>3.5.3</b> Individual Font Families</a></li>
+<li class="chapter" data-level="3.5.4" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#available-font-families"><i class="fa fa-check"></i><b>3.5.4</b> Available Font Families</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="venn-legends.html"><a href="venn-legends.html"><i class="fa fa-check"></i><b>3.6</b> Venn Legends</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="venn-legends.html"><a href="venn-legends.html#hide-percent-or-signed-labels"><i class="fa fa-check"></i><b>3.6.1</b> Hide percent or signed labels</a></li>
+<li class="chapter" data-level="3.6.2" data-path="venn-legends.html"><a href="venn-legends.html#custom-legend-labels"><i class="fa fa-check"></i><b>3.6.2</b> Custom legend labels</a></li>
+<li class="chapter" data-level="3.6.3" data-path="venn-legends.html"><a href="venn-legends.html#additional-alias-labels"><i class="fa fa-check"></i><b>3.6.3</b> Additional alias labels</a></li>
+<li class="chapter" data-level="3.6.4" data-path="venn-legends.html"><a href="venn-legends.html#separate-size-and-sign"><i class="fa fa-check"></i><b>3.6.4</b> Separate Size and Sign</a></li>
+<li class="chapter" data-level="3.6.5" data-path="venn-legends.html"><a href="venn-legends.html#legend-color-style"><i class="fa fa-check"></i><b>3.6.5</b> Legend color style</a></li>
+<li class="chapter" data-level="3.6.6" data-path="venn-legends.html"><a href="venn-legends.html#legend-position"><i class="fa fa-check"></i><b>3.6.6</b> Legend position</a></li>
+<li class="chapter" data-level="3.6.7" data-path="venn-legends.html"><a href="venn-legends.html#legend-font-size"><i class="fa fa-check"></i><b>3.6.7</b> Legend font size</a></li>
+<li class="chapter" data-level="3.6.8" data-path="venn-legends.html"><a href="venn-legends.html#legend-custom-fontfamily"><i class="fa fa-check"></i><b>3.6.8</b> Legend custom fontfamily</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="deeper-customizations.html"><a href="deeper-customizations.html"><i class="fa fa-check"></i><b>4</b> Deeper Customizations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="venndir-borders.html"><a href="venndir-borders.html"><i class="fa fa-check"></i><b>4.1</b> Venndir Borders</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="venndir-borders.html"><a href="venndir-borders.html#venndir-rendering-steps"><i class="fa fa-check"></i><b>4.1.1</b> Venndir Rendering Steps</a></li>
+<li class="chapter" data-level="4.1.2" data-path="venndir-borders.html"><a href="venndir-borders.html#customize-venndir-borders"><i class="fa fa-check"></i><b>4.1.2</b> Customize Venndir borders</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html"><i class="fa fa-check"></i><b>4.2</b> Modify Venn Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html#overlap-attributes"><i class="fa fa-check"></i><b>4.2.1</b> Overlap Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="customize-any-label.html"><a href="customize-any-label.html"><i class="fa fa-check"></i><b>4.3</b> Customize Any Label</a></li>
+<li class="chapter" data-level="4.4" data-path="automatic-text-contrast.html"><a href="automatic-text-contrast.html"><i class="fa fa-check"></i><b>4.4</b> Automatic Text Contrast</a></li>
+<li class="chapter" data-level="4.5" data-path="highlight-venn-overlaps.html"><a href="highlight-venn-overlaps.html"><i class="fa fa-check"></i><b>4.5</b> Highlight Venn Overlaps</a></li>
+<li class="chapter" data-level="4.6" data-path="rotate-the-venndir.html"><a href="rotate-the-venndir.html"><i class="fa fa-check"></i><b>4.6</b> Rotate the Venndir</a></li>
+<li class="chapter" data-level="4.7" data-path="nudge-the-legend.html"><a href="nudge-the-legend.html"><i class="fa fa-check"></i><b>4.7</b> Nudge the Legend</a></li>
+<li class="chapter" data-level="4.8" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html"><i class="fa fa-check"></i><b>4.8</b> Hidden Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html#nudge-venndir-circles"><i class="fa fa-check"></i><b>4.8.1</b> Nudge Venndir Circles</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="nudge-specific-labels.html"><a href="nudge-specific-labels.html"><i class="fa fa-check"></i><b>4.9</b> Nudge specific labels</a></li>
+<li class="chapter" data-level="4.10" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html"><i class="fa fa-check"></i><b>4.10</b> Venndir Markdown Support</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-styles"><i class="fa fa-check"></i><b>4.10.1</b> Inline styles</a></li>
+<li class="chapter" data-level="4.10.2" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-images"><i class="fa fa-check"></i><b>4.10.2</b> Inline Images</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="patchwork-with-venndir.html"><a href="patchwork-with-venndir.html"><i class="fa fa-check"></i><b>4.11</b> Patchwork with Venndir</a></li>
+<li class="chapter" data-level="4.12" data-path="custom-signs.html"><a href="custom-signs.html"><i class="fa fa-check"></i><b>4.12</b> Custom Signs</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="custom-signs.html"><a href="custom-signs.html#review-sign-curation"><i class="fa fa-check"></i><b>4.12.1</b> Review Sign Curation</a></li>
+<li class="chapter" data-level="4.12.2" data-path="custom-signs.html"><a href="custom-signs.html#customize-the-symbols"><i class="fa fa-check"></i><b>4.12.2</b> Customize the Symbols</a></li>
+<li class="chapter" data-level="4.12.3" data-path="custom-signs.html"><a href="custom-signs.html#more-advanced-signs"><i class="fa fa-check"></i><b>4.12.3</b> More Advanced Signs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html"><i class="fa fa-check"></i><b>4.13</b> Venndir Graphics Objects</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
+<li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="figure-boosting.html"><a href="figure-boosting.html"><i class="fa fa-check"></i><b>5.1</b> Figure Boosting</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="figure-boosting.html"><a href="figure-boosting.html#me---electron"><i class="fa fa-check"></i><b>5.1.1</b> Me - Electron</a></li>
+<li class="chapter" data-level="5.1.2" data-path="figure-boosting.html"><a href="figure-boosting.html#eulerglyphs"><i class="fa fa-check"></i><b>5.1.2</b> eulerGlyphs</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html"><i class="fa fa-check"></i><b>5.2</b> Venndir Case Studies</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html#seehawer-kmt2-gene-venns"><i class="fa fa-check"></i><b>5.2.1</b> Seehawer Kmt2 Gene Venns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>6</b> Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Venndir Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="venndir-case-studies" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Venndir Case Studies<a href="venndir-case-studies.html#venndir-case-studies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>While many stylistic pieces were described through this text,
+putting them together in an artistic way is not always
+straightforward.</p>
+<p>Further, while the <em>concept</em> of directional Venn diagrams may
+(or may not) sound valuable, it is often best evaluate using
+real world data.</p>
+<p>Venndir Case Studies also serves as a Style Gallery,
+both to illustrate creative ways to customize a Venn diagram,
+and to illustrate examples of Venndir in action.</p>
+<div id="seehawer-kmt2-gene-venns" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Seehawer Kmt2 Gene Venns<a href="venndir-case-studies.html#seehawer-kmt2-gene-venns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Context</strong></p>
+<p>Many genomics studies compare results across experimental conditions
+using Venn or Euler diagrams—for instance, to identify genes affected
+by a perturbation such as a treatment, toxin exposure, or disease
+onset. These studies often aim to uncover the genetic basis of a
+perturbation, in hopes of revealing ways to mitigate or prevent its
+effects.</p>
+<p>There are thousands of studies that identify "genes affected",
+and many of them have associated direction of change.
+For example, "up" may be recognized as "up-regulated" or "increased function",
+and "down" may be recognized as "down-regulated" or "decreased function."</p>
+<p>When two studies are compared, they often focus on the genes involved
+without regard to the direction of change.
+The prevailing assumption is that affecting the same genes implies
+affecting the same biological process.
+However, the very next question is whether the process
+is affected the same way.</p>
+<p><strong>Situation</strong></p>
+<p>For studies whose critical findings involve (1) identify important
+components, and (2) identify direction of those components, such as
+gain or loss, Venndir proposes two critical points.</p>
+<ol style="list-style-type: decimal">
+<li>Overlap alone is not enough.</li>
+<li>Directionality matters.</li>
+</ol>
+<p>Direction is important in science and medicine, where it often means the
+difference between disease and treatment.</p>
+<p>Most scientific papers use Venn diagrams without directionality,
+although a subset compare each direction independently, thus
+ignoring the potential for discordance. It could be discordant,
+and they may never know.</p>
+<p>To date, no Venn software tool indicates overlap and
+directionality together.</p>
+<p><strong>Example Data</strong></p>
+<p>The subject of this example is a scientific paper by
+<a href="https://www.nature.com/articles/s41556-024-01446-3">Seehawer et al</a>
+<span class="citation">(<a href="#ref-Seehawer_2024">Seehawer et al. 2024</a>)</span> that studies the role of two genes,
+<em>Kmt2c</em> and <em>Kmt2d</em>, on brain cancer metastasis,
+the migration property of cancer cells associated with
+poor clinical prognosis. They studied the effect of losing either gene,
+and in two very different cell types "168FARN" and "67NR".</p>
+<p>Figure <a href="venndir-case-studies.html#fig:seehawer-0">5.7</a> shows the target figure, which compares
+the genes affected by loss of each target gene <em>Kmt2c</em> (left)
+and <em>Kmt2d</em> (right). Each panel compares the genes affected by
+the two cell types "168FARN" and "67NR".
+Up-regulated genes are compared on the top row, down-regulated
+genes are compared on the bottom row.</p>
+<p>The authors intended to assess whether the effects of gene loss were
+similar in the two cell lines, which would imply similar molecular
+mechanisms. They concluded that the two cell lines, while being
+fundamentally different, shared the underlying mechanism because
+they shared some up-regulated genes, and some down-regulated genes.</p>
+<p>This approach is fairly common, testing up-regulated and down-regulated genes
+independently. However, it does not test whether there are genes with
+discordant change in direction. They effectively only look for consistent
+direction, without looking at opposing direction.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:seehawer-0"></span>
+<img src="images/SeehawerVenns.png" alt="Target Extended Figure 4h from Seehawer et al 2024." width="90%" />
+<p class="caption">
+Figure 5.7: Target Extended Figure 4h from Seehawer <em>et al</em> 2024.
+</p>
+</div>
+<p>Data for Extended Figure 4h were available via Supplemental Table 4.
+Tables were filtered for adjusted P-value 0.1, log2 fold change 0.6.
+Gene symbol and fold change sign were saved for use in Venndir.</p>
+<p>Figure <a href="venndir-case-studies.html#fig:seehawer-2">5.8</a> shows the Venndir re-creation.
+Only two values differ and by only by <code>1</code> gene each,
+which suggests a minor "rounding error" discrepancy in
+processing. See the 67NR-specific overlap in
+"<em>Kmt2c</em>_KO Upregulated genes" and "<em>Kmt2c</em>_KO Downregulated genes".
+(These differences are not cause for concern.)</p>
+<p>Overall, Venndir reproduced the Seehawer figure <span class="citation">(<a href="#ref-Seehawer_2024">Seehawer et al. 2024</a>)</span>.</p>
+<pre><code>## 168FARN Kmt2c.KO 168FARN Kmt2d.KO    67NR Kmt2c.KO    67NR Kmt2d.KO 
+##              904              763             6002             4759</code></pre>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:seehawer-2"></span>
+<img src="_main_files/figure-html/seehawer-2-1.png" alt="Venndir re-creation of Seehawer Ext. Fig 4h." width="100%" />
+<p class="caption">
+Figure 5.8: Venndir re-creation of Seehawer Ext. Fig 4h.
+</p>
+</div>
+<p>However, the real question (the "next question" if you will),
+is whether there are shared genes with discordant direction.</p>
+<p>Figure <a href="venndir-case-studies.html#fig:seehawer-3">5.9</a> explores the same data using the
+complete signed data, with up- and down-regulated genes together.
+The genes are shown: <em>Kmt2c</em>_KO (left) and <em>Kmt2d</em>_KO (right).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:seehawer-3"></span>
+<img src="_main_files/figure-html/seehawer-3-1.png" alt="Venndir re-creation of Seehawer Ext. Fig 4h, using the complete set of up- and down-regulated genes together. The top row shows 'overlap', the second row shows 'agreement', and the third row shows 'concordance'." width="100%" />
+<p class="caption">
+Figure 5.9: Venndir re-creation of Seehawer Ext. Fig 4h, using the complete set of up- and down-regulated genes together. The top row shows 'overlap', the second row shows 'agreement', and the third row shows 'concordance'.
+</p>
+</div>
+<p><strong>Findings:</strong></p>
+<p>The first row shows regulated genes without regard to direction.</p>
+<ul>
+<li>For <em>Kmt2c</em>_KO (left) and <em>Kmt2d</em>_KO (right), the proportion of shared
+genes is notably higher than the Seehawer figure.</li>
+<li>The increase in shared genes suggests the increase is due
+to genes with discordant direction.</li>
+</ul>
+<p>The second row displays the counts by <code>'agreement'</code>, using <code>'='</code> for
+agreement, and <code>'X'</code> for disagreement.</p>
+<ul>
+<li>There are nearly as many shared genes that agree in direction as
+genes that disagree in direction.</li>
+</ul>
+<p>The bottom row displays the counts summarized by <code>'concordance'</code>, using
+arrows to indicate direction, or <code>'X'</code> for discordant changes.</p>
+<ul>
+<li>There are more genes discordant in direction, than genes sharing
+either direction alone.</li>
+</ul>
+<p><strong>Conclusion:</strong></p>
+<p>Directionality provides important context for the interpretation
+of the Seehawer data <span class="citation">(<a href="#ref-Seehawer_2024">Seehawer et al. 2024</a>)</span>.
+The comparison across "168FARN" and "67NR" was not critical to
+their main findings, however this particular conclusion,
+that the two cell lines exhibited consistent molecular mechanisms
+may warrant more careful review.</p>
+
+</div>
+</div>
+<!-- </div> -->
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Seehawer_2024" class="csl-entry">
+Seehawer, Marco, Zheqi Li, Jun Nishida, Pierre Foidart, Andrew H. Reiter, Ernesto Rojas-Jimenez, Marie-Anne Goyette, et al. 2024. <span>“Loss of Kmt2c or Kmt2d Drives Brain Metastasis via KDM6A-Dependent Upregulation of MMP3.”</span> <em>Nature Cell Biology</em> 26 (7): 1165–75. <a href="https://doi.org/10.1038/s41556-024-01446-3">https://doi.org/10.1038/s41556-024-01446-3</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="figure-boosting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="glossary.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jmw86069/venndir-book/edit/main/09-gallery.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/jmw86069/venndir-book/blob/main/09-gallery.Rmd",
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "favicon": "favicon.ico"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

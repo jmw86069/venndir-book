@@ -1,46 +1,83 @@
-# What is a directional Venn diagram?
+# What is a Venn diagram?
+
+A venn diagram is a deceptively simple figure,
+intended to compare two or more sets in a visually intuitive way.
+
+Each set is represented by a circle, drawn with a label beside it.
+Two circles are shown below for sets `A` and `B`, and these circles
+are drawn so they partially overlap.
+
+The overlapping region represents the *intersection* of
+sets `A` and `B`. Using mathematical symbols, the intersect is written
+**$`r 'A∩B'`$**,
+but we use `A&B` for convenience since the symbol **$`r '∩'`$**
+does not exist on most computer keyboards.
+
+(ref:whatisvenn) A simple Venn diagram is shown with two sets: A and B.
+
+```{r whatisvenn, echo=FALSE, fig.height=4, fig.width=7, out.width="65%", fig.cap="(ref:whatisvenn)", fig.alt="(ref:whatisvenn)"}
+# setlist <- make_venn_test(n_sets=2, n_items=30,
+#    set_names=c("A", "B"))
+setlist <- counts2setlist(c(
+   A=5, B=3, "A&B"=2))
+venndir(setlist, poly_alpha=0, show_segments=FALSE, font_cex=2,
+   innerborder="black", outerborder="black",
+   draw_legend=FALSE,
+   expand_fraction=c(-0.3, -0.3, -0.15, -0.3),
+   outerborder.lwd=1, innerborder.lwd=1,
+   legend_color_style=c("nofill", "blackborder"))
+```
+
+The numbers in the Venn diagram represent the number of items
+in each logical grouping:
+
+* '5' is the number of items in 'A' and 'not B'.
+* '3' is the number of items in 'B' and 'not A'.
+* '2' is the number of items in 'A' and 'B'.
+
 
 ## Problem Statement
 
-*"What problem are you trying to solve?" -- Lazar Arulnayagam*
+> *"What problem are you trying to solve?" -- Lazar Arulnayagam*
 
-When comparing biological changes across two experiments, the direction
-of change is very important to the interpretation of results.
-Specifically, when genes are affected by disease, or treatment,
-some genes may increase in abundance, other genes may decrease.
-In a Venn diagram, it is very useful to see when the directionality
-is concordant (shared), or discordant (not shared).
+When comparing biological effects on genes in two experiments,
+two important questions arise:
 
-## Slightly more detail
+1. Are the genes shared? **(Venn)**
+2. Are the changes [concordant](#concordant) in direction? **(Venndir)**
 
-I often study gene expression, which is a huge topic in itself.
-Stated as simply as I know how, gene expression is the process by
-which a living organism "expresses" the information encoded in its
-genome. The genome contains many individual units referred to as "genes",
-which represents the instructions for each functional gene locus.
-A gene is "expressed" by copying the genome DNA to a "transcript" RNA.
-The transcript RNA may be in the form of "messenger RNA" or mRNA,
-which is also later translated in the cell into a corresponding protein.
+A Venn diagram does not include direction, and cannot answer question 2.
 
-The particular genes which are expressed, and the quantity of those
-expressed genes, collectively determines the functional state of a living
-system. For multi-cellular organisms like human, each living cell has a unique
-signature of gene expression, defined by the overall gene abundances
-which are expressed in that cell.
-Significant changes to the gene expression occur during natural conditions
-like exercise, after eating a meal, or as consequence of disease like
-viral infection, injury, or cancer.
+Venndir proposes a simple extension to a Venn diagram, the placement
+of [signed counts](#signed-counts) beside the [main counts](#main-counts).
+The [signed counts](#signed-counts) summarize
+the directionality of the [main counts](#main-counts), and are described using
+directional arrows, up and down, and are reinforced using color,
+red for up, and blue for down.
 
-During our experiments, we frequently want to identify "which genes changed"
-when compared to some normal reference state. For example, when we compare
-viral infected cells to normal cells, we identify which genes are different
-from normal. Here comes the directionality: Some genes will be higher than
-normal, and other genes with be lower than normal.
+(ref:whatisvenndir) Venndir introduces an extension to a Venn diagram, with addition of directional counts beside each Venn overlap count. The direction is indicated by arrows up and down, and colors red and blue, respectively.
 
+```{r whatisvenndir, echo=FALSE, fig.height=4, fig.width=7, out.width="65%", fig.cap="(ref:whatisvenndir)", fig.alt="(ref:whatisvenndir)"}
+setlist_dir <- make_venn_test(n_sets=2, n_items=30,
+   sizes=c(7, 5),
+   do_signed=TRUE,
+   set_names=c("A", "B"))
+venndir(setlist_dir,
+   poly_alpha=0.4, fill=NA,
+   show_segments=FALSE, font_cex=2,
+   innerborder="black", outerborder="black",
+   draw_legend=FALSE,
+   expand_fraction=c(-0.3, -0.3, -0.15, -0.3),
+   outerborder.lwd=1, innerborder.lwd=1,
+   legend_color_style=c("nofill", "blackborder"))
+```
 
 
-### Examples {-}
+```{r 01-todo, eval=FALSE, include=FALSE}
+## Todo
 
-Show example Venn without directionality.
+# * Introduce other R packages used for detailed customization
+#    * Venndir makes extensive use of grid graphics, including gridGeometry
+#    * Venndir relies heavily upon marquee, and thus systemfonts by proxy, for font handling
 
-Show example Venn with directionality.
+```

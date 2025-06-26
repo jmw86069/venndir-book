@@ -1,5 +1,18 @@
-delete_merged_file: true
+book_filename: "_main.Rmd"
 language:
   ui:
     chapter_name: "Chapter "
+    fig: !expr function(x) sprintf("**Figure %s:** ", x)
 output_dir: "docs"
+delete_merged_file: false
+view: https://github.com/jmw86069/venndir-book/blob/main/%s
+edit: https://github.com/jmw86069/venndir-book/edit/main/%s
+clean: ["_bookdown_files"]
+rmd_files: ["index.Rmd",
+  "01-intro.Rmd",
+  "02-data-import.Rmd",
+  "03-venndir-viz.Rmd",
+  "04-customizations.Rmd",
+  "09-gallery.Rmd",
+  "89-glossary.Rmd",
+  "90-references.Rmd"]

@@ -1,42 +1,808 @@
 # Data Import
 
+```{r setup-02, include=FALSE}
+knitr::opts_chunk$set(
+   # fig.retina = 2, out.width = '100%'
+   cache=TRUE,
+   fig.align="center",
+   fig.width=6,
+   fig.height=5
+)
+```
+
+```{r setup-02b, include=FALSE}
+# from
+# https://blog.datascienceheroes.com/how-to-self-publish-a-book-customizing-bookdown/
+# https://blog.datascienceheroes.com/how-to-self-publish-a-book/
+# knitr::opts_chunk$set(fig.pos='H')
+```
+
 The first key step in using Venndir is to import data in a
 recognized format. There are several formats available:
 
-* R `list` of `character` vectors containing the items.
-* R `list` of `numeric` vectors, whose `names()` represent items.
-The numeric values are `1` is "Up", and `-1` is "Down".
-If all items in all sets are `1`, then the data is assumed to
-be non-directional.
-* Incidence `matrix`, which is a `numeric` matrix where the items
-are `rownames()`, and sets are `colnames()`, and the matrix values
-are `0` when there is no item, and `1` when there is a value.
-* Overlap counts, a `numeric` vector with the number of counts in each
-unique overlap set. This input is non-directional, meaning there
-is no "Up" nor "Down" to display.
-For example, `c(A=15, B=20, "A&B"=5)` is sufficient to define a
-Venn diagram.
-* Signed overlap counts, a list that contains `numeric` vectors.
-This is an advanced form of "Overlap counts", using the same `names()`
-format: "A", "B", "A&B". However, each element is a `numeric` vector
-named by the directionality. This is an advanced topic and not
-generally recommended.
+* **[List of sets]**, referred to as a `setlist`
+   * a `list` of `character` item vectors.
+   * sets are represented by `names(setlist)`
+   
+* **[List of signed sets]**, referred to as a signed `setlist`
+   * a `list` of *signed* `numeric` vectors.
+   * signed vectors use values `-1` or `1`, and store items in `names()`.
+   * sets are represented by `names(setlist)`
 
+* **[Incidence matrix]**
+   * a `numeric` matrix with items as `rownames()`, sets as `colnames()`.
+   * items are indicated by the value `1` in the appropriate
+   row and column.
 
-## Import using a `list`
+* **[Signed incidence matrix]**
+   * a `numeric` matrix with items as `rownames()`, sets as `colnames()`.
+   * items are indicated by `-1` or `1` in the appropriate
+   row and column.
 
+* **[Overlap counts]**
+   * a `numeric` vector with the number of items in each overlap.
+   * the overlap name is stored in `names()`, in format: `'A'`, `'B'`,
+   `'A&B'`.
 
-## Convert to `list`
+* **[Signed overlap counts]**
+   * a `list` of `numeric` vectors, named by overlap set.
+   * each overlap is also a `list` named by the directionality.
+
+* **Other formats**
+   * [Items]
+   * [Overlap list]
+   * [Signed overlap list]
+   * [List of data frames]
+
+* **Specialized formats**
+   * [limma]
+   * [DESeq2]
+
+## Common Data Input Types
+
+### List of sets
+
+The simplest input is a List of [sets](#set), where each set is
+represented as an R `vector` of items.
+
+```{r input-list}
+setlist <- make_venn_test()
+str(setlist)
+```
+
+Each vector is not considered 'signed', because each vector has no `names()`.
+
+This `setlist` can be used directly with `venndir()`.
+In Figure \@ref(fig:input-list-venndir) there are no
+[signed counts](#signed-counts) displayed.
+
+(ref:input-list-venndir) Default Venn diagram with three sets.
+
+```{r input-list-venndir, fig.height=6, fig.cap="(ref:input-list-venndir)", fig.alt="(ref:input-list-venndir)"}
+venndir(setlist)
+```
+
+### List of signed sets
+
+The next common input is a list of [signed sets](#signed-set),
+represented as `numeric` vectors with items stored as `names()`.
+
+An example is shown below, showing only the first six elements of each
+vector. Notice the vector names are `"item_014"`, `"item_195"`,
+while the values are `-1`, `-1`.
+
+```{r input-signed-list}
+setlist <- make_venn_test(do_signed=TRUE)
+lapply(setlist, head, 6)
+```
+
+Figure \@ref(fig:input-signed-list-venndir) illustrates the
+output from `venndir()`, where
+[signed counts](#signed-counts) are displayed using
+`overlap_type='concordance'` by default for a
+[signed setlist](#signed-setlist).
+
+(ref:input-signed-list-venndir) Default Venn diagram with three signed sets. The overlap counts are each tabulated by directional sign.
+
+```{r input-signed-list-venndir, fig.cap="(ref:input-signed-list-venndir)", fig.alt="(ref:input-signed-list-venndir)"}
+venndir(setlist)
+```
+
+The output is described below:
+
+* The region `"set_A"` contains `19` items that are not present in any
+other set for this Venn diagram.
+   * `10` of these `19` items are "up", indicated by the red label
+   which includes the up arrow $`r "\u2191 10"`$.
+   * `9` of these `19` items are "down", indicated by the blue label
+   which includes the down arrow $`r "\u2193 9"`$.
+
+* The region of overlap between `'set_A'` and `'set_B'` contains 5 items
+which are only present in these two sets, and not present in `'set_C'`.
+   * `3` of these `5` items are "up" in both `'set_A'` and `'set_B'`,
+   indicated by the red label with two up arrows: $`r "\u2191\u2191 3"`$.
+   * `2` of these `5` items are discordant in direction, which means
+   the sign in `'set_A'` disagrees with `'set_B'`. The label is indicated
+   in grey color and large `'X'` $`r "X 2"`$.
+   The purpose of using one `'X'` is to avoid describing all possible
+   combinations of "up" and "down".
+
+The default summary for a [signed setlist](#signed-setlist) is
+`overlap_type="concordance"`,
+which summarizes directional discordance in one category `'X'`, and
+tabulates counts in each subset that involves only one direction.
+
+For other approaches to summarize directional counts,
+see the summary in Table \@ref(tab:overlap-type-table), in
+the section [Overlap Type].
 
 
 ### Incidence matrix
 
+An [incidence matrix](#g-incidence-matrix) (im) is another common input format,
+a `matrix` whose `rownames` are items, and `colnames` are sets.
+Any non-zero, non-empty value in the matrix indicates the item (row) exists
+in the set (column).
+
+```{r input-im}
+setlist <- make_venn_test()
+im <- list2im_opt(setlist)
+head(im, 10)
+```
+
+Figure \@ref(fig:input-im-venndir) shows the Venn diagram
+created by `venndir()` accepts an incidence matrix as input data.
+The input data is converted to a `setlist` within the function.
+
+(ref:input-im-venndir) Default Venn diagram with three sets, using an incidence matrix as input data.
+
+```{r input-im-venndir, fig.cap="(ref:input-im-venndir)", fig.alt="(ref:input-im-venndir)"}
+venndir(im)
+```
+
+When the [incidence matrix](#g-incidence-matrix) only contains positive values, it is
+assumed to be non-directional. This assumption can be changed
+by using the argument `overlap_type`.
 
 ### Signed incidence matrix
+
+A [signed incidence matrix](#g-signed-incidence-matrix) is similar to an incidence matrix,
+except that it may include positive and negative values.
+
+```{r input-signed-im}
+setlist <- make_venn_test(do_signed=TRUE)
+im <- list2im_value(setlist)
+head(im, 10)
+```
+
+Figure \@ref(fig:input-signed-im-venndir) shows the signed Venn
+diagram created by `venndir()` also accepts a
+[signed incidence matrix](#signed-incidence-matrix)
+as input data, and subsequently displays signed counts.
+
+(ref:input-signed-im-venndir) Default Venn diagram with three sets, using a signed incidence matrix as input data.
+
+```{r input-signed-im-venndir, fig.height=6, fig.cap="(ref:input-signed-im-venndir)", fig.alt="(ref:input-signed-im-venndir)"}
+venndir(im)
+```
 
 
 ### Overlap counts
 
+If the [Venn overlap](#venn-overlap) counts are already known, they can also
+be used to re-create the corresponding Venn diagram.
+
+The function `counts2setlist()` accepts Venn counts, and returns
+the corresponding `setlist`.
+The counts should be named by the [Venn overlap](#venn-overlap), by using the name
+of each set involved, separated by ampersand `'&'`.
+The example below uses sets `"A"` and `"B"`, and the corresponding
+overlap between `'A'` and `'B'` is named `'A&B'`.
+
+Note that the overlap name should be defined in quotes in R code,
+so the ampersand `'&'` is stored properly.
+
+```{r input-counts}
+counts <- c(
+   "A"=12,
+   "B"=9,
+   "B&A"=15)
+setlist <- counts2setlist(counts)
+str(setlist)
+```
+
+Figure \@ref(fig:input-counts-venndir) shows the output of `venndir()`
+using this `setlist` as input.
+
+(ref:input-counts-venndir) Venn diagram created by using overlap counts as input data.
+
+```{r input-counts-venndir, fig.cap="(ref:input-counts-venndir)", fig.alt="(ref:input-counts-venndir)"}
+venndir(setlist)
+```
+
+:::: {.tipbox data-latex=""}
+
+**Tip:**
+
+When starting with overlap counts, it is recommended to define
+set names with single characters, such as `'A'`, `'B'`, and `'C'`.
+
+* The set names can be adjusted afterwards by editing `names(setlist)`.
+* However, the preferred approach is to use
+`venndir()` arguments `setlist_labels` and `legend_labels`,
+also described in [Custom legend labels].
+* Figure \@ref(fig:input-counts-venndir-2) illustrates this process.
+
+The complete combination of sets and overlaps can be defined by
+calling `make_venn_combn_df()` using a vector of set names.  
+For example `rownames(make_venn_combn_df(LETTERS[1:3]))` produces
+the following:  
+`r jamba::cPaste(sep=", ", paste0("'", rownames(make_venn_combn_df(LETTERS[1:3])), "'"))`
+
+::::
+
+(ref:input-counts-venndir-2) Venn diagram using custom set names using `setlist_labels` and `legend_labels`.
+
+```{r input-counts-venndir-2, fig.cap="(ref:input-counts-venndir-2)", fig.alt="(ref:input-counts-venndir-2)"}
+venndir(setlist,
+   setlist_labels=c("Set A:\ncontrol state",
+      "Set B:\ntest state"),
+   legend_labels=c("A: control state",
+      "B: test state"))
+```
+
 
 ### Signed overlap counts
+
+Similar to providing overlap counts as above, this approach defines
+counts for each directional overlap, using `signed_counts2setlist()`.
+This input is quite complex, also the least common.
+
+The input is a `list` of `integer` count vectors. Each vector is
+named by the overlap, for example `"A"` or `"A&B"`. Each vector
+is named by the direction, delimited by underscore `"_"`, for
+example `"1"` for 'up', or `"1_-1"` for 'up_down'.
+
+Notice the format of the input data:
+
+```{r input-signed-counts}
+signed_counts <- list(
+   "A"=c(
+      "1"=80,
+      "-1"=95),
+   "B"=c(
+      "1"=15,
+      "-1"=30),
+   "A&B"=c(
+      "1_1"=100,
+      "1_-1"=3,
+      "-1_1"=4,
+      "-1_-1"=125))
+signed_counts
+```
+
+This input format is complicated for 2-way data, and certainly
+even more complicated for 3-way data. However, sometimes it
+is the most practical way to produce a given figure.
+
+Counts are converted to a signed setlist with `signed_counts2setlist()`.
+Item names are generated only to create the `setlist` and
+are not otherwise useful.
+
+```{r input-signed-counts2}
+setlist <- signed_counts2setlist(signed_counts)
+lapply(setlist, jamba::middle, 5)
+```
+
+Figure \@ref(fig:input-signed-counts-venndir) shows the `setlist`
+visualized with `venndir()`.
+
+(ref:input-signed-counts-venndir) Venndir showing signed counts summarized using `overlap_type="each"`, which includes counts for each combination of signs.
+
+```{r input-signed-counts-venndir, fig.height=6, fig.width=5, fig.cap="(ref:input-signed-counts-venndir)", fig.alt="(ref:input-signed-counts-venndir)"}
+venndir(setlist, overlap_type="each")
+```
+
+
+### Overlap list
+
+This approach is conceptually similar to [Overlap counts]
+which starts with the Venn counts as input, except in this case
+instead of supplying the integer count in each [Venn overlap](#venn-overlap),
+the data contains the actual items.
+
+Consider a simple example:
+
+* two sets: 'A' and 'B'
+* three total items, one only present in 'A', one unique to 'B', and
+one shared by both groups which is assigned to 'A&B'.
+
+```{r overlaplist-1}
+overlaplist <- list(
+   A=c("Christina"),
+   B=c("James"),
+   "A&B"=c("Jillian", "Zander", "Java Pup")
+)
+str(overlaplist)
+```
+
+
+This `overlaplist` is converted into `setlist` using `overlaplist2setlist()`,
+which can be input to `venndir()`.
+
+Figure \@ref(fig:overlaplist-2) shows the default Venn diagram (left),
+and a variation which displays the item labels (right) using argument
+`show_labels="Ni"`.
+The `show_labels` argument is described in [Label Content].
+
+(ref:overlaplist-2) Venn diagram after converting an overlap list to `setlist`, showing overlap counts (left), and overlap item labels (right).
+
+```{r overlaplist-2, fig.ncol=2, fig.height=5, fig.width=4, out.width="50%", fig.cap="(ref:overlaplist-2)", fig.alt="(ref:overlaplist-2)", fig.subcap=c("Overlap counts.", "Overlap item labels.")}
+setlist <- overlaplist2setlist(overlaplist)
+venndir(setlist)
+
+venndir(setlist,keep_item_order=TRUE,
+   item_cex_factor=c(0.5, 0.5, 0.8),
+   show_labels="Ni")
+```
+
+The argument `item_cex_factor` is used to adjust the item label font
+size, and is described in [Item Labels].
+
+
+### Signed overlap list
+
+A powerful but complex import option is a signed overlap list,
+similar to the previous section [Overlap list]
+with the addition of directional sign.
+
+The format is similar to overlap list:
+
+* `list` named by the [Venn overlap](#venn-overlap): 'A', 'B', 'A&B'
+* Each list element is also a `list`, named by the directional sign.
+
+   * Each sign is defined using `'1'` or `'-1'` separated by a space.
+   * Signs involving one set: `"1"`, `"-1"`
+   * Signs involving two sets: `"1 1"`, `"1 -1"`, etc.
+   * Signs involving three sets: `"1 1 1"`, `"1 -1 1"`, etc.
+
+```{r signed-overlaplist-1}
+signed_overlaplist <- list(
+   A=list(
+      "-1"=c("Item_A1"),
+      "1"=c("Item_A2")),
+   B=list(
+      "1"=c("Item_B1", "ItemB2"),
+      "-1"=c("ItemB3")),
+   "A&B"=list(
+      "1 1"=c("Item_AB2"),
+      "1 -1"=c("Item_AB4"),
+      "-1 1"=c("Item_AB1"),
+      "-1 -1"=c("Item_AB3"))
+)
+str(signed_overlaplist)
+```
+
+The `signed_overlaplist` is converted to `setlist` using
+`overlaplist2setlist()`.
+
+Figure \@ref(fig:signed-overlaplist-2) shows the resulting Venn
+diagram with item labels enabled. Notice the item labels include
+a directional arrow, and are colored by the sign.
+
+(ref:signed-overlaplist-2) Venn diagram derived from a signed overlap list. The figure shows item labels which are colored by sign, and placed beside a directional arrow.
+
+```{r signed-overlaplist-2, fig.cap="(ref:signed-overlaplist-2)", fig.alt="(ref:signed-overlaplist-2)"}
+setlist <- overlaplist2setlist(signed_overlaplist)
+v <- venndir(setlist,
+   show_labels="Ni",
+   item_cex_factor=0.6,
+   xyratio=1.5)
+```
+
+This input format can also be generated from the `Venndir` object
+itself using `overlaplist(v)`. However, it requires that `venndir()`
+was called with argument `overlap_type="each"` to preserve each sign.
+The default `overlap_type="concordance"` does not preserve signs
+for [discordant](#discordant) overlaps.
+
+
+#### Alternative signed overlap list
+
+An alternative input format is shown below, which may be more convenient
+to produce in some circumstances.
+
+The alternate format is shown below:
+
+```{r alt-signed-overlaplist-1}
+alt_signed_overlaplist <- list(
+   A=c("Item_A1"="-1",
+      "item_A2"="1"),
+   B=c("Item_B1"="1",
+      "ItemB2"="1",
+      "ItemB3"="-1"),
+   "A&B"=c("Item_AB2"="1 1",
+      "Item_AB4"="1 -1",
+      "Item_AB1"="-1 1",
+      "Item_AB3"="-1 -1"))
+alt_signed_overlaplist
+```
+
+First, the alternative format is converted to the expected
+format for `overlaplist2setlist()`.
+Then it is converted to `setlist`.
+
+```{r alt-signed-overlaplist-2-prep}
+signed_overlaplist <- lapply(alt_signed_overlaplist, function(i){
+   split(names(i), i)
+})
+setlist <- overlaplist2setlist(signed_overlaplist)
+```
+
+The resulting `setlist` can be used with `venndir()` as
+in Figure \@ref(fig:signed-overlaplist-2).
+
+
+### Items
+
+A streamlined approach to convert items from a `vector` or `list`
+into `setlist` is provided by `venn_meme()`, as described [Venn Memes].
+
+The process assumes the input data is provided in a specific order.
+The process is quite similar to that described in [Overlap list],
+except that this process assumes the order matches the output of
+`make_venn_combn_df()`.
+
+The assumptions:
+
+* Input must be provided in the order defined by
+`make_venn_combn_df(n)` where `n` is the number of sets, or
+`make_venn_combn_df(x)` where `x` is a vector of set names.
+* Input is provided without using overlap names, they are assigned
+based upon the length of the input data.
+* Duplicate items are not permitted.
+
+To illustrate the process, each example below uses a vector of
+character `LETTERS`, showing how the letters are populated into
+the Venn diagram.
+
+Figure \@ref(fig:import-meme-all) illustrates the process by showing the
+output of `venn_meme()`, with each panel using a slightly longer
+vector of items.
+
+* For 1 item, the output includes one set (not shown).
+* For 2 or 3 items, it produces two sets (a).
+* For 3 to 7 items, a 3-way Venn diagram is created (b)
+* For 8 to 15 items, a 4-way Venn diagram is created (c).
+* For 16 to 31 items, a 5-way Venn diagram is created (d).
+
+```{r import-meme-n3, eval=FALSE}
+vm3 <- venn_meme(head(LETTERS, 3))
+vm7 <- venn_meme(head(LETTERS, 7))
+vm15 <- venn_meme(head(LETTERS, 15))
+vm31 <- venn_meme(1:31)
+```
+
+(ref:import-meme-all) Four Venn diagrams showing the output from `venn_meme()` when providing 3, 7, 15, and 31 items, respectively.
+
+```{r import-meme-all, echo=FALSE, fig.height=8, fig.width=9, out.width="90%", fig.cap="(ref:import-meme-all)", fig.alt="(ref:import-meme-all)"}
+vm3 <- venn_meme(head(LETTERS, 3), do_plot=FALSE, font_cex=0.5, item_cex_factor=0.5)
+vm7 <- venn_meme(head(LETTERS, 7), do_plot=FALSE, font_cex=0.5, item_cex_factor=0.5)
+vm15 <- venn_meme(head(LETTERS, 15), do_plot=FALSE, font_cex=0.5, item_cex_factor=0.5)
+vm31 <- venn_meme(1:31,
+   do_plot=FALSE, font_cex=0.5, item_cex_factor=0.5)
+
+use_expand <- -1 * c(0.1, 0.3, 0.1, 0.3);
+
+vm3_gt <- attr(plot(vm3, # main="head(LETTERS, 3)",
+   expand_fraction=c(1,1,1,1)*use_expand*2,
+   do_draw=FALSE), "gtree")
+vm7_gt <- attr(plot(vm7, # main="head(LETTERS, 7)",
+   expand_fraction=c(1,1,1,1)*use_expand*1.5,
+   do_draw=FALSE), "gtree")
+vm15_gt <- attr(plot(vm15, # main="head(LETTERS, 15)",
+   expand_fraction=c(1,2,3.5,2)*use_expand*1.0,
+   do_draw=FALSE), "gtree")
+vm31_gt <- attr(plot(vm31, # main="head(LETTERS, 31)",
+   expand_fraction=c(1,1,1,1)*use_expand,
+   do_draw=FALSE), "gtree")
+
+vm4 <- (wrap_elements(vm3_gt) +
+   wrap_elements(vm7_gt)) /
+   (wrap_elements(vm15_gt) +
+   wrap_elements(vm31_gt)) +
+   plot_layout(widths=c(1, 1)) +
+   plot_annotation(tag_levels='a')
+vm4
+
+```
+
+
+Tip: A useful by-product of calling `venn_meme()` is the creation
+of a `setlist` or `overlaplist`, without needing to provide
+all the [Venn overlap](#venn-overlap) labels upfront.
+
+```{r import-meme-n3-setlist}
+vm3 <- venn_meme(head(LETTERS, 3), do_plot=FALSE)
+setlist(vm3)
+overlaplist(vm3)
+```
+
+
+### List of data frames
+
+A common starting point is a `data.frame` for each set,
+with a column of numeric values, and column of item names.
+Very often this input is a "table of stats" which may
+also need to be filtered for statistical significance.
+
+The general guidance is to filter each `data.frame`, then convert
+the result into a vector. The vector can either be un-signed,
+or signed.
+
+1. **[Setlist](#setlist)**: a `character` vector of items.
+2. **[Signed setlist](#signed-setlist)**: vector using `sign()`, named by item.
+
+To illustrate, consider the test data generated below, as two
+`data.frame` objects with P-values and log2 fold changes.
+
+```{r input-df-list}
+# define some test data
+set.seed(123)
+df1 <- data.frame(
+   item=paste0("item", jamba::padInteger(1:20)),
+   pvalue=round(digits=3, stats::runif(20) / 5),
+   log2FoldChange=round(digits=3, rnorm(20) * 3))
+
+df2 <- data.frame(
+   item=paste0("item", jamba::padInteger(1:20)),
+   pvalue=round(digits=3, stats::runif(20) / 5),
+   log2FoldChange=round(digits=3, rnorm(20) * 3))
+
+head(df1)
+```
+
+#### Option 1. Setlist {-}
+
+One convenient approach is to create a `list` of `data.frame` objects,
+apply a P-value filter to each entry, and return column `'item'`.
+
+> This output does not have directional sign.
+
+```{r input-df-list-1, fig.height=5, fig.width=8}
+# create a list of data.frame objects
+dflist <- list(Dataset1=df1,
+   Dataset2=df2)
+
+# iterate the list
+setlist <- lapply(dflist, function(df){
+   # apply stat threshold
+   dfsub <- subset(df, pvalue < 0.1);
+   # return the item name
+   dfsub$item
+})
+str(setlist)
+```
+
+#### Option 2. Signed setlist {-}
+
+The other common alternative is to extend Option 1 to create
+a signed list, using the sign of `'log2FoldChange'`.
+The vector should be the sign, then *named* by 'item'.
+
+```{r input-df-signed-list, fig.height=5, fig.width=8}
+# create a list of data.frame objects
+dflist <- list(Dataset1=df1,
+   Dataset2=df2)
+
+# iterate the list
+setlist_signed <- lapply(dflist, function(df){
+   # apply stat threshold
+   dfsub <- subset(df, pvalue < 0.1);
+   # create vector using sign()
+   x <- sign(dfsub$log2FoldChange);
+   # add item names
+   names(x) <- dfsub$item;
+   x
+})
+setlist_signed
+```
+
+Figure \@ref(fig:input-df-signed-list-venndir) shows the resulting Venn diagram without sign (left) and with sign (right).
+
+(ref:input-df-signed-list-venndir) Venn diagram using a list of data frames to a `setlist` (left) and signed `setlist` (right).
+
+```{r input-df-signed-list-venndir, echo=FALSE, fig.ncol=2, fig.height=5, fig.width=7, out.width="50%", fig.cap="(ref:input-df-signed-list-venndir)", fig.alt="(ref:input-df-signed-list-venndir)", fig.subcap=c("setlist", "signed setlist")}
+venndir(setlist, font_cex=1.5)
+venndir(setlist_signed, font_cex=1.5)
+```
+
+```{r input-df-signed-list-venndir-1, eval=FALSE}
+venndir(setlist)
+venndir(setlist_signed)
+```
+
+
+## Specialized Input Types
+
+The driving motivation for Venndir involved gene expression data,
+and there are several common methods to import differentially
+expressed genes.
+
+### limma
+
+The **limma** [@R-limma] package covers an amazing array of gene and
+Omics expression analysis methods, spanning transcript and proteomics
+microarray data, transcriptomics RNA sequencing (RNA-seq) data, and
+a broad range of other data types including proteomics, lipidomics,
+metabolomics, and DNA methylation.
+
+The common paradigm, beginning with `x` as expression data.
+See `limma::getEAWP()` for a description of all recognized data
+object types.
+
+```{r limma-example-1, eval=FALSE}
+library(limma)
+
+# fit linear model
+fit <- lmFit(x, design=design)
+
+# apply contrasts
+fit2 <- contrasts.fit(fit, contrasts=contrasts)
+
+# Optional Empirical Bayes moderated t-statistic
+fit3 <- eBayes(fit)
+```
+
+Now one would use `fit3`, or `fit2` if eBayes was not necessary, to
+summarize the statistical contrasts.
+
+Two common approaches are used here, both can be valid:
+
+1. Extract each contrast into a `data.frame` using `limma::topTable()`,
+then follow [List of data frames].
+2. Use `limma::decideTests()` to filter all contrasts together.
+This function returns `limma::TestResults-class` which is equivalent to
+[Signed incidence matrix].
+
+For example, to filter by adjusted P-value 0.05, and 1.5-fold change:
+
+```{r limma-example-2, eval=FALSE}
+im <- limma::decideTests(fit3,
+   p.value=0.05,
+   lfc=log2(1.5))
+```
+
+The resulting [incidence matrix](#incidence-matrix) `im` contains one
+column per contrast.
+
+When using only a subset of contrasts, use the argument `sets` as
+described in [Consistent Set Colors].
+The example below chooses `sets=c(1, 3)`.
+
+```{r limma-example-3, eval=FALSE}
+venndir(im, sets=c(1, 3))
+```
+
+### DESeq2
+
+**DESeq2** [@R-DESeq2] is widely used and excellent for RNA-seq analysis.
+The example below is adapted from `DESeq2::DESeq()` to use three groups:
+`'A'`, `'B'`, `'C'`.
+
+```{r deseq2-example1}
+suppressPackageStartupMessages(library(DESeq2))
+set.seed(123)
+cnts <- matrix(rnbinom(n=1500, mu=100, size=1/0.5), ncol=15)
+rownames(cnts) <- paste0("row", jamba::padInteger(1:100))
+cond <- factor(rep(LETTERS[1:3], each=5))
+colnames(cnts) <- jamba::makeNames(cond, suffix="")
+cnts[1, 1:5 + 0] <- cnts[1, 1:5] + 275;
+cnts[2, 1:5 + 5] <- cnts[2, 1:5 + 5] + 355;
+cnts[3, 1:5 + 10] <- cnts[3, 1:5 + 10] + 425;
+cnts[4, 1:5 + 10] <- cnts[4, 1:5 + 10] + 655;
+
+# object construction
+suppressMessages(
+   dds <- DESeqDataSetFromMatrix(cnts, DataFrame(cond), ~ cond)
+)
+
+# standard analysis
+suppressMessages(
+   dds <- DESeq(dds)
+)
+```
+
+The object `dds` can be used to extract statistical results
+for each contrast, for example see `DESeq2::resultsNames(dds)`.
+
+The next steps extract a `DESeqResults` object for each contrast
+of interest. Note: Use whichever method you typically use at
+this point, there are too many possible workflows to cover here.
+
+
+```{r deseq2-example2, eval=FALSE}
+# Contrast: 'B - A'
+resBA <- results(dds, contrast=c("cond", "B", "A"))
+
+# Contrast: 'C - A'
+resCA <- results(dds, contrast=c("cond", "C", "A"))
+
+# Print the first few rows of the "C - A" contrast results
+head(data.frame(check.names=FALSE, resCA))
+```
+
+```{r deseq2-example2-real}
+# Contrast: 'B - A'
+resBA <- results(dds, contrast=c("cond", "B", "A"))
+
+# Contrast: 'C - A'
+resCA <- results(dds, contrast=c("cond", "C", "A"))
+
+# Print the first few rows of the "C - A" contrast results
+idf <- head(data.frame(check.names=FALSE, resCA))
+idf$baseMean <- round(idf$baseMean, digits=1)
+idf$log2FoldChange <- round(idf$log2FoldChange, digits=2)
+idf$lfcSE <- round(idf$lfcSE, digits=2)
+idf$stat <- round(idf$stat, digits=2)
+kdf <- knitr::kable(
+   booktabs=TRUE,
+   idf,
+   caption="The first 6 rows following DESeq2 statistical analysis.") |>
+   kableExtra::column_spec(1, bold=TRUE)
+kdf
+
+```
+
+Two steps are applied, intentionally lenient for this example:
+
+1. Filter by statistical thresholds
+   * adjusted P-value `padj < 0.20`
+   * fold change `abs(log2FoldChange) > log2(1)`
+
+2. Convert to [signed set](#signed-set), assigning names using the DESeq2
+result rownames.
+
+```{r deseq2-example3-ba}
+# filter statistics
+resBA_hitdf <- subset(resBA, 
+   padj <= 0.2 & 
+   abs(log2FoldChange) > log2(1))
+
+# generate named vector
+resBA_hits <- setNames(
+   sign(resBA_hitdf$log2FoldChange),
+   rownames(resBA_hitdf))
+
+resBA_hits
+```
+
+The same steps are performed for contrast 'C - A'.
+
+```{r deseq2-example3-ca}
+resCA_hitdf <- subset(resCA,
+   padj <= 0.2 &
+   abs(log2FoldChange) > log2(1))
+resCA_hits <- setNames(
+   sign(resCA_hitdf$log2FoldChange),
+   rownames(resCA_hitdf))
+
+resCA_hits
+```
+
+The two [signed sets](#signed-set) are combined into a `list` then
+visualized with `venndir()` in Figure \@ref(fig:deseq2-example4).
+
+(ref:deseq2-example4) Directional Venn diagram comparing statistical hits from two contrasts analyzed using DESeq2.
+
+```{r deseq2-example4, fig.height=5, fig.width=7, out.width="80%", fig.cap="(ref:deseq2-example4)", fig.alt="(ref:deseq2-example4)"}
+setlist <- list(
+   "B-A"=resBA_hits,
+   "C-A"=resCA_hits)
+v <- venndir(setlist,
+   legend_headers=c(Set="Contrast", Size="Differential Genes"))
+```
+
+To view the genes in the Venn diagram, skip ahead to [Item labels] and
+[Signed items], or to extract the genes use `overlaplist(v)`.
 

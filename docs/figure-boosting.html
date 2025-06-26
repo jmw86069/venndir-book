@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.1 Figure Boosting | Venndir Book</title>
+  <meta name="description" content="Venn Diagrams with Directionality" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.1 Figure Boosting | Venndir Book" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/venndir-cover.png" />
+  <meta property="og:description" content="Venn Diagrams with Directionality" />
+  <meta name="github-repo" content="jmw86069/venndir-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.1 Figure Boosting | Venndir Book" />
+  
+  <meta name="twitter:description" content="Venn Diagrams with Directionality" />
+  <meta name="twitter:image" content="/images/venndir-cover.png" />
+
+<meta name="author" content="James M. Ward" />
+
+
+<meta name="date" content="2025-06-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="venndir-gallery.html"/>
+<link rel="next" href="venndir-case-studies.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Venndir Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="what-is-a-venn-diagram.html"><a href="what-is-a-venn-diagram.html"><i class="fa fa-check"></i><b>1</b> What is a Venn diagram?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>1.1</b> Problem Statement</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>2</b> Data Import</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html"><i class="fa fa-check"></i><b>2.1</b> Common Data Input Types</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-sets"><i class="fa fa-check"></i><b>2.1.1</b> List of sets</a></li>
+<li class="chapter" data-level="2.1.2" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-signed-sets"><i class="fa fa-check"></i><b>2.1.2</b> List of signed sets</a></li>
+<li class="chapter" data-level="2.1.3" data-path="common-data-input-types.html"><a href="common-data-input-types.html#incidence-matrix"><i class="fa fa-check"></i><b>2.1.3</b> Incidence matrix</a></li>
+<li class="chapter" data-level="2.1.4" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-incidence-matrix"><i class="fa fa-check"></i><b>2.1.4</b> Signed incidence matrix</a></li>
+<li class="chapter" data-level="2.1.5" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-counts"><i class="fa fa-check"></i><b>2.1.5</b> Overlap counts</a></li>
+<li class="chapter" data-level="2.1.6" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-counts"><i class="fa fa-check"></i><b>2.1.6</b> Signed overlap counts</a></li>
+<li class="chapter" data-level="2.1.7" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-list"><i class="fa fa-check"></i><b>2.1.7</b> Overlap list</a></li>
+<li class="chapter" data-level="2.1.8" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-list"><i class="fa fa-check"></i><b>2.1.8</b> Signed overlap list</a></li>
+<li class="chapter" data-level="2.1.9" data-path="common-data-input-types.html"><a href="common-data-input-types.html#items"><i class="fa fa-check"></i><b>2.1.9</b> Items</a></li>
+<li class="chapter" data-level="2.1.10" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-data-frames"><i class="fa fa-check"></i><b>2.1.10</b> List of data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html"><i class="fa fa-check"></i><b>2.2</b> Specialized Input Types</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="specialized-input-types.html"><a href="specialized-input-types.html#limma"><i class="fa fa-check"></i><b>2.2.1</b> limma</a></li>
+<li class="chapter" data-level="2.2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html#deseq2"><i class="fa fa-check"></i><b>2.2.2</b> DESeq2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="venndir-basics.html"><a href="venndir-basics.html"><i class="fa fa-check"></i><b>3</b> Venndir Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="default-venndir.html"><a href="default-venndir.html"><i class="fa fa-check"></i><b>3.1</b> Default Venndir</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="default-venndir.html"><a href="default-venndir.html#data-for-testing"><i class="fa fa-check"></i><b>3.1.1</b> Data for Testing</a></li>
+<li class="chapter" data-level="3.1.2" data-path="default-venndir.html"><a href="default-venndir.html#create-the-venn"><i class="fa fa-check"></i><b>3.1.2</b> Create the Venn</a></li>
+<li class="chapter" data-level="3.1.3" data-path="default-venndir.html"><a href="default-venndir.html#create-the-euler"><i class="fa fa-check"></i><b>3.1.3</b> Create the Euler</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html"><i class="fa fa-check"></i><b>3.2</b> Venn Set Colors</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="venn-set-colors.html"><a href="venn-set-colors.html#consistent-set-colors"><i class="fa fa-check"></i><b>3.2.1</b> Consistent Set Colors</a></li>
+<li class="chapter" data-level="3.2.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html#venndir-without-color"><i class="fa fa-check"></i><b>3.2.2</b> Venndir Without Color</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="venndir-labels.html"><a href="venndir-labels.html"><i class="fa fa-check"></i><b>3.3</b> Venndir Labels</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="venndir-labels.html"><a href="venndir-labels.html#label-content"><i class="fa fa-check"></i><b>3.3.1</b> Label Content</a></li>
+<li class="chapter" data-level="3.3.2" data-path="venndir-labels.html"><a href="venndir-labels.html#overlap-type"><i class="fa fa-check"></i><b>3.3.2</b> Overlap Type</a></li>
+<li class="chapter" data-level="3.3.3" data-path="venndir-labels.html"><a href="venndir-labels.html#signed-label-placement"><i class="fa fa-check"></i><b>3.3.3</b> Signed Label Placement</a></li>
+<li class="chapter" data-level="3.3.4" data-path="venndir-labels.html"><a href="venndir-labels.html#visual-styles"><i class="fa fa-check"></i><b>3.3.4</b> Visual Styles</a></li>
+<li class="chapter" data-level="3.3.5" data-path="venndir-labels.html"><a href="venndir-labels.html#nudge-a-venn-label"><i class="fa fa-check"></i><b>3.3.5</b> Nudge a Venn Label</a></li>
+<li class="chapter" data-level="3.3.6" data-path="venndir-labels.html"><a href="venndir-labels.html#details-for-label-placement"><i class="fa fa-check"></i><b>3.3.6</b> Details for Label Placement</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="item-labels.html"><a href="item-labels.html"><i class="fa fa-check"></i><b>3.4</b> Item Labels</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="item-labels.html"><a href="item-labels.html#overview-of-item-labeling"><i class="fa fa-check"></i><b>3.4.1</b> Overview of item labeling</a></li>
+<li class="chapter" data-level="3.4.2" data-path="item-labels.html"><a href="item-labels.html#venn-memes"><i class="fa fa-check"></i><b>3.4.2</b> Venn Memes</a></li>
+<li class="chapter" data-level="3.4.3" data-path="item-labels.html"><a href="item-labels.html#item-label-basics"><i class="fa fa-check"></i><b>3.4.3</b> Item Label Basics</a></li>
+<li class="chapter" data-level="3.4.4" data-path="item-labels.html"><a href="item-labels.html#item-layout-adjustments"><i class="fa fa-check"></i><b>3.4.4</b> Item layout adjustments</a></li>
+<li class="chapter" data-level="3.4.5" data-path="item-labels.html"><a href="item-labels.html#item-buffer"><i class="fa fa-check"></i><b>3.4.5</b> Item buffer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html"><i class="fa fa-check"></i><b>3.5</b> Fonts and Font Sizes</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#font-sizes"><i class="fa fa-check"></i><b>3.5.1</b> Font Sizes</a></li>
+<li class="chapter" data-level="3.5.2" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#overall-font-family"><i class="fa fa-check"></i><b>3.5.2</b> Overall Font Family</a></li>
+<li class="chapter" data-level="3.5.3" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#individual-font-families"><i class="fa fa-check"></i><b>3.5.3</b> Individual Font Families</a></li>
+<li class="chapter" data-level="3.5.4" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#available-font-families"><i class="fa fa-check"></i><b>3.5.4</b> Available Font Families</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="venn-legends.html"><a href="venn-legends.html"><i class="fa fa-check"></i><b>3.6</b> Venn Legends</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="venn-legends.html"><a href="venn-legends.html#hide-percent-or-signed-labels"><i class="fa fa-check"></i><b>3.6.1</b> Hide percent or signed labels</a></li>
+<li class="chapter" data-level="3.6.2" data-path="venn-legends.html"><a href="venn-legends.html#custom-legend-labels"><i class="fa fa-check"></i><b>3.6.2</b> Custom legend labels</a></li>
+<li class="chapter" data-level="3.6.3" data-path="venn-legends.html"><a href="venn-legends.html#additional-alias-labels"><i class="fa fa-check"></i><b>3.6.3</b> Additional alias labels</a></li>
+<li class="chapter" data-level="3.6.4" data-path="venn-legends.html"><a href="venn-legends.html#separate-size-and-sign"><i class="fa fa-check"></i><b>3.6.4</b> Separate Size and Sign</a></li>
+<li class="chapter" data-level="3.6.5" data-path="venn-legends.html"><a href="venn-legends.html#legend-color-style"><i class="fa fa-check"></i><b>3.6.5</b> Legend color style</a></li>
+<li class="chapter" data-level="3.6.6" data-path="venn-legends.html"><a href="venn-legends.html#legend-position"><i class="fa fa-check"></i><b>3.6.6</b> Legend position</a></li>
+<li class="chapter" data-level="3.6.7" data-path="venn-legends.html"><a href="venn-legends.html#legend-font-size"><i class="fa fa-check"></i><b>3.6.7</b> Legend font size</a></li>
+<li class="chapter" data-level="3.6.8" data-path="venn-legends.html"><a href="venn-legends.html#legend-custom-fontfamily"><i class="fa fa-check"></i><b>3.6.8</b> Legend custom fontfamily</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="deeper-customizations.html"><a href="deeper-customizations.html"><i class="fa fa-check"></i><b>4</b> Deeper Customizations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="venndir-borders.html"><a href="venndir-borders.html"><i class="fa fa-check"></i><b>4.1</b> Venndir Borders</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="venndir-borders.html"><a href="venndir-borders.html#venndir-rendering-steps"><i class="fa fa-check"></i><b>4.1.1</b> Venndir Rendering Steps</a></li>
+<li class="chapter" data-level="4.1.2" data-path="venndir-borders.html"><a href="venndir-borders.html#customize-venndir-borders"><i class="fa fa-check"></i><b>4.1.2</b> Customize Venndir borders</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html"><i class="fa fa-check"></i><b>4.2</b> Modify Venn Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html#overlap-attributes"><i class="fa fa-check"></i><b>4.2.1</b> Overlap Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="customize-any-label.html"><a href="customize-any-label.html"><i class="fa fa-check"></i><b>4.3</b> Customize Any Label</a></li>
+<li class="chapter" data-level="4.4" data-path="automatic-text-contrast.html"><a href="automatic-text-contrast.html"><i class="fa fa-check"></i><b>4.4</b> Automatic Text Contrast</a></li>
+<li class="chapter" data-level="4.5" data-path="highlight-venn-overlaps.html"><a href="highlight-venn-overlaps.html"><i class="fa fa-check"></i><b>4.5</b> Highlight Venn Overlaps</a></li>
+<li class="chapter" data-level="4.6" data-path="rotate-the-venndir.html"><a href="rotate-the-venndir.html"><i class="fa fa-check"></i><b>4.6</b> Rotate the Venndir</a></li>
+<li class="chapter" data-level="4.7" data-path="nudge-the-legend.html"><a href="nudge-the-legend.html"><i class="fa fa-check"></i><b>4.7</b> Nudge the Legend</a></li>
+<li class="chapter" data-level="4.8" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html"><i class="fa fa-check"></i><b>4.8</b> Hidden Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html#nudge-venndir-circles"><i class="fa fa-check"></i><b>4.8.1</b> Nudge Venndir Circles</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="nudge-specific-labels.html"><a href="nudge-specific-labels.html"><i class="fa fa-check"></i><b>4.9</b> Nudge specific labels</a></li>
+<li class="chapter" data-level="4.10" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html"><i class="fa fa-check"></i><b>4.10</b> Venndir Markdown Support</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-styles"><i class="fa fa-check"></i><b>4.10.1</b> Inline styles</a></li>
+<li class="chapter" data-level="4.10.2" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-images"><i class="fa fa-check"></i><b>4.10.2</b> Inline Images</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="patchwork-with-venndir.html"><a href="patchwork-with-venndir.html"><i class="fa fa-check"></i><b>4.11</b> Patchwork with Venndir</a></li>
+<li class="chapter" data-level="4.12" data-path="custom-signs.html"><a href="custom-signs.html"><i class="fa fa-check"></i><b>4.12</b> Custom Signs</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="custom-signs.html"><a href="custom-signs.html#review-sign-curation"><i class="fa fa-check"></i><b>4.12.1</b> Review Sign Curation</a></li>
+<li class="chapter" data-level="4.12.2" data-path="custom-signs.html"><a href="custom-signs.html#customize-the-symbols"><i class="fa fa-check"></i><b>4.12.2</b> Customize the Symbols</a></li>
+<li class="chapter" data-level="4.12.3" data-path="custom-signs.html"><a href="custom-signs.html#more-advanced-signs"><i class="fa fa-check"></i><b>4.12.3</b> More Advanced Signs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html"><i class="fa fa-check"></i><b>4.13</b> Venndir Graphics Objects</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
+<li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="figure-boosting.html"><a href="figure-boosting.html"><i class="fa fa-check"></i><b>5.1</b> Figure Boosting</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="figure-boosting.html"><a href="figure-boosting.html#me---electron"><i class="fa fa-check"></i><b>5.1.1</b> Me - Electron</a></li>
+<li class="chapter" data-level="5.1.2" data-path="figure-boosting.html"><a href="figure-boosting.html#eulerglyphs"><i class="fa fa-check"></i><b>5.1.2</b> eulerGlyphs</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html"><i class="fa fa-check"></i><b>5.2</b> Venndir Case Studies</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html#seehawer-kmt2-gene-venns"><i class="fa fa-check"></i><b>5.2.1</b> Seehawer Kmt2 Gene Venns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>6</b> Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Venndir Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="figure-boosting" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Figure Boosting<a href="figure-boosting.html#figure-boosting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One of the best hobby activities while developing Venndir has been
+"figure sniping", which is loosely translated,
+"Can Venndir make that figure?"</p>
+<p>There are two main motivations:</p>
+<ol style="list-style-type: decimal">
+<li>Can it be done? <em>A test of creativity, a test of wills.</em></li>
+<li>Can it be done better? <em>Dare we try?</em></li>
+</ol>
+<p>There are plenty of graphics tools with which someone could just
+create their own Venn diagram "by hand", such as Inkscape,
+Adobe Illustrator, Microsoft Powerpoint.
+For me, the fewer things I do "by hand" the better.
+To be completely frank with myself, the fewer things I don't <em>want</em>
+to do by hand the better.
+Also me: Somtimes I do what I <em>want</em> to do.</p>
+<p>The first example was shown in Figure <a href="item-labels.html#fig:items-2">3.21</a>,
+to recreate part of the nice Venn diagram in <span class="citation">(<a href="#ref-Salybekov_2021">Salybekov et al. 2021</a>)</span> Figure 2.</p>
+<div id="me---electron" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Me - Electron<a href="figure-boosting.html#me---electron" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This example is straighforward, starting with a fun one posted on Reddit
+<a href="https://www.reddit.com/r/physicsmemes/comments/v5adqq/you_and_i_arent_so_different/">r/physicsmemes</a>.
+The person "Me" and an "Electron" both starts behaving differently
+when observed.</p>
+<p>The labels are clear, the colors are easily approximated.
+The font looks like Times, so <code>fontfamily='serif'</code> should suffice.
+The center label is probably best represented as one item label,
+separating each word with a newline <code>'\n'</code> character.</p>
+<p>Figure <a href="figure-boosting.html#fig:me-electron">5.1</a> shows the outcome, relatively quick and easy!
+Two more options are shown on the bottom row. The first (bottom left)
+customizes the innerborder and outerborder. The second calls
+<code>modify_venndir_overlap()</code> to highlight the center region.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:me-electron"></span>
+<img src="images/MeElectron.png" alt="Figure from Reddit r/physicsmemes (top left), re-created by Venndir (top right). Two alternatives are shown (bottom row) adding some visual flair." width="50%" /><img src="_main_files/figure-html/me-electron-2.png" alt="Figure from Reddit r/physicsmemes (top left), re-created by Venndir (top right). Two alternatives are shown (bottom row) adding some visual flair." width="50%" /><img src="_main_files/figure-html/me-electron-3.png" alt="Figure from Reddit r/physicsmemes (top left), re-created by Venndir (top right). Two alternatives are shown (bottom row) adding some visual flair." width="50%" /><img src="_main_files/figure-html/me-electron-4.png" alt="Figure from Reddit r/physicsmemes (top left), re-created by Venndir (top right). Two alternatives are shown (bottom row) adding some visual flair." width="50%" />
+<p class="caption">
+Figure 5.1: Figure from Reddit r/physicsmemes (top left), re-created by Venndir (top right). Two alternatives are shown (bottom row) adding some visual flair.
+</p>
+</div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="figure-boosting.html#cb132-1" tabindex="-1"></a>olist <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Me&quot;</span>,</span>
+<span id="cb132-2"><a href="figure-boosting.html#cb132-2" tabindex="-1"></a>   <span class="st">&quot;Electron&quot;</span>,</span>
+<span id="cb132-3"><a href="figure-boosting.html#cb132-3" tabindex="-1"></a>   <span class="fu">paste</span>(<span class="at">collapse=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb132-4"><a href="figure-boosting.html#cb132-4" tabindex="-1"></a>      <span class="fu">c</span>(<span class="st">&quot;start&quot;</span>, <span class="st">&quot;behaving&quot;</span>,</span>
+<span id="cb132-5"><a href="figure-boosting.html#cb132-5" tabindex="-1"></a>         <span class="st">&quot;differently&quot;</span>, <span class="st">&quot;when&quot;</span>,</span>
+<span id="cb132-6"><a href="figure-boosting.html#cb132-6" tabindex="-1"></a>         <span class="st">&quot;observed&quot;</span>))</span>
+<span id="cb132-7"><a href="figure-boosting.html#cb132-7" tabindex="-1"></a>)</span>
+<span id="cb132-8"><a href="figure-boosting.html#cb132-8" tabindex="-1"></a><span class="fu">venn_meme</span>(olist,</span>
+<span id="cb132-9"><a href="figure-boosting.html#cb132-9" tabindex="-1"></a>   <span class="at">outerborder.lwd=</span><span class="dv">2</span>, <span class="at">innerborder.lwd=</span><span class="dv">2</span>,</span>
+<span id="cb132-10"><a href="figure-boosting.html#cb132-10" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.7</span>,</span>
+<span id="cb132-11"><a href="figure-boosting.html#cb132-11" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.1</span>),</span>
+<span id="cb132-12"><a href="figure-boosting.html#cb132-12" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.9</span>),</span>
+<span id="cb132-13"><a href="figure-boosting.html#cb132-13" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;serif&quot;</span>,</span>
+<span id="cb132-14"><a href="figure-boosting.html#cb132-14" tabindex="-1"></a>   <span class="at">set_colors=</span><span class="fu">c</span>(<span class="st">&quot;#BFFAD6&quot;</span>, <span class="st">&quot;#C4D8F6&quot;</span>))</span></code></pre></div>
+</div>
+<div id="eulerglyphs" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> eulerGlyphs<a href="figure-boosting.html#eulerglyphs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:eulerglyph"></span>
+<img src="images/eulerGlyphs.png" alt="Target diagram from eulerGlyphs." width="90%" />
+<p class="caption">
+Figure 5.2: Target diagram from eulerGlyphs.
+</p>
+</div>
+<p>Figure <a href="figure-boosting.html#fig:eulerglyph">5.2</a> shows a fantastic figure created by
+<a href="https://www.eulerdiagrams.com/eulerGlyphs/">eulerGlyphs</a>,
+an application designed to create proportional Euler diagrams.
+The data represents <a href="10.1109/TVCG.2012.199">breast cancer screening statistics</a>,
+and is a common reference dataset to study the visual perception of statistics.</p>
+<p>A brief summary of the data follows:</p>
+<ul>
+<li>10 out of 1,000 women age 40 have breast cancer.</li>
+<li>8 of every10 women <em>with</em> breast cancer got a positive test result.</li>
+<li>95 of every 990 women <em>without</em> breast cancer got a positive test result.</li>
+</ul>
+<p>Figure <a href="figure-boosting.html#fig:euler-glyphs-1">5.3</a> shows the initial attempt, using
+<code>overlap_type="agreement"</code>, then visualizing items with only the
+sign, which for agreement uses <code>'='</code> the equals sign. Items are
+rotated with <code>jitter_degrees</code> to provide some visual randomness.</p>
+
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="figure-boosting.html#cb133-1" tabindex="-1"></a>mammo_counts <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb133-2"><a href="figure-boosting.html#cb133-2" tabindex="-1"></a>   <span class="at">wob=</span><span class="dv">895</span>,</span>
+<span id="cb133-3"><a href="figure-boosting.html#cb133-3" tabindex="-1"></a>   <span class="at">wwbc=</span><span class="dv">2</span>,</span>
+<span id="cb133-4"><a href="figure-boosting.html#cb133-4" tabindex="-1"></a>   <span class="st">&quot;wob&amp;wwpm&quot;</span><span class="ot">=</span><span class="dv">95</span>,</span>
+<span id="cb133-5"><a href="figure-boosting.html#cb133-5" tabindex="-1"></a>   <span class="st">&quot;wwbc&amp;wwpm&quot;</span><span class="ot">=</span><span class="dv">8</span>)</span>
+<span id="cb133-6"><a href="figure-boosting.html#cb133-6" tabindex="-1"></a>mammo_list <span class="ot">&lt;-</span> <span class="fu">counts2setlist</span>(mammo_counts)</span>
+<span id="cb133-7"><a href="figure-boosting.html#cb133-7" tabindex="-1"></a>mammo_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb133-8"><a href="figure-boosting.html#cb133-8" tabindex="-1"></a>   <span class="at">wob=</span><span class="st">&quot;women without</span><span class="sc">\n</span><span class="st">breast cancer&quot;</span>,</span>
+<span id="cb133-9"><a href="figure-boosting.html#cb133-9" tabindex="-1"></a>   <span class="at">wwbc=</span><span class="st">&quot;women with</span><span class="sc">\n</span><span class="st">breast cancer&quot;</span>,</span>
+<span id="cb133-10"><a href="figure-boosting.html#cb133-10" tabindex="-1"></a>   <span class="at">wwpm=</span><span class="st">&quot;women with</span><span class="sc">\n</span><span class="st">positive mammography&quot;</span>)</span>
+<span id="cb133-11"><a href="figure-boosting.html#cb133-11" tabindex="-1"></a>mammo_colors<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;#AEAEFF&quot;</span>, <span class="st">&quot;#FF9D9D&quot;</span>, <span class="st">&quot;#896699&quot;</span>)</span>
+<span id="cb133-12"><a href="figure-boosting.html#cb133-12" tabindex="-1"></a>v_mammo <span class="ot">&lt;-</span> <span class="fu">venndir</span>(mammo_list,</span>
+<span id="cb133-13"><a href="figure-boosting.html#cb133-13" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;agreement&quot;</span>,</span>
+<span id="cb133-14"><a href="figure-boosting.html#cb133-14" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.3</span>,</span>
+<span id="cb133-15"><a href="figure-boosting.html#cb133-15" tabindex="-1"></a>   <span class="at">set_colors=</span>mammo_colors,</span>
+<span id="cb133-16"><a href="figure-boosting.html#cb133-16" tabindex="-1"></a>   <span class="at">setlist_labels=</span>mammo_labels,</span>
+<span id="cb133-17"><a href="figure-boosting.html#cb133-17" tabindex="-1"></a>   <span class="at">xyratio=</span><span class="fl">0.4</span>,</span>
+<span id="cb133-18"><a href="figure-boosting.html#cb133-18" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
+<span id="cb133-19"><a href="figure-boosting.html#cb133-19" tabindex="-1"></a>   <span class="at">show_items=</span><span class="st">&quot;sign&quot;</span>,</span>
+<span id="cb133-20"><a href="figure-boosting.html#cb133-20" tabindex="-1"></a>   <span class="at">jitter_degrees=</span><span class="dv">45</span>,</span>
+<span id="cb133-21"><a href="figure-boosting.html#cb133-21" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="sc">-</span><span class="fl">0.01</span>, <span class="at">width_buffer=</span><span class="fl">0.05</span>,</span>
+<span id="cb133-22"><a href="figure-boosting.html#cb133-22" tabindex="-1"></a>   <span class="at">item_cex=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb133-23"><a href="figure-boosting.html#cb133-23" tabindex="-1"></a>   <span class="at">segment_distance=</span><span class="fl">0.02</span>,</span>
+<span id="cb133-24"><a href="figure-boosting.html#cb133-24" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.05</span>, <span class="sc">-</span><span class="fl">0.05</span>, <span class="fl">0.05</span>),</span>
+<span id="cb133-25"><a href="figure-boosting.html#cb133-25" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">180</span>,</span>
+<span id="cb133-26"><a href="figure-boosting.html#cb133-26" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
+<span id="cb133-27"><a href="figure-boosting.html#cb133-27" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:euler-glyphs-1"></span>
+<img src="_main_files/figure-html/euler-glyphs-1-1.png" alt="Initial attempt at re-creating the EulerGlyphs figure." width="80%" />
+<p class="caption">
+Figure 5.3: Initial attempt at re-creating the EulerGlyphs figure.
+</p>
+</div>
+<p>The first pass fills the space with <code>'='</code> symbols,
+rotates the <code>eulerr</code> output, and placed the circles quite well.
+The argument <code>xyratio=0.4</code> placed the <code>'='</code> symbols closer
+together than default.</p>
+<p>Another approach could improve the figure, using a
+the Unicode <code>'U+25CF'</code> filled circle with
+the method described in <a href="custom-signs.html#customize-the-symbols">Customize the Symbols</a>.
+This symbol would match the font color, which can be edited
+to match the source figure.</p>
+<p>(In a pinch, the items themselves could be edited in the <code>Venndir</code> object:
+<code>v_mammo@label_df$items</code>. The items could be replaced with the Unicode
+symbol as one option.)</p>
+<p>Figure <a href="figure-boosting.html#fig:euler-glyphs-3">5.4</a> shows Unicode filled circles,
+and colors assigned to approximate the colors in eulerGlyphs.
+The set labels are nudged.</p>
+
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="figure-boosting.html#cb134-1" tabindex="-1"></a>curate_df3 <span class="ot">&lt;-</span> curate_df;</span>
+<span id="cb134-2"><a href="figure-boosting.html#cb134-2" tabindex="-1"></a>agg3 <span class="ot">&lt;-</span> <span class="fu">which</span>(curate_df3<span class="sc">$</span>from <span class="sc">%in%</span> <span class="st">&quot;agreement&quot;</span>)</span>
+<span id="cb134-3"><a href="figure-boosting.html#cb134-3" tabindex="-1"></a>curate_df3[agg3, <span class="st">&quot;sign&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;\u25CF&quot;</span>;</span>
+<span id="cb134-4"><a href="figure-boosting.html#cb134-4" tabindex="-1"></a></span>
+<span id="cb134-5"><a href="figure-boosting.html#cb134-5" tabindex="-1"></a><span class="co"># create a new Venndir</span></span>
+<span id="cb134-6"><a href="figure-boosting.html#cb134-6" tabindex="-1"></a>v_mammo3 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(mammo_list,</span>
+<span id="cb134-7"><a href="figure-boosting.html#cb134-7" tabindex="-1"></a>   <span class="at">do_plot=</span><span class="cn">FALSE</span>,</span>
+<span id="cb134-8"><a href="figure-boosting.html#cb134-8" tabindex="-1"></a>   <span class="at">circle_nudge=</span><span class="fu">list</span>(</span>
+<span id="cb134-9"><a href="figure-boosting.html#cb134-9" tabindex="-1"></a>      <span class="at">wwbc=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.8</span>, <span class="dv">0</span>),</span>
+<span id="cb134-10"><a href="figure-boosting.html#cb134-10" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.6</span>, <span class="dv">0</span>)),</span>
+<span id="cb134-11"><a href="figure-boosting.html#cb134-11" tabindex="-1"></a>   <span class="at">innerborder.lwd=</span><span class="dv">1</span>, <span class="at">outerborder.lwd=</span><span class="dv">1</span>,</span>
+<span id="cb134-12"><a href="figure-boosting.html#cb134-12" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;agreement&quot;</span>,</span>
+<span id="cb134-13"><a href="figure-boosting.html#cb134-13" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.1</span>,</span>
+<span id="cb134-14"><a href="figure-boosting.html#cb134-14" tabindex="-1"></a>   <span class="at">set_colors=</span>mammo_colors,</span>
+<span id="cb134-15"><a href="figure-boosting.html#cb134-15" tabindex="-1"></a>   <span class="at">curate_df=</span>curate_df3,</span>
+<span id="cb134-16"><a href="figure-boosting.html#cb134-16" tabindex="-1"></a>   <span class="at">setlist_labels=</span>mammo_labels,</span>
+<span id="cb134-17"><a href="figure-boosting.html#cb134-17" tabindex="-1"></a>   <span class="at">xyratio=</span><span class="fl">0.6</span>,</span>
+<span id="cb134-18"><a href="figure-boosting.html#cb134-18" tabindex="-1"></a>   <span class="at">fontfaces=</span><span class="fu">list</span>(<span class="at">overlap=</span><span class="st">&quot;plain&quot;</span>),</span>
+<span id="cb134-19"><a href="figure-boosting.html#cb134-19" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
+<span id="cb134-20"><a href="figure-boosting.html#cb134-20" tabindex="-1"></a>   <span class="at">show_items=</span><span class="st">&quot;sign&quot;</span>,</span>
+<span id="cb134-21"><a href="figure-boosting.html#cb134-21" tabindex="-1"></a>   <span class="at">segment_buffer=</span><span class="sc">-</span><span class="fl">0.05</span>,</span>
+<span id="cb134-22"><a href="figure-boosting.html#cb134-22" tabindex="-1"></a>   <span class="at">jitter_cex=</span><span class="dv">0</span>, <span class="at">jitter_color=</span><span class="dv">0</span>,</span>
+<span id="cb134-23"><a href="figure-boosting.html#cb134-23" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">0.8</span>,</span>
+<span id="cb134-24"><a href="figure-boosting.html#cb134-24" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="sc">-</span><span class="fl">0.02</span>,</span>
+<span id="cb134-25"><a href="figure-boosting.html#cb134-25" tabindex="-1"></a>   <span class="at">item_cex=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="dv">1</span>,</span>
+<span id="cb134-26"><a href="figure-boosting.html#cb134-26" tabindex="-1"></a>   <span class="at">segment_distance=</span><span class="fl">0.02</span>,</span>
+<span id="cb134-27"><a href="figure-boosting.html#cb134-27" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">180</span>,</span>
+<span id="cb134-28"><a href="figure-boosting.html#cb134-28" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
+<span id="cb134-29"><a href="figure-boosting.html#cb134-29" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span>
+<span id="cb134-30"><a href="figure-boosting.html#cb134-30" tabindex="-1"></a></span>
+<span id="cb134-31"><a href="figure-boosting.html#cb134-31" tabindex="-1"></a><span class="co"># edit the label colors</span></span>
+<span id="cb134-32"><a href="figure-boosting.html#cb134-32" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wob&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;blue1&quot;</span>;</span>
+<span id="cb134-33"><a href="figure-boosting.html#cb134-33" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wwbc&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;red2&quot;</span>;</span>
+<span id="cb134-34"><a href="figure-boosting.html#cb134-34" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wob.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> mammo_colors[<span class="dv">1</span>];</span>
+<span id="cb134-35"><a href="figure-boosting.html#cb134-35" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wob&amp;wwpm.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;royalblue&quot;</span>;</span>
+<span id="cb134-36"><a href="figure-boosting.html#cb134-36" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wwbc&amp;wwpm.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;#DD6666&quot;</span>;</span>
+<span id="cb134-37"><a href="figure-boosting.html#cb134-37" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wwbc.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> mammo_colors[<span class="dv">2</span>];</span>
+<span id="cb134-38"><a href="figure-boosting.html#cb134-38" tabindex="-1"></a></span>
+<span id="cb134-39"><a href="figure-boosting.html#cb134-39" tabindex="-1"></a><span class="co"># nudge labels</span></span>
+<span id="cb134-40"><a href="figure-boosting.html#cb134-40" tabindex="-1"></a>v_mammo3n <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(v_mammo3,</span>
+<span id="cb134-41"><a href="figure-boosting.html#cb134-41" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;outside&quot;</span>,</span>
+<span id="cb134-42"><a href="figure-boosting.html#cb134-42" tabindex="-1"></a>   <span class="at">offset_list=</span><span class="fu">list</span>(<span class="at">wwbc=</span><span class="fu">c</span>(<span class="fl">0.0</span>, <span class="fl">0.03</span>),</span>
+<span id="cb134-43"><a href="figure-boosting.html#cb134-43" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.07</span>, <span class="fl">0.1</span>),</span>
+<span id="cb134-44"><a href="figure-boosting.html#cb134-44" tabindex="-1"></a>      <span class="at">wob=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.06</span>)))</span>
+<span id="cb134-45"><a href="figure-boosting.html#cb134-45" tabindex="-1"></a></span>
+<span id="cb134-46"><a href="figure-boosting.html#cb134-46" tabindex="-1"></a><span class="co"># visualize</span></span>
+<span id="cb134-47"><a href="figure-boosting.html#cb134-47" tabindex="-1"></a><span class="fu">plot</span>(v_mammo3n,</span>
+<span id="cb134-48"><a href="figure-boosting.html#cb134-48" tabindex="-1"></a>   <span class="at">jitter_color=</span><span class="dv">0</span>, <span class="at">width_buffer=</span><span class="fl">0.02</span>,</span>
+<span id="cb134-49"><a href="figure-boosting.html#cb134-49" tabindex="-1"></a>   <span class="at">L_lo=</span><span class="dv">80</span>, <span class="at">L_hi=</span><span class="dv">85</span>, <span class="at">C_floor=</span><span class="dv">50</span>,</span>
+<span id="cb134-50"><a href="figure-boosting.html#cb134-50" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.05</span>, <span class="dv">0</span>),</span>
+<span id="cb134-51"><a href="figure-boosting.html#cb134-51" tabindex="-1"></a>   <span class="at">innerborder.lwd=</span><span class="dv">0</span>, <span class="at">outerborder.lwd=</span><span class="fl">0.7</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:euler-glyphs-3"></span>
+<img src="_main_files/figure-html/euler-glyphs-3-1.png" alt="Second attempt at the EulerGlyphs figure. It already looks cleaner." width="80%" />
+<p class="caption">
+Figure 5.4: Second attempt at the EulerGlyphs figure. It already looks cleaner.
+</p>
+</div>
+<p>Both previous attempts showed "quick and easy" approximations,
+however the spirit of Figure Boosting is to re-create the
+image as closely as possible.</p>
+<p>The eulerGlyphs figure used points colored
+to convey true breast cancer status, with black border to
+indicate a positive mammography test result.
+To mimic this effect requires using proper points.</p>
+<p>The steps required:</p>
+<ol style="list-style-type: decimal">
+<li>Create the Venndir object without item labels.</li>
+<li>Nudge the set labels, apply custom colors.</li>
+<li>Extract the <code>JamPolygon</code> object.</li>
+<li>Call <code>label_fill_JamPolygon()</code> for each overlap.</li>
+<li>Render <code>grid::pointsGrob()</code> in the correct <code>viewport</code>.</li>
+</ol>
+<p>Steps 1 and 2 are shown below:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="figure-boosting.html#cb135-1" tabindex="-1"></a><span class="co"># create a new Venndir</span></span>
+<span id="cb135-2"><a href="figure-boosting.html#cb135-2" tabindex="-1"></a>v_mammo4 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(mammo_list,</span>
+<span id="cb135-3"><a href="figure-boosting.html#cb135-3" tabindex="-1"></a>   <span class="at">do_plot=</span><span class="cn">FALSE</span>,</span>
+<span id="cb135-4"><a href="figure-boosting.html#cb135-4" tabindex="-1"></a>   <span class="at">circle_nudge=</span><span class="fu">list</span>(</span>
+<span id="cb135-5"><a href="figure-boosting.html#cb135-5" tabindex="-1"></a>      <span class="at">wwbc=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.4</span>, <span class="dv">0</span>),</span>
+<span id="cb135-6"><a href="figure-boosting.html#cb135-6" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.6</span>, <span class="dv">0</span>)),</span>
+<span id="cb135-7"><a href="figure-boosting.html#cb135-7" tabindex="-1"></a>   <span class="at">innerborder.lwd=</span><span class="dv">1</span>, <span class="at">outerborder.lwd=</span><span class="dv">1</span>,</span>
+<span id="cb135-8"><a href="figure-boosting.html#cb135-8" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;agreement&quot;</span>,</span>
+<span id="cb135-9"><a href="figure-boosting.html#cb135-9" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.1</span>,</span>
+<span id="cb135-10"><a href="figure-boosting.html#cb135-10" tabindex="-1"></a>   <span class="at">set_colors=</span>mammo_colors,</span>
+<span id="cb135-11"><a href="figure-boosting.html#cb135-11" tabindex="-1"></a>   <span class="at">setlist_labels=</span>mammo_labels,</span>
+<span id="cb135-12"><a href="figure-boosting.html#cb135-12" tabindex="-1"></a>   <span class="at">fontfaces=</span><span class="fu">list</span>(<span class="at">overlap=</span><span class="st">&quot;plain&quot;</span>),</span>
+<span id="cb135-13"><a href="figure-boosting.html#cb135-13" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;N&quot;</span>, <span class="at">keep_items=</span><span class="cn">TRUE</span>,</span>
+<span id="cb135-14"><a href="figure-boosting.html#cb135-14" tabindex="-1"></a>   <span class="at">segment_buffer=</span><span class="sc">-</span><span class="fl">0.05</span>,</span>
+<span id="cb135-15"><a href="figure-boosting.html#cb135-15" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">0.8</span>,</span>
+<span id="cb135-16"><a href="figure-boosting.html#cb135-16" tabindex="-1"></a>   <span class="at">segment_distance=</span><span class="fl">0.02</span>,</span>
+<span id="cb135-17"><a href="figure-boosting.html#cb135-17" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">180</span>,</span>
+<span id="cb135-18"><a href="figure-boosting.html#cb135-18" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
+<span id="cb135-19"><a href="figure-boosting.html#cb135-19" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span>
+<span id="cb135-20"><a href="figure-boosting.html#cb135-20" tabindex="-1"></a><span class="co"># edit the label colors</span></span>
+<span id="cb135-21"><a href="figure-boosting.html#cb135-21" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;wob&quot;</span>, <span class="st">&quot;wwbc&quot;</span>)</span>
+<span id="cb135-22"><a href="figure-boosting.html#cb135-22" tabindex="-1"></a>v_mammo4<span class="sc">@</span>label_df[k, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb135-23"><a href="figure-boosting.html#cb135-23" tabindex="-1"></a><span class="co"># nudge labels</span></span>
+<span id="cb135-24"><a href="figure-boosting.html#cb135-24" tabindex="-1"></a>v_mammo4n <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(v_mammo4,</span>
+<span id="cb135-25"><a href="figure-boosting.html#cb135-25" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;outside&quot;</span>,</span>
+<span id="cb135-26"><a href="figure-boosting.html#cb135-26" tabindex="-1"></a>   <span class="at">offset_list=</span><span class="fu">list</span>(<span class="at">wwbc=</span><span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.045</span>),</span>
+<span id="cb135-27"><a href="figure-boosting.html#cb135-27" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.09</span>, <span class="fl">0.06</span>),</span>
+<span id="cb135-28"><a href="figure-boosting.html#cb135-28" tabindex="-1"></a>      <span class="at">wob=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.01</span>, <span class="sc">-</span><span class="fl">0.06</span>)))</span></code></pre></div>
+<p>The internal function <code>label_fill_JamPolygon()</code> defines
+coordinates for item labels inside a <code>JamPolygon</code>.
+The example iterates each overlap region that contains items,
+then stores item coordinates to use later.
+The point fill color and border are defined for each region as well.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="figure-boosting.html#cb136-1" tabindex="-1"></a><span class="co"># JamPolygon</span></span>
+<span id="cb136-2"><a href="figure-boosting.html#cb136-2" tabindex="-1"></a>v_items <span class="ot">&lt;-</span> jamba<span class="sc">::</span><span class="fu">rmNULL</span>(v_mammo4<span class="sc">@</span>label_df<span class="sc">$</span>items)</span>
+<span id="cb136-3"><a href="figure-boosting.html#cb136-3" tabindex="-1"></a>v_colors <span class="ot">&lt;-</span> mammo_colors[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)];</span>
+<span id="cb136-4"><a href="figure-boosting.html#cb136-4" tabindex="-1"></a>v_borders <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb136-5"><a href="figure-boosting.html#cb136-5" tabindex="-1"></a>v_buffers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="sc">-</span><span class="fl">0.2</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.15</span>)</span>
+<span id="cb136-6"><a href="figure-boosting.html#cb136-6" tabindex="-1"></a>xy <span class="ot">&lt;-</span> jamba<span class="sc">::</span><span class="fu">rbindList</span>(<span class="fu">lapply</span>(<span class="fu">seq_along</span>(v_items), <span class="cf">function</span>(i){</span>
+<span id="cb136-7"><a href="figure-boosting.html#cb136-7" tabindex="-1"></a>   which_jp <span class="ot">&lt;-</span> <span class="fu">match</span>(<span class="fu">gsub</span>(<span class="st">&quot;[|].+&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="fu">names</span>(v_items)[i]),</span>
+<span id="cb136-8"><a href="figure-boosting.html#cb136-8" tabindex="-1"></a>      <span class="fu">names</span>(v_mammo4<span class="sc">@</span>jps))</span>
+<span id="cb136-9"><a href="figure-boosting.html#cb136-9" tabindex="-1"></a>   xy <span class="ot">&lt;-</span> <span class="fu">label_fill_JamPolygon</span>(<span class="at">jp=</span>v_mammo4<span class="sc">@</span>jps[which_jp],</span>
+<span id="cb136-10"><a href="figure-boosting.html#cb136-10" tabindex="-1"></a>      <span class="at">width_buffer=</span><span class="fl">0.01</span>,</span>
+<span id="cb136-11"><a href="figure-boosting.html#cb136-11" tabindex="-1"></a>      <span class="at">buffer=</span>v_buffers[i], <span class="at">xyratio=</span><span class="fl">0.5</span>,</span>
+<span id="cb136-12"><a href="figure-boosting.html#cb136-12" tabindex="-1"></a>      <span class="at">labels=</span><span class="fu">seq_along</span>(v_items[[i]]))<span class="sc">$</span>items_df;</span>
+<span id="cb136-13"><a href="figure-boosting.html#cb136-13" tabindex="-1"></a>   xy<span class="sc">$</span>color <span class="ot">&lt;-</span> v_colors[i];</span>
+<span id="cb136-14"><a href="figure-boosting.html#cb136-14" tabindex="-1"></a>   xy<span class="sc">$</span>border <span class="ot">&lt;-</span> v_borders[i];</span>
+<span id="cb136-15"><a href="figure-boosting.html#cb136-15" tabindex="-1"></a>   xy;</span>
+<span id="cb136-16"><a href="figure-boosting.html#cb136-16" tabindex="-1"></a>}))</span></code></pre></div>
+<p>Finally, the item coordinates are used with <code>grid::pointsGrob()</code>
+with some visual noise added by <code>rnorm()</code> for visual flair.</p>
+<p>Figure <a href="figure-boosting.html#fig:euler-glyphs-4">5.5</a> shows the result from the final
+steps, drawing the points in the correct <code>viewport</code>.</p>
+
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="figure-boosting.html#cb137-1" tabindex="-1"></a><span class="co"># plot the Venndir</span></span>
+<span id="cb137-2"><a href="figure-boosting.html#cb137-2" tabindex="-1"></a>v_mammo4p <span class="ot">&lt;-</span> <span class="fu">plot</span>(v_mammo4n,</span>
+<span id="cb137-3"><a href="figure-boosting.html#cb137-3" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.05</span>, <span class="dv">0</span>)<span class="sc">-</span><span class="fl">0.05</span>)</span>
+<span id="cb137-4"><a href="figure-boosting.html#cb137-4" tabindex="-1"></a><span class="co"># extract the viewport adjustments</span></span>
+<span id="cb137-5"><a href="figure-boosting.html#cb137-5" tabindex="-1"></a>vp <span class="ot">&lt;-</span> <span class="fu">attr</span>(v_mammo4p, <span class="st">&quot;viewport&quot;</span>);</span>
+<span id="cb137-6"><a href="figure-boosting.html#cb137-6" tabindex="-1"></a>adjx <span class="ot">&lt;-</span> <span class="fu">attr</span>(v_mammo4p, <span class="st">&quot;adjx&quot;</span>);</span>
+<span id="cb137-7"><a href="figure-boosting.html#cb137-7" tabindex="-1"></a>adjy <span class="ot">&lt;-</span> <span class="fu">attr</span>(v_mammo4p, <span class="st">&quot;adjy&quot;</span>);</span>
+<span id="cb137-8"><a href="figure-boosting.html#cb137-8" tabindex="-1"></a><span class="co"># create pointsGrob</span></span>
+<span id="cb137-9"><a href="figure-boosting.html#cb137-9" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>);</span>
+<span id="cb137-10"><a href="figure-boosting.html#cb137-10" tabindex="-1"></a>pts <span class="ot">&lt;-</span> grid<span class="sc">::</span><span class="fu">grid.points</span>(<span class="at">x=</span><span class="fu">adjx</span>(xy<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)<span class="sc">/</span><span class="dv">6</span>),</span>
+<span id="cb137-11"><a href="figure-boosting.html#cb137-11" tabindex="-1"></a>   <span class="at">draw=</span><span class="cn">FALSE</span>,</span>
+<span id="cb137-12"><a href="figure-boosting.html#cb137-12" tabindex="-1"></a>   <span class="at">y=</span><span class="fu">adjy</span>(xy<span class="sc">$</span>y <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)<span class="sc">/</span><span class="dv">6</span>), <span class="at">pch=</span><span class="dv">21</span>,</span>
+<span id="cb137-13"><a href="figure-boosting.html#cb137-13" tabindex="-1"></a>   <span class="at">gp=</span>grid<span class="sc">::</span><span class="fu">gpar</span>(<span class="at">col=</span>xy<span class="sc">$</span>border, <span class="at">fill=</span>xy<span class="sc">$</span>color, <span class="at">cex=</span><span class="fl">0.6</span>),</span>
+<span id="cb137-14"><a href="figure-boosting.html#cb137-14" tabindex="-1"></a>   <span class="co"># vp=attr(v_mammo4, &quot;viewport&quot;),</span></span>
+<span id="cb137-15"><a href="figure-boosting.html#cb137-15" tabindex="-1"></a>   <span class="at">default.units=</span><span class="st">&quot;snpc&quot;</span>)</span>
+<span id="cb137-16"><a href="figure-boosting.html#cb137-16" tabindex="-1"></a><span class="co"># draw inside the viewport</span></span>
+<span id="cb137-17"><a href="figure-boosting.html#cb137-17" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">pushViewport</span>(vp)</span>
+<span id="cb137-18"><a href="figure-boosting.html#cb137-18" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(pts)</span>
+<span id="cb137-19"><a href="figure-boosting.html#cb137-19" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">popViewport</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:euler-glyphs-4"></span>
+<img src="_main_files/figure-html/euler-glyphs-4-1.png" alt="Third attempt at re-creating the eulerGlyphs figure." width="100%" />
+<p class="caption">
+Figure 5.5: Third attempt at re-creating the eulerGlyphs figure.
+</p>
+</div>
+<div class="tipbox">
+<p><strong>Tips:</strong></p>
+<ul>
+<li>The <code>Venndir</code> object must be plotted in order to define the <code>viewport</code>,
+since it depends upon the <code>expand_fraction</code> adjustments.</li>
+<li>The viewport must be pushed before drawing points.</li>
+</ul>
+</div>
+<p>The result turned out better than expected, and the workflow could
+be re-used for other datasets.</p>
+<p><strong>Can it be improved?</strong> Yes, this is the challenge.</p>
+<p>In re-creating the figure, the first question that arose was this:<br />
+<strong>"How many points are in each region?"</strong></p>
+<p>Figure <a href="figure-boosting.html#fig:euler-glyphs-5">5.6</a> shows some potential improvement.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:euler-glyphs-5"></span>
+<img src="_main_files/figure-html/euler-glyphs-5-1.png" alt="Update which labels the number of points in each region. In fact, this is the number of women out of 1,000 involved in the study, not just "points"." width="100%" />
+<p class="caption">
+Figure 5.6: Update which labels the number of points in each region. In fact, this is the number of women out of 1,000 involved in the study, not just "points".
+</p>
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Salybekov_2021" class="csl-entry">
+Salybekov, Amankeldi A., Markus Wolfien, Shuzo Kobayashi, Gustav Steinhoff, and Takayuki Asahara. 2021. <span>“Personalized Cell Therapy for Patients with Peripheral Arterial Diseases in the Context of Genetic Alterations: Artificial Intelligence-Based Responder and Non-Responder Prediction.”</span> <em>Cells</em> 10 (12): 3266. <a href="https://doi.org/10.3390/cells10123266">https://doi.org/10.3390/cells10123266</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="venndir-gallery.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="venndir-case-studies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jmw86069/venndir-book/edit/main/09-gallery.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/jmw86069/venndir-book/blob/main/09-gallery.Rmd",
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "favicon": "favicon.ico"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

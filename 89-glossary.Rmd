@@ -1,0 +1,280 @@
+
+# Glossary
+
+::: {#r}
+:::
+R
+  ~ A programming language and environment for statistical computing,
+    data analysis, and graphical representation.
+    R is widely used in scientific research due to its extensive ecosystem
+    of custom packages with emphasis on reproducibility.
+
+::: {#r-package}
+:::
+R package  
+  ~ A bundled collection of R functions, data, documentation, and metadata
+    that extends the base functionality of R.
+    Packages can be installed from CRAN, Bioconductor, or GitHub, and
+    are essential for tasks like data modeling, visualization, and scientific
+    analysis workflows in bioinformatics.
+
+::: {#venn-diagram}
+:::
+Venn diagram  
+  ~ A graphical representation of all possible logical relationships between
+    a collection of sets. Each set is shown as a circle, and all possible
+    intersections are depicted—even if some are empty. Venn diagrams are
+    especially useful for illustrating complete overlap structures but can
+    become cluttered with more than 3–4 sets.
+
+::: {#euler-diagram}
+:::
+Euler diagram  
+  ~ A simplified set diagram that shows only the **actual** (non-empty)
+    relationships between sets. Unlike Venn diagrams, Euler diagrams omit
+    intersections that don’t exist, making them more concise and readable when
+    dealing with sparse or realistic data overlap.
+
+::: {#intersection}
+:::
+intersection  
+  ~ In set theory, the intersection of two or more sets refers to the elements
+    shared by each set.
+    In Venndir visualizations, the intersection contains the overlapping region
+    shared between two or more sets.
+
+::: {#union}
+:::
+union  
+  ~ In set theory, the union of two or more sets contains the unique set
+    of elements present in *any* of the sets.
+    In Venndir visualization, the union represents the combined geometric
+    region covering any sets involved.
+
+::: {#subtraction}
+:::
+subtraction  
+  ~ In set theory, subtraction is also known as set difference, which
+    yields the elements present in one set and *not* in another.
+    For example, `A - B` includes elements in set A that are absent from B.
+   
+    In venndir visualization, the subtraction is used to represent a
+    geometric region from one set that does not overlap any region
+    of another set.
+
+::: {#buffer-region}
+:::
+buffer region  
+  ~ In geometry, a buffer region is zone created by expanding or
+    shrinking a geometric shape by a fixed distance.
+   
+    For expansion, it defines a region with fixed distance from any
+    solid point in the geometric shape. It is used in Venndir
+    to create "outer border", and to place text labels outside
+    the Venn or Euler diagrems.
+   
+    For shrinking, it defines a region with fixed distanct inside
+    the border of the geometric shape. It is used in Venndir to
+    create "inner border", and to array multiple text labels
+    inside specific regions.
+
+::: {#agreement}
+:::
+agreement 
+  ~ Property of two or more elements that all agree in direction or sign.
+
+::: {#concordance}
+:::
+concordance
+  ~ Property of two or more elements that agree in direction or sign.
+
+::: {#concordant}
+:::
+concordant
+  ~ Description for two or more elements that agree in direction or sign.
+
+::: {#disagreement}
+:::
+disagreement
+  ~ Property of two or more elements that do not all agree in direction or sign.
+
+::: {#discordance}
+:::
+discordance
+  ~ Property of two or more elements that do not agree in direction or sign, equivalent to the term discordance.
+
+::: {#discordant}
+:::
+discordant
+  ~ Description for two or more elements that do not agree in direction or sign.
+
+
+::: {#vector}
+:::
+vector  
+  ~ In R, a one-dimensional sequence of elements of the same base type
+    (e.g., `character` or `numeric`).
+    In Venndir, a `vector` is used to represent elements of a [set](#set),
+    sometimes also with directional sign.
+
+::: {#set}
+:::
+set  
+  ~ A collection of unique elements.
+    In Venndir, a set represents a group of items
+    where the items are typically genes, features, or observations
+    that share a common label or condition.
+    For example, the items may be differentially expressed genes (DEGs) from
+    a statistical contrast.
+    
+    In Venndir, a set is stored as a [vector](#vector) in one of two ways:
+    1. a `character` vector of items without vector names (set),
+    2. a `numeric` vector of signs, often but not strictly `-1` and `1`,
+    where item names are stored as vector names ([signed set](#signed-set)).
+
+::: {#signed-data}
+:::
+signed data  
+  ~ A dataset in which each element carries a direction label (e.g., "up" or
+    "down", "positive" or "negative", "gain" or "loss").
+    This signature guides Venndir in assigning directional sign-aware
+    overlaps and patterns.
+    
+    Signed data may be used to create a [signed set](#signed-set) in Venndir.
+
+::: {#signed-set}
+:::
+signed set  
+  ~ A specialized type of [set](#set) used in Venndir to store
+    elements with directional sign.
+    Signs are stored as [vector](#vector) values, and items are stored as
+    vector names.
+     
+    Signed sets are required components in a [signed setlist](#signed-setlist).
+
+::: {#list}
+:::
+list  
+  ~ In R, a `list` is an ordered collection of objects
+    that may contain elements of **different types and structures**.
+    A `list` is commonly used to store a collection of different objects,
+    and may even contain other lists.
+    
+    In Venndir, a [setlist](#setlist) is a named `list` with multiple
+    [sets](#set). The `list` names store the name of each set.
+    
+::: {#setlist}
+:::
+setlist  
+  ~ In Venndir, a named `list` of [sets](#set), where set names
+    are stored as `list` names.
+    where each set is stored as a
+    [vector](#vector). The set names are stored in `list` names.
+
+::: {#signed-setlist}
+:::
+signed setlist  
+  ~ A specialized form of [setlist](#setlist) in which each element
+    is a [signed set](#signed-set).
+    Each set therefore represents items as [vector](#vector) names,
+    where values contain the directional sign, and names store
+    the items.
+
+::: {#venn-overlap}
+:::
+Venn overlap
+  ~ A Venn overlap refers to a specific set theory comparison such
+    as [intersection](#intersection) and/or [subtraction](#subtraction).
+    Venn overlaps are defined when two or more [sets](#set) are
+    compared.
+    
+    A property of a Venn overlap is that each item may be assigned
+    to only one such Venn overlap.
+    
+    For example, consider Venn overlaps which involve three sets
+    'A', 'B', 'C'. An item may be only present or absent in each of
+    the three sets. Therefore, if an item exists in 'A&B' it is present
+    in 'A' and 'B' and *not* in 'C'.
+    
+    In Venn overlap terminology 'A' refers to the set of item present in 'A'
+    that are not present in 'B' nor in 'C'.
+
+::: {#main-counts}
+:::
+main counts
+  ~ In Venndir, main counts refers to the number of items in a
+    [Venn overlap](#venn-overlap), without regard to directional sign.
+    The items in a Venn overlap may separately be tabulated by sign
+    to produce [signed counts](#signed-counts).
+
+::: {#signed-counts}
+:::
+signed counts
+  ~ In Venndir, signed counts refers to the number of items
+    in a [Venn overlap](#venn-overlap) tabulated by additional
+    directional criteria.
+    For example, overlap type 'each' will tabulate items based upon
+    each combination of signs observed in the Venn overlap.
+    For a Venn overlap of the intersection of 'A' and 'B', with
+    sign values `-1` and `1`, there may be four tabulated values:
+    
+    * `'1 1'`
+    * `'1 -1'`
+    * `'-1 1'`
+    * `'1 1'`
+
+::: {#matrix}
+:::
+matrix
+  ~ A type of data object in [R](#r) called a `matrix` that is used
+  to store two-dimensional data by row and column. A `matrix` in R
+  can only store one data type in each cell.
+
+::: {#g-incidence-matrix}
+:::
+incidence matrix  
+  ~ A `matrix` encoding set membership. Rows represent elements,
+    columns represent sets. The `matrix` values are `1` if the element
+    is present, and either `0` or `NA` otherwise.
+    
+    In Venndir, any non-empty value indicates the element (row)
+    is present in the set (column), where `""` empty string is considered
+    an empty value.
+
+::: {#g-signed-incidence-matrix}
+:::
+signed incidence matrix  
+  ~ An enhanced [incidence matrix](#incidence-matrix) that represents
+    set membership and directional sign.
+    A signed incidence matrix encodes sign as the matrix value,
+    usually values such as:
+    
+    * `1` for positive or "up" direction,
+    * `-1` for negative or "down" direction, and
+    * `0` or `NA` for absence of the element.
+    
+    That said, Venndir will recognize any non-empty value as a sign,
+    empty values include 0, NA, and ''.
+
+::: {#data-visualization}
+:::
+data visualization  
+  ~ Graphical representation of data intended to provide insight,
+    pattern recognition, and communication.
+    In Venndir, data visualization helps to summarize set relationships
+    such as overlaps, directionality, and concordance of direction.
+
+::: {#g-markdown}
+:::
+markdown
+  ~ A plain text style of writing that encodes special formatting
+    by following a lightweight markup language.
+    
+    Venndir supports the CommonMark specification, which is
+    summarized by the [CommonMark.org Summary](https://commonmark.org/help/).
+    The main features used by Venndir:
+    
+    * Font changes: **bold**, *italics*
+    * inline images
+    * lists (like this one)
+

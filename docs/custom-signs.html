@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.12 Custom Signs | Venndir Book</title>
+  <meta name="description" content="Venn Diagrams with Directionality" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.12 Custom Signs | Venndir Book" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/venndir-cover.png" />
+  <meta property="og:description" content="Venn Diagrams with Directionality" />
+  <meta name="github-repo" content="jmw86069/venndir-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.12 Custom Signs | Venndir Book" />
+  
+  <meta name="twitter:description" content="Venn Diagrams with Directionality" />
+  <meta name="twitter:image" content="/images/venndir-cover.png" />
+
+<meta name="author" content="James M. Ward" />
+
+
+<meta name="date" content="2025-06-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="patchwork-with-venndir.html"/>
+<link rel="next" href="venndir-graphics-objects.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Venndir Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="what-is-a-venn-diagram.html"><a href="what-is-a-venn-diagram.html"><i class="fa fa-check"></i><b>1</b> What is a Venn diagram?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>1.1</b> Problem Statement</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>2</b> Data Import</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html"><i class="fa fa-check"></i><b>2.1</b> Common Data Input Types</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-sets"><i class="fa fa-check"></i><b>2.1.1</b> List of sets</a></li>
+<li class="chapter" data-level="2.1.2" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-signed-sets"><i class="fa fa-check"></i><b>2.1.2</b> List of signed sets</a></li>
+<li class="chapter" data-level="2.1.3" data-path="common-data-input-types.html"><a href="common-data-input-types.html#incidence-matrix"><i class="fa fa-check"></i><b>2.1.3</b> Incidence matrix</a></li>
+<li class="chapter" data-level="2.1.4" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-incidence-matrix"><i class="fa fa-check"></i><b>2.1.4</b> Signed incidence matrix</a></li>
+<li class="chapter" data-level="2.1.5" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-counts"><i class="fa fa-check"></i><b>2.1.5</b> Overlap counts</a></li>
+<li class="chapter" data-level="2.1.6" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-counts"><i class="fa fa-check"></i><b>2.1.6</b> Signed overlap counts</a></li>
+<li class="chapter" data-level="2.1.7" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-list"><i class="fa fa-check"></i><b>2.1.7</b> Overlap list</a></li>
+<li class="chapter" data-level="2.1.8" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-list"><i class="fa fa-check"></i><b>2.1.8</b> Signed overlap list</a></li>
+<li class="chapter" data-level="2.1.9" data-path="common-data-input-types.html"><a href="common-data-input-types.html#items"><i class="fa fa-check"></i><b>2.1.9</b> Items</a></li>
+<li class="chapter" data-level="2.1.10" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-data-frames"><i class="fa fa-check"></i><b>2.1.10</b> List of data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html"><i class="fa fa-check"></i><b>2.2</b> Specialized Input Types</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="specialized-input-types.html"><a href="specialized-input-types.html#limma"><i class="fa fa-check"></i><b>2.2.1</b> limma</a></li>
+<li class="chapter" data-level="2.2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html#deseq2"><i class="fa fa-check"></i><b>2.2.2</b> DESeq2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="venndir-basics.html"><a href="venndir-basics.html"><i class="fa fa-check"></i><b>3</b> Venndir Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="default-venndir.html"><a href="default-venndir.html"><i class="fa fa-check"></i><b>3.1</b> Default Venndir</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="default-venndir.html"><a href="default-venndir.html#data-for-testing"><i class="fa fa-check"></i><b>3.1.1</b> Data for Testing</a></li>
+<li class="chapter" data-level="3.1.2" data-path="default-venndir.html"><a href="default-venndir.html#create-the-venn"><i class="fa fa-check"></i><b>3.1.2</b> Create the Venn</a></li>
+<li class="chapter" data-level="3.1.3" data-path="default-venndir.html"><a href="default-venndir.html#create-the-euler"><i class="fa fa-check"></i><b>3.1.3</b> Create the Euler</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html"><i class="fa fa-check"></i><b>3.2</b> Venn Set Colors</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="venn-set-colors.html"><a href="venn-set-colors.html#consistent-set-colors"><i class="fa fa-check"></i><b>3.2.1</b> Consistent Set Colors</a></li>
+<li class="chapter" data-level="3.2.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html#venndir-without-color"><i class="fa fa-check"></i><b>3.2.2</b> Venndir Without Color</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="venndir-labels.html"><a href="venndir-labels.html"><i class="fa fa-check"></i><b>3.3</b> Venndir Labels</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="venndir-labels.html"><a href="venndir-labels.html#label-content"><i class="fa fa-check"></i><b>3.3.1</b> Label Content</a></li>
+<li class="chapter" data-level="3.3.2" data-path="venndir-labels.html"><a href="venndir-labels.html#overlap-type"><i class="fa fa-check"></i><b>3.3.2</b> Overlap Type</a></li>
+<li class="chapter" data-level="3.3.3" data-path="venndir-labels.html"><a href="venndir-labels.html#signed-label-placement"><i class="fa fa-check"></i><b>3.3.3</b> Signed Label Placement</a></li>
+<li class="chapter" data-level="3.3.4" data-path="venndir-labels.html"><a href="venndir-labels.html#visual-styles"><i class="fa fa-check"></i><b>3.3.4</b> Visual Styles</a></li>
+<li class="chapter" data-level="3.3.5" data-path="venndir-labels.html"><a href="venndir-labels.html#nudge-a-venn-label"><i class="fa fa-check"></i><b>3.3.5</b> Nudge a Venn Label</a></li>
+<li class="chapter" data-level="3.3.6" data-path="venndir-labels.html"><a href="venndir-labels.html#details-for-label-placement"><i class="fa fa-check"></i><b>3.3.6</b> Details for Label Placement</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="item-labels.html"><a href="item-labels.html"><i class="fa fa-check"></i><b>3.4</b> Item Labels</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="item-labels.html"><a href="item-labels.html#overview-of-item-labeling"><i class="fa fa-check"></i><b>3.4.1</b> Overview of item labeling</a></li>
+<li class="chapter" data-level="3.4.2" data-path="item-labels.html"><a href="item-labels.html#venn-memes"><i class="fa fa-check"></i><b>3.4.2</b> Venn Memes</a></li>
+<li class="chapter" data-level="3.4.3" data-path="item-labels.html"><a href="item-labels.html#item-label-basics"><i class="fa fa-check"></i><b>3.4.3</b> Item Label Basics</a></li>
+<li class="chapter" data-level="3.4.4" data-path="item-labels.html"><a href="item-labels.html#item-layout-adjustments"><i class="fa fa-check"></i><b>3.4.4</b> Item layout adjustments</a></li>
+<li class="chapter" data-level="3.4.5" data-path="item-labels.html"><a href="item-labels.html#item-buffer"><i class="fa fa-check"></i><b>3.4.5</b> Item buffer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html"><i class="fa fa-check"></i><b>3.5</b> Fonts and Font Sizes</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#font-sizes"><i class="fa fa-check"></i><b>3.5.1</b> Font Sizes</a></li>
+<li class="chapter" data-level="3.5.2" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#overall-font-family"><i class="fa fa-check"></i><b>3.5.2</b> Overall Font Family</a></li>
+<li class="chapter" data-level="3.5.3" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#individual-font-families"><i class="fa fa-check"></i><b>3.5.3</b> Individual Font Families</a></li>
+<li class="chapter" data-level="3.5.4" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#available-font-families"><i class="fa fa-check"></i><b>3.5.4</b> Available Font Families</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="venn-legends.html"><a href="venn-legends.html"><i class="fa fa-check"></i><b>3.6</b> Venn Legends</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="venn-legends.html"><a href="venn-legends.html#hide-percent-or-signed-labels"><i class="fa fa-check"></i><b>3.6.1</b> Hide percent or signed labels</a></li>
+<li class="chapter" data-level="3.6.2" data-path="venn-legends.html"><a href="venn-legends.html#custom-legend-labels"><i class="fa fa-check"></i><b>3.6.2</b> Custom legend labels</a></li>
+<li class="chapter" data-level="3.6.3" data-path="venn-legends.html"><a href="venn-legends.html#additional-alias-labels"><i class="fa fa-check"></i><b>3.6.3</b> Additional alias labels</a></li>
+<li class="chapter" data-level="3.6.4" data-path="venn-legends.html"><a href="venn-legends.html#separate-size-and-sign"><i class="fa fa-check"></i><b>3.6.4</b> Separate Size and Sign</a></li>
+<li class="chapter" data-level="3.6.5" data-path="venn-legends.html"><a href="venn-legends.html#legend-color-style"><i class="fa fa-check"></i><b>3.6.5</b> Legend color style</a></li>
+<li class="chapter" data-level="3.6.6" data-path="venn-legends.html"><a href="venn-legends.html#legend-position"><i class="fa fa-check"></i><b>3.6.6</b> Legend position</a></li>
+<li class="chapter" data-level="3.6.7" data-path="venn-legends.html"><a href="venn-legends.html#legend-font-size"><i class="fa fa-check"></i><b>3.6.7</b> Legend font size</a></li>
+<li class="chapter" data-level="3.6.8" data-path="venn-legends.html"><a href="venn-legends.html#legend-custom-fontfamily"><i class="fa fa-check"></i><b>3.6.8</b> Legend custom fontfamily</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="deeper-customizations.html"><a href="deeper-customizations.html"><i class="fa fa-check"></i><b>4</b> Deeper Customizations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="venndir-borders.html"><a href="venndir-borders.html"><i class="fa fa-check"></i><b>4.1</b> Venndir Borders</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="venndir-borders.html"><a href="venndir-borders.html#venndir-rendering-steps"><i class="fa fa-check"></i><b>4.1.1</b> Venndir Rendering Steps</a></li>
+<li class="chapter" data-level="4.1.2" data-path="venndir-borders.html"><a href="venndir-borders.html#customize-venndir-borders"><i class="fa fa-check"></i><b>4.1.2</b> Customize Venndir borders</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html"><i class="fa fa-check"></i><b>4.2</b> Modify Venn Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html#overlap-attributes"><i class="fa fa-check"></i><b>4.2.1</b> Overlap Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="customize-any-label.html"><a href="customize-any-label.html"><i class="fa fa-check"></i><b>4.3</b> Customize Any Label</a></li>
+<li class="chapter" data-level="4.4" data-path="automatic-text-contrast.html"><a href="automatic-text-contrast.html"><i class="fa fa-check"></i><b>4.4</b> Automatic Text Contrast</a></li>
+<li class="chapter" data-level="4.5" data-path="highlight-venn-overlaps.html"><a href="highlight-venn-overlaps.html"><i class="fa fa-check"></i><b>4.5</b> Highlight Venn Overlaps</a></li>
+<li class="chapter" data-level="4.6" data-path="rotate-the-venndir.html"><a href="rotate-the-venndir.html"><i class="fa fa-check"></i><b>4.6</b> Rotate the Venndir</a></li>
+<li class="chapter" data-level="4.7" data-path="nudge-the-legend.html"><a href="nudge-the-legend.html"><i class="fa fa-check"></i><b>4.7</b> Nudge the Legend</a></li>
+<li class="chapter" data-level="4.8" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html"><i class="fa fa-check"></i><b>4.8</b> Hidden Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html#nudge-venndir-circles"><i class="fa fa-check"></i><b>4.8.1</b> Nudge Venndir Circles</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="nudge-specific-labels.html"><a href="nudge-specific-labels.html"><i class="fa fa-check"></i><b>4.9</b> Nudge specific labels</a></li>
+<li class="chapter" data-level="4.10" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html"><i class="fa fa-check"></i><b>4.10</b> Venndir Markdown Support</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-styles"><i class="fa fa-check"></i><b>4.10.1</b> Inline styles</a></li>
+<li class="chapter" data-level="4.10.2" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-images"><i class="fa fa-check"></i><b>4.10.2</b> Inline Images</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="patchwork-with-venndir.html"><a href="patchwork-with-venndir.html"><i class="fa fa-check"></i><b>4.11</b> Patchwork with Venndir</a></li>
+<li class="chapter" data-level="4.12" data-path="custom-signs.html"><a href="custom-signs.html"><i class="fa fa-check"></i><b>4.12</b> Custom Signs</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="custom-signs.html"><a href="custom-signs.html#review-sign-curation"><i class="fa fa-check"></i><b>4.12.1</b> Review Sign Curation</a></li>
+<li class="chapter" data-level="4.12.2" data-path="custom-signs.html"><a href="custom-signs.html#customize-the-symbols"><i class="fa fa-check"></i><b>4.12.2</b> Customize the Symbols</a></li>
+<li class="chapter" data-level="4.12.3" data-path="custom-signs.html"><a href="custom-signs.html#more-advanced-signs"><i class="fa fa-check"></i><b>4.12.3</b> More Advanced Signs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html"><i class="fa fa-check"></i><b>4.13</b> Venndir Graphics Objects</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
+<li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="figure-boosting.html"><a href="figure-boosting.html"><i class="fa fa-check"></i><b>5.1</b> Figure Boosting</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="figure-boosting.html"><a href="figure-boosting.html#me---electron"><i class="fa fa-check"></i><b>5.1.1</b> Me - Electron</a></li>
+<li class="chapter" data-level="5.1.2" data-path="figure-boosting.html"><a href="figure-boosting.html#eulerglyphs"><i class="fa fa-check"></i><b>5.1.2</b> eulerGlyphs</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html"><i class="fa fa-check"></i><b>5.2</b> Venndir Case Studies</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html#seehawer-kmt2-gene-venns"><i class="fa fa-check"></i><b>5.2.1</b> Seehawer Kmt2 Gene Venns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>6</b> Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Venndir Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="custom-signs" class="section level2 hasAnchor" number="4.12">
+<h2><span class="header-section-number">4.12</span> Custom Signs<a href="custom-signs.html#custom-signs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One of the defining features of a Venndir figure is the use
+of <span class="math inline">\(↑\)</span> up and <span class="math inline">\(↓\)</span> down arrows to
+indicate signed counts. By default, these labels are also
+colored red and blue, respectively.</p>
+<p>It may be useful to customize the colors or the symbols associated
+with each sign, and this definition can be customized in <code>venndir()</code>
+using an advanced argument <code>curate_df</code>.</p>
+<div id="review-sign-curation" class="section level3 hasAnchor" number="4.12.1">
+<h3><span class="header-section-number">4.12.1</span> Review Sign Curation<a href="custom-signs.html#review-sign-curation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The default <code>curate_df</code> can be reviewed with
+<code>get_venndir_curate_df()</code>, the output is shown in
+Table <a href="custom-signs.html#tab:curate-df-1">4.3</a>.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="custom-signs.html#cb123-1" tabindex="-1"></a><span class="fu">get_venndir_curate_df</span>()</span></code></pre></div>
+<table>
+<caption>
+<span id="tab:curate-df-1">Table 4.3: </span><span id="tab:curate-df-1">Table 4.4: </span>Default table used to curate sign data when generating signed count labels.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+from
+</th>
+<th style="text-align:left;">
+sign
+</th>
+<th style="text-align:left;">
+color
+</th>
+<th style="text-align:left;">
+hide_singlet
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+-1
+</td>
+<td style="text-align:left;">
+↓
+</td>
+<td style="text-align:left;">
+dodgerblue3
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+1
+</td>
+<td style="text-align:left;">
+↑
+</td>
+<td style="text-align:left;">
+firebrick
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+0
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+concordant
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:left;">
+dodgerblue3
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+agreement
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:left;">
+dodgerblue3
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+mixed
+</td>
+<td style="text-align:left;">
+X
+</td>
+<td style="text-align:left;">
+grey45
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>There is a bit to unpack in how this simple <code>data.frame</code> is used
+to create the labels shown by Venndir.</p>
+<p>First, the input <code>setlist</code> is passed to <code>signed_overlaps()</code> to
+produce a complete summary of overlaps, and associated overlap signs.
+An important argument is <code>overlap_type</code> which defines how the overlap
+signs are summarized. The recognized values are shown in
+Table <a href="custom-signs.html#tab:signed-overlaps-1">4.5</a>.</p>
+<table>
+<caption>
+<span id="tab:signed-overlaps-1">Table 4.5: </span><span id="tab:signed-overlaps-1">Table 4.6: </span>Values recognized overlap type, with corresponding description.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+overlap_type
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+'overlap'
+</td>
+<td style="text-align:left;width: 22em; ">
+Sign information is ignored. Overlap counts are tabulated without sign information.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+'concordance'
+</td>
+<td style="text-align:left;width: 22em; ">
+Sign information is tabulated into three general subsets: (1) all agree up, (2) all agree down, and (3) 'mixed'. For (1) and (2) the original signs are retained, keeping '1 1 1' or '-1 -1 -1'. All values with mixed signs, such as '1 -1' are converted to 'mixed'. When hide_singlet=TRUE then single-set counts ignore the sign.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+'each'
+</td>
+<td style="text-align:left;width: 22em; ">
+Signed is tabulated for every overlap in maintained without modification.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+'agreement'
+</td>
+<td style="text-align:left;width: 22em; ">
+Similar to 'concordance', except that agreement up and agreement down are combined and labeled 'agreement'.
+</td>
+</tr>
+</tbody>
+</table>
+<p>To summarize:</p>
+<ul>
+<li>Overlaps are tabulated by combinations of sets. Within each overlap,
+counts are also tabulated by the directionalities using the following
+rules:</li>
+<li><code>overlap_type='overlap'</code> will not tabulate values by signs.</li>
+<li><code>overlap_type='concordance'</code> will tabulate values by signs
+such as <code>'1'</code>, <code>'-1'</code>, <code>'1 1'</code>, <code>'-1 -1'</code>, and <code>'mixed'</code>.</li>
+<li><code>overlap_type='each'</code> will tabulate values by signs
+such as <code>'1'</code>, <code>'-1'</code>, <code>'1 1'</code>, <code>'-1 -1'</code>, <code>'1 -1'</code>, and <code>'-1 1'</code>.</li>
+<li><code>overlap_type='agreement'</code> will tabulate values by signs
+such as <code>'agreement'</code>, and <code>'mixed'</code>.</li>
+</ul>
+<blockquote>
+<p>Using <code>overlap_type='each'</code> is recommended to retain all
+combinations of the sign.</p>
+</blockquote>
+<p>For each overlap, the tabulated signs are used to create
+a curated "sign prefix", for example <code>'1 1'</code> is converted to
+'<span class="math inline">\(↑↑\)</span>', and this prefix is appended to the actual
+counts. For example the signed label might be '<span class="math inline">\(↑↑ 12\)</span>'.</p>
+<p>Consider the tabulated sign <code>'1 -1'</code>:</p>
+<ul>
+<li><p>The tabulated sign <code>'1 -1'</code> is split by whitespace into components
+<code>'1'</code> and <code>'-1'</code>.</p></li>
+<li><p>The first component <code>'1'</code> is matched to 'from' in <code>curate_df</code>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">from</th>
+<th align="left">sign</th>
+<th align="left">color</th>
+<th align="left">hide_singlet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">↑</td>
+<td align="left">firebrick</td>
+<td align="left">FALSE</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The value in column 'sign' (<span class="math inline">\(↑\)</span>) is added to the sign.</li>
+<li>The color 'firebrick' is added to the sign colors.</li>
+</ul></li>
+<li><p>The next component <code>'-1'</code> is matched to 'from' in <code>curate_df</code>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">from</th>
+<th align="left">sign</th>
+<th align="left">color</th>
+<th align="left">hide_singlet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">-1</td>
+<td align="left">↓</td>
+<td align="left">dodgerblue3</td>
+<td align="left">FALSE</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The value in column 'sign' (<span class="math inline">\(↓\)</span>) is added to the sign.</li>
+<li>The color 'dodgerblue3' is added to the sign colors.</li>
+</ul></li>
+<li><p>The sign prefix is '<span class="math inline">\(↑↓\)</span>'.</p></li>
+<li><p>The colors <code>'firebrick', 'dodgerblue3'</code> are blended to purple.</p></li>
+<li><p>The complete signed count label is <span class="math inline">\(↑↓ {counts}\)</span>,
+colored purple.</p></li>
+</ul>
+<p>Additional comments on processing:</p>
+<ul>
+<li>If the tabulated sign is <code>'agreement'</code> the signed prefix will be <span class="math inline">\(&#39;=&#39;\)</span>,
+colored blue.</li>
+<li>If the tabulated sign is <code>'mixed'</code> the signed prefix will be <span class="math inline">\(&#39;X&#39;\)</span>.</li>
+</ul>
+</div>
+<div id="customize-the-symbols" class="section level3 hasAnchor" number="4.12.2">
+<h3><span class="header-section-number">4.12.2</span> Customize the Symbols<a href="custom-signs.html#customize-the-symbols" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An optional argument for <code>venndir()</code> is <code>curate_df</code>, which provides
+a mechanism to customize the visual sign that appears in the Venn
+diagram.</p>
+<p>To illustrate the process, in this example the goal is to
+use custom symbols to indicate agreement and disagreement:
+'Checkmark' to indicate agreement, and
+'Ballot X' to indicate disagreement.</p>
+<blockquote>
+<p>Unicode characters are described in
+<a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">Wikipedia 'List of Unicode characters'</a>.
+* A 'Checkmark' is Unicode U+2713 <span class="math inline">\(✓\)</span>.
+* A 'Ballot X' is Unicode U+2717 <span class="math inline">\(✕\)</span>.</p>
+</blockquote>
+<p>The following steps were used to create Figure <a href="custom-signs.html#fig:curate-check-1">4.20</a>:</p>
+<ul>
+<li>Retrieve the default <code>curate_df</code>.</li>
+<li>Edit the 'agreement' row, and update column 'sign'.</li>
+<li>Edit the 'mixed' row, and update columns 'sign', and 'color'.</li>
+<li>Call <code>venndir()</code> with arguments <code>overlap_type='agreement'</code> and
+<code>curate_df=curate_df</code>.</li>
+</ul>
+
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="custom-signs.html#cb124-1" tabindex="-1"></a>curate_df <span class="ot">&lt;-</span> <span class="fu">get_venndir_curate_df</span>()</span>
+<span id="cb124-2"><a href="custom-signs.html#cb124-2" tabindex="-1"></a>curate_df[curate_df<span class="sc">$</span>from <span class="sc">%in%</span> <span class="st">&quot;agreement&quot;</span>, <span class="st">&quot;sign&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;\u2713&quot;</span>;</span>
+<span id="cb124-3"><a href="custom-signs.html#cb124-3" tabindex="-1"></a>curate_df[curate_df<span class="sc">$</span>from <span class="sc">%in%</span> <span class="st">&quot;mixed&quot;</span>, <span class="st">&quot;sign&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;\u2715&quot;</span>;</span>
+<span id="cb124-4"><a href="custom-signs.html#cb124-4" tabindex="-1"></a>curate_df[curate_df<span class="sc">$</span>from <span class="sc">%in%</span> <span class="st">&quot;mixed&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;red&quot;</span>;</span>
+<span id="cb124-5"><a href="custom-signs.html#cb124-5" tabindex="-1"></a></span>
+<span id="cb124-6"><a href="custom-signs.html#cb124-6" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>),</span>
+<span id="cb124-7"><a href="custom-signs.html#cb124-7" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;agreement&quot;</span>,</span>
+<span id="cb124-8"><a href="custom-signs.html#cb124-8" tabindex="-1"></a>   <span class="at">innerborder=</span><span class="st">&quot;white&quot;</span>, <span class="at">outerborder=</span><span class="st">&quot;white&quot;</span>,</span>
+<span id="cb124-9"><a href="custom-signs.html#cb124-9" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="dv">1</span>,</span>
+<span id="cb124-10"><a href="custom-signs.html#cb124-10" tabindex="-1"></a>   <span class="at">curate_df=</span>curate_df)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:curate-check-1"></span>
+<img src="_main_files/figure-html/curate-check-1-1.png" alt="Venn diagram using 'Checkmark' and 'Ballot X' to indicate agreement and disagreement, respectively." width="80%" />
+<p class="caption">
+Figure 4.20: Venn diagram using 'Checkmark' and 'Ballot X' to indicate agreement and disagreement, respectively.
+</p>
+</div>
+</div>
+<div id="more-advanced-signs" class="section level3 hasAnchor" number="4.12.3">
+<h3><span class="header-section-number">4.12.3</span> More Advanced Signs<a href="custom-signs.html#more-advanced-signs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In principle, and named <code>list</code> is recognized as a value-list,
+whose names are items, and values are 'signs'. These 'signs'
+are typically <code>-1</code> and <code>1</code> to indicate directionality, however
+any value can be used.</p>
+<p>Figure <a href="custom-signs.html#fig:advanced-signs-1">4.21</a> shows the effect of replacing
+signed values '1' and '-1' with text strings: 'up' and 'dn'.</p>
+
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="custom-signs.html#cb125-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">n_sets=</span><span class="dv">2</span>, <span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
+<span id="cb125-2"><a href="custom-signs.html#cb125-2" tabindex="-1"></a>setlist2 <span class="ot">&lt;-</span> <span class="fu">lapply</span>(setlist, <span class="cf">function</span>(i){</span>
+<span id="cb125-3"><a href="custom-signs.html#cb125-3" tabindex="-1"></a>   i[] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&quot;up&quot;</span>, <span class="st">&quot;-1&quot;</span><span class="ot">=</span><span class="st">&quot;dn&quot;</span>)[<span class="fu">as.character</span>(i)]</span>
+<span id="cb125-4"><a href="custom-signs.html#cb125-4" tabindex="-1"></a>   i</span>
+<span id="cb125-5"><a href="custom-signs.html#cb125-5" tabindex="-1"></a>})</span>
+<span id="cb125-6"><a href="custom-signs.html#cb125-6" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist2,</span>
+<span id="cb125-7"><a href="custom-signs.html#cb125-7" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;each&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:advanced-signs-1"></span>
+<img src="_main_files/figure-html/advanced-signs-1-1.png" alt="Venndir using custom values 'up' and 'dn' instead of 1 and -1." width="80%" />
+<p class="caption">
+Figure 4.21: Venndir using custom values 'up' and 'dn' instead of 1 and -1.
+</p>
+</div>
+<p>The figure shows combinations that include 'upup', 'dnup', and 'dnup'.
+Notice even the legend tabulates the signed counts using the
+'sign' values.</p>
+<p>In fact, the values 'up' and 'dn' can be assigned to Unicode characters
+as shown in <a href="custom-signs.html#customize-the-symbols">Customize the Symbols</a>. The custom signs are also
+shown in the legend.</p>
+<p>Figure <a href="custom-signs.html#fig:advanced-signs-1c">4.22</a> shows how to customize <code>curate_df</code>
+to match the custom signs 'up' and 'dn'. For added fun, the values
+in 'sign' are also customized to new Unicode characters.</p>
+
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="custom-signs.html#cb126-1" tabindex="-1"></a>curate_df <span class="ot">&lt;-</span> <span class="fu">get_venndir_curate_df</span>()</span>
+<span id="cb126-2"><a href="custom-signs.html#cb126-2" tabindex="-1"></a>du_match <span class="ot">&lt;-</span> <span class="fu">match</span>(<span class="fu">c</span>(<span class="st">&quot;-1&quot;</span>, <span class="st">&quot;1&quot;</span>), curate_df<span class="sc">$</span>from)</span>
+<span id="cb126-3"><a href="custom-signs.html#cb126-3" tabindex="-1"></a>curate_df[du_match, <span class="st">&quot;from&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;dn&quot;</span>, <span class="st">&quot;up&quot;</span>)</span>
+<span id="cb126-4"><a href="custom-signs.html#cb126-4" tabindex="-1"></a>curate_df[du_match, <span class="st">&quot;sign&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;\u21E9&quot;</span>, <span class="st">&quot;\u21E7&quot;</span>)</span>
+<span id="cb126-5"><a href="custom-signs.html#cb126-5" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb126-6"><a href="custom-signs.html#cb126-6" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist2,</span>
+<span id="cb126-7"><a href="custom-signs.html#cb126-7" tabindex="-1"></a>   <span class="at">curate_df=</span>curate_df,</span>
+<span id="cb126-8"><a href="custom-signs.html#cb126-8" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;each&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:advanced-signs-1c"></span>
+<img src="_main_files/figure-html/advanced-signs-1c-1.png" alt="Venndir showing the custom signs 'up' and 'down' used to produce Unicode signs as before." width="80%" />
+<p class="caption">
+Figure 4.22: Venndir showing the custom signs 'up' and 'down' used to produce Unicode signs as before.
+</p>
+</div>
+<p>The following example pushes the limits further, using three
+signs instead of two. In this example, there are three signs:
+'a', 'b', and 'c'. See Figure <a href="custom-signs.html#fig:advanced-signs-2">4.23</a>.</p>
+
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="custom-signs.html#cb127-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">n_items=</span><span class="dv">150</span>, <span class="at">n_sets=</span><span class="dv">3</span>, <span class="at">do_signed=</span><span class="cn">TRUE</span>,</span>
+<span id="cb127-2"><a href="custom-signs.html#cb127-2" tabindex="-1"></a>   <span class="at">set_names=</span><span class="fu">c</span>(<span class="st">&quot;Set 1&quot;</span>, <span class="st">&quot;Set 2&quot;</span>, <span class="st">&quot;Set 3&quot;</span>))</span>
+<span id="cb127-3"><a href="custom-signs.html#cb127-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb127-4"><a href="custom-signs.html#cb127-4" tabindex="-1"></a>setlist2 <span class="ot">&lt;-</span> <span class="fu">lapply</span>(setlist, <span class="cf">function</span>(i){</span>
+<span id="cb127-5"><a href="custom-signs.html#cb127-5" tabindex="-1"></a>   i[] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span><span class="ot">=</span><span class="st">&quot;up&quot;</span>, <span class="st">&quot;-1&quot;</span><span class="ot">=</span><span class="st">&quot;dn&quot;</span>)[<span class="fu">as.character</span>(i)]</span>
+<span id="cb127-6"><a href="custom-signs.html#cb127-6" tabindex="-1"></a>   i[] <span class="ot">&lt;-</span> <span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="at">replace=</span><span class="cn">TRUE</span>, <span class="at">size=</span><span class="fu">length</span>(i))</span>
+<span id="cb127-7"><a href="custom-signs.html#cb127-7" tabindex="-1"></a>   i</span>
+<span id="cb127-8"><a href="custom-signs.html#cb127-8" tabindex="-1"></a>})</span>
+<span id="cb127-9"><a href="custom-signs.html#cb127-9" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist2,</span>
+<span id="cb127-10"><a href="custom-signs.html#cb127-10" tabindex="-1"></a>   <span class="at">sets=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
+<span id="cb127-11"><a href="custom-signs.html#cb127-11" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;each&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:advanced-signs-2"></span>
+<img src="_main_files/figure-html/advanced-signs-2-1.png" alt="Venndir using three signs: 'a', 'b', and 'c'." width="80%" />
+<p class="caption">
+Figure 4.23: Venndir using three signs: 'a', 'b', and 'c'.
+</p>
+</div>
+<p>The signs 'a', 'b', and 'c' can be converted to their own
+signs with <code>curate_df</code>. The final example is shown in
+Figure <a href="custom-signs.html#fig:advanced-signs-2c">4.24</a>, with three custom
+Unicode symbols shown to represent 'a', 'b', and 'c'.</p>
+
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="custom-signs.html#cb128-1" tabindex="-1"></a>curate_df <span class="ot">&lt;-</span> <span class="fu">get_venndir_curate_df</span>()</span>
+<span id="cb128-2"><a href="custom-signs.html#cb128-2" tabindex="-1"></a><span class="co"># define a, b, c</span></span>
+<span id="cb128-3"><a href="custom-signs.html#cb128-3" tabindex="-1"></a>curate_df[<span class="dv">1</span>, <span class="st">&quot;from&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;a&quot;</span></span>
+<span id="cb128-4"><a href="custom-signs.html#cb128-4" tabindex="-1"></a>curate_df[<span class="dv">2</span>, <span class="st">&quot;from&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;b&quot;</span></span>
+<span id="cb128-5"><a href="custom-signs.html#cb128-5" tabindex="-1"></a>curate_df[<span class="dv">3</span>, <span class="st">&quot;from&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;c&quot;</span></span>
+<span id="cb128-6"><a href="custom-signs.html#cb128-6" tabindex="-1"></a><span class="co"># define Unicode symbols</span></span>
+<span id="cb128-7"><a href="custom-signs.html#cb128-7" tabindex="-1"></a>curate_df[<span class="dv">1</span>, <span class="st">&quot;sign&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;\u2191&quot;</span></span>
+<span id="cb128-8"><a href="custom-signs.html#cb128-8" tabindex="-1"></a>curate_df[<span class="dv">2</span>, <span class="st">&quot;sign&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;\u2193&quot;</span></span>
+<span id="cb128-9"><a href="custom-signs.html#cb128-9" tabindex="-1"></a>curate_df[<span class="dv">3</span>, <span class="st">&quot;sign&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;\u2206&quot;</span></span>
+<span id="cb128-10"><a href="custom-signs.html#cb128-10" tabindex="-1"></a><span class="co"># define colors</span></span>
+<span id="cb128-11"><a href="custom-signs.html#cb128-11" tabindex="-1"></a>curate_df[<span class="dv">1</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;firebrick&quot;</span></span>
+<span id="cb128-12"><a href="custom-signs.html#cb128-12" tabindex="-1"></a>curate_df[<span class="dv">2</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;royalblue&quot;</span></span>
+<span id="cb128-13"><a href="custom-signs.html#cb128-13" tabindex="-1"></a>curate_df[<span class="dv">3</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;gold&quot;</span></span>
+<span id="cb128-14"><a href="custom-signs.html#cb128-14" tabindex="-1"></a></span>
+<span id="cb128-15"><a href="custom-signs.html#cb128-15" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist2,</span>
+<span id="cb128-16"><a href="custom-signs.html#cb128-16" tabindex="-1"></a>   <span class="at">curate_df=</span>curate_df,</span>
+<span id="cb128-17"><a href="custom-signs.html#cb128-17" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;each&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:advanced-signs-2c"></span>
+<img src="_main_files/figure-html/advanced-signs-2c-1.png" alt="Venndir using three signs 'a', 'b', 'c' which are converted to Unicode arrows using curate_df." width="80%" />
+<p class="caption">
+Figure 4.24: Venndir using three signs 'a', 'b', 'c' which are converted to Unicode arrows using <code>curate_df</code>.
+</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="patchwork-with-venndir.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="venndir-graphics-objects.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jmw86069/venndir-book/edit/main/04-customizations.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/jmw86069/venndir-book/blob/main/04-customizations.Rmd",
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "favicon": "favicon.ico"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

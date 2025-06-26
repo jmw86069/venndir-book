@@ -1,0 +1,75 @@
+\usepackage{booktabs}
+\usepackage{ragged2e}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+\usepackage{color}
+\usepackage{framed}
+\setlength{\fboxsep}{0.8em}
+
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage[most]{tcolorbox}
+
+\definecolor{Navy}{rgb}{0.0, 0.0, 0.7}
+\definecolor{Gold}{rgb}{1.0, 0.84, 0.0}
+\definecolor{DarkRed}{rgb}{0.7, 0.0, 0.0}
+
+\newtcolorbox{tipbox}{
+  colback=Goldenrod!2,
+  colframe=DarkRed!50,
+  coltext=black,
+  boxsep=5pt,
+  arc=3pt}
+
+\newtcolorbox{venndirquote}{
+  colback=gray!5,
+  colframe=black,
+  boxrule=0.5pt,
+  arc=4pt,
+  left=6pt,
+  right=6pt,
+  top=6pt,
+  bottom=6pt,
+  fontupper=\itshape,
+  before skip=10pt,
+  after skip=10pt,
+  enhanced,
+  breakable
+}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=RoyalBlue,   % internal links (e.g., TOC, refs)
+  citecolor=ForestGreen, % citation links
+  urlcolor=Magenta       % external links
+}
+
+\usepackage{caption}
+\captionsetup[figure]{
+  font=small,
+  justification=raggedright,
+  labelfont=bf,
+  labelsep=period
+}
+\captionsetup[table]{
+  font=small,
+  justification=raggedright,
+  labelfont=bf,
+  labelsep=period
+}

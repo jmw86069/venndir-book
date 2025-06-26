@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.6 Venn Legends | Venndir Book</title>
+  <meta name="description" content="Venn Diagrams with Directionality" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.6 Venn Legends | Venndir Book" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/venndir-cover.png" />
+  <meta property="og:description" content="Venn Diagrams with Directionality" />
+  <meta name="github-repo" content="jmw86069/venndir-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.6 Venn Legends | Venndir Book" />
+  
+  <meta name="twitter:description" content="Venn Diagrams with Directionality" />
+  <meta name="twitter:image" content="/images/venndir-cover.png" />
+
+<meta name="author" content="James M. Ward" />
+
+
+<meta name="date" content="2025-06-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="fonts-and-font-sizes.html"/>
+<link rel="next" href="deeper-customizations.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Venndir Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="what-is-a-venn-diagram.html"><a href="what-is-a-venn-diagram.html"><i class="fa fa-check"></i><b>1</b> What is a Venn diagram?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>1.1</b> Problem Statement</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>2</b> Data Import</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html"><i class="fa fa-check"></i><b>2.1</b> Common Data Input Types</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-sets"><i class="fa fa-check"></i><b>2.1.1</b> List of sets</a></li>
+<li class="chapter" data-level="2.1.2" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-signed-sets"><i class="fa fa-check"></i><b>2.1.2</b> List of signed sets</a></li>
+<li class="chapter" data-level="2.1.3" data-path="common-data-input-types.html"><a href="common-data-input-types.html#incidence-matrix"><i class="fa fa-check"></i><b>2.1.3</b> Incidence matrix</a></li>
+<li class="chapter" data-level="2.1.4" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-incidence-matrix"><i class="fa fa-check"></i><b>2.1.4</b> Signed incidence matrix</a></li>
+<li class="chapter" data-level="2.1.5" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-counts"><i class="fa fa-check"></i><b>2.1.5</b> Overlap counts</a></li>
+<li class="chapter" data-level="2.1.6" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-counts"><i class="fa fa-check"></i><b>2.1.6</b> Signed overlap counts</a></li>
+<li class="chapter" data-level="2.1.7" data-path="common-data-input-types.html"><a href="common-data-input-types.html#overlap-list"><i class="fa fa-check"></i><b>2.1.7</b> Overlap list</a></li>
+<li class="chapter" data-level="2.1.8" data-path="common-data-input-types.html"><a href="common-data-input-types.html#signed-overlap-list"><i class="fa fa-check"></i><b>2.1.8</b> Signed overlap list</a></li>
+<li class="chapter" data-level="2.1.9" data-path="common-data-input-types.html"><a href="common-data-input-types.html#items"><i class="fa fa-check"></i><b>2.1.9</b> Items</a></li>
+<li class="chapter" data-level="2.1.10" data-path="common-data-input-types.html"><a href="common-data-input-types.html#list-of-data-frames"><i class="fa fa-check"></i><b>2.1.10</b> List of data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html"><i class="fa fa-check"></i><b>2.2</b> Specialized Input Types</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="specialized-input-types.html"><a href="specialized-input-types.html#limma"><i class="fa fa-check"></i><b>2.2.1</b> limma</a></li>
+<li class="chapter" data-level="2.2.2" data-path="specialized-input-types.html"><a href="specialized-input-types.html#deseq2"><i class="fa fa-check"></i><b>2.2.2</b> DESeq2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="venndir-basics.html"><a href="venndir-basics.html"><i class="fa fa-check"></i><b>3</b> Venndir Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="default-venndir.html"><a href="default-venndir.html"><i class="fa fa-check"></i><b>3.1</b> Default Venndir</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="default-venndir.html"><a href="default-venndir.html#data-for-testing"><i class="fa fa-check"></i><b>3.1.1</b> Data for Testing</a></li>
+<li class="chapter" data-level="3.1.2" data-path="default-venndir.html"><a href="default-venndir.html#create-the-venn"><i class="fa fa-check"></i><b>3.1.2</b> Create the Venn</a></li>
+<li class="chapter" data-level="3.1.3" data-path="default-venndir.html"><a href="default-venndir.html#create-the-euler"><i class="fa fa-check"></i><b>3.1.3</b> Create the Euler</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html"><i class="fa fa-check"></i><b>3.2</b> Venn Set Colors</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="venn-set-colors.html"><a href="venn-set-colors.html#consistent-set-colors"><i class="fa fa-check"></i><b>3.2.1</b> Consistent Set Colors</a></li>
+<li class="chapter" data-level="3.2.2" data-path="venn-set-colors.html"><a href="venn-set-colors.html#venndir-without-color"><i class="fa fa-check"></i><b>3.2.2</b> Venndir Without Color</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="venndir-labels.html"><a href="venndir-labels.html"><i class="fa fa-check"></i><b>3.3</b> Venndir Labels</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="venndir-labels.html"><a href="venndir-labels.html#label-content"><i class="fa fa-check"></i><b>3.3.1</b> Label Content</a></li>
+<li class="chapter" data-level="3.3.2" data-path="venndir-labels.html"><a href="venndir-labels.html#overlap-type"><i class="fa fa-check"></i><b>3.3.2</b> Overlap Type</a></li>
+<li class="chapter" data-level="3.3.3" data-path="venndir-labels.html"><a href="venndir-labels.html#signed-label-placement"><i class="fa fa-check"></i><b>3.3.3</b> Signed Label Placement</a></li>
+<li class="chapter" data-level="3.3.4" data-path="venndir-labels.html"><a href="venndir-labels.html#visual-styles"><i class="fa fa-check"></i><b>3.3.4</b> Visual Styles</a></li>
+<li class="chapter" data-level="3.3.5" data-path="venndir-labels.html"><a href="venndir-labels.html#nudge-a-venn-label"><i class="fa fa-check"></i><b>3.3.5</b> Nudge a Venn Label</a></li>
+<li class="chapter" data-level="3.3.6" data-path="venndir-labels.html"><a href="venndir-labels.html#details-for-label-placement"><i class="fa fa-check"></i><b>3.3.6</b> Details for Label Placement</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="item-labels.html"><a href="item-labels.html"><i class="fa fa-check"></i><b>3.4</b> Item Labels</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="item-labels.html"><a href="item-labels.html#overview-of-item-labeling"><i class="fa fa-check"></i><b>3.4.1</b> Overview of item labeling</a></li>
+<li class="chapter" data-level="3.4.2" data-path="item-labels.html"><a href="item-labels.html#venn-memes"><i class="fa fa-check"></i><b>3.4.2</b> Venn Memes</a></li>
+<li class="chapter" data-level="3.4.3" data-path="item-labels.html"><a href="item-labels.html#item-label-basics"><i class="fa fa-check"></i><b>3.4.3</b> Item Label Basics</a></li>
+<li class="chapter" data-level="3.4.4" data-path="item-labels.html"><a href="item-labels.html#item-layout-adjustments"><i class="fa fa-check"></i><b>3.4.4</b> Item layout adjustments</a></li>
+<li class="chapter" data-level="3.4.5" data-path="item-labels.html"><a href="item-labels.html#item-buffer"><i class="fa fa-check"></i><b>3.4.5</b> Item buffer</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html"><i class="fa fa-check"></i><b>3.5</b> Fonts and Font Sizes</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#font-sizes"><i class="fa fa-check"></i><b>3.5.1</b> Font Sizes</a></li>
+<li class="chapter" data-level="3.5.2" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#overall-font-family"><i class="fa fa-check"></i><b>3.5.2</b> Overall Font Family</a></li>
+<li class="chapter" data-level="3.5.3" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#individual-font-families"><i class="fa fa-check"></i><b>3.5.3</b> Individual Font Families</a></li>
+<li class="chapter" data-level="3.5.4" data-path="fonts-and-font-sizes.html"><a href="fonts-and-font-sizes.html#available-font-families"><i class="fa fa-check"></i><b>3.5.4</b> Available Font Families</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="venn-legends.html"><a href="venn-legends.html"><i class="fa fa-check"></i><b>3.6</b> Venn Legends</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="venn-legends.html"><a href="venn-legends.html#hide-percent-or-signed-labels"><i class="fa fa-check"></i><b>3.6.1</b> Hide percent or signed labels</a></li>
+<li class="chapter" data-level="3.6.2" data-path="venn-legends.html"><a href="venn-legends.html#custom-legend-labels"><i class="fa fa-check"></i><b>3.6.2</b> Custom legend labels</a></li>
+<li class="chapter" data-level="3.6.3" data-path="venn-legends.html"><a href="venn-legends.html#additional-alias-labels"><i class="fa fa-check"></i><b>3.6.3</b> Additional alias labels</a></li>
+<li class="chapter" data-level="3.6.4" data-path="venn-legends.html"><a href="venn-legends.html#separate-size-and-sign"><i class="fa fa-check"></i><b>3.6.4</b> Separate Size and Sign</a></li>
+<li class="chapter" data-level="3.6.5" data-path="venn-legends.html"><a href="venn-legends.html#legend-color-style"><i class="fa fa-check"></i><b>3.6.5</b> Legend color style</a></li>
+<li class="chapter" data-level="3.6.6" data-path="venn-legends.html"><a href="venn-legends.html#legend-position"><i class="fa fa-check"></i><b>3.6.6</b> Legend position</a></li>
+<li class="chapter" data-level="3.6.7" data-path="venn-legends.html"><a href="venn-legends.html#legend-font-size"><i class="fa fa-check"></i><b>3.6.7</b> Legend font size</a></li>
+<li class="chapter" data-level="3.6.8" data-path="venn-legends.html"><a href="venn-legends.html#legend-custom-fontfamily"><i class="fa fa-check"></i><b>3.6.8</b> Legend custom fontfamily</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="deeper-customizations.html"><a href="deeper-customizations.html"><i class="fa fa-check"></i><b>4</b> Deeper Customizations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="venndir-borders.html"><a href="venndir-borders.html"><i class="fa fa-check"></i><b>4.1</b> Venndir Borders</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="venndir-borders.html"><a href="venndir-borders.html#venndir-rendering-steps"><i class="fa fa-check"></i><b>4.1.1</b> Venndir Rendering Steps</a></li>
+<li class="chapter" data-level="4.1.2" data-path="venndir-borders.html"><a href="venndir-borders.html#customize-venndir-borders"><i class="fa fa-check"></i><b>4.1.2</b> Customize Venndir borders</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html"><i class="fa fa-check"></i><b>4.2</b> Modify Venn Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="modify-venn-overlaps.html"><a href="modify-venn-overlaps.html#overlap-attributes"><i class="fa fa-check"></i><b>4.2.1</b> Overlap Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="customize-any-label.html"><a href="customize-any-label.html"><i class="fa fa-check"></i><b>4.3</b> Customize Any Label</a></li>
+<li class="chapter" data-level="4.4" data-path="automatic-text-contrast.html"><a href="automatic-text-contrast.html"><i class="fa fa-check"></i><b>4.4</b> Automatic Text Contrast</a></li>
+<li class="chapter" data-level="4.5" data-path="highlight-venn-overlaps.html"><a href="highlight-venn-overlaps.html"><i class="fa fa-check"></i><b>4.5</b> Highlight Venn Overlaps</a></li>
+<li class="chapter" data-level="4.6" data-path="rotate-the-venndir.html"><a href="rotate-the-venndir.html"><i class="fa fa-check"></i><b>4.6</b> Rotate the Venndir</a></li>
+<li class="chapter" data-level="4.7" data-path="nudge-the-legend.html"><a href="nudge-the-legend.html"><i class="fa fa-check"></i><b>4.7</b> Nudge the Legend</a></li>
+<li class="chapter" data-level="4.8" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html"><i class="fa fa-check"></i><b>4.8</b> Hidden Overlaps</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="hidden-overlaps.html"><a href="hidden-overlaps.html#nudge-venndir-circles"><i class="fa fa-check"></i><b>4.8.1</b> Nudge Venndir Circles</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="nudge-specific-labels.html"><a href="nudge-specific-labels.html"><i class="fa fa-check"></i><b>4.9</b> Nudge specific labels</a></li>
+<li class="chapter" data-level="4.10" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html"><i class="fa fa-check"></i><b>4.10</b> Venndir Markdown Support</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-styles"><i class="fa fa-check"></i><b>4.10.1</b> Inline styles</a></li>
+<li class="chapter" data-level="4.10.2" data-path="venndir-markdown-support.html"><a href="venndir-markdown-support.html#inline-images"><i class="fa fa-check"></i><b>4.10.2</b> Inline Images</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="patchwork-with-venndir.html"><a href="patchwork-with-venndir.html"><i class="fa fa-check"></i><b>4.11</b> Patchwork with Venndir</a></li>
+<li class="chapter" data-level="4.12" data-path="custom-signs.html"><a href="custom-signs.html"><i class="fa fa-check"></i><b>4.12</b> Custom Signs</a>
+<ul>
+<li class="chapter" data-level="4.12.1" data-path="custom-signs.html"><a href="custom-signs.html#review-sign-curation"><i class="fa fa-check"></i><b>4.12.1</b> Review Sign Curation</a></li>
+<li class="chapter" data-level="4.12.2" data-path="custom-signs.html"><a href="custom-signs.html#customize-the-symbols"><i class="fa fa-check"></i><b>4.12.2</b> Customize the Symbols</a></li>
+<li class="chapter" data-level="4.12.3" data-path="custom-signs.html"><a href="custom-signs.html#more-advanced-signs"><i class="fa fa-check"></i><b>4.12.3</b> More Advanced Signs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html"><i class="fa fa-check"></i><b>4.13</b> Venndir Graphics Objects</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
+<li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="figure-boosting.html"><a href="figure-boosting.html"><i class="fa fa-check"></i><b>5.1</b> Figure Boosting</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="figure-boosting.html"><a href="figure-boosting.html#me---electron"><i class="fa fa-check"></i><b>5.1.1</b> Me - Electron</a></li>
+<li class="chapter" data-level="5.1.2" data-path="figure-boosting.html"><a href="figure-boosting.html#eulerglyphs"><i class="fa fa-check"></i><b>5.1.2</b> eulerGlyphs</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html"><i class="fa fa-check"></i><b>5.2</b> Venndir Case Studies</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="venndir-case-studies.html"><a href="venndir-case-studies.html#seehawer-kmt2-gene-venns"><i class="fa fa-check"></i><b>5.2.1</b> Seehawer Kmt2 Gene Venns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>6</b> Glossary</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Venndir Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="venn-legends" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Venn Legends<a href="venn-legends.html#venn-legends" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One of many lessons learned from creating hundreds of Venn diagrams:
+It is helpful to answer the most common questions upfront.
+One of the most frequent questions is "How many items are in A?"
+A straightforward answer can be provided in a table legend.</p>
+<p>By default <code>venndir()</code> also calls <code>venndir_legender()</code> which adds a
+legend to each figure.
+This behavior can be skipped by using <code>draw_legend=FALSE</code>.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="venn-legends.html#cb80-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>()</span>
+<span id="cb80-2"><a href="venn-legends.html#cb80-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-1"></span>
+<img src="_main_files/figure-html/legender-1-1.png" alt="Default Venn diagram, showing a table legend in the bottom right corner." width="80%" />
+<p class="caption">
+Figure 3.37: Default Venn diagram, showing a table legend in the bottom right corner.
+</p>
+</div>
+<p>The legend is simple, one column <code>'Set'</code> lists each set name,
+and one column <code>'Size'</code> lists the size of each set.
+The background color matches the Venn diagram, and the text
+is adjusted light or dark to maximize contrast.</p>
+<p>The bottom row also includes 'Total' with the total number
+of unique items represented by the Venn diagram.</p>
+<p>When the Venn diagram displays <a href="glossary.html#signed-data">signed data</a>, the legend
+will also include <a href="glossary.html#signed-counts">signed counts</a>.</p>
+
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="venn-legends.html#cb81-1" tabindex="-1"></a>setlist_signed <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
+<span id="cb81-2"><a href="venn-legends.html#cb81-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-2"></span>
+<img src="_main_files/figure-html/legender-2-1.png" alt="Venn diagram showing a table legend in the bottom right corner, this time the column 'Size' also includes counts tabulated by up and down directionality." width="80%" />
+<p class="caption">
+Figure 3.38: Venn diagram showing a table legend in the bottom right corner, this time the column 'Size' also includes counts tabulated by up and down directionality.
+</p>
+</div>
+<p>Similarly, when the Venn diagram displays percentage values,
+a column is added <code>'Percent'</code>.</p>
+
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="venn-legends.html#cb82-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed, <span class="at">show_labels=</span><span class="st">&quot;Ncps&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-3"></span>
+<img src="_main_files/figure-html/legender-3-1.png" alt="Venn diagram showing a table legend in the bottom right corner, now with new column 'Percent' since the Venn diagram also includes the percentage with each count." width="80%" />
+<p class="caption">
+Figure 3.39: Venn diagram showing a table legend in the bottom right corner, now with new column 'Percent' since the Venn diagram also includes the percentage with each count.
+</p>
+</div>
+<div id="hide-percent-or-signed-labels" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Hide percent or signed labels<a href="venn-legends.html#hide-percent-or-signed-labels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When percentage or signed labels are displayed in the Venn diagram,
+the default legend will also include these labels. However, for simplicity
+it may be preferred to hide these details from the legend, in order
+to display a cleaner legend.
+Several optional arguments can be used to hide specific components
+of the legend.</p>
+<ul>
+<li><code>legend_signed=FALSE</code></li>
+<li><code>legend_percentage=FALSE</code></li>
+<li><code>legend_total=FALSE</code></li>
+</ul>
+
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="venn-legends.html#cb83-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb83-2"><a href="venn-legends.html#cb83-2" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ncps&quot;</span>,</span>
+<span id="cb83-3"><a href="venn-legends.html#cb83-3" tabindex="-1"></a>   <span class="at">legend_signed=</span><span class="cn">FALSE</span>,</span>
+<span id="cb83-4"><a href="venn-legends.html#cb83-4" tabindex="-1"></a>   <span class="at">legend_percentage=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-hide"></span>
+<img src="_main_files/figure-html/legender-hide-1.png" alt="Venn diagram showing counts, percentage values, and signed counts. A Venn legend is shown which includes the 'Set' and 'Size' columns, with the 'Percentage' column not shown due to argument 'legend_percentage=FALSE'." width="80%" />
+<p class="caption">
+Figure 3.40: Venn diagram showing counts, percentage values, and signed counts. A Venn legend is shown which includes the 'Set' and 'Size' columns, with the 'Percentage' column not shown due to argument 'legend_percentage=FALSE'.
+</p>
+</div>
+</div>
+<div id="custom-legend-labels" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> Custom legend labels<a href="venn-legends.html#custom-legend-labels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The legend labels may be customized in <code>venndir()</code> with the
+argument <code>legend_labels</code>. This argument defines the custom label
+in the <code>Venndir</code> object so it is used in subsequent plots.</p>
+
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="venn-legends.html#cb84-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb84-2"><a href="venn-legends.html#cb84-2" tabindex="-1"></a>   <span class="at">legend_labels=</span><span class="fu">c</span>(<span class="st">&quot;Example Set A&quot;</span>,</span>
+<span id="cb84-3"><a href="venn-legends.html#cb84-3" tabindex="-1"></a>      <span class="st">&quot;Example Set B&quot;</span>,</span>
+<span id="cb84-4"><a href="venn-legends.html#cb84-4" tabindex="-1"></a>      <span class="st">&quot;Example Set C&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-4"></span>
+<img src="_main_files/figure-html/legender-4-1.png" alt="Venn diagram showing a table legend in the bottom right corner, with custom labels for each set, for example 'set_A' is renamed 'Example Set A' in the legend." width="80%" />
+<p class="caption">
+Figure 3.41: Venn diagram showing a table legend in the bottom right corner, with custom labels for each set, for example 'set_A' is renamed 'Example Set A' in the legend.
+</p>
+</div>
+<p>Note that <code>legend_labels</code> will only customize the labels in the
+table legend, and not on the Venn diagram itself.
+Sometimes it is necessary to customize the Venn diagram labels,
+with the argument <code>setlist_labels</code>.</p>
+<p>A common reason to have distinct labels in the figure and legend
+is to impose line breaks in the figure which are not necessary
+in the table.
+At other times, it makes sense to have one
+detailed label and one simplified label.</p>
+
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="venn-legends.html#cb85-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb85-2"><a href="venn-legends.html#cb85-2" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="fl">0.2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb85-3"><a href="venn-legends.html#cb85-3" tabindex="-1"></a>   <span class="at">setlist_labels=</span><span class="fu">c</span>(<span class="st">&quot;Example</span><span class="sc">\n</span><span class="st">Set A&quot;</span>,</span>
+<span id="cb85-4"><a href="venn-legends.html#cb85-4" tabindex="-1"></a>      <span class="st">&quot;Example</span><span class="sc">\n</span><span class="st">Set B&quot;</span>,</span>
+<span id="cb85-5"><a href="venn-legends.html#cb85-5" tabindex="-1"></a>      <span class="st">&quot;Example</span><span class="sc">\n</span><span class="st">Set C&quot;</span>),</span>
+<span id="cb85-6"><a href="venn-legends.html#cb85-6" tabindex="-1"></a>   <span class="at">y_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;lines&quot;</span>),</span>
+<span id="cb85-7"><a href="venn-legends.html#cb85-7" tabindex="-1"></a>   <span class="at">legend_labels=</span><span class="fu">c</span>(<span class="st">&quot;Example Set A&quot;</span>,</span>
+<span id="cb85-8"><a href="venn-legends.html#cb85-8" tabindex="-1"></a>      <span class="st">&quot;Example Set B&quot;</span>,</span>
+<span id="cb85-9"><a href="venn-legends.html#cb85-9" tabindex="-1"></a>      <span class="st">&quot;Example Set C&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-5"></span>
+<img src="_main_files/figure-html/legender-5-1.png" alt="Venn diagram showing a table legend in the bottom right corner, with custom labels for each set. 'set_A' is renamed 'Example Set A' in the legend." width="80%" />
+<p class="caption">
+Figure 3.42: Venn diagram showing a table legend in the bottom right corner, with custom labels for each set. 'set_A' is renamed 'Example Set A' in the legend.
+</p>
+</div>
+</div>
+<div id="additional-alias-labels" class="section level3 hasAnchor" number="3.6.3">
+<h3><span class="header-section-number">3.6.3</span> Additional alias labels<a href="venn-legends.html#additional-alias-labels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The argument <code>alias</code> can be used to supply simple labels,
+which then pushes <code>legend_labels</code> into a new column <code>'Label'</code>.
+The result may provide a helpful technique to associate extra
+details to the Venn diagram labels.</p>
+<p>Note that <code>alias</code> must be named using the set names, matching
+the values in <code>names(setlist)</code>.</p>
+
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="venn-legends.html#cb86-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb86-2"><a href="venn-legends.html#cb86-2" tabindex="-1"></a>   <span class="at">legend_headers=</span><span class="fu">c</span>(<span class="at">Set=</span><span class="st">&quot;Set&quot;</span>, <span class="at">Size=</span><span class="st">&quot;Size&quot;</span>, <span class="at">Percentage=</span><span class="st">&quot;Percentage&quot;</span>, <span class="at">Sign=</span><span class="st">&quot;Sign&quot;</span>, <span class="at">Label=</span><span class="st">&quot;Contrast&quot;</span>),</span>
+<span id="cb86-3"><a href="venn-legends.html#cb86-3" tabindex="-1"></a>   <span class="at">alias=</span><span class="fu">c</span>(<span class="at">set_A=</span><span class="st">&quot;A&quot;</span>,</span>
+<span id="cb86-4"><a href="venn-legends.html#cb86-4" tabindex="-1"></a>      <span class="at">set_B=</span><span class="st">&quot;B&quot;</span>,</span>
+<span id="cb86-5"><a href="venn-legends.html#cb86-5" tabindex="-1"></a>      <span class="at">set_C=</span><span class="st">&quot;C&quot;</span>),</span>
+<span id="cb86-6"><a href="venn-legends.html#cb86-6" tabindex="-1"></a>   <span class="at">setlist_labels=</span><span class="fu">c</span>(<span class="st">&quot;Set A&quot;</span>,</span>
+<span id="cb86-7"><a href="venn-legends.html#cb86-7" tabindex="-1"></a>      <span class="st">&quot;Set B&quot;</span>,</span>
+<span id="cb86-8"><a href="venn-legends.html#cb86-8" tabindex="-1"></a>      <span class="st">&quot;Set C&quot;</span>),</span>
+<span id="cb86-9"><a href="venn-legends.html#cb86-9" tabindex="-1"></a>   <span class="at">legend_labels=</span><span class="fu">c</span>(<span class="at">set_A=</span><span class="st">&quot;Dex - control&quot;</span>,</span>
+<span id="cb86-10"><a href="venn-legends.html#cb86-10" tabindex="-1"></a>      <span class="at">set_B=</span><span class="st">&quot;PGH - control&quot;</span>,</span>
+<span id="cb86-11"><a href="venn-legends.html#cb86-11" tabindex="-1"></a>      <span class="at">set_C=</span><span class="st">&quot;E2 - control&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-6"></span>
+<img src="_main_files/figure-html/legender-6-1.png" alt="Venn diagram showing a table legend in the bottom right corner, with custom labels for each set. 'Set A' in the Venn diagram is indicated 'A' in the legend, with a new column 'Contrast' with descriptive information." width="80%" />
+<p class="caption">
+Figure 3.43: Venn diagram showing a table legend in the bottom right corner, with custom labels for each set. 'Set A' in the Venn diagram is indicated 'A' in the legend, with a new column 'Contrast' with descriptive information.
+</p>
+</div>
+<p>Figure <a href="venn-legends.html#fig:legender-6">3.43</a> also uses the optional argument
+<code>legend_headers</code> to define custom headings in the legend,
+this adding 'Contrast' as a new header.</p>
+</div>
+<div id="separate-size-and-sign" class="section level3 hasAnchor" number="3.6.4">
+<h3><span class="header-section-number">3.6.4</span> Separate Size and Sign<a href="venn-legends.html#separate-size-and-sign" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The default legend combines the set size together with <a href="glossary.html#signed-counts">signed counts</a>
+when the <code>Venndir</code> data contains <a href="glossary.html#signed-setlist">signed setlist</a>.
+In other words,the label <span class="math inline">\(30 (↓ 16, ↑ 19)\)</span> is displayed
+in one field.</p>
+<p>Two optional arguments provide alternatives to the default:</p>
+<ul>
+<li><code>combine_size=FALSE</code> The total size will not be combined with
+<a href="glossary.html#signed-counts">signed counts</a>.</li>
+</ul>
+
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="venn-legends.html#cb87-1" tabindex="-1"></a><span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb87-2"><a href="venn-legends.html#cb87-2" tabindex="-1"></a>   <span class="at">combine_size=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-size"></span>
+<img src="_main_files/figure-html/legender-size-1.png" alt="Venndir legend with separate columns for 'Size' and 'Sign'." width="80%" />
+<p class="caption">
+Figure 3.44: Venndir legend with separate columns for 'Size' and 'Sign'.
+</p>
+</div>
+<ul>
+<li><code>combine_signed=FALSE</code> The <a href="glossary.html#signed-counts">signed counts</a> will not
+be combined and displayed in parentheses.</li>
+</ul>
+
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="venn-legends.html#cb88-1" tabindex="-1"></a><span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb88-2"><a href="venn-legends.html#cb88-2" tabindex="-1"></a>   <span class="at">combine_signed=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-signed"></span>
+<img src="_main_files/figure-html/legender-signed-1.png" alt="Venndir legend with one column 'Size', whose values not delineated by parentheses." width="80%" />
+<p class="caption">
+Figure 3.45: Venndir legend with one column 'Size', whose values not delineated by parentheses.
+</p>
+</div>
+<ul>
+<li><code>combine_size=FALSE, combine_signed=FALSE</code> The total size and
+<a href="glossary.html#signed-counts">signed counts</a> will each appear in separate columns.</li>
+</ul>
+
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="venn-legends.html#cb89-1" tabindex="-1"></a><span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb89-2"><a href="venn-legends.html#cb89-2" tabindex="-1"></a>   <span class="at">combine_signed=</span><span class="cn">FALSE</span>,</span>
+<span id="cb89-3"><a href="venn-legends.html#cb89-3" tabindex="-1"></a>   <span class="at">combine_size=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-size-signed"></span>
+<img src="_main_files/figure-html/legender-size-signed-1.png" alt="Venn diagram with legend that shows separate columns with 'Size', and two additional columns with signed counts which do not have a header label." width="80%" />
+<p class="caption">
+Figure 3.46: Venn diagram with legend that shows separate columns with 'Size', and two additional columns with signed counts which do not have a header label.
+</p>
+</div>
+</div>
+<div id="legend-color-style" class="section level3 hasAnchor" number="3.6.5">
+<h3><span class="header-section-number">3.6.5</span> Legend color style<a href="venn-legends.html#legend-color-style" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The default legend uses the same color fill as the Venn diagram.
+However, the style can be customized using argument
+'legend_color_style' to control both the
+fill and border colors.</p>
+<p><strong>Fill color</strong></p>
+<ul>
+<li><code>"fill"</code> uses the Venn <code>set_colors</code> after applying <code>poly_alpha</code></li>
+<li><code>"nofill"</code> uses no fill color, inheriting the plot background</li>
+<li><code>"greyfill"</code> uses light grey fill color</li>
+</ul>
+<p><strong>Border color</strong></p>
+<ul>
+<li><code>"border"</code> uses the Venn <code>set_colors</code> with no alpha transparency</li>
+<li><code>"noborder"</code> uses no border</li>
+<li><code>"greyborder"</code> uses medium-dark grey border</li>
+<li><code>"blackborder"</code> uses black border</li>
+</ul>
+<p>For example, to use no color fill, and black border:<br />
+<code>legend_color_style=c("nofill", "blackborder")</code></p>
+
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="venn-legends.html#cb90-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb90-2"><a href="venn-legends.html#cb90-2" tabindex="-1"></a>   <span class="at">legend_color_style=</span><span class="fu">c</span>(<span class="st">&quot;nofill&quot;</span>, <span class="st">&quot;blackborder&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-bw"></span>
+<img src="_main_files/figure-html/legender-bw-1.png" alt="Venn diagram with a legend drawn using black border, and no background color." width="80%" />
+<p class="caption">
+Figure 3.47: Venn diagram with a legend drawn using black border, and no background color.
+</p>
+</div>
+<p>The header can be customized as well, using arguments:
+<code>header_color</code> for the text color, <code>header_bg</code> for background fill,
+and <code>header_border</code> for the header border.</p>
+</div>
+<div id="legend-position" class="section level3 hasAnchor" number="3.6.6">
+<h3><span class="header-section-number">3.6.6</span> Legend position<a href="venn-legends.html#legend-position" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The legend itself is positioned using argument <code>legend_x</code> when called
+by <code>venndir()</code>, or <code>x</code> when called by <code>venndir_legender()</code>.
+The position recognizes the following <code>character</code> terms:</p>
+<ul>
+<li>x-axis position: 'left', 'center', 'right'</li>
+<li>y-axis position: 'top', 'center', 'bottom'</li>
+</ul>
+<p>The default position is <code>"bottomright"</code></p>
+<p>Some fine-tuning is available with two more arguments:</p>
+<ul>
+<li><code>x_inset</code> - <code>grid::unit</code> object applied when x is 'right' or 'left',
+intended to apply an inset distance from the edge of the figure.
+The default is <code>grid::unit(2, "lines")</code> which moves the legend two
+character lines from the edge of the figure.</li>
+<li><code>y_inset</code> - <code>grid::unit</code> object applied when x is 'top' or 'bottom',
+which is applied the same way as described for <code>x_inset</code>. The default
+is 2 character lines.</li>
+</ul>
+
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="venn-legends.html#cb91-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb91-2"><a href="venn-legends.html#cb91-2" tabindex="-1"></a>   <span class="at">legend_x=</span><span class="fu">c</span>(<span class="st">&quot;bottomleft&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-bottomleft"></span>
+<img src="_main_files/figure-html/legender-bottomleft-1.png" alt="Venn diagram showing the legend positioned in the bottom left corner, using argument 'legend_x' inside the venndir() function." width="80%" />
+<p class="caption">
+Figure 3.48: Venn diagram showing the legend positioned in the bottom left corner, using argument 'legend_x' inside the <code>venndir()</code> function.
+</p>
+</div>
+<p>For example, to move the legend closer to the bottom edge,
+and closer to the left edge, see the following example.
+Note the function <code>grid::grid.rect()</code> is used here to draw
+a draw box around the plot region.</p>
+
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="venn-legends.html#cb92-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb92-2"><a href="venn-legends.html#cb92-2" tabindex="-1"></a>   <span class="at">x_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">&quot;lines&quot;</span>),</span>
+<span id="cb92-3"><a href="venn-legends.html#cb92-3" tabindex="-1"></a>   <span class="at">y_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">&quot;lines&quot;</span>),</span>
+<span id="cb92-4"><a href="venn-legends.html#cb92-4" tabindex="-1"></a>   <span class="at">legend_x=</span><span class="fu">c</span>(<span class="st">&quot;bottomleft&quot;</span>))</span>
+<span id="cb92-5"><a href="venn-legends.html#cb92-5" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.rect</span>(<span class="at">gp=</span>grid<span class="sc">::</span><span class="fu">gpar</span>(<span class="at">fill=</span><span class="cn">NA</span>, <span class="at">col=</span><span class="st">&quot;grey&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-inset"></span>
+<img src="_main_files/figure-html/legender-inset-1.png" alt="Venn diagram with legend in the bottom left corner, adjusted to the bottom edge, and moved more to the left of the figure." width="80%" />
+<p class="caption">
+Figure 3.49: Venn diagram with legend in the bottom left corner, adjusted to the bottom edge, and moved more to the left of the figure.
+</p>
+</div>
+<p>Note the x-axis position is not the exact left
+edge of the plot itself.
+The legend is drawn within the Venndir <code>grid</code> viewport,
+defined with fixed aspect ratio units 'snpc' (see <code>grid::unit()</code>).
+As a result the Venndir viewport is roughly square, and if the
+graphics device is wider or taller than square, extra
+whitespace is imposed. The argument <code>x_inset</code> accepts
+negative values that can position the legend further left
+when necessary.</p>
+<p>An alternative is to call <code>venndir()</code> with <code>draw_legend=FALSE</code>,
+then separately call <code>venndir_legender()</code> to create the legend.
+This process draws the legend in the overall viewport.</p>
+<p>In Figure <a href="venn-legends.html#fig:legender-inset-vp">3.50</a>, the legend is positioned on the
+exact bottom-left edge of the plot, shown by the grey line
+drawn with <code>grid::grid.rect()</code>.</p>
+
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="venn-legends.html#cb93-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb93-2"><a href="venn-legends.html#cb93-2" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>)</span>
+<span id="cb93-3"><a href="venn-legends.html#cb93-3" tabindex="-1"></a>vl <span class="ot">&lt;-</span> <span class="fu">venndir_legender</span>(v,</span>
+<span id="cb93-4"><a href="venn-legends.html#cb93-4" tabindex="-1"></a>   <span class="at">x_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">&quot;lines&quot;</span>),</span>
+<span id="cb93-5"><a href="venn-legends.html#cb93-5" tabindex="-1"></a>   <span class="at">y_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">&quot;lines&quot;</span>),</span>
+<span id="cb93-6"><a href="venn-legends.html#cb93-6" tabindex="-1"></a>   <span class="at">x=</span><span class="fu">c</span>(<span class="st">&quot;bottomleft&quot;</span>))</span>
+<span id="cb93-7"><a href="venn-legends.html#cb93-7" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.rect</span>(<span class="at">gp=</span>grid<span class="sc">::</span><span class="fu">gpar</span>(<span class="at">fill=</span><span class="cn">NA</span>, <span class="at">col=</span><span class="st">&quot;grey&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-inset-vp"></span>
+<img src="_main_files/figure-html/legender-inset-vp-1.png" alt="Venn diagram with legend in the bottom left corner, this time with the legend touching the exact bottom left edge of the overall figure." width="80%" />
+<p class="caption">
+Figure 3.50: Venn diagram with legend in the bottom left corner, this time with the legend touching the exact bottom left edge of the overall figure.
+</p>
+</div>
+<p>Altogether, the use of <code>venndir()</code> with argument <code>expand_fraction</code>
+should provide detailed control over the position of the Venndir
+diagram. When necessary, the legend can be drawn separately
+with <code>venndir_legender()</code> to afford exact control over the
+position of the legend.</p>
+<p>In future the plot method used for Venndir may be updated
+to use 'npc' coordinates instead of 'snpc', which may enable
+the legend to be freely positioned in the encompassing viewport,
+not the Venndir viewport.
+For now, this update is lower on the Todo list.</p>
+</div>
+<div id="legend-font-size" class="section level3 hasAnchor" number="3.6.7">
+<h3><span class="header-section-number">3.6.7</span> Legend font size<a href="venn-legends.html#legend-font-size" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The legend font size can be adjusted with <code>legend_font_cex</code> when called
+by <code>venndir()</code>, otherwise it uses <code>font_cex</code> when called using
+<code>venndir_legender()</code>.</p>
+
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="venn-legends.html#cb94-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb94-2"><a href="venn-legends.html#cb94-2" tabindex="-1"></a>   <span class="at">legend_font_cex=</span><span class="fl">1.3</span>,</span>
+<span id="cb94-3"><a href="venn-legends.html#cb94-3" tabindex="-1"></a>   <span class="at">x_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">&quot;lines&quot;</span>),</span>
+<span id="cb94-4"><a href="venn-legends.html#cb94-4" tabindex="-1"></a>   <span class="at">y_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">&quot;lines&quot;</span>),</span>
+<span id="cb94-5"><a href="venn-legends.html#cb94-5" tabindex="-1"></a>   <span class="at">legend_x=</span><span class="fu">c</span>(<span class="st">&quot;bottomleft&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-larger"></span>
+<img src="_main_files/figure-html/legender-larger-1.png" alt="Venn diagram with legend drawn in the bottom left corner, using font size adjusted to 1.3 times the default font size with argument 'font_cex'." width="80%" />
+<p class="caption">
+Figure 3.51: Venn diagram with legend drawn in the bottom left corner, using font size adjusted to 1.3 times the default font size with argument 'font_cex'.
+</p>
+</div>
+</div>
+<div id="legend-custom-fontfamily" class="section level3 hasAnchor" number="3.6.8">
+<h3><span class="header-section-number">3.6.8</span> Legend custom fontfamily<a href="venn-legends.html#legend-custom-fontfamily" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The legend fontfamily will use the <code>fontfamily</code> defined
+in the <code>Venndir</code> object (for example <code>v@metadata$fontfamily</code>).
+For most cases, supplying a custom <code>fontfamily</code> to <code>venndir()</code>
+will suffice, since it will apply the same custom font to the figure
+and to the legend.</p>
+<p>It is possible to use a custom font specifically for the legend.</p>
+<p>This process requires calling <code>venndir_legender()</code> independently,
+therefore the legend should not be drawn by <code>venndir()</code>.<br />
+The steps are described and demonstrated below:</p>
+<ol style="list-style-type: decimal">
+<li>Call <code>venndir()</code> with <code>draw_legend=FALSE</code>, assign output
+to a variable, in this case <code>v</code>.</li>
+<li>Call <code>venndir_legender()</code> using the <code>Venndir</code> object <code>v</code> and
+custom <code>fontfamily</code>.</li>
+</ol>
+
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="venn-legends.html#cb95-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist_signed,</span>
+<span id="cb95-2"><a href="venn-legends.html#cb95-2" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;sans&quot;</span>,</span>
+<span id="cb95-3"><a href="venn-legends.html#cb95-3" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>)</span>
+<span id="cb95-4"><a href="venn-legends.html#cb95-4" tabindex="-1"></a>vl <span class="ot">&lt;-</span> <span class="fu">venndir_legender</span>(v,</span>
+<span id="cb95-5"><a href="venn-legends.html#cb95-5" tabindex="-1"></a>   <span class="at">x=</span><span class="st">&quot;bottomright&quot;</span>,</span>
+<span id="cb95-6"><a href="venn-legends.html#cb95-6" tabindex="-1"></a>   <span class="at">x_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">&quot;lines&quot;</span>),</span>
+<span id="cb95-7"><a href="venn-legends.html#cb95-7" tabindex="-1"></a>   <span class="at">y_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">&quot;lines&quot;</span>),</span>
+<span id="cb95-8"><a href="venn-legends.html#cb95-8" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">1.3</span>,</span>
+<span id="cb95-9"><a href="venn-legends.html#cb95-9" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;serif&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legender-fontfamily"></span>
+<img src="_main_files/figure-html/legender-fontfamily-1.png" alt="Venn diagram with legend drawn in the bottom right, using sans font for the Venn diagram labels, and serif font for the legend." width="80%" />
+<p class="caption">
+Figure 3.52: Venn diagram with legend drawn in the bottom right, using sans font for the Venn diagram labels, and serif font for the legend.
+</p>
+</div>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fonts-and-font-sizes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="deeper-customizations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jmw86069/venndir-book/edit/main/03-venndir-viz.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/jmw86069/venndir-book/blob/main/03-venndir-viz.Rmd",
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "favicon": "favicon.ico"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

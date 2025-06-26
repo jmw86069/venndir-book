@@ -1,14 +1,44 @@
 p.caption {
-  color: #777;
+  color: gray;
   margin-top: 10px;
+  text-align: left;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  font-size: 0.95em;
 }
 p code {
-  white-space: inherit;
+  white-space: pre-wrap;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  background: #EEEEEE;
 }
 pre {
   word-break: normal;
+  overflow-wrap: anywhere;
   word-wrap: normal;
+  background: #EEEEEE;
 }
 pre code {
-  white-space: inherit;
+  white-space: pre-wrap;
+  background: #EEEEEE;
+}
+td {
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+.tipbox {
+  padding: 1em 1em 1em 4em;
+  border: 2px solid navy;
+  border-radius: 10px;
+  background: #F5F5F5;
+  color: black;
+}
+.venndirquote {
+  border-left: 4px solid #2c3e50;
+  padding: 1em;
+  margin: 1.5em 0;
+  background-color: #f7f9fa;
+  font-style: italic;
+  font-size: 1.1em;
 }

@@ -1,0 +1,14 @@
+Package: venndir-book
+Type: Book
+Title: Venndir Book
+Version: 0.0.1
+Imports: bookdown,
+   venndir,
+   patchwork,
+   knitr,
+   kableExtra,
+   systemfonts,
+   limma,
+   DESeq2,
+   marquee
+Remotes: jmw86069/venndir

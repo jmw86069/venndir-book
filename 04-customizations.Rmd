@@ -1,0 +1,1437 @@
+# Deeper Customizations
+
+```{r setup-04, include=FALSE}
+knitr::opts_chunk$set(
+   # fig.retina = 2, out.width = '100%'
+   cache=TRUE,
+   fig.align="center",
+   fig.width=8,
+   fig.height=7
+)
+```
+
+
+
+While a Venn diagram may seem simple on the surface,
+real-world datasets rarely cooperate.
+At a certain point, those 'minor' details --
+directionality, labeling, scaling, overlap type --
+start to shape what the figure reveals, and what it obscures.
+
+Every feature in Venndir has a story —
+some short, some strangely epic — 
+that drove its creation.
+
+## Venndir Borders
+
+The underlying geometry of each polygon is represented as a
+`JamPolygon` object (Ward 2025), a new S4 object designed for
+geometries used in Venndir.
+
+An important distinction from typical polygons in R is that
+the objects are capable of describing three borders:
+
+1. **'border'**: Line along the exact edge of the polygon.
+2. **'innerborder'**: Line drawn on the inside edge.
+3. **'outerborder'**: Line drawn on the outsideedge.
+
+`JamPolygon` objects allow adjacent borders to co-exist without
+rendering two borders on top of each other.
+
+(ref:jp-borders) Four standard objects are displayed on the top row. The bottom row shows the effect of adding distinct borders: border, innerborder, outerborder, and all borders.
+
+Figure \@ref(fig:jp-borders) illustrates four examples of borders,
+showing the problem being addressed with innerborder. The left object
+has two halves labeled A and B, with borders gold and purple, respectively.
+When using 'border' the gold border is covered by the purple border down
+the center line between A and B.
+
+Instead, the next object with C and D shows the effect of using 'innerborder',
+with the respective gold and purple borders both visible. Also notice the
+object is not enlarged by adding the border, the line width extends *inside*
+the polygon.
+
+The next panel shows E and F, with 'outerborder' wrapping around them both.
+The outerborder extends outside the object, and in fact the outerborder
+does not extend inside the object at all.
+
+The right panel shows G and H, and includes each type of border, drawn in
+order: innerborder, outerborder, border. The 'border' was configured as
+a thin line, otherwise it could potentially cover both the innerborder
+and outerborder.
+
+```{r jp-borders, echo=FALSE, fig.width=7, fig.height=4, fig.cap="(ref:jp-borders)", fig.alt="(ref:jp-borders)"}
+make_semis <- function(
+ x=1,
+ y=2,
+ name="A",
+ radius=1,
+ fill=c("gold", "firebrick4"),
+ ...)
+{
+   #
+   if (length(name) == 1) {
+      name <- c(name, paste0("non_", name))
+   }
+   if (length(fill) == 1) {
+      fill <- jamba::color2gradient(fill, n=2)
+   }
+   fill[3] <- NA;
+   jp1full <- polygon_circles(x=x,
+      y=y,
+      setnames=name[2],
+      radius=radius,
+      ...)
+   jpsq <- data.frame(
+      name=name[1],
+       x=I(list(
+           c(x - radius * 2, x, x, x - radius * 2))),
+       y=I(list(
+           c(y - radius * 2, y - radius * 2,
+              y + radius * 2, y + radius * 2)))
+   )
+   jpdf <- new("JamPolygon",
+      polygons=jpsq)
+   jp1 <- intersect_JamPolygon(rbind2(jpdf, jp1full))
+   jp2 <- minus_JamPolygon(rbind2(jp1full, jpdf))
+   jp12 <- rbind2(jp1, jp2)
+   jp12 <- rbind2(jp1, jp2, jp1full)
+   jp12@polygons$fill <- fill;
+   jp12@polygons$name[3] <- " ";
+   jp12@polygons$label_color <- jamba::setTextContrastColor(jp12@polygons$fill);
+   jp12;
+}
+r <- 1.25;
+jp12 <- make_semis(x=1, radius=r, name=c("A", "B"), fill="firebrick")
+jp34 <- make_semis(x=4, radius=r, name=c("C", "D"), fill="dodgerblue")
+jp56 <- make_semis(x=7, radius=r, name=c("E", "F"), fill="aquamarine3")
+jp78 <- make_semis(x=10, radius=r, name=c("G", "H"), fill="slateblue2")
+jp <- do.call(rbind2, list(jp12, jp34, jp56, jp78));
+k <- 7;
+jp@polygons$border.lwd <- c(
+   # k*2, k*2, 1,
+   3, 3, 3,
+   # 1, 1, 1,
+   # 1, 1, 1,
+   # 1, 1, 1,
+   0, 0, 0,
+   0, 0, 0,
+   1, 1, 1)
+jp@polygons$border <- c(
+   "gold", "purple", NA,
+   # "black", "black", "black",
+   "black", "black", "black",
+   "black", "black", "black",
+   "black", "black", "black")
+jp@polygons$innerborder <- c(
+   NA, NA, NA,
+   "gold", "purple", NA,
+   NA, NA, NA,
+   "gold", "purple", NA)
+jp@polygons$innerborder.lwd <- k
+jp@polygons$outerborder=c(
+   NA, NA, NA,
+   NA, NA, NA,
+   NA, NA, "orange",
+   NA, NA, "orange")
+jp@polygons$outerborder.lwd <- k
+
+jp2 <- nudge_JamPolygon(jp, nudge=lapply(jamba::nameVectorN(jp), function(i){c(0, 3)}))
+jp2@polygons$label <- jp2@polygons$name;
+jp@polygons$label <- jp@polygons$name;
+names(jp2) <- paste0(names(jp2), "_jp2")
+jp2@polygons$border <- NA;
+jp2@polygons$outerborder <- NA;
+jp2@polygons$innerborder <- NA;
+
+jb1 <- make_semis(x=1, y=0, radius=0.5)[3]
+names(jb1) <- "blank1"
+jb1@polygons$label <- "border"
+jb1@polygons$label_color <- "black"
+
+jb2 <- make_semis(x=4, y=0, radius=0.5)[3]
+names(jb2) <- "blank2"
+jb2@polygons$label <- "innerborder"
+jb2@polygons$label_color <- "black"
+
+jb3 <- make_semis(x=7, y=0, radius=0.5)[3]
+names(jb3) <- "blank3"
+jb3@polygons$label <- "outerborder"
+jb3@polygons$label_color <- "black"
+
+jb4 <- make_semis(x=10, y=0, radius=0.5)[3]
+names(jb4) <- "blank4"
+jb4@polygons$label <- "all borders"
+jb4@polygons$label_color <- "black"
+
+jp12 <- rbind2(jp, jp2, jb1, jb2, jb3, jb4)
+jp12@polygons$fontsize <- 16;
+p <- plot.JamPolygon(jp12,
+   buffer=c(0.01, 0.01, 0.01, 0.01) * -20,
+   xlim=c(-0.6, 11.6), ylim=c(-0.5, 6.25))
+
+```
+
+### Venndir Rendering Steps
+
+Venndir draws borders in a specific order to provide a layering effect,
+followed by other graphics elements such as labels and connecting
+line segments.
+
+1. **Venn Sets**
+
+   * The `outerborder` is drawn using `set_colors` darkened slightly.
+   * Other borders are not drawn: `fill` color, `border`, and `innerborder`.
+
+2. **Venn Overlaps**
+
+   * Colors from the overlapping sets, from `set_colors`, are blended.
+   * The `fill` color is drawn after applying `poly_alpha`.
+   * The filled region does not include the `innerborder.lwd` if the
+   `innerborder` is defined.
+   * The `innerborder` is drawn using the `fill` color, darkened slightly,
+   and with no alpha transparency.
+   * Other borders are not drawn: `border` and `outerborder`.
+
+3. **Count Labels**
+
+   * The font colors are adjusted for contrast, relative to the
+   background colors behind each label.
+
+4. **Item Labels** (if enabled)
+5. **Line Segments** (if enabled)
+6. **Venndir Legend** (if enabled)
+7. **Main Title** (if enabled)
+
+
+The order that Venndir polygons are rendered, as described in (1) and (2)
+above, is determined by the order of polygons present in the Venndir
+`'jps'` S4 slot.
+For example, if `v` is a `Venndir` object, the `JamPolygon` entries
+are accessed using `v@jps`.
+
+The order in `'jps'` can be modified, but all entries
+are required for the `Venndir` object to be valid. For example,
+[Highlight Venn Overlaps] re-orders `'jps'` to place the highlighted
+overlap region last, thereby preventing `border` and `outerborder`
+from being overdrawn by other entries in `'jps'`.
+
+Additional `JamPolygon` entries may be added to `v@jps`, however
+the new names must not conflict with existing `names(v@jps)`.
+
+
+
+Additional notes:
+
+* When plotting a `Venndir` object, the ellipses `'...'` can be used
+to provide custom border settings, and are described in
+[Customize Venndir borders].
+* By default, `Venndir` objects do not use `border`, they use
+`outerborder` for sets, and `innerborder` for overlap regions.
+* The overlap regions use colors that are blended based upon `set_colors`
+defined for the `Venndir` object.
+* Default borders are quite subtle, but the effect is more distinctive
+when using larger values for `innerborder.lwd` and `outerborder.lwd`.
+* It is usually best to use the same `numeric` value for both
+`innerborder.lwd` and `outerborder.lwd`, due to the way the borders
+are layered.
+
+
+### Customize Venndir borders
+
+The border options can be customized directly when plotting
+the Venndir object, adding named arguments to any function
+that produces a Venndir plot:
+* `venndir(...)`
+* `render_venndir(Venndir, ...)`
+* `plot(Venndir, ...)`
+
+A few common alternatives are shown in Figure \@ref(fig:custom-borders).
+
+(ref:custom-borders) Venndir diagrams demonstrating common border styles.
+
+(ref:custom-borders-1) Venndir shown with no borders.
+
+(ref:custom-borders-2) Venndir shown with thin black border.
+
+(ref:custom-borders-3) Venndir shown with white border.
+
+(ref:custom-borders-4) Venndir with beveled effect.
+
+```{r custom-borders, out.width="50%", fig.width=6, fig.height=5, fig.align="center", fig.ncol=2, fig.cap="(ref:custom-borders)", fig.alt="(ref:custom-borders)", fig.subcap=c("(ref:custom-borders-1)", "(ref:custom-borders-2)", "(ref:custom-borders-3)", "(ref:custom-borders-4)")}
+v1 <- venndir(make_venn_test(),
+   innerborder=NA, outerborder=NA)
+v2 <- venndir(make_venn_test(),
+   border="black", border.lwd=1,
+   innerborder=NA, outerborder=NA)
+v3 <- venndir(make_venn_test(),
+   innerborder="white", outerborder="white")
+v4 <- venndir(make_venn_test(),
+   label_style="lite box", innerborder.lwd=1,
+   outerborder="white", outerborder.lwd=1)
+```
+
+These options are useful for global changes to borders,
+but are not ideal to modify a specific region. For those
+customizations, see [Modify Venn Overlaps].
+
+
+## Modify Venn Overlaps
+
+Each overlap region in the Venndir object can be customized to some extent.
+The `Venndir` object itself can be edited, but this process is tedious
+and not intended to be user-friendly. Instead `modify_venndir_overlap()`
+provides the most common modifications.
+
+For a simple way to highlight a Venndir overlap, see
+[Highlight Venn Overlaps]. This alternative offers a simple
+variation of `modify_venndir_overlap()`.
+
+As described in [Venndir Rendering Steps], **Sets** are drawn as open
+circles, then each **Overlap** is drawn as a color-filled region.
+**Labels** are then rendered last. Each overlap may have options
+defined related to the region and the label.
+For example `fill` is applied to the polygon background color,
+however `label.fill` is applied to the corresponding label.
+The full set of recognized parameters will be described later.
+
+**Overlap** regions have specific names using the set or sets involved.
+* `'set_A'` refers to the region unique to `'set_A'` with no other
+overlapping sets.
+* `'set_A&set_B'` refers to the region where the two sets `'set_A'` and
+`'set_B'` overlap, with no other overlapping sets.
+
+The overlap name is provided with argument `overlap_set`.
+See the example \@ref(fig:modify-overlap-1)
+
+(ref:modify-overlap-1) Venndir example showing a default Venn diagram, and a modified diagram (right) affecting the overlap region for `'set_A&set_B'`. Changes were made to the `fill` color, `innerborder`, `innerborder.lwd`, and `fontsize`.
+
+```{r modify-overlap-1, fig.ncol=2, fig.height=7, out.width="50%", fig.cap="(ref:modify-overlap-1)", fig.alt="(ref:modify-overlap-1)", fig.subcap=c("Default Venndir.", "Modified Venndir.")}
+# default Venndir
+v <- venndir(make_venn_test(do_signed=TRUE),
+   do_plot=FALSE)
+plot(v,
+   main="Default Venndir")
+
+# modified Venndir
+v_mod <- modify_venndir_overlap(v,
+   overlap_set="set_A&set_B",
+   params=list(
+      fill="orange",
+      alpha=0.8,
+      fontsize=c(22, 16, 16),
+      innerborder="royalblue",
+      innerborder.lwd=5)
+   )
+plot(v_mod,
+   main="Modified 'set_A&set_B'")
+```
+
+This customization is fairly common, and straightforward:
+
+* `fill` color was changed to `'orange'`.
+* `alpha` was defined 0.8, to be applied to `fill`.
+* `innerborder` color was changed to `'royalblue'`.
+* `innerborder.lwd` line width was set to 5.
+* Label `fontsize` values were increased.
+
+Note that `fontsize` is applied to each individual label in the
+order it is drawn.
+
+### Overlap Attributes
+
+The recognized Venndir overlap attributes are shown in
+Table \@ref(tab:overlap-attr-table).
+
+```{r overlap-attr-table, echo=FALSE}
+attr_list <- list(
+   "fill"=paste("R color used to fill the overlap region, after",
+      "also applying `alpha`.",
+      "The default is derived from the set_colors for the sets involved."),
+   "alpha"=paste("Numeric alpha transparency applied to the `fill` color,",
+      "where alpha=0 is fully transparent, and alpha=1 is opaque."),
+   "border"=paste("R color for the on-edge border. The on-edge border",
+      "is not recommended for most figures.",
+      "Use border=NA to draw no border, which is default."),
+   "border.lwd"=paste("The numeric line with for the `border` when defined."),
+   "innerborder"=paste("R color for the inner-boundary border, recommended",
+      "in most customizations.",
+      "When innerborder=NA, or innerborder.lwd=0 the innerborder is not drawn."),
+   "innerborder.lwd"=paste("The numeric line with for the `innerborder`.",
+      "When innerborder=NA, or innerborder.lwd=0 the innerborder is not drawn."),
+   "outerborder"=paste("R color for the outer-boundary border, not recommended",
+      "in most customizations.",
+      "When outerborder=NA, or outerborder.lwd=0 the outerborder is not drawn."),
+   "outerborder.lwd"=paste("The numeric line with for the `outerborder`.",
+      "When outerborder=NA, or outerborder.lwd=0 the outerborder is not drawn."),
+   
+   "fontsize"=paste("Numeric font size in points for each overlap",
+      "label as defined in the Venndir object."),
+   "label.color"=paste("Text color for each overlap label",
+      "as defined in the Venndir object."),
+   "label.fill"=paste("Background label fill color with optional alpha transparency.",
+      "When label.fill=NA,  no fill is applied.",
+      "The label.fill also affects the label.color,",
+      "using fill and label.fill together as relevant with",
+      "`make_color_contrast()` to ensure contrasting text."),
+   "label.border"=paste("Optional border color around the label group.",
+      "Use NA for no border."),
+   "label.count"=paste("Position or visibility for each count label",
+      "as defined the Venndir object.",
+      "Values are 'outside', 'inside', or 'none'."),
+   "label.overlap"=paste("Position and visibility for the set overlap label.",
+      "Currently only Set labels can be visible.",
+      "Values are 'outside', 'inside', or 'none'.")
+)
+attr_df <- data.frame(Attribute=names(attr_list),
+   Description=unlist(attr_list))
+
+knitr::kable(attr_df,
+   caption="List of recognized region attributes, used to customize the Venndir figure.",
+   row.names=FALSE) |>
+   kableExtra::column_spec(2, width="27em") |>
+   kableExtra::group_rows(index=c(
+      "Region Attributes"=8,
+      "Label Attributes"=6))
+```
+
+## Customize Any Label
+
+Venndir labels are customized using `modify_venndir_overlap()` as
+described in [Modify Venn Overlaps]. Some label adjustments are
+best illustrated with specific examples.
+
+The recognized attributes are described in [Overlap Attributes].
+
+The overall font sizes used in a `Venndir` object are defined
+with argument `font_cex` when first calling `venndir()`,
+as described in [Font Sizes]. The font point sizes are stored
+in the `Venndir` object, and may be modified.
+
+The most common adjustments involve the font size, color, and optional
+border and label fill.
+
+The figures in Figure \@ref(fig:modify-label-1) show:
+
+* the default Venndir
+* customizations to one overlap count label
+* moving this overlap label outside the figure.
+
+(ref:modify-label-1) Venndir (left) and modified Venndir with customized label attributes (right), and how to move the label outside (bottom).
+
+```{r modify-label-1, fig.height=7, fig.ncol=2, out.width="50%", fig.cap="(ref:modify-label-1)", fig.alt="(ref:modify-label-1)", fig.subcap=c("Default Venndir.", "Modified overlap label.", "Overlap label outside.")}
+# default Venndir
+v <- venndir(make_venn_test(do_signed=TRUE),
+   main="Default Venndir")
+# modified Venndir
+v_mod <- modify_venndir_overlap(v,
+   overlap_set="set_A&set_C",
+   params=list(fill="royalblue",
+      alpha=1,
+      fontsize=c(20, 16, 12, 12, 12),
+      label.border="navy",
+      label.fill="royalblue3",
+      label.color=c("white", "pink", "skyblue"),
+      innerborder="royalblue4",
+      innerborder.lwd=5))
+plot(v_mod, main="Modified 'set_A&set_C'")
+# move the label outside
+v_mod1 <- modify_venndir_overlap(v_mod,
+   overlap_set="set_A&set_C",
+   params=list(label.count="outside"))
+plot(v_mod1,main="Outside 'set_A&set_C'")
+```
+
+A short list of techniques follows:
+
+* To move the overlap count labels outside, set `label.count='outside'`.
+* To move the overlap count labels inside, set `label.count='inside'`.
+* To move an overlap Set label outside, set `label.overlap='outside'`.
+* To move an overlap Set label inside, set `label.overlap='inside'`.
+* To change label colors, define `label.color` for each label, in order.
+
+## Automatic Text Contrast
+
+In the previous section Figure \@ref(fig:modify-label-1),
+the overlap fill defined by `'label.fill'` was set to blue.
+Text colors were also manually changed using `label.color`
+to improve visual contrast. This step may be automated
+by using `make_color_contrast()`.
+
+Given a set of input text colors in argument `x`, and
+background colors in `y`, the function returns
+a vector of colors to contrast with the background.
+The purpose is to retain some color saturation, as opposed
+to returning either white or black, while also
+prioritizing visual clarity.
+
+An optional argument `bg` can be used to define the canvas
+background color, which is useful when the colors in `y`
+have partial transparency, and would also partly show
+the canvas color.
+
+Two additional arguments to `make_color_contrast()` may be
+relevant: `L_lo=40` and `L_hi=95`, which control the output color
+darkness and lightness, respectively.
+Adjustments may be passed through `venndir()` using `'...'` ellipses
+to modify the color saturation, for example: `venndir(setlist, L_hi=85)`.
+
+The argument `do_plot=TRUE` is used to visualize the input and
+output colors for review.
+
+```{r contrasting-color-1x, eval=FALSE}
+x <- c("red3", "blue", "gold", "pink", "black");
+xc1 <- make_color_contrast(x, y="royalblue3", do_plot=TRUE);
+
+xc2 <- make_color_contrast(x, y="#FFF9EE", do_plot=TRUE);
+```
+
+(ref:contrasting-color-1) Two examples with blue background (top) and off-white background (bottom). In each plot, the top row labels indicate the input colors, the bottom row labels are the output colors adjusted to improve contrast.
+
+```{r contrasting-color-1, echo=FALSE, fig.height=2.5, out.width="60%", fig.ncol=1, fig.cap="(ref:contrasting-color-1)", fig.subcap=c("Blue background.", "Off-white background.")}
+withr::with_par(list(mar=c(1, 1, 1, 1)), {
+   #
+   x <- c("red3", "blue", "gold", "pink", "black");
+   xc1 <- make_color_contrast(x, bg="royalblue3", do_plot=TRUE);
+   
+   xc2 <- make_color_contrast(x, bg="#FFF9EE", do_plot=TRUE);
+})
+```
+
+Putting these techniques together, the example in
+Figure \@ref(fig:contrasting-color-2) uses
+`modify_venndir_overlap()` together with `make_color_contrast()`
+to ensure text labels have visual contrast.
+
+(ref:contrasting-color-2) Venn diagram with modifications to the label for `'set_A&set_B'`.
+
+```{r contrasting-color-2, fig.height=7, fig.cap="(ref:contrasting-color-2)", fig.alt="(ref:contrasting-color-2)"}
+v <- venndir(make_venn_test(do_signed=TRUE), do_plot=FALSE)
+
+new_bg <- "darkgreen";
+current_colors <- c("black", "firebrick", "dodgerblue3", "purple4");
+
+v2 <- modify_venndir_overlap(v,
+   overlap_set="set_A&set_C",
+   params=list(
+      label.fill=new_bg,
+      label.border="black",
+      label.color=make_color_contrast(current_colors, new_bg),
+      label.count="outside",
+      innerborder=new_bg,
+      innerborder.lwd=3)
+   )
+plot(v2)
+```
+
+The modifications made in this figure:
+
+* `new_bg` was defined as `'darkgreen'`.
+* `new_bg` was applied to the `label.fill` and the `innerborder`.
+* `innerborder.lwd` was increased to `3`.
+* `label.border` was changed to black, to contrast with dark green.
+* `label.count` was set to `'outside'` to place count labels outside.
+* `current_colors` were defined to match the existing label text colors.
+* `label.color` was defined using `make_color_contrast()`, with arguments
+`current_colors` and `new_bg`.
+
+
+## Highlight Venn Overlaps
+
+A convenient alternative to the previous section [Modify Venn Overlaps]
+is to apply a highlight with `highlight_venndir_overlap()`.
+This step applies a few options together.
+
+The default settings:
+
+* gold border
+* yellow fill color
+* red
+* `fill` = 'yellow'
+* `innerborder` = 'gold'
+* `border` = 'red'
+
+The example in \@ref(fig:highlight-label-1) shows the effect of
+highlighting one overlap region, 'set_B&set_C'. The third panel
+demonstrates how to move the count labels outside with a background
+fill color. The line segment color is defined by `border` with
+default 'red', however if 'label.border' is defined, that color
+is slightly darkerned and used for the line segment as well.
+
+(ref:highlight-label-1) Example Venn diagrams showing default (left), highlighted (right), and highlighted-labeled alternatives.
+
+```{r highlight-label-1, fig.ncol=2, fig.height=7, out.width="50%", fig.cap="(ref:highlight-label-1)", fig.alt="(ref:highlight-label-1)", fig.subcap=c("Default Venndir.", "Highlighted label.", "Highlighted label outside.")}
+# default Venndir
+v <- venndir(make_venn_test(do_signed=TRUE), do_plot=FALSE)
+plot(v,
+   main="Default Venndir")
+v_mod <- highlight_venndir_overlap(v,
+   border="red",
+   "set_B&set_C")
+plot(v_mod,
+   main="Highlighted set_B&set_C")
+v_mod2 <- modify_venndir_overlap(v_mod, "set_B&set_C",
+   params=list(label.count="outside",
+      label.fill="gold"))
+plot(v_mod2,
+   main="Highlighted set_B&set_C outside")
+```
+
+The overlap region is named using each set involved, separated by
+the ampersand '&', for example the overlap of 'set_B' and 'set_C'
+is named 'set_B&set_C'. The overlap is provided with argument
+`overlap_set`.
+
+Other arguments are intended to provide convenient shortcuts for
+commonly used attributes, with sensible default values:
+
+* `'innerborder'` - the border shown on the inside edge of the
+overlap region.
+* `'innerborder.lwd'` - the width of the innerborder, with default `2`
+to make this border much wider than the default.
+* `outerborder'`, `'outerborder.lwd'` - the corresponding outerborder
+displayed on the outside edge of the overlap region. By default the
+outerborder line width is zero.
+* `'border'`, `'border.lwd'` - the color and width of the border, placed
+on the edge of the polygon itself. The default uses 'red' with line width 1.
+The main effect is to apply this color and line width to the line
+segment when the overlap label is outside.
+* `reorder` - a `logical` value indicating whether to re-order the
+`Venndir` polygons. The default is `TRUE`, which causes the highlighted
+regions to be drawn last. This subtle change ensures that the
+`outerborder` remains visible, and is not over-drawn by other polygon
+regions in the `Venndir` object.
+
+The argument `reorder` is a unique enhancement for
+`highlight_venndir_overlap()`, and is the only convenient
+method for re-ordering `Venndir` polygons.
+
+
+## Rotate the Venndir
+
+The Venndir figure can be rotated using degrees, on scale of
+0 to 360, where 180 will rotate the figure exactly halfway.
+Currently the rotation must occur when calling `venndir()`,
+so that all polygons are rotated before the `Venndir` object
+is created.
+
+The default 3-way Venn diagram has 60-degree symmetry, so rotations
+with multiples of 30 degrees tend to work best.
+
+(ref:rotate-venndir) Several examples of rotated Venn and Euler diagrams.
+
+```{r rotate-venndir, out.width="50%", fig.width=6, fig.height=5, fig.ncol=2, fig.cap="(ref:rotate-venndir)", fig.alt="(ref:rotate-venndir)", fig.subcap=c("Venn default.", "Venn rotated 60 degrees.", "Euler default.", "Euler rotated 90 degrees.")}
+v1 <- venndir(make_venn_test(),
+   main="rotated 0{.sup o}",
+   rotate_degrees=0)
+v2 <- venndir(make_venn_test(),
+   main="rotated 60{.sup o}",
+   rotate_degrees=60)
+v3 <- venndir(make_venn_test(),
+   proportional=TRUE,
+   main="rotated 0{.sup o}",
+   rotate_degrees=0)
+v4 <- venndir(make_venn_test(),
+   proportional=TRUE,
+   main="rotated 90{.sup o}",
+   rotate_degrees=90)
+```
+
+As indicated in the bottom-left panel (c), sometimes the legend
+overlaps the placement of a set label. See [Nudge the Legend]
+for alternatives.
+
+## Nudge the Legend
+
+The legend placement is defined by `legend_x` when calling `venndir()`,
+`render_venndir()`, or `plot()`; or defined by `x` when calling
+`venndir_legender()` separately. This argument takes `character` string
+with combinations of `'top'`, `'bottom'`, `'left'`, and `'right'`.
+Two words can be used, for example the default `legend_x="bottomright"`
+places the legend in the bottom-right corner of the `grid` viewport.
+
+The Venndir viewport is defined to be square, to maintain 1:1 aspect
+ratio, and to make sure circles maintain their shape. As a result,
+sometimes there is whitespace on the left/right sides, or top/bottom edges.
+
+The legend is 'inset' from the exact outer edge using arguments
+`x_inset` and `y_inset`, and these arguments can be passed through `'...'`
+ellipses from `venndir()` to modify the legend. The default places
+the legend `'2 lines'` inside the viewport border, using 2 character
+lines of text as the unit. Any valid `grid::unit` can be provided,
+however a good starting point is to adjust by units of `'lines'`.
+
+(ref:nudge-legend) Two Euler diagrams showing default legend (left) and nudged legend (right), moving the legend to inset -2 lines.
+
+```{r nudge-legend, out.width="50%", fig.ncol=2, fig.width=6, fig.height=5, fig.cap="(ref:nudge-legend)", fig.alt="(ref:nudge-legend)", ref.subcap=c("Default legend.", "Nudged legend.")}
+v3a <- venndir(make_venn_test(),
+   proportional=TRUE)
+v3b <- venndir(make_venn_test(),
+   x_inset=grid::unit(-2, "lines"),
+   proportional=TRUE)
+```
+
+
+## Hidden Overlaps
+
+Euler diagrams may offer improvements to standard
+Venn layout, by giving a visual indication of the relative area
+within each set and the corresponding overlaps.
+However, Euler diagrams are only *determinant* for two sets, exactly correct.
+With more than two sets, a Euler diagram provides the best
+*approximation* of the overlap sizes.
+
+Some overlaps in a Euler diagram cannot be represented at all,
+due to limitations of 2-dimensional geometry.
+
+> `Venndir` objects retain all set overlaps, including those
+which cannot be displayed in a Euler diagram.
+
+Four strategies mitigate the limitations:
+
+1. **Discover** hidden counts using `warnings(Venndir)`.
+2. **Recover** hidden overlaps using `overlaplist(Venndir)`.
+3. **Adjust** the Euler diagram, for example see [Nudge Venndir Circles].
+4. **Optimize** Euler modeling options with `eulerr::eulerr_options()`.
+
+Data from [Bisogno et al](doi:10.1126/sciadv.abc3851) help
+demonstrate how to workaround the issue.
+[Overlap counts] were imported to create a `setlist`.
+
+```{r warnings-0}
+overlaps <- c(A=187, B=146, C=499,
+   `A&B`=1,
+   `A&C`=181,
+   `B&C`=219,
+   `A&B&C`=20);
+setlist <- counts2setlist(overlaps)
+```
+
+The resulting `setlist` is shown in Figure \@ref(fig:warnings-1) as a
+Venn diagram (left), and Euler diagram (right).
+It uses custom `set_colors` to match the published figure.
+
+> An astute observer may notice that `1` is missing in the Euler diagram.
+
+This may be a good time to point out that the Euler diagram can
+also be rotated, see [Rotate the Venndir].
+
+(ref:warnings-1) Venn diagram using test data from Bisogno et al, as Venn (left) and Euler (right) diagrams.
+
+```{r warnings-1, out.width="50%", fig.ncol=2, fig.cap="(ref:warnings-1)", fig.alt="(ref:warnings-1)", fig.subcap=c("Venn diagram.", "Euler diagram.")}
+bisogno_colors <- c(A="firebrick2", B="dodgerblue", C="#BBBBBB")
+v <- venndir(setlist,
+   set_colors=bisogno_colors)
+ve <- venndir(setlist,
+   proportional=TRUE,
+   set_colors=bisogno_colors)
+```
+
+**Discover** hidden counts with `warnings(ve)`:
+
+```{r warnings-1w}
+warnings(ve)
+```
+
+The output means there is one overlap `'A&B'` with `1` item which is not
+displayed.
+
+**Recover** overlaps using `overlaplist(ve)`. The output `list` provides a
+convenient way to summarize size of overlap by using `lengths()`,
+shown below.
+
+```{r warnings-1ol}
+ol <- overlaplist(ve)
+lengths(ol)
+```
+
+**Adjust** is shown in the next section [Nudge Venndir Circles],
+which allows moving the Euler circles to create the geometry
+for overlap labels.
+
+**Optimize** is beyond scope of Venndir, and is discussed
+in the R package [eulerr documentation](10.32614/CRAN.package.eulerr)
+[@R-eulerr].
+
+
+### Nudge Venndir Circles
+
+The example in [Hidden Overlaps] Figure \@ref(fig:warnings-1)
+illustrates a weakness in using proportional Euler diagrams,
+while also showing a straightforward alternative.
+The Venn or Euler circles used can be nudged, prior to being
+used for visualization.
+
+In the example, the overlap `'A&B'` is not represented in the
+Euler diagram returned by `eulerr`, therefore the label `1`
+cannot be displayed. Two possible solutions:
+
+1. Move A and B closer to each other so they overlap outside C.
+2. Move C higher so that A and B overlap outside C.
+
+The argument `circle_nudge` should be passed to `venndir()` in order
+for the geometry to be adjusted before the Venn overlap labels
+are assigned to the corresponding overlap regions.
+This argument should be a `list`, where each element is named
+using the set name. Each element should be a `numeric` vector
+with two values, the `x` and `y` coordinate adjustment.
+
+The example in Figure \@ref(fig:nudge-circle-1) moves set `'A'`
+to the right, and set `'B'` to the left.
+
+(ref:nudge-circle-1) Venn diagram showing the effect of nudging set A to the right, and set B to the left. The change creates an overlap for `'A&B'` which now shows `1` count.
+
+```{r nudge-circle-1, fig.cap="(ref:nudge-circle-1)", fig.alt="(ref:nudge-circle-1)"}
+vn <- venndir(setlist,
+   circle_nudge=list(A=c(1, 0), B=c(-1, 0)),
+   proportional=TRUE,
+   set_colors=bisogno_colors)
+```
+
+<!-- ### Automatically Move Labels Outside -->
+
+
+
+
+## Nudge specific labels
+
+Venndir automatically places labels which aims to cover the most common
+85% scenarios. For all other cases, labels can be re-positioned using
+`nudge_venndir_label()`.
+
+* For each overlap, the label can be displayed 'inside' or 'outside'.
+* The position defined for 'inside' or 'outside' can be adjusted with
+`nudge_venndir_label()`.
+
+As such, a label position is identified by two criteria:
+
+1. **Overlap**: each set name, separated by ampersand `'&'`, for example
+`'set_A&set_B'`
+2. **Location**: 'inside' or 'outside' the Venn diagram.
+
+The components of each label, and placement 'inside' or 'outside',
+are stored in the `Venndir` object as described in [Venndir Labels].
+Individual changes can be made by following [Customize Any Label].
+
+Instead, `nudge_venndir_label()` adjusts the coordinate position
+used when placing each label 'inside' or 'outside'.
+
+(ref:nudge-labels-1) Venndir example with default label placement.
+
+```{r nudge-labels-1, fig.height=7, fig.cap="(ref:nudge-labels-1)", fig.alt="(ref:nudge-labels-1)"}
+setlist <- make_venn_test(100, 3, do_signed=TRUE)
+vo <- venndir(setlist,
+   overlap_type="each",
+   label_style="lite box",
+   main="Default venndir")
+```
+
+The example in Figure \@ref(fig:nudge-labels-1) is the default Venndir,
+however in this case the label **7** between `'set_A'` and `'set_C'`
+will be nudged slightly to the left.
+The result is shown in Figure \@ref(fig:nudge-labels-2) after nudging
+the label 2% to the left.
+
+(ref:nudge-labels-2) Venndir with the label `'set_A&set_C'` moved slightly to the left.
+
+```{r nudge-labels-2, fig.height=7, fig.width=9, fig.cap="(ref:nudge-labels-2)", fig.alt="(ref:nudge-labels-2)"}
+vo2 <- nudge_venndir_label(vo,
+   set="set_A&set_C",
+   label_location="inside",
+   x_offset=-0.02)
+plot(vo2)
+```
+
+The changes were defined by these arguments:
+
+* The overlap was defined with `set="set_A&set_C"`
+* The location was defined with `label_location="inside"`
+* The x position was adjusted with `x_offset=-0.02`, with default units
+relative to the total size of the figure.
+
+An alternative approach may be more convenient, using argument `offset_list`.
+The argument is a `list`, named by overlap, containing a two-value
+`numeric` vector with the x,y offset values. This style is
+more convenient when adjusting multiple labels together.
+Note that `label_location` is still required.
+
+Figure \@ref(fig:nudge-labels-3) shows the effects after nudging
+labels `'set_A&set_C'` and `'set_C'` in one step.
+
+(ref:nudge-labels-3) Venndir after moving labels `'set_A&set_C'` and `'set_C'` using `offset_list`.
+
+```{r nudge-labels-3, fig.height=7, fig.width=9, fig.cap="(ref:nudge-labels-3)", fig.alt="(ref:nudge-labels-3)"}
+vo3 <- nudge_venndir_label(vo,
+   label_location="inside",
+   offset_list=list(
+      "set_A&set_C"=c(-0.02, 0),
+      "set_C"=c(0, 0.05)
+   ))
+plot(vo3)
+```
+
+
+## Venndir Markdown Support
+
+By virtue of using **marquee** [@R-marquee], several labels in
+Venndir can be customized using [markdown](#g-markdown) syntax,
+specifically following [CommonMark](https://commonmark.org/help/).
+
+The main features are:
+
+* support for font styles (**bold**, *italic*, _underline_)
+* forced new-lines by ending a line with two spaces, or adding `'\n'`
+* inline **marquee** styles
+* inline images
+* inline R graphics objects
+
+Other styles are recognized by **marquee**, such as `{.super }` and
+`{.sub }`.
+
+For example, using `venn_meme()`:
+
+(ref:markdown-1) Venn Meme showing markdown formatted items (left), and inline styles (right).
+
+```{r markdown-1, out.width="50%", fig.ncol=2, fig.height=7, fig.width=8, fig.cap="(ref:markdown-1)", fig.alt="(ref:markdown-1)", fig.subcap=c("Markdown.", "Inline style.")}
+venndir::venn_meme(c(
+   "*italics*",
+   "_under_-\n_line_",
+   "in\n**bold**"))
+venndir::venn_meme(jitter_color=0, jitter_cex=0,
+   c(
+   "This\nis{.sup super}",
+   "\n`This`\n`is`\n`code`",
+   "This\nis {.sub sub}"))
+```
+
+### Inline styles
+
+The **marquee* R package supports inline styles, using this
+syntax `'{.style text}'`, where 'style' is the name of a
+pre-defined style from `marquee::style()`, and 'text'
+is any valid text or markdown text, or even other inline styles.
+
+Venndir defines `marquee::classic_style()` for use by any labels,
+which supports a large number of the most common HTML-like styles,
+including:  
+`r jamba::cPaste(sep=", ", names(marquee::classic_style()[[1]]))`
+
+Argument `'marquee_styles'` for `venndir()` accepts an optional `list`
+with additional styles, which are added to the set of recognized styles.
+The marquee style specification includes *very many* customizations:
+font family, weight, width, size, color, lineheight, background, border,
+padding, and many more. Any detailed customization not already provided
+in Venndir should be attempted by creating a new marquee style, then
+applying it as an inline style.
+
+Creating a new style is straightforward, shown below.
+Each style inherits attributes of the existing style.
+For example, it continues using the same font family, size, and color
+until any attribute is modified. The examples below change the
+font family, force it to have normal weight/width (not bold), and
+enlarge by 1.5 relative to the existing font size.
+
+```{r inline-style-0}
+ms <- list(
+   chalk=marquee::style(
+      family="Chalkduster",
+      weight="normal", width="normal",
+   size=marquee::relative(1.5)),
+      cursive=marquee::style(
+      family="Above The Sky",
+      weight="normal", width="normal",
+      size=marquee::relative(1.5)),
+   gothic=marquee::style(
+      family="AcademyEngravedLetPlain",
+      weight="normal", width="normal",
+       size=marquee::relative(1.5)))
+```
+
+(ref:inline-style-1) Example using inline styles to customize every conceivable field in Venndir: set name, main title, item labels, legend setlist, legend headers, legend count font.
+
+```{r inline-style-1, fig.height=7, fig.width=8, fig.cap="(ref:inline-style-1)", fig.alt="(ref:inline-style-1)"}
+# create labels
+il <- split(LETTERS, rep(letters[1:3], c(10, 10, 6)))
+names(il) <- c("{.chalk A-J}",
+   "{.gothic K-T}", "{.cursive U-Z}")
+# apply inline markup around each set of labels
+il[[1]] <- paste0("{.chalk ", il[[1]], "}")
+il[[2]] <- paste0("{.gothic ", il[[2]], "}")
+il[[3]] <- paste0("{.cursive ", il[[3]], "}")
+# draw the rest of the owl
+vm <- venn_meme(il, item_buffer=-0.05, marquee_styles=ms,
+   expand_fraction=0.02,
+   fontfamily="Chalkduster",
+   show_labels="Ni", draw_legend=TRUE,
+   legend_headers=c(Set="{.cursive Sets}", Size="{.chalk Sizes}"),
+   main="{.chalk Custom} {.gothic Text} {.cursive Styles}")
+```
+
+Inline styles could be useful for other common operations:
+
+* Slightly larger or smaller font size.
+* Custom font family.
+* Left- or right-aligned text.
+* Custom font color.
+* Color fill background, border, border radius.
+
+### Inline Images
+
+Inline images can be added using markdown syntax, which looks like this:
+
+```
+![Image](path/to/image)
+```
+
+The `path/to/image` can be the path to a local file, a web URL address,
+for example:
+
+```
+![Image](https://github.org/logo.png)
+```
+
+Further, inline R graphics can be added, in this form,
+where `Robject` is the name of an R graphical object,
+such as a `ggplot2` or `grid` object.
+
+```
+![Image](Robject)
+```
+
+Figure \@ref(fig:inline-image-1) shows a simple Venn diagram with
+an image used in the center, using the Venndir transparent logo.
+The function `marquee::marquee_glue()` was used as a convenient
+way to form the image tag. The example also shows how to change
+the color of item labels, for example: `'{.gold3 Venn}'` to make
+the word 'Venn' dark-gold.
+
+(ref:inline-image-1) Venn diagram with image provided as an item label.
+
+```{r inline-image-1, fig.height=7, fig.width=8, fig.cap="(ref:inline-image-1)", fig.alt="(ref:inline-image-1)"}
+img <- system.file(package="venndir",
+   "images", "venndir-transparent.png")
+imgtag <- marquee::marquee_glue("![]({img})")
+
+vm <- venn_meme(c("{.gold3 Venn}", "{.#6799AC dir}", imgtag),
+   item_cex_factor=c(1.5, 1.5, 7),
+   innerborder.lwd=1, outerborder.lwd=1,
+   poly_alpha=0.5,
+   set_colors=c("#EEDD79", "#87B9CC"))
+```
+
+Similarly, a `ggplot2` or `grid` graphical object can be
+provided, and it will be displayed the same way as the image
+in Figure \@ref(fig:inline-image-1).
+
+Each image or plot is sized relative to the line height of the
+corresponding text field. The example above used `item_cex_factor`
+to scale the center item to 7 times higher than normal.
+
+In order to enforce a specific size, either adjust the corresponding
+font size with `item_cex` and `item_cex_factor`, or define
+an inline style with specific font size, or specific line height.
+
+
+## Patchwork with Venndir
+
+The **patchwork** [@R-patchwork] R package is widely used to
+assemble multi-panel R graphics, due to its ability to
+include plots from **base R**, **ggplot2**, and **grid** graphics.
+Venndir is produced using `grid` graphics, and is compatible
+with patchwork with some caveats.
+
+1. Venndir fonts are absolute point sizes, and should be adjusted before
+plotting.
+2. The `grid` objects must be used with patchwork, see [Venndir gtree].
+
+(ref:venndir-patchwork-1) Four panel figure produced using patchwork R package.
+
+```{r venndir-patchwork-1, out.width="100%", fig.width=9, fig.height=8.5, fig.cap="(ref:venndir-patchwork-1)", fig.alt="(ref:venndir-patchwork-1)"}
+library(patchwork)
+suppressPackageStartupMessages(library(ggplot2))
+
+setlist <- make_venn_test(do_signed=TRUE)
+v <- venndir(setlist, sets=c(1, 2), do_draw=FALSE)
+v_gtree <- attr(v, "gtree")
+v2 <- venndir(setlist, sets=c(1, 3), do_draw=FALSE)
+v2_gtree <- attr(v2, "gtree")
+
+gg <- ggplot(mtcars) + 
+  geom_point(aes(mpg, disp)) + 
+  ggtitle('ggplot2 example')
+
+pw3 <- (gg + wrap_elements(v_gtree)) /
+   (wrap_elements(v2_gtree) + gg) +
+   plot_layout(widths=c(1, 1), heights=c(1, 1)) +
+   plot_annotation(tag_levels='a')
+pw3
+
+```
+
+## Custom Signs
+
+One of the defining features of a Venndir figure is the use
+of $`r "\u2191"`$ up and $`r "\u2193"`$ down arrows to
+indicate signed counts. By default, these labels are also
+colored red and blue, respectively.
+
+It may be useful to customize the colors or the symbols associated
+with each sign, and this definition can be customized in `venndir()`
+using an advanced argument `curate_df`.
+
+### Review Sign Curation
+
+The default `curate_df` can be reviewed with
+`get_venndir_curate_df()`, the output is shown in
+Table \@ref(tab:curate-df-1).
+
+```{r curate-df-1a, eval=FALSE}
+get_venndir_curate_df()
+```
+
+```{r curate-df-1, echo=FALSE}
+curate_df <- get_venndir_curate_df()
+knitr::kable(curate_df,
+   booktabs=TRUE,
+   caption="Default table used to curate sign data when generating signed count labels.",
+   row.names=FALSE) |>
+   kableExtra::column_spec(column=1, bold=TRUE)
+```
+
+There is a bit to unpack in how this simple `data.frame` is used
+to create the labels shown by Venndir.
+
+First, the input `setlist` is passed to `signed_overlaps()` to
+produce a complete summary of overlaps, and associated overlap signs.
+An important argument is `overlap_type` which defines how the overlap
+signs are summarized. The recognized values are shown in
+Table \@ref(tab:signed-overlaps-1).
+
+
+```{r signed-overlaps-1, echo=FALSE}
+ol_list <- list(
+   "'overlap'"=paste("Sign information is ignored. Overlap",
+      "counts are tabulated without sign information."),
+   "'concordance'"=paste("Sign information is tabulated into",
+      "three general subsets: (1) all agree up, (2) all agree down,",
+      "and (3) 'mixed'.",
+      "For (1) and (2) the original signs are retained, keeping '1 1 1' or",
+      "'-1 -1 -1'.",
+      "All values with mixed signs, such as '1 -1' are converted to 'mixed'.",
+      "When hide_singlet=TRUE then single-set counts ignore the sign."),
+   "'each'"=paste("Signed is tabulated for every overlap in maintained",
+      "without modification."),
+   "'agreement'"=paste("Similar to 'concordance', except that agreement up",
+      "and agreement down are combined and labeled 'agreement'.")
+)
+ol_df <- data.frame(
+   "overlap_type"=names(ol_list),
+   "Description"=unlist(ol_list))
+
+knitr::kable(ol_df,
+   caption="Values recognized overlap type, with corresponding description.",
+   row.names=FALSE) |>
+   kableExtra::column_spec(2, width="22em")
+```
+
+To summarize:
+
+* Overlaps are tabulated by combinations of sets. Within each overlap,
+counts are also tabulated by the directionalities using the following
+rules:
+* `overlap_type='overlap'` will not tabulate values by signs.
+* `overlap_type='concordance'` will tabulate values by signs
+such as `'1'`, `'-1'`, `'1 1'`, `'-1 -1'`, and `'mixed'`.
+* `overlap_type='each'` will tabulate values by signs
+such as `'1'`, `'-1'`, `'1 1'`, `'-1 -1'`, `'1 -1'`, and `'-1 1'`.
+* `overlap_type='agreement'` will tabulate values by signs
+such as `'agreement'`, and `'mixed'`.
+
+> Using `overlap_type='each'` is recommended to retain all
+combinations of the sign.
+
+For each overlap, the tabulated signs are used to create
+a curated "sign prefix", for example `'1 1'` is converted to
+'$`r "\u2191\u2191"`$', and this prefix is appended to the actual
+counts. For example the signed label might be '$`r "\u2191\u2191 12"`$'.
+
+Consider the tabulated sign `'1 -1'`:
+
+* The tabulated sign `'1 -1'` is split by whitespace into components
+`'1'` and `'-1'`.
+* The first component `'1'` is matched to 'from' in `curate_df`:
+   ```{r match-1, echo=FALSE, out.width="50%"}
+   knitr::kable(row.names=FALSE,
+      full_width=FALSE,
+      subset(curate_df, from %in% "1"))
+   ```
+   * The value in column 'sign' ($`r "\u2191"`$) is added to the sign.
+   * The color 'firebrick' is added to the sign colors.
+
+* The next component `'-1'` is matched to 'from' in `curate_df`:
+   ```{r match-2, echo=FALSE, out.width="50%"}
+   knitr::kable(row.names=FALSE,
+      full_width=FALSE,
+      subset(curate_df, from %in% "-1"))
+   ```
+   * The value in column 'sign' ($`r "\u2193"`$) is added to the sign.
+   * The color 'dodgerblue3' is added to the sign colors.
+
+* The sign prefix is '$`r "\u2191\u2193"`$'.
+* The colors `'firebrick', 'dodgerblue3'` are blended to purple.
+* The complete signed count label is $`r "\u2191\u2193 {counts}"`$,
+colored purple.
+
+Additional comments on processing:
+
+* If the tabulated sign is `'agreement'` the signed prefix will be $`r "'='"`$,
+colored blue.
+* If the tabulated sign is `'mixed'` the signed prefix will be $`r "'X'"`$.
+
+### Customize the Symbols
+
+An optional argument for `venndir()` is `curate_df`, which provides
+a mechanism to customize the visual sign that appears in the Venn
+diagram.
+
+To illustrate the process, in this example the goal is to
+use custom symbols to indicate agreement and disagreement:
+'Checkmark' to indicate agreement, and
+'Ballot X' to indicate disagreement.
+
+> Unicode characters are described in
+[Wikipedia 'List of Unicode characters'](https://en.wikipedia.org/wiki/List_of_Unicode_characters).
+* A 'Checkmark' is Unicode U+2713 $`r "\u2713"`$.
+* A 'Ballot X' is Unicode U+2717 $`r "\u2715"`$.
+
+The following steps were used to create Figure \@ref(fig:curate-check-1):
+
+* Retrieve the default `curate_df`.
+* Edit the 'agreement' row, and update column 'sign'.
+* Edit the 'mixed' row, and update columns 'sign', and 'color'.
+* Call `venndir()` with arguments `overlap_type='agreement'` and
+`curate_df=curate_df`.
+
+(ref:curate-check-1) Venn diagram using 'Checkmark' and 'Ballot X' to indicate agreement and disagreement, respectively.
+
+```{r curate-check-1, fig.height=7, fig.cap="(ref:curate-check-1)", fig.alt="(ref:curate-check-1)"}
+curate_df <- get_venndir_curate_df()
+curate_df[curate_df$from %in% "agreement", "sign"] <- "\u2713";
+curate_df[curate_df$from %in% "mixed", "sign"] <- "\u2715";
+curate_df[curate_df$from %in% "mixed", "color"] <- "red";
+
+v <- venndir(make_venn_test(do_signed=TRUE),
+   overlap_type="agreement",
+   innerborder="white", outerborder="white",
+   poly_alpha=1,
+   curate_df=curate_df)
+```
+
+### More Advanced Signs
+
+In principle, and named `list` is recognized as a value-list,
+whose names are items, and values are 'signs'. These 'signs'
+are typically `-1` and `1` to indicate directionality, however
+any value can be used.
+
+Figure \@ref(fig:advanced-signs-1) shows the effect of replacing
+signed values '1' and '-1' with text strings: 'up' and 'dn'.
+
+(ref:advanced-signs-1) Venndir using custom values 'up' and 'dn' instead of 1 and -1.
+
+```{r advanced-signs-1, fig.cap="(ref:advanced-signs-1)", fig.alt="(ref:advanced-signs-1)"}
+setlist <- make_venn_test(n_sets=2, do_signed=TRUE)
+setlist2 <- lapply(setlist, function(i){
+   i[] <- c("1"="up", "-1"="dn")[as.character(i)]
+   i
+})
+v <- venndir(setlist2,
+   overlap_type="each")
+```
+
+The figure shows combinations that include 'upup', 'dnup', and 'dnup'.
+Notice even the legend tabulates the signed counts using the
+'sign' values.
+
+In fact, the values 'up' and 'dn' can be assigned to Unicode characters
+as shown in  [Customize the Symbols]. The custom signs are also
+shown in the legend.
+
+Figure \@ref(fig:advanced-signs-1c) shows how to customize `curate_df`
+to match the custom signs 'up' and 'dn'. For added fun, the values
+in 'sign' are also customized to new Unicode characters.
+
+(ref:advanced-signs-1c) Venndir showing the custom signs 'up' and 'down' used to produce Unicode signs as before.
+
+```{r advanced-signs-1c-show, eval=FALSE}
+curate_df <- get_venndir_curate_df()
+du_match <- match(c("-1", "1"), curate_df$from)
+curate_df[du_match, "from"] <- c("dn", "up")
+curate_df[du_match, "sign"] <- c("\u21E9", "\u21E7")
+#
+v <- venndir(setlist2,
+   curate_df=curate_df,
+   overlap_type="each")
+```
+
+```{r advanced-signs-1c, echo=FALSE, fig.cap="(ref:advanced-signs-1c)", fig.alt="(ref:advanced-signs-1c)"}
+curate_df <- get_venndir_curate_df()
+du_match <- match(c("-1", "1"), curate_df$from)
+curate_df[du_match, "from"] <- c("dn", "up")
+curate_df[du_match, "sign"] <- c("\u21E9", "\u21E7")
+if (knitr::pandoc_to("epub")) {
+   curate_df[du_match, "sign"] <- c("v", "^")
+}
+
+setlist <- make_venn_test(n_sets=2, do_signed=TRUE)
+setlist2 <- lapply(setlist, function(i){
+   i[] <- c("1"="up", "-1"="dn")[as.character(i)]
+   i
+})
+v <- venndir(setlist2,
+   curate_df=curate_df,
+   overlap_type="each")
+```
+
+The following example pushes the limits further, using three
+signs instead of two. In this example, there are three signs:
+'a', 'b', and 'c'. See Figure \@ref(fig:advanced-signs-2).
+
+(ref:advanced-signs-2) Venndir using three signs: 'a', 'b', and 'c'.
+
+```{r advanced-signs-2, fig.cap="(ref:advanced-signs-2)", fig.alt="(ref:advanced-signs-2)"}
+setlist <- make_venn_test(n_items=150, n_sets=3, do_signed=TRUE,
+   set_names=c("Set 1", "Set 2", "Set 3"))
+set.seed(123)
+setlist2 <- lapply(setlist, function(i){
+   i[] <- c("1"="up", "-1"="dn")[as.character(i)]
+   i[] <- sample(letters[1:3], replace=TRUE, size=length(i))
+   i
+})
+v <- venndir(setlist2,
+   sets=1:2,
+   overlap_type="each")
+```
+
+The signs 'a', 'b', and 'c' can be converted to their own
+signs with `curate_df`. The final example is shown in
+Figure \@ref(fig:advanced-signs-2c), with three custom
+Unicode symbols shown to represent 'a', 'b', and 'c'.
+
+(ref:advanced-signs-2c) Venndir using three signs 'a', 'b', 'c' which are converted to Unicode arrows using `curate_df`.
+
+```{r advanced-signs-2c, fig.height=7, fig.cap="(ref:advanced-signs-2c)", fig.alt="(ref:advanced-signs-2c)"}
+curate_df <- get_venndir_curate_df()
+# define a, b, c
+curate_df[1, "from"] <- "a"
+curate_df[2, "from"] <- "b"
+curate_df[3, "from"] <- "c"
+# define Unicode symbols
+curate_df[1, "sign"] <- "\u2191"
+curate_df[2, "sign"] <- "\u2193"
+curate_df[3, "sign"] <- "\u2206"
+# define colors
+curate_df[1, "color"] <- "firebrick"
+curate_df[2, "color"] <- "royalblue"
+curate_df[3, "color"] <- "gold"
+
+v <- venndir(setlist2,
+   curate_df=curate_df,
+   overlap_type="each")
+```
+
+## Venndir Graphics Objects
+
+The `Venndir` object also stores the `grid` graphical objects (grobs)
+used for visualization, however the grobs are only created by calling
+`plot()` or `render_venndir()`. The output of this function is `Venndir`
+object with hidden attributes which contain grobs.
+
+When calling `venndir()`, two options may be useful:
+
+1. `do_plot=TRUE`: This argument causes `venndir()` to call
+`render_venndir()`, which then creates the relevant grobs.
+2. `do_draw=FALSE`: This argument is passed to `render_venndir()`, so the
+grobs are not drawn to the graphical device.
+
+The following example creates a `Venndir` object without creating
+a new plot, and which creates all the necessary grobs.
+
+```{r grobs-1}
+v <- venndir(make_venn_test(),
+   poly_alpha=0.01,
+   border="black",
+   border.lwd=2,
+   show_labels="Ni",
+   main="Plot Title",
+   do_plot=TRUE,
+   do_draw=FALSE,
+   legend_color_style=c("black", "blackborder"))
+```
+
+The relevant attribute names are described as follows:
+
+* `'gtree'`: the single `grid` object that contains all Venndir grobs.
+* `'grob_list'`: the `list` of each `grid` object, separated by type.
+* `'viewport'`: the `grid` object representing the graphics `viewport`.
+* `'adjx'`, `adjy'`: the adjustment function used to convert `JamPolygon`
+coordinates to unit 'nspc' scaled values between 0 and 1.
+
+### Venndir gtree
+
+The `'gtree'` attribute contains a `grid:gTree` object, which can be
+drawn directly. The `gtree` object already contains the relevant
+`viewport`.
+
+Figure \@ref(fig:grobs-2) shows the plot after drawing the `'gtree'` attribute.
+
+(ref:grobs-2) Venn diagram created by drawing the `'gtree'` attribute object.
+
+```{r grobs-2, fig.cap="(ref:grobs-2)", fig.alt="(ref:grobs-2)"}
+gtree <- attr(v, "gtree");
+grid::grid.newpage();
+grid::grid.draw(gtree);
+```
+
+A detailed list of all grobs within the `gtree` can be seen by calling
+`grid::grid.ls()`, however it is not listed here because it contains
+over 350 grobs!
+
+### Venndir grob_list
+
+An alternative representation is the `'grob_list'` attribute,
+which is a `list` with each Venndir visual component. The exact
+elements may vary dependent upon which options were used.
+
+The purpose of inspecting `grid` grobs is mainly to allow direct
+manipulation of the grobs, for advanced customizations for example.
+Each individual component can be edited in detail.
+
+The grobs by type are described below:
+
+* `'jps'`: the `JamPolygon` object with polygons and border.
+* `'item_labels'`: item labels, only if enabled by argument `show_labels`.
+* `'labels'`: the `marquee` grobs used for all text labels.
+* `'segments'`: the line segments connecting labels to polygons,
+where relevant.
+* `'legend'`: the `grid` object representing the Venndir legend,
+if relevant.
+* `'main_title'`: the title object, only if defined by argument `main`.
+
+Figure \@ref(fig:grobs-3) shows the plot after drawing each `grid` component
+from the `'grob_list'` attribute.
+
+(ref:grobs-3) Venn diagram created by drawing each component in the `'grob_list'` attribute.
+
+```{r grobs-3, fig.cap="(ref:grobs-3)", fig.alt="(ref:grobs-3)"}
+grob_list <- attr(v, "grob_list");
+
+grid::grid.newpage()
+grid::grid.draw(grob_list$jps)
+grid::grid.draw(grob_list$item_labels)
+grid::grid.draw(grob_list$labels)
+grid::grid.draw(grob_list$segments)
+grid::grid.draw(grob_list$legend)
+grid::grid.draw(grob_list$main_title)
+```
+
