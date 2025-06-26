@@ -3,28 +3,42 @@
 .grunt
 
 ## Dependency directory
-## Commenting this out is preferred by some people, see
+## Commenting this out is preferred by most, see
 ## https://docs.npmjs.com/misc/faq#should-i-check-my-node_modules-folder-into-git
 node_modules
 
 # Book build output
-_book/*
+_book/
+_bookdown_files/
 _main.Rmd
 _main.tex
-_main.log
+_main.rds
 
-# eBook build output
-*.epub
-*.mobi
-*.pdf
-.Rproj.user
 
-# extra from rstudio/bookdown .gitignore
-.DS_Store
+# Ignore LaTeX and knitr temp files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+
+# Ignore local preview files
+*.DS_Store
 
 # extra from rstudio/bookdown-demo
 .Rhistory
 .RData
-_book
-_bookdown_files
-rsconnect
+.Rproj.user/
+
+# Allow output files in docs/
+!docs/
+!docs/*.html
+!docs/*.pdf
+!docs/*.epub
+!docs/_main_files/
