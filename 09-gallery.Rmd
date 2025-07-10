@@ -1,6 +1,11 @@
 
 # Venndir Gallery
 
+```{r setup-09, include=FALSE}
+suppressPackageStartupMessages(library(venndir))
+suppressPackageStartupMessages(library(patchwork))
+```
+
 ## Figure Boosting
 
 One of the best hobby activities while developing Venndir has been
@@ -26,24 +31,27 @@ to recreate part of the nice Venn diagram in [@Salybekov_2021] Figure 2.
 
 ### Me - Electron
 
-This example is straighforward, starting with a fun one posted on Reddit
-[r/physicsmemes](https://www.reddit.com/r/physicsmemes/comments/v5adqq/you_and_i_arent_so_different/).
-The person "Me" and an "Electron" both starts behaving differently
-when observed.
+This example is straighforward, using a fun post on Reddit
+[r/physicsmemes](https://www.reddit.com/r/physicsmemes/comments/v5adqq/you_and_i_arent_so_different/)
+[@reddit2022electron].
+The person "Me" and an "Electron" both start behaving differently
+when observed. This example demonstrates some of the basics of
+re-creating a figure, in order to make a similar figure, or to
+enhance the concept of the figure.
 
 The labels are clear, the colors are easily approximated.
 The font looks like Times, so `fontfamily='serif'` should suffice.
-The center label is probably best represented as one item label,
-separating each word with a newline `'\n'` character.
+The center wording is best represented as one item label,
+split across multiple lines using newline `'\n'` character.
 
 Figure \@ref(fig:me-electron) shows the outcome, relatively quick and easy!
 Two more options are shown on the bottom row. The first (bottom left)
 customizes the innerborder and outerborder. The second calls
 `modify_venndir_overlap()` to highlight the center region.
 
-(ref:me-electron) Figure from Reddit r/physicsmemes (top left), re-created by Venndir (top right). Two alternatives are shown (bottom row) adding some visual flair.
+(ref:me-electron) Target figure from r/physicsmemes (top left), re-created (top right), with two alternatives (bottom).
 
-```{r me-electron, out.width="50%", fig.show="hold", fig.ncol=2, echo=FALSE, fig.width=7, fig.height=5, fig.cap="(ref:me-electron)", fig.alt="(ref:me-electron)", fig.subcap=c("Source figure.", "Re-creation.", "Alternate 1.", "Alternate 2.")}
+```{r me-electron, out.width="50%", fig.show="hold", fig.ncol=2, echo=FALSE, fig.width=7, fig.height=4.5, fig.cap="(ref:me-electron)", fig.alt="(ref:me-electron)", fig.subcap=c("Source figure.", "Re-creation.", "Alternate 1.", "Alternate 2.")}
 knitr::include_graphics("images/MeElectron.png")
 olist <- c("Me",
    "Electron",
@@ -54,27 +62,27 @@ olist <- c("Me",
          "when",
          "observed"))
 )
-k <- 0.02;
+k <- -0.13;
 vo <- venn_meme(olist,
    outerborder.lwd=1.5,
    innerborder.lwd=1.5,
    poly_alpha=0.7,
-   expand_fraction=c(-0.1 - k, -0.1, -0.1 + k, -0.1)*2.4,
+   # expand_fraction=c(-0.1 - k, -0.1, -0.1 + k, -0.1)*2.4,
+   expand_fraction=k,
    item_cex_factor=c(0.8, 0.85, 0.9),
    fontfamily="serif",
    set_colors=c("#BFFAD6", "#C4D8F6"))
 
 # fun alternate #3
-k <- 0.02;
+k <- -0.13;
 vo3 <- venn_meme(olist,
    outerborder.lwd=5, outerborder="#F5F5F7FF",
    innerborder.lwd=0.5,# innerborder="#88888833",
    border="#77777755", border.lwd=0,
    poly_alpha=0.7,
    xyratio=1,
-   expand_fraction=c(-0.1 - k, -0.1, -0.1 + k, -0.1)*2.4,
+   expand_fraction=k,
    item_cex_factor=c(0.8*1.2, 0.85, 0.9)*1.2,
-   # fontfamily="AndrewScript",
    fontfamily="Bradley Hand",
    set_colors=c("#BFFAD6", "#C4D8F6"))
 
@@ -90,11 +98,11 @@ vo4 <- venn_meme(olist4,
    do_plot=FALSE,
    marquee_styles=ms,
    outerborder.lwd=5, outerborder="#F5F5F7FF",
-   innerborder.lwd=0.5,# innerborder="#88888833",
+   innerborder.lwd=0.5,
    border="#77777755", border.lwd=0,
    poly_alpha=0.7,
    xyratio=1,
-   expand_fraction=c(-0.1 - k, -0.1, -0.1 + k, -0.1)*2.4,
+   expand_fraction=k,
    item_cex_factor=c(0.8*1.2, 0.85, 0.9)*1.2,
    fontfamily="AndrewScript",
    # fontfamily="Allura",
@@ -111,12 +119,12 @@ vo4 <- modify_venndir_overlap(vo4,
    overlap_set="B",
    params=list(innerborder="#C4D8F6",
       innerborder.lwd=2, outerborder.lwd=0, border=0))
-k <- 0.02;
+
 plot(vo4,
    # fontfamily="Allura",
    fontfamily="La Parisienne Script",
    item_cex_factor=c(0.8*2.5, 0.85*1.3, 1.0)*1.2,
-   expand_fraction=c(-0.1 - k, -0.1, -0.1 + k, -0.1)*2.4)
+   expand_fraction=k)
 
 
 ```
@@ -132,7 +140,6 @@ olist <- c("Me",
 venn_meme(olist,
    outerborder.lwd=2, innerborder.lwd=2,
    poly_alpha=0.7,
-   expand_fraction=c(-0.1, -0.1, -0.1, -0.1),
    item_cex_factor=c(0.8, 0.8, 0.9),
    fontfamily="serif",
    set_colors=c("#BFFAD6", "#C4D8F6"))
@@ -148,7 +155,7 @@ knitr::include_graphics("images/eulerGlyphs.png")
 ```
 
 Figure \@ref(fig:eulerglyph) shows a fantastic figure created by
-[eulerGlyphs](https://www.eulerdiagrams.com/eulerGlyphs/),
+[eulerGlyphs](https://www.eulerdiagrams.com/eulerGlyphs/) [@Micallef_2012],
 an application designed to create proportional Euler diagrams.
 The data represents [breast cancer screening statistics](10.1109/TVCG.2012.199),
 and is a common reference dataset to study the visual perception of statistics.
@@ -166,7 +173,7 @@ rotated with `jitter_degrees` to provide some visual randomness.
 
 (ref:euler-glyphs-1) Initial attempt at re-creating the EulerGlyphs figure.
 
-```{r euler-glyphs-1, fig.height=7, fig.width=8, fig.cap="(ref:euler-glyphs-1)", fig.alt="(ref:euler-glyphs-1)"}
+```{r euler-glyphs-1, fig.height=5, fig.width=8, fig.cap="(ref:euler-glyphs-1)", fig.alt="(ref:euler-glyphs-1)"}
 mammo_counts <- c(
    wob=895,
    wwbc=2,
@@ -190,7 +197,7 @@ v_mammo <- venndir(mammo_list,
    item_buffer=-0.01, width_buffer=0.05,
    item_cex=c(1, 1, 1, 1, 1),
    segment_distance=0.02,
-   expand_fraction=c(-0.1, -0.05, -0.05, 0.05),
+   expand_fraction=c(-0.1, -0.2, -0.1, 0),
    rotate_degrees=180,
    draw_legend=FALSE,
    proportional=TRUE)
@@ -217,8 +224,8 @@ The set labels are nudged.
 
 (ref:euler-glyphs-3) Second attempt at the EulerGlyphs figure. It already looks cleaner.
 
-```{r euler-glyphs-3, fig.height=7, fig.width=8, fig.cap="(ref:euler-glyphs-3)", fig.alt="(ref:euler-glyphs-3)"}
-curate_df3 <- curate_df;
+```{r euler-glyphs-3, fig.height=5, fig.width=8, fig.cap="(ref:euler-glyphs-3)", fig.alt="(ref:euler-glyphs-3)"}
+curate_df3 <- get_venndir_curate_df();
 agg3 <- which(curate_df3$from %in% "agreement")
 curate_df3[agg3, "sign"] <- "\u25CF";
 
@@ -267,7 +274,7 @@ v_mammo3n <- nudge_venndir_label(v_mammo3,
 plot(v_mammo3n,
    jitter_color=0, width_buffer=0.02,
    L_lo=80, L_hi=85, C_floor=50,
-   expand_fraction=c(-0.1, 0, -0.05, 0),
+   expand_fraction=c(-0.1, -0.10, -0.1, -0.05),
    innerborder.lwd=0, outerborder.lwd=0.7)
 ```
 
@@ -354,22 +361,26 @@ steps, drawing the points in the correct `viewport`.
 
 (ref:euler-glyphs-4) Third attempt at re-creating the eulerGlyphs figure.
 
-```{r euler-glyphs-4, out.width="100%", fig.height=6, fig.width=8, fig.cap="(ref:euler-glyphs-4)", fig.alt="(ref:euler-glyphs-4)"}
+```{r euler-glyphs-4, out.width="100%", fig.height=5, fig.width=8, fig.cap="(ref:euler-glyphs-4)", fig.alt="(ref:euler-glyphs-4)"}
 # plot the Venndir
 v_mammo4p <- plot(v_mammo4n,
-   expand_fraction=c(-0.1, 0, -0.05, 0)-0.05)
+   expand_fraction=c(-0.1, -0.10,
+      -0.1, -0.05))
 # extract the viewport adjustments
 vp <- attr(v_mammo4p, "viewport");
 adjx <- attr(v_mammo4p, "adjx");
 adjy <- attr(v_mammo4p, "adjy");
 # create pointsGrob
 set.seed(123);
-pts <- grid::grid.points(x=adjx(xy$x + rnorm(1000)/6),
+pts <- grid::grid.points(
+   x=adjx(xy$x + rnorm(1000)/6),
    draw=FALSE,
-   y=adjy(xy$y + rnorm(1000)/6), pch=21,
-   gp=grid::gpar(col=xy$border, fill=xy$color, cex=0.6),
-   # vp=attr(v_mammo4, "viewport"),
-   default.units="snpc")
+   y=adjy(xy$y + rnorm(1000)/6),
+   pch=21,
+   gp=grid::gpar(col=xy$border,
+      fill=xy$color, cex=0.6),
+   vp=attr(v_mammo4p, "viewport"),
+   default.units="native")
 # draw inside the viewport
 grid::pushViewport(vp)
 grid::grid.draw(pts)
@@ -389,16 +400,19 @@ since it depends upon the `expand_fraction` adjustments.
 The result turned out better than expected, and the workflow could
 be re-used for other datasets.
 
-**Can it be improved?** Yes, this is the challenge.
+**Can it be improved?**
 
-In re-creating the figure, the first question that arose was this:  
-**"How many points are in each region?"**
+While creating the figure, the first question that arose:  
+**"How many points are in each region?"**  
+In truth, it took some effort to discover these values, despite
+being the focal point of the study (and the study about the study).
 
-Figure \@ref(fig:euler-glyphs-5) shows some potential improvement.
+Figure \@ref(fig:euler-glyphs-5) shows some potential improvement,
+labeling each section with the number of points.
 
-(ref:euler-glyphs-5) Update which labels the number of points in each region. In fact, this is the number of women out of 1,000 involved in the study, not just "points".
+(ref:euler-glyphs-5) Update which labels the number of points in each region. The title reveals each point represents one woman tested per 1,000 in the study.
 
-```{r euler-glyphs-5, echo=FALSE, out.width="100%", fig.height=6, fig.width=8, fig.cap="(ref:euler-glyphs-5)", fig.alt="(ref:euler-glyphs-5)"}
+```{r euler-glyphs-5, echo=FALSE, out.width="100%", fig.height=5, fig.width=8, fig.cap="(ref:euler-glyphs-5)", fig.alt="(ref:euler-glyphs-5)"}
 # create a different Venndir
 v_mammo5 <- venndir(mammo_list,
    do_plot=FALSE,
@@ -426,14 +440,14 @@ v_mammo5n <- nudge_venndir_label(v_mammo5,
    label_location="outside",
    offset_list=list(wwbc=c(0.01, 0.0505),
       wwpm=c(-0.09, 0.06),
-      "wwbc&wwpm"=c(-0.15, 0.14),
-      "wob&wwpm"=c(-0.11, -0.58),
+      "wwbc&wwpm"=c(-0.12, 0.14),
+      "wob&wwpm"=c(-0.09, -0.55),
       wob=c(-0.01, -0.06)))
 # plot the Venndir
 v_mammo5p <- plot(v_mammo5n,
    main="Mammography test outcomes per 1,000 women.",
-   segment_buffer=-0.7,
-   expand_fraction=c(-0.1, 0, -0.05, 0)-0.05)
+   segment_buffer=-0.4,
+   expand_fraction=c(-0.1, -0.10, -0.1, -0.05))
 
 # draw inside the viewport
 grid::pushViewport(vp)
@@ -444,17 +458,16 @@ grid::popViewport()
 
 ## Venndir Case Studies
 
-While many stylistic pieces were described through this text,
-putting them together in an artistic way is not always
-straightforward.
+While many stylistic techniques were described earlier in the text,
+putting them together in an artistic way is not always straightforward.
 
-Further, while the *concept* of directional Venn diagrams may
-(or may not) sound valuable, it is often best evaluate using
-real world data.
+The following case studies serve two purposes:
 
-Venndir Case Studies also serves as a Style Gallery,
-both to illustrate creative ways to customize a Venn diagram,
-and to illustrate examples of Venndir in action.
+1. Illustrate some stylistic options while showing the associated techniques.
+2. Demonstrate the utility of directional Venn diagrams.
+
+In both cases, it often works best to use real world data.
+
 
 ### Seehawer Kmt2 Gene Venns
 
@@ -474,28 +487,26 @@ and "down" may be recognized as "down-regulated" or "decreased function."
 
 When two studies are compared, they often focus on the genes involved
 without regard to the direction of change.
-The prevailing assumption is that affecting the same genes implies
-affecting the same biological process.
-However, the very next question is whether the process
-is affected the same way.
+A common alternative is to compare
+only the concordant gene changes: For example, comparing up-regulated
+genes in two studies, and separately comparing down-regulated genes
+in two studies.
 
+The underlying question is that the genes in each set represent the
+biological mechanism involved in the study, and that shared genes
+may therefore represent shared biology.
 
-**Situation**
-
-For studies whose critical findings involve (1) identify important
-components, and (2) identify direction of those components, such as
-gain or loss, Venndir proposes two critical points.
-
-1. Overlap alone is not enough.
-2. Directionality matters.
+If the genes represent the process, surely the direction of change
+represents the effect on the process?
+Venndir proposes the important distinction that the concordance of
+direction represents whether the underlying process is also affected
+in the same way.
 
 Direction is important in science and medicine, where it often means the
 difference between disease and treatment.
 
-Most scientific papers use Venn diagrams without directionality,
-although a subset compare each direction independently, thus
-ignoring the potential for discordance. It could be discordant,
-and they may never know.
+1. Overlap alone is not enough.
+2. Directionality matters.
 
 To date, no Venn software tool indicates overlap and
 directionality together.
@@ -503,31 +514,28 @@ directionality together.
 
 **Example Data**
 
-The subject of this example is a scientific paper by
+A scientific paper by
 [Seehawer et al](https://www.nature.com/articles/s41556-024-01446-3)
-[@Seehawer_2024] that studies the role of two genes,
-*Kmt2c* and *Kmt2d*, on brain cancer metastasis,
+[@Seehawer_2024] studied brain cancer metastasis, 
 the migration property of cancer cells associated with
-poor clinical prognosis. They studied the effect of losing either gene,
-and in two very different cell types "168FARN" and "67NR".
+poor clinical prognosis.
 
-Figure \@ref(fig:seehawer-0) shows the target figure, which compares
-the genes affected by loss of each target gene *Kmt2c* (left)
-and *Kmt2d* (right). Each panel compares the genes affected by
-the two cell types "168FARN" and "67NR".
-Up-regulated genes are compared on the top row, down-regulated
-genes are compared on the bottom row.
+They studied the effect of losing either of two genes,
+*Kmt2c* and *Kmt2d*, and they included two very different
+cell types: "168FARN" and "67NR".
 
-The authors intended to assess whether the effects of gene loss were
-similar in the two cell lines, which would imply similar molecular
-mechanisms. They concluded that the two cell lines, while being
-fundamentally different, shared the underlying mechanism because
-they shared some up-regulated genes, and some down-regulated genes.
+Figure \@ref(fig:seehawer-0) shows the target figure.
+Each Venn diagram compares the genes affected in two cell types:
+"168FARN" and "67NR".
 
-This approach is fairly common, testing up-regulated and down-regulated genes
-independently. However, it does not test whether there are genes with
-discordant change in direction. They effectively only look for consistent
-direction, without looking at opposing direction.
+* The left panels focus on *Kmt2c*, the right panels focus on *Kmt2d*.
+* The top panels compare only up-regulated genes,
+the bottom panels compare only down-regulated genes.
+
+The authors concluded that the two cell lines indicated a shared
+genetic mechanism, even in very different cell types,
+due to the concordant gene changes shown in each Venn diagram.
+However, these figures did not indicate discordant changes.
 
 (ref:seehawer-0) Target Extended Figure 4h from Seehawer *et al* 2024.
 
@@ -535,31 +543,28 @@ direction, without looking at opposing direction.
 knitr::include_graphics("images/SeehawerVenns.png")
 ```
 
-Data for Extended Figure 4h were available via Supplemental Table 4.
-Tables were filtered for adjusted P-value 0.1, log2 fold change 0.6.
-Gene symbol and fold change sign were saved for use in Venndir.
+Data for Extended Figure 4h were available via Supplemental Table 4,
+filtered for adjusted P-value below 0.1 and absolute log2 fold change
+of at least 0.6.
+The gene symbol and fold change sign were used in Venndir.
 
-Figure \@ref(fig:seehawer-2) shows the Venndir re-creation.
-Only two values differ and by only by `1` gene each,
-which suggests a minor "rounding error" discrepancy in
-processing. See the 67NR-specific overlap in
-"*Kmt2c*_KO Upregulated genes" and "*Kmt2c*_KO Downregulated genes".
-(These differences are not cause for concern.)
-
-Overall, Venndir reproduced the Seehawer figure [@Seehawer_2024].
+Figure \@ref(fig:seehawer-2) shows the Venndir re-creation
+of Seehawer Extended Figure 4h, with separate up- and down-regulated
+Venn diagrams [@Seehawer_2024].
+The Venndir output is nearly identical,
+differing only by `1` gene each in the 67NR-specific overlap -
+most likely a discrepancy by rounding error.
 
 ```{r seehawer-1, echo=FALSE}
 kmdf2 <- data.table::fread(file="data/seehawer.txt", data.table=FALSE)
 kmlist2 <- lapply(split(kmdf2, kmdf2$Set), function(idf){
    jamba::nameVector(idf$Sign, idf$Gene)
 })
-lengths(kmlist2)
 # split into up-regulated and down-regulated genes
 kmlist_up2 <- lapply(kmlist2, function(i){ i[i > 0] })
 kmlist_dn2 <- lapply(kmlist2, function(i){ i[i < 0] })
 # define colors
-km_colors2 <- c("dodgerblue1", "gold", "dodgerblue1", "gold")
-km_colors2 <- c("dodgerblue1", "#FFF400", "dodgerblue1", "#FFF400")
+km_colors2 <- c("dodgerblue", "#FFF400", "dodgerblue", "#FFF400")
 
 make_km_venn <- function
 (sets=c(1, 3),
@@ -602,23 +607,34 @@ make_km_venn <- function
 
 (ref:seehawer-2) Venndir re-creation of Seehawer Ext. Fig 4h.
 
-```{r seehawer-2, echo=FALSE, out.width="100%", fig.width=10, fig.height=10, fig.cap="(ref:seehawer-2)", fig.alt="(ref:seehawer-2)"}
+```{r seehawer-2, echo=FALSE, out.width="100%", fig.width=10.5, fig.height=10, fig.cap="(ref:seehawer-2)", fig.alt="(ref:seehawer-2)"}
 suppressPackageStartupMessages(library(patchwork))
 
 vc1 <- make_km_venn(sets=c(1, 3), dir="all")
 vc2 <- make_km_venn(sets=c(1, 3), dir="all",
-   font_cex=c(1, 1, 0.6),
+   font_cex=c(1, 1, 0.7),
    template="tall", overlap_type="concordance")
 vc3 <- make_km_venn(sets=c(1, 3), dir="all",
    font_cex=c(1, 1, 0.8),
    template="tall", overlap_type="agreement")
 v_up <- make_km_venn(sets=c(1, 3), dir="up")
 v_dn <- make_km_venn(sets=c(1, 3), dir="down")
-vc1_grobs <- plot(vc1, do_draw=FALSE)
-vc2_grobs <- plot(vc2, do_draw=FALSE)
-vc3_grobs <- plot(vc3, do_draw=FALSE)
-v_up_grobs <- plot(v_up, do_draw=FALSE)
-v_dn_grobs <- plot(v_dn, do_draw=FALSE)
+xk <- c(0.15, 0.15, 0.11, 0.05);
+vc1_grobs <- plot(vc1,
+   expand_fraction=xk,
+   do_draw=FALSE)
+vc2_grobs <- plot(vc2,
+   expand_fraction=xk,
+   do_draw=FALSE)
+vc3_grobs <- plot(vc3,
+   expand_fraction=xk,
+   do_draw=FALSE)
+v_up_grobs <- plot(v_up,
+   expand_fraction=xk,
+   do_draw=FALSE)
+v_dn_grobs <- plot(v_dn,
+   expand_fraction=xk,
+   do_draw=FALSE)
 suppressWarnings({
    vc1_gtree <- attr(vc1_grobs, "gtree")
    vc2_gtree <- attr(vc2_grobs, "gtree")
@@ -632,18 +648,28 @@ v_updn_c <- (wrap_elements(v_up_gtree) /
 
 vd1 <- make_km_venn(sets=c(2, 4), dir="all")
 vd2 <- make_km_venn(sets=c(2, 4), dir="all",
-   font_cex=c(1, 1, 0.6),
+   font_cex=c(1, 1, 0.7),
    template="tall", overlap_type="concordance")
 vd3 <- make_km_venn(sets=c(2, 4), dir="all",
    font_cex=c(1, 1, 0.8),
    template="tall", overlap_type="agreement")
 v_upd <- make_km_venn(sets=c(2, 4), dir="up")
 v_dnd <- make_km_venn(sets=c(2, 4), dir="down")
-vd1_grobs <- plot(vd1, do_draw=FALSE)
-vd2_grobs <- plot(vd2, do_draw=FALSE)
-vd3_grobs <- plot(vd3, do_draw=FALSE)
-v_up_grobsd <- plot(v_upd, do_draw=FALSE)
-v_dn_grobsd <- plot(v_dnd, do_draw=FALSE)
+vd1_grobs <- plot(vd1,
+   expand_fraction=xk,
+   do_draw=FALSE)
+vd2_grobs <- plot(vd2,
+   expand_fraction=xk,
+   do_draw=FALSE)
+vd3_grobs <- plot(vd3, 
+   expand_fraction=xk,
+   do_draw=FALSE)
+v_up_grobsd <- plot(v_upd,
+   expand_fraction=xk,
+   do_draw=FALSE)
+v_dn_grobsd <- plot(v_dnd,
+   expand_fraction=xk,
+   do_draw=FALSE)
 suppressWarnings({
    vd1_gtree <- attr(vd1_grobs, "gtree")
    vd2_gtree <- attr(vd2_grobs, "gtree")
@@ -664,16 +690,15 @@ v_updn_cd <- (wrap_elements(v_up_gtree) +
 plot(v_updn_cd)
 ```
 
-However, the real question (the "next question" if you will),
-is whether there are shared genes with discordant direction.
+However, the *next question* is whether the shared gene changes are
+concordant or discordant in direction.
 
-Figure \@ref(fig:seehawer-3) explores the same data using the
-complete signed data, with up- and down-regulated genes together.
-The genes are shown: *Kmt2c*_KO (left) and *Kmt2d*_KO (right).
+Figure \@ref(fig:seehawer-3) includes up- and down-regulated genes
+together, with *Kmt2c*_KO (left) and *Kmt2d*_KO (right).
 
 (ref:seehawer-3) Venndir re-creation of Seehawer Ext. Fig 4h, using the complete set of up- and down-regulated genes together. The top row shows 'overlap', the second row shows 'agreement', and the third row shows 'concordance'.
 
-```{r seehawer-3, echo=FALSE, out.width="100%", fig.width=10, fig.height=15, fig.cap="(ref:seehawer-3)", fig.alt="(ref:seehawer-3)"}
+```{r seehawer-3, echo=FALSE, out.width="100%", fig.width=10.5, fig.height=15, fig.cap="(ref:seehawer-3)", fig.alt="(ref:seehawer-3)"}
 vcd123 <- (wrap_elements(vc1_gtree) + wrap_elements(vd1_gtree)) /
    (wrap_elements(vc3_gtree) + wrap_elements(vd3_gtree)) /
    (wrap_elements(vc2_gtree) + wrap_elements(vd2_gtree)) +
@@ -686,31 +711,30 @@ plot(vcd123)
 
 **Findings:**
 
-The first row shows regulated genes without regard to direction.
+The first row of panels shows regulated genes without regard to direction.
 
-* For *Kmt2c*_KO (left) and *Kmt2d*_KO (right), the proportion of shared
-genes is notably higher than the Seehawer figure.
-* The increase in shared genes suggests the increase is due
-to genes with discordant direction.
+* For *Kmt2c*_KO (left) and *Kmt2d*_KO (right), the shared genes
+represent a higher proportion of the Venn diagrams than in Seehawer.
+* This increase in shared genes suggests that the increase is caused by
+discordant changes.
 
-The second row displays the counts by `'agreement'`, using `'='` for
-agreement, and `'X'` for disagreement.
+The second row summarizes the overlap direction by `'agreement'`, described in [Overlap Type], using `'='` for agreement, and `'X'` for disagreement.
 
-* There are nearly as many shared genes that agree in direction as
-genes that disagree in direction.
+* Nearly as many shared genes disagree in direction as those that agree.
 
-The bottom row displays the counts summarized by `'concordance'`, using
-arrows to indicate direction, or `'X'` for discordant changes.
-
-* There are more genes discordant in direction, than genes sharing
-either direction alone.
+The bottom row summarizes the overlap by `'concordance'`, using
+arrows to indicate direction, and `'X'` for discordant changes.
 
 **Conclusion:**
 
-Directionality provides important context for the interpretation
-of the Seehawer data [@Seehawer_2024].
-The comparison across "168FARN" and "67NR" was not critical to
-their main findings, however this particular conclusion,
-that the two cell lines exhibited consistent molecular mechanisms
-may warrant more careful review.
+Directionality provides important and context which was previously
+missing in the Seehawer data [@Seehawer_2024].
+While it is true the two cell types shared some proportion of gene
+changes, the directional concordance was not particularly strong.
+That said, the "true answer" is also not known, the subset of
+concordant genes may represent the shared components, or maybe
+the discordant genes could play different functional roles in the
+two cell types.
+In any case, the concordance adds important context to the question
+and interpretation of supporting data.
 

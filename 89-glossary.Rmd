@@ -223,6 +223,18 @@ signed counts
     * `'-1 1'`
     * `'1 1'`
 
+::: {#hidden-overlaps-glossary}
+:::
+hidden overlaps
+  ~ A [Venn overlap](#venn-overlap) which cannot be represented in a Venn
+  or proportional Euler diagram, usually due to geometric constraints.
+  For three or more sets, proportional Euler diagrams are not guaranteed
+  to have a geometric solution when using circle or ellipse shapes.
+  
+  In Venndir, hidden overlaps are indicated by placing a footnote symbol
+  $`r "\u2020"`$, also called a 'dagger', in the bottom-right corner
+  of the figure.
+
 ::: {#matrix}
 :::
 matrix
@@ -244,7 +256,7 @@ incidence matrix
 ::: {#g-signed-incidence-matrix}
 :::
 signed incidence matrix  
-  ~ An enhanced [incidence matrix](#incidence-matrix) that represents
+  ~ An enhanced [incidence matrix](#g-incidence-matrix) that represents
     set membership and directional sign.
     A signed incidence matrix encodes sign as the matrix value,
     usually values such as:

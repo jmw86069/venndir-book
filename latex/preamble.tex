@@ -34,7 +34,10 @@
   colframe=DarkRed!50,
   coltext=black,
   boxsep=5pt,
-  arc=3pt}
+  arc=3pt,
+  halign=left,
+  before={\RaggedRight\hyphenpenalty=10000\exhyphenpenalty=10000}
+}
 
 \newtcolorbox{venndirquote}{
   colback=gray!5,
@@ -73,3 +76,5 @@
   labelfont=bf,
   labelsep=period
 }
+
+\usepackage[section]{placeins}

@@ -10,6 +10,66 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r html-latex-color, echo=FALSE}
+# custom function to colorize latex output
+html_to_latex_color <- function
+(tvt,
+ verbose=FALSE,
+ ...)
+{
+   #
+   tvt2 <- gsub("&nbsp;", " ", gsub("<span style..font-family[^>]+>|</span>", "", tvt))
+   # cat(gsub("<", "\n<", tvt2))
+   tvl <- unlist(strsplit(gsub("<", "\n<", tvt2), "\n"))
+   tvdf <- data.frame(jamba::rbindList(strsplit(gsub(">", ">!", tvl), "!")));
+   
+   tvl <- lapply(seq_len(nrow(tvdf)), function(irow){
+      # compress spaces?
+      # tvdf[irow, 2] <- gsub("  ", " ", tvdf[irow, 2]);
+      
+      tvdf[irow, 2] <- gsub("\u2191", "\\\\uparrow", tvdf[irow, 2])
+      tvdf[irow, 2] <- gsub("\u2193", "\\\\downarrow", tvdf[irow, 2])
+      tvdf[irow, 2] <- gsub("((\\\\(up|down)arrow)+)", "$\\1$", tvdf[irow, 2])
+      if (all(grepl("^<br[^a-z]", tvdf[irow, 1]))) {
+         tvdf[irow, 2] <- "\\newline\n";
+      } else if (all(grepl("^[ ]*$", tvdf[irow, 2]))) {
+         k <- paste0("\\colorbox{white!0}{",
+            "\\textcolor{white!0}{",
+            tvdf[irow, 2], "}}")
+      } else {
+         i <- gsub("<span style=.|.>", "", tvdf[irow, 1])
+         fg <- gsub("(^|;)color:#([A-F0-9]{6}).*$", "\\2", i)
+         # escape the ampersand
+         tvdf[irow, 2] <- gsub("([&_])", "\\\\\\1", tvdf[irow, 2]);
+         if (grepl("background-color", i)) {
+            # \colorbox{yellow}{This text has a yellow background.}
+            bg <- gsub("^.*background-color:#([A-F0-9]{6}).*$", "\\1", i)
+            k <- paste0("\\colorbox[HTML]{", bg, "}{",
+               "\\textcolor[HTML]{", fg,
+               "}{", tvdf[irow, 2], "}}")
+         } else {
+            k <- paste0("\\colorbox{white!0}{",
+               "\\textcolor[HTML]{", fg,
+               "}{", tvdf[irow, 2], "}}")
+            # k <- paste0(
+            #    "\\textcolor[HTML]{", fg,
+            #    "}{", tvdf[irow, 2], "}")
+         }
+      }
+   })
+   # print(tvl)
+   tv_text <- jamba::cPaste(sep="", unlist(tvl))
+   tv_lines <- jamba::cPaste(sep="", 
+      lapply(strsplit(tv_text, "\\\\newline\n"), function(i){
+         paste0("\\mbox{\\texttt{", i, "}}\\newline\n")
+      }))
+   paste0(
+      "\\setlength{\\fboxsep}{1pt}\n",
+      gsub(" ", "\\\\phantom{M}", tv_lines),
+      "\\setlength{\\fboxsep}{8.5pt}\n")
+}
+```
+
 
 A Venn diagram seems relatively simple and straightforward.
 It uses circles (or sometimes ellipses) to represent the
@@ -21,12 +81,11 @@ the number of elements of each set, and are somewhat unpredictable.
 <!-- best possible Euler diagram, but sometimes it is not possible -->
 <!-- to represent all the areas perfectly. -->
 
-A surprisingly key feature of any good Venn diagram is clear labeling.
+An important feature of any good Venn diagram is clear labeling.
 Venndir is as much about labeling as it is about the diagram.
 Adding *signed labels* only heightens the challenge.
 
-(ref:venndir-manual-label) Three-way proportional Euler diagram, showing the difficulty of labeling each region.
-<!-- Here, the overlap of set_A and set_C has `2` items. The label is placed outside the region, and is connected using a line segment. -->
+(ref:venndir-manual-label) Three-way proportional Euler diagram, showing the difficulty of labeling each region. Here, the overlap of set_A and set_C has 2 items. The label is placed outside, connected by a line segment.
 
 (ref:venndir-manual-label-alt) Three-way Euler diagram showing the difficulty with placing labels in each overlap region. One region is labeled outside the diagram, with a connecting line segment.
 
@@ -44,7 +103,7 @@ v2 <- venndir(setlist, proportional=TRUE, show_labels="ncs",
 v2h <- highlight_venndir_overlap(v2, overlap_set="set_A&set_C",
    outerborder="red", outerborder.lwd=2)
 plot(v2h,
-   expand_fraction=c(0.5, 1, 1, 1) * -0.2,
+   expand_fraction=c(1, 1, 1, 1) * -0.1,
    draw_legend=FALSE)
 
 ```
@@ -161,23 +220,19 @@ Now is a good time to mention that Euler diagrams are useful but imperfect.
 
 :::: {.tipbox data-latex=""}
 
-**Key Point:**
+**Key Points:**
 
-Euler diagrams are **approximately proportional** for three or more sets.
-No geometric solution is guaranteed to be exactly proportional
-to the number of items.
-
-1. Areas in Euler diagrams are *approximately proportional*.
+1. Euler diagrams are only *approximately proportional* for three or more sets.
 2. Some overlap regions may be shown which have no items.
-3. Some overlap regions may not be shown which do have items.
+3. Some overlap regions may not be shown which contain items.
 
-By default, a diagram with any hidden overlaps will display a small
-footnote symbol $`r "\u2020"`$ in the bottom-left corner.
+A diagram with any [hidden overlaps](#hidden-overlaps-glossary) will display a small
+footnote symbol $`r "\u2020"`$ in the bottom-right corner.
 
 ::::
 
 Points **1** and **2** test one's coping skills:
-(It is *okay* not to be perfect.)
+"When is it *okay* not to be perfect?"
 
 Point **3** is more concerning, and is discussed in detail
 in the section [Hidden Overlaps]. Briefly:
@@ -201,7 +256,7 @@ there is clear indication when something should be reviewed in detail.
 
 (ref:default-euler-3) Euler diagrams showing a footnote symbol (left panel), and footnote comment (right panel).
 
-```{r default-euler-3, out.width="50%", fig.ncol=2, fig.width=5, fig.height=7, fig.cap="(ref:default-euler-3)", fig.alt="(ref:default-euler-3)", fig.subcap=c("Circular sets.", "Elliptical sets.")}
+```{r default-euler-3, out.width="50%", fig.ncol=2, fig.width=5, fig.height=7, fig.cap="(ref:default-euler-3)", fig.alt="(ref:default-euler-3)", fig.subcap=c("Footnote symbol.", "Footnote with comment.")}
 setlist3 <- make_venn_test(500, n_sets=4)
 v3 <- venndir(setlist3,
    draw_legend=FALSE,
@@ -213,42 +268,34 @@ v3b <- venndir(setlist3,
    proportional=TRUE)
 ```
 
+
 ## Venn Set Colors
 
 The argument `set_colors` is used to define colors for each set.
 When it is `NULL`, as by default, it assigns rainbow categorical
 colors by calling the **colorjam** [@R-colorjam] R package.
 
-Figure \@ref(fig:default-venn-set-colors) demonstrates the effect
-of user-defined colors.
+Figure \@ref(fig:default-venn-set-colors) demonstrates user-defined colors (left), and monochrome transparent colors (right).
 
 (ref:default-venn-set-colors) Venn diagram showing custom set colors: red, orange, blue.
 
-```{r default-venn-set-colors, fig.cap="(ref:default-venn-set-colors)", fig.alt="(ref:default-venn-set-colors)"}
+```{r default-venn-set-colors, out.width="50%", fig.ncol=2, fig.cap="(ref:default-venn-set-colors)", fig.alt="(ref:default-venn-set-colors)", fig.subcap=c("Custom colors.", "Transparent blue colors.")}
 venndir(setlist,
    set_colors=c("firebrick", "orange", "royalblue"))
-```
-
-The background fill color is adjusted by `poly_alpha` which
-controls the alpha transparency of the color.
-Values range from 0 (fully transparent) to 1 (fully opaque).
-The default `poly_alpha=0.6` is mostly opaque.
-
-Figure \@ref(fig:default-venn-set-colors-alpha) illustrates the
-effect of using more transparent colors, which also lightens
-the background colors.
-
-(ref:default-venn-set-colors-alpha) Venn diagram using more transparent set colors.
-
-```{r default-venn-set-colors-alpha, fig.cap="(ref:default-venn-set-colors-alpha)", fig.alt="(ref:default-venn-set-colors-alpha)"}
+# blue transparent colors
 venndir(setlist,
    poly_alpha=0.4,
    set_colors=c("royalblue", "royalblue", "royalblue"))
 ```
 
+The background fill color is also adjusted by `poly_alpha` to
+control the alpha transparency.
+Values range from 0 (fully transparent) to 1 (fully opaque).
+The default `poly_alpha=0.6` is mostly opaque.
+
 Figure \@ref(fig:default-venn-set-colors-dark) shows the effect
-with low transparency, causing background colors to become dark.
-Notice some text labels become white to improve the visual contrast.
+of using low transparency, which allows some background colors to become dark.
+Notice some text labels become white to maintain visual contrast.
 
 (ref:default-venn-set-colors-dark) Venn diagram using opaque colors, which also causes some text labels to become white for visual contrast.
 
@@ -260,27 +307,29 @@ venndir(setlist,
 
 :::: {.tipbox data-latex=""}
 
-**Tip:**
+**Note:**
 
-Note that some R graphics devices do not support alpha transparency,
-which you can check with `dev.capabilities()`. It may need to be run
+Some R graphics devices do not support alpha transparency,
+which can be reviewed with `dev.capabilities()`. It should be run
 when the specific graphics device is open, for example after using
 `cairo_pdf()` to open a PDF file for output.
 
 ::::
 
-Colors can be manually changed later, in any section of the figure,
-which is described later in [Modify Venn Overlaps].
+Colors can also be customized in any section of the figure,
+using techniques described in [Modify Venn Overlaps].
 
 ### Consistent Set Colors
 
-When `setlist` is provided to `venndir()`, it assigns one color to each set,
-unless colors are defined upfront using argument `set_colors`.
+When the argument `setlist` is passed to `venndir()`, and no custom
+colors are defined with argument `set_colors`, categorical colors are assigned
+to each set.
 
-Consider having five sets, the following technique ensures that
-colors are used consistently for each set name.
+In a situation where `setlist` contains five sets, it is recommended to
+provide all five sets even for a figure that uses only a few sets.
+The following steps make sure colors are used consistently for each set name.
 
-1. Supply `venndir()` with the `setlist` with all sets.
+1. Supply `venndir()` with the complete `setlist`.
 2. Use argument `sets` to indicate which entries in `setlist` should be used.
 3. Optionally define `set_colors`, `setlist_labels`, and `legend_labels`
 for all sets in `setlist`.
@@ -313,22 +362,22 @@ v2 <- venndir(setlist,
    sets=c(1, 5))
 ```
 
-Figure \@ref(fig:consistent-colors-5) shows the effect put into action,
-with several Venn diagrams shown with consistent colors for each set.
+Figure \@ref(fig:consistent-colors-5) shows the desired outcome,
+several Venn diagrams using colors consistent for each set.
 
 (ref:consistent-colors-5) Four Venn diagrams using consistent colors for each set.
 
-```{r consistent-colors-5, fig.height=8, fig.width=8, echo=FALSE, out.width="80%", fig.cap="(ref:consistent-colors-5)", fig.alt="(ref:consistent-colors-5)"}
+```{r consistent-colors-5, fig.height=6, fig.width=8, echo=FALSE, out.width="80%", fig.cap="(ref:consistent-colors-5)", fig.alt="(ref:consistent-colors-5)"}
 # correct usage
 v2ce1 <- venndir(setlist, sets=c(1, 2), do_plot=FALSE)
 v2ce2 <- venndir(setlist, sets=c(2, 4), do_plot=FALSE)
 v2ce3 <- venndir(setlist, sets=c(1, 3), do_plot=FALSE)
 v2ce4 <- venndir(setlist, sets=c(3, 4), do_plot=FALSE)
 
-v2ce1_grobs <- plot(v2ce1, do_draw=FALSE)
-v2ce2_grobs <- plot(v2ce2, do_draw=FALSE)
-v2ce3_grobs <- plot(v2ce3, do_draw=FALSE)
-v2ce4_grobs <- plot(v2ce4, do_draw=FALSE)
+v2ce1_grobs <- plot(v2ce1, x_inset=grid::unit(-1, "lines"), do_draw=FALSE)
+v2ce2_grobs <- plot(v2ce2, x_inset=grid::unit(-1, "lines"), do_draw=FALSE)
+v2ce3_grobs <- plot(v2ce3, x_inset=grid::unit(-1, "lines"), do_draw=FALSE)
+v2ce4_grobs <- plot(v2ce4, x_inset=grid::unit(-1, "lines"), do_draw=FALSE)
 
 v2ce1_gtree <- attr(v2ce1_grobs, "gtree")
 v2ce2_gtree <- attr(v2ce2_grobs, "gtree")
@@ -343,13 +392,12 @@ pw2 <- (wrap_elements(v2ce1_gtree) +
 pw2
 ```
 
-Figure \@ref(fig:consistent-colors-4) illustrates the problem this
-technique tries to avoid, these examples use the same colors
-in each figure without regard to the sets involved.
+Figure \@ref(fig:consistent-colors-4) shows the problem to avoid,
+several Venn diagram with colors not consistent for each set.
 
-(ref:consistent-colors-4) Four Venn diagrams using the default colors, gold and red.
+(ref:consistent-colors-4) Four Venn diagrams using the default colors, illustrating the problem to avoid: Colors are not consistent for each set.
 
-```{r consistent-colors-4, fig.height=8, fig.width=8, echo=FALSE, out.width="80%", fig.cap="(ref:consistent-colors-4)", fig.alt="(ref:consistent-colors-4)"}
+```{r consistent-colors-4, fig.height=6, fig.width=8, echo=FALSE, out.width="80%", fig.cap="(ref:consistent-colors-4)", fig.alt="(ref:consistent-colors-4)"}
 # assemble panels with patchwork
 
 v2be1 <- venndir(setlist[c(1, 2)], do_plot=FALSE)
@@ -357,10 +405,10 @@ v2be2 <- venndir(setlist[c(2, 4)], do_plot=FALSE)
 v2be3 <- venndir(setlist[c(1, 3)], do_plot=FALSE)
 v2be4 <- venndir(setlist[c(3, 4)], do_plot=FALSE)
 
-v2be1_grobs <- plot(v2be1, do_draw=FALSE)
-v2be2_grobs <- plot(v2be2, do_draw=FALSE)
-v2be3_grobs <- plot(v2be3, do_draw=FALSE)
-v2be4_grobs <- plot(v2be4, do_draw=FALSE)
+v2be1_grobs <- plot(v2be1, x_inset=grid::unit(-1, "lines"), do_draw=FALSE)
+v2be2_grobs <- plot(v2be2, x_inset=grid::unit(-1, "lines"), do_draw=FALSE)
+v2be3_grobs <- plot(v2be3, x_inset=grid::unit(-1, "lines"), do_draw=FALSE)
+v2be4_grobs <- plot(v2be4, x_inset=grid::unit(-1, "lines"), do_draw=FALSE)
 
 suppressWarnings({
    v2be1_gtree <- attr(v2be1_grobs, "gtree")
@@ -381,23 +429,34 @@ Other alternatives to avoid mis-using color:
 * Supply argument `set_colors` to `venndir()` with specific colors per set.
 * Create Venn with no color, and no background fill.
 
+
 ### Venndir Without Color
 
 It is possible to create a Venndir without color.
-For example, some publications are limited to black-and-white output.
+For example, some publications require black-and-white output.
 
-Figure X demonstrates the arguments required
-to create a Venn diagram without color.
+Figure \@ref(fig:bw-venn-1) demonstrates Venndir output with no color.
 
 (ref:bw-venn-1) Venndir figure with no color.
 
 ```{r bw-venn-1, fig.cap="(ref:bw-venn-1)", fig.alt="(ref:bw-venn-1)"}
 v <- venndir(make_venn_test(),
+   show_segments=FALSE,
    poly_alpha=0,
    border="black",
    border.lwd=2,
-   legend_color_style=c("blackborder", "nofill"))
+   legend_color_style=c("noborder", "nofill"))
 ```
+
+:::: {.tipbox data-latex=""}
+
+**Tip:**
+
+Using `poly_alpha=0` also makes signed labels not colored.  
+To maintain signed colors, use `poly_alpha=0.01`.  
+For more control over signed label colors, see [Custom Sign Label Colors].
+
+::::
 
 
 ## Venndir Labels
@@ -416,8 +475,10 @@ There are so many types of labels, it became unwieldy to assign
 a separate function argument for each label, which is why
 labels are controlled by one argument: `show_labels`.
 
-Each type of label is assigned a letter, and is described in
-\@ref(tab:label-table).
+Table \@ref(tab:label-table) describes each type of label,
+and the letter assigned to each.
+
+(fig:label-table) Summary of recognized options for the argument show labels.
 
 ```{r label-table, echo=FALSE}
 label_df <- data.frame(check.names=FALSE,
@@ -444,9 +505,12 @@ options("kableExtra.latex.load_packages"=FALSE)
 label_kdf <- knitr::kable(label_df,
    booktabs=TRUE,
    caption="Summary of recognized options for the argument show labels.",
-   row.names=FALSE) |>
-   kableExtra::column_spec(1:2, width=c("4em")) |>
+   row.names=FALSE)
+label_kdf <- label_kdf |>
+   kableExtra::column_spec(1:2, width=c("4em"),
+      extra_css="white-space: nowrap;") |>
    kableExtra::column_spec(3, width=c("20em"))
+label_kdf <- epub_kdf(label_kdf)
 label_kdf
 ```
 
@@ -461,15 +525,15 @@ counts and [signed counts](#signed-counts) inside.
 
 **Tip:**
 
-For those who like to see the percentage, a good default would be
-`show_labels="Ncsp"`. For clarity, the percentage is always located
-with [main counts](#main-counts), unless the [main counts](#main-counts) are not shown.
+A good default to include the percentage is `show_labels="Ncsp"`.
+The percentage is always located with the [main counts](#main-counts),
+unless [main counts](#main-counts) are not shown.
 
 ::::
 
 Currently, item labels can only be placed inside.
-In future it may be possible to show items in a table
-beside the Venn diagram.
+It is possible to place item labels in a table outside the Venn
+diagram, however it involves advanced techniques.
 
 Figure \@ref(fig:label-info) illustrates common examples for `show_label`,
 showing how the components of each label are grouped together.
@@ -584,7 +648,9 @@ The argument `overlap_type` provides different approaches to
 summarize directional overlaps. This option determines which
 count labels will be displayed in the Venndir figure.
 
-The different options are summarized in Table \@ref(tab:overlap-type-table).
+Table \@ref(tab:overlap-type-table) summarizes the options for `overlap_type`.
+
+(fig:overlap-type-table) Summary of recognized overlap types, with a description of the associated output in a Venndir figure.
 
 ```{r overlap-type-table, echo=FALSE}
 oll <- list(
@@ -600,11 +666,14 @@ oll <- list(
 )
 oldf <- data.frame("overlap_type"=names(oll),
    "Description"=unlist(oll))
-knitr::kable(row.names=FALSE,
+kdf <- knitr::kable(row.names=FALSE,
    booktabs=TRUE,
    caption="Summary of recognized overlap types, with a description of the associated output in a Venndir figure.",
-   oldf) |>
+   oldf)
+kdf <- kdf |>
    kableExtra::column_spec(2, width="25em")
+kdf <- epub_kdf(kdf)
+kdf
 ```
 
 * When the input `setlist` is not signed,
@@ -612,9 +681,20 @@ knitr::kable(row.names=FALSE,
 * When the input `setlist` is signed,
 `overlap_type='concordance'` is the default.
 
+Figure \@ref(fig:overlap-type-1) illustrates the four values for
+`overlap_type`.
+
 (ref:overlap-type-1) Venn diagrams showing four overlap types recognized: 'overlap' (default for non-signed data), 'concordance' (default for signed data), 'each', and 'agreement'.
 
-```{r overlap-type-1, echo=FALSE, out.width="50%", fig.height=6, fig.width=6, fig.cap="(ref:overlap-type-1)", fig.alt="(ref:overlap-type-1)", fig.ncol=2, fig.subcap=c("'overlap'", "'concordance'", "'each'", "'agreement'")}
+(ref:overlap-type-1a) overlap_type='overlap'
+
+(ref:overlap-type-1b) overlap_type='concordance'
+
+(ref:overlap-type-1c) overlap_type='each'
+
+(ref:overlap-type-1d) overlap_type='agreement'
+
+```{r overlap-type-1, echo=FALSE, out.width="50%", fig.height=6, fig.width=6, fig.cap="(ref:overlap-type-1)", fig.alt="(ref:overlap-type-1)", fig.ncol=2, fig.subcap=c("(ref:overlap-type-1a)", "(ref:overlap-type-1b)", "(ref:overlap-type-1c)", "(ref:overlap-type-1d)")}
 setlist <- make_venn_test(do_signed=TRUE)
 
 v1 <- venndir(setlist, overlap_type='overlap')
@@ -640,9 +720,9 @@ main overlap counts.
 2. `template='tall'` labels [signed counts](#signed-counts) below
 main overlap counts.
 
-(ref:template-wide) Venn diagram with signed counts beside each overlap count (left) defined by the default argument template='wide', and with signed counts below overlap count (right) defined by template='tall'.
+(ref:template-wide) Venn diagram with signed counts labeled beside overlap counts (left) using `template='wide'`; and below overlap counts (right) using `template='tall'`.
 
-```{r template-wide, out.width="50%", fig.ncol=2, fig.height=7, fig.width=8, fig.cap="(ref:template-wide)", fig.alt="(ref:template-wide)", fig.subcap=c("template='wide'", "template='tall'")}
+```{r template-wide, out.width="50%", fig.ncol=2, fig.height=6, fig.width=6, fig.cap="(ref:template-wide)", fig.alt="(ref:template-wide)", fig.subcap=c("template='wide'", "template='tall'")}
 setlist3 <- make_venn_test(n_sets=3, do_signed=TRUE)
 vt1 <- venndir(setlist3)
 vt2 <- venndir(setlist3, template="tall")
@@ -680,25 +760,20 @@ a visual border. For example, try 'lite box' or 'shaded box'.
 
 (ref:label-style-1) Venn diagrams showing the different label style options in each of four panels.
 
-```{r label-style-1, fig.height=8, fig.width=8, echo=FALSE, fig.alt="(ref:label-style-1)", fig.cap="(ref:label-style-1)"}
+(ref:label-style-1a) label_style='lite'
+
+(ref:label-style-1b) label_style='shaded'
+
+(ref:label-style-1c) label_style='fill'
+
+(ref:label-style-1d) label_style='lite box'
+
+```{r label-style-1, fig.ncol=2, out.width="50%", fig.height=4, fig.width=5, echo=FALSE, fig.alt="(ref:label-style-1)", fig.cap="(ref:label-style-1)", fig.subcap=c("(ref:label-style-1a)", "(ref:label-style-1b)", "(ref:label-style-1c)", "(ref:label-style-1d)")}
 setlist <- make_venn_test(n_sets=3)
-v1 <- venndir(setlist, sets=c(1, 3), label_style="lite", do_plot=FALSE)
-v2 <- venndir(setlist, sets=c(1, 3), label_style="shaded", do_plot=FALSE)
-v3 <- venndir(setlist, sets=c(1, 3), label_style="fill", do_plot=FALSE)
-v4 <- venndir(setlist, sets=c(1, 3), label_style="lite box", do_plot=FALSE)
-
-v1gt <- attr(plot(v1, main="label_style='lite'", do_draw=FALSE), "gtree")
-v2gt <- attr(plot(v2, main="label_style='shaded'", do_draw=FALSE), "gtree")
-v3gt <- attr(plot(v3, main="label_style='fill'", do_draw=FALSE), "gtree")
-v4gt <- attr(plot(v4, main="label_style='lite box'", do_draw=FALSE), "gtree")
-
-pw3 <- (wrap_elements(v1gt) +
-   wrap_elements(v2gt)) /
-   (wrap_elements(v3gt) +
-   wrap_elements(v4gt)) +
-   plot_layout(widths=c(1, 1))
-pw3
-
+v1 <- venndir(setlist, sets=c(1, 3), label_style="lite")
+v2 <- venndir(setlist, sets=c(1, 3), label_style="shaded")
+v3 <- venndir(setlist, sets=c(1, 3), label_style="fill")
+v4 <- venndir(setlist, sets=c(1, 3), label_style="lite box")
 ```
 
 ### Nudge a Venn Label
@@ -711,12 +786,14 @@ and defines a position 'inside' and 'outside' the Venn region.
 
 :::: {.tipbox data-latex=""}
 
-**Key Point:**
+**Exception:**
 
-The exception to the rule that every overlap has a label position
-occurs when a Venn overlap cannot be represented in the diagram,
-which sometimes happens in proportional Euler diagrams.
-For a discussion of that issue, see [Hidden Overlaps].
+Sometimes a proportional Euler diagram cannot represent
+every overlap, due to geometric constraints.
+In this case, not every overlap will be assigned a label position.
+
+For a discussion of that issue, see Section \@ref(hidden-overlaps)
+[Hidden Overlaps].
 
 ::::
 
@@ -752,7 +829,7 @@ plot(v2)
 ```
 
 Figure \@ref(fig:nudge-label-1) shows the Venn with
-default labels (left panel), and with `'set_C'` adjusted (right panel).
+default labels (left), and with the label `'set_C'` adjusted (right).
 
 (ref:nudge-label-1) Default 3-way Venn diagram (left), with label `'set_C'` moved up and to the left (right).
 
@@ -760,7 +837,7 @@ default labels (left panel), and with `'set_C'` adjusted (right panel).
 
 (ref:nudge-label-1-2) Adjusted set_C label.
 
-```{r nudge-label-1, echo=FALSE, fig.ncol=2, out.width="50%", fig.cap="(ref:nudge-label-1)", fig.alt="(ref:nudge-label-1)", fig.subcap=c("(ref:nudge-label-1-1)", "(ref:nudge-label-1-2)")}
+```{r nudge-label-1, echo=FALSE, fig.ncol=2, fig.height=6, fig.width=6, out.width="50%", fig.cap="(ref:nudge-label-1)", fig.alt="(ref:nudge-label-1)", fig.subcap=c("(ref:nudge-label-1-1)", "(ref:nudge-label-1-2)")}
 setlist <- make_venn_test()
 v <- venndir(setlist, do_plot=FALSE)
 plot(v)
@@ -776,68 +853,93 @@ Notice that after the label is adjusted, the new `Venndir` object `v2`
 can be visualized using `plot()`.
 
 
-### Details for Label Placement
+### Label Placement Rules
 
-A detailed description of the labeling rules are described below.
+For each Venndir figure, sets are each represented by a circle
+or ellipse. It should be "easy" to label each circle, right?
+Experience has shown this to be more difficult than expected.
 
-In principle, each Set is represented by a circle or ellipse,
-therefore the Set label refers to the circle itself.
-In practice, Set label placement is not straightforward
-when the circle is embedded inside another circle.
-It should be visually clear which circle is being described,
-and sometimes that in itself is hard to describe!
+(ref:label-rules) Two examples of with very challenging labels.
 
-Venndir uses two strategies to help reinforce this relationship:
+(ref:label-rules-1) Fully nested sets.
 
-1. Set labels are placed with specific rules, see below.
-2. Set labels and colors are described in the Venndir legend.
+(ref:label-rules-2) Partially nested sets.
 
-The rules are described below:
+```{r label-rules, echo=FALSE, fig.ncol=2, fig.height=4, fig.width=5, out.width="50%", fig.cap="(ref:label-rules)", fig.alt="(ref:label-rules)", fig.subcap=c("(ref:label-rules-1)", "(ref:label-rules-2)")}
+venndir(counts2setlist(c(A=7, "A&B"=3, "A&B&C"=1)),
+   proportional=TRUE,
+   innerborder="white", innerborder.lwd=0.7, outerborder=NA,
+   vector_method="label",
+   segment_buffer=-0.3,
+   legend_color_style="whiteborder",
+   circle_nudge=list(C=c(-0.5, -0.2), B=c(-0.7, -0.1)),
+   segment_method="vector")
 
-* **Set labels** are directed to the most specific region in the
-Venn or Euler diagram.
+venndir(counts2setlist(c(A=7, "A&B"=3, "A&B&C"=2, "A&C"=1)),
+   proportional=TRUE,
+   innerborder="white", innerborder.lwd=0.7, outerborder=NA,
+   vector_method="label",
+   segment_buffer=-0.3,
+   legend_color_style="whiteborder",
+   circle_nudge=list(C=c(-0.5, -0.7), B=c(-0.5, -0.7)), rotate_degrees=-40,
+   segment_method="vector")
 
-   * In a Venn diagram, this region will always be
-   *"unique to set_A"*, with no other overlapping sets.
-   * In a Euler diagram, this region will be *"unique to set_A"*
-   if it exists, otherwise it will be the region with *"set_A"*
-   and the fewest other overlapping sets.
-   * Specifically, if `"set_A"` is fully inside `"set_B"`,
-   the label for `"set_A"` will be associated with the overlap
-   `"set_A&set_B"`.
+```
 
-* **Count labels** will only be associated with the specific
+In Figure \@ref(fig:label-rules), where should the Set label be placed?
+Where should the line segments connect?
+
+**Specific rules for placing labels in the Venn figure:**
+
+1. **Set labels** are directed to the most specific region in the figure.
+
+   * For Venn diagrams, Set labels refer to the region
+   "unique to set_A", with no other overlapping sets.
+   * For Euler diagrams, Set labels refer to the region "unique to set_A"
+   *if it exists*. Otherwise the Set refers to a region
+   containing *"set_A"* with the fewest overlapping sets.
+   * In Figure \@ref(fig.label-rules) (left) Set **'C'** refers to
+   the region inside B and C.
+   * In Figure \@ref(fig.label-rules) (right) Sets **'B'** and **'C'**
+   each refer to regions as unique to B and C as possible, respectively.
+
+2. **Count labels** will only be associated with the specific
 overlap region.
 
    * If the specific overlap region does not exist in the figure,
-   the count label is not shown.
-   For more discussion, see [Hidden Overlaps].
-   * If the overlap contains only one set, it will be grouped
-   together with the Set name *if* the Set name is in
-   the same location: 'inside' or 'outside'.
-   * If the counts are displayed outside, line segments will
-   connect each label to the corresponding region.
+   the count label is not shown. Even though it may seem obvious,
+   sometimes a count label cannot be shown. See [Hidden Overlaps].
+   * If a count label is placed outside, a line segment will
+   connect the label to the corresponding region.
    * The argument `inside_percent_threshold` may be used to
    place a label outside when the region is small.
 
-* **Percentage** labels are shown together with [main counts](#main-counts)
+3. **Set and Count labels** may be grouped together when both are inside
+or outside.
+
+   * When placed inside, a Set label will be grouped with the count label
+   to which the Set label refers, as described in Rule 1.
+   * When placed outside, a Set label will only appear with a count label
+   that is specific to that Set.
+
+4. **Percentage labels** are shown together with [main counts](#main-counts)
 when [main counts](#main-counts) are shown.
 
-   * The percentages are calculated directly from the [main counts](#main-counts),
-   and it would be confusing if they did not appear together.
-   * When [main counts](#main-counts) are hidden, the percentage
-   may be placed either inside or outside.
+   * Percentages are calculated directly from [main counts](#main-counts),
+   and as a result it is most intuitive for them appear together.
+   * However, if [main counts](#main-counts) are hidden, the percentage
+   may be placed inside or outside.
    
-* **Items labels** can only be displayed inside.
+5. **Items labels** are only displayed inside, see [Item Labels].
 
-   * Count labels are only displayed inside when items are not
-   displayed inside.
+   * Count labels are "moved outside" if they were enabled inside and items
+   are to be displayed.
    * When the number of items exceeds `max_items` then items are hidden,
    and the count labels may be displayed in their place.
    * Set names may be displayed inside, together with item labels,
    however no effort is made to prevent overlapping labels.
-   The general recommendation is to place set names outside, or
-   to adjust the Set labels placement as described in [Nudge a Venn Label].
+   Set labels can be manually nudged, see [Nudge a Venn Label].
+
 
 ## Item Labels
 
@@ -845,13 +947,13 @@ To display items inside a Venn diagram, add `"i"` to the argument
 `show_labels`. For example `show_labels="Ni"` will display the set Name
 outside, and items inside.
 
-I never expected to rely on the ability to view item labels within
-a Venn diagram, and yet it has become one of my most frequently used
-and favorite features.
+I never thought I'd be able to place item labels in a Venn diagram, much
+less expect it, and eventually *need* it.
+Item labeling has become one of my favorite features.
 
 Adding item labels also ticks the box, so to speak, of an important
-[data visualization](#data-visualization) paradigm: answering "the very next question".
-For a Venn diagram, it is usually:
+[data visualization](#data-visualization) paradigm:
+Answering the very next question. For a Venn diagram:  
 "What are those?"
 
 Figure \@ref(fig:items-1) illustrates an example inspired by a
@@ -880,7 +982,7 @@ venndir(itemlist,
 *(What is the very next question?)*  
 **"Which genes are in each region?"**
 
-(ref:items-2) The same Venn diagram now showing genes as item labels inside the diagram, answering "the very next question."
+(ref:items-2) The same Venn diagram now showing genes as item labels inside the diagram, answering *the very next question*.
 
 ```{r items-2, echo=FALSE, out.width="80%", fig.cap="(ref:items-2)", fig.alt="(ref:items-2)"}
 venndir(itemlist,
@@ -915,9 +1017,9 @@ Before making changes, it is helpful to understand the process.
    * More than `max_items` items will not be displayed.
 
 1. The type of item label is defined using argument `show_items`.
-   * "item": **'ACTB'**,
-   * "sign": **$`r "↑"`$**
-   * "sign item": **$`r "'↑ ACTB'"`$**
+   * "item": '**ACTB**',
+   * "sign": '**$`r "↑"`$**'
+   * "sign item": '**$`r "↑ ACTB"`$**'
 
 1. Label coordinates are arrayed across the Venn region.
    * `xyratio` controls the x:y ratio when spacing points
@@ -1084,7 +1186,7 @@ setlist_signed <- make_venn_test(n_items=850, do_signed=TRUE)
 venndir(setlist_signed,
    show_labels="Ni",
    show_items="sign",
-   x_inset=grid::unit(-1, "lines"),
+   x_inset=grid::unit(-5, "lines"),
    item_cex_factor=1.2)
 ```
 
@@ -1107,108 +1209,94 @@ There are three main points for adjusting the layout of item labels.
 
 (ref:venn-layout-1) Four Venn diagrams, showing examples using different values for 'xyratio' and 'label_method'. Higher 'xyratio' values tend to become more column-oriented.
 
-```{r venn-layout-1, echo=FALSE, fig.height=7, fig.width=7, fig.cap="(ref:venn-layout-1)", fig.alt="(ref:venn-layout-1)"}
+(ref:venn-layout-1a) xyratio=1.1 (default)
+
+(ref:venn-layout-1b) xyratio=1.5
+
+(ref:venn-layout-1c) xyratio=2.0
+
+(ref:venn-layout-1d) xyratio=2.5 in columns
+
+```{r venn-layout-1, fig.ncol=2, out.width="50%", echo=FALSE, fig.height=5, fig.width=7, fig.cap="(ref:venn-layout-1)", fig.alt="(ref:venn-layout-1)", fig.subcap=c("(ref:venn-layout-1a)", "(ref:venn-layout-1b)", "(ref:venn-layout-1c)", "(ref:venn-layout-1d)")}
 setlist_signed <- make_venn_test(n_items=150,
    item_prefix="id",
    do_signed=TRUE)
-v1 <- venndir(setlist_signed, show_labels="i",
-   do_plot=FALSE,
-   main="xyratio=1.1 (default)")
-v2 <- venndir(setlist_signed, show_labels="i",
-   do_plot=FALSE,
+v1 <- venndir(setlist_signed,
+   draw_legend=FALSE,
+   expand_fraction=-0.15,
+   show_labels="i")
+v2 <- venndir(setlist_signed,
+   draw_legend=FALSE,
+   expand_fraction=-0.15,
    xyratio=1.5,
-   main="xyratio=1.5")
-v3 <- venndir(setlist_signed, show_labels="i",
-   do_plot=FALSE,
+   show_labels="i")
+v3 <- venndir(setlist_signed,
+   draw_legend=FALSE,
+   expand_fraction=-0.15,
    xyratio=2,
-   main="xyratio=2")
-v4 <- venndir(setlist_signed, show_labels="i",
-   do_plot=FALSE,
+   show_labels="i")
+v4 <- venndir(setlist_signed,
+   draw_legend=FALSE,
+   expand_fraction=-0.15,
    xyratio=2.5, label_method="columns",
-   main="xyratio=2.5, label_method='columns'")
-
-v1gt <- attr(plot(v1,
-   item_cex=0.5,
-   main="xyratio=1.1 (default)",
-   draw_legend=FALSE, do_draw=FALSE), "gtree")
-v2gt <- attr(plot(v2,
-   item_cex=0.5,
-   main="xyratio=1.5", xyratio=1.5,
-   draw_legend=FALSE, do_draw=FALSE), "gtree")
-v3gt <- attr(plot(v3,
-   item_cex=0.5,
-   main="xyratio=2.0", xyratio=2,
-   draw_legend=FALSE, do_draw=FALSE), "gtree")
-v4gt <- attr(plot(v4,
-   item_cex=0.5,
-   main="xyratio=2.5, 'columns'",
-   xyratio=2.5, label_method="columns",
-   draw_legend=FALSE, do_draw=FALSE), "gtree")
-ih3 <- (wrap_elements(v1gt) +
-   wrap_elements(v2gt)) /
-   (wrap_elements(v3gt) +
-   wrap_elements(v4gt)) +
-   plot_layout(widths=c(1, 1));
-ih3
-
+   show_labels="i")
 ```
 
 
 ### Item buffer
 
-The argument `item_buffer` is used to impose a reasonable distance
+Two arguments are used during item labeling, both of which are motivated
+to help place typical text labels inside the respective Venn overlap
+region:
+
+1. The argument `item_buffer` is used to impose a reasonable distance
 between item labels and the border of the region to be labeled.
+Units are relative to the fraction of area that would shrink the region
+to zero.
+2. The argument `width_buffer` adds a small buffer to the left and right
+sides of each region, which is intended to correct for wide text labels.
 
 The default `item_buffer = -0.15` is negative in order to shrink
 the region by this relative amount, and `-0.15` shrinks the
 region by 15% relative to the available buffer size for the
 region.
 
-As a result, 15% buffer is a slightly different size for
-each polygon region.
+Note that `item_buffer = -0.15` (15% buffer) is a slightly different
+size for each region.
 
 (ref:item-buffer-1) Four Venn diagrams showing the effects of adjusting 'item_buffer'.
 
-```{r item-buffer-1, echo=FALSE, fig.height=7, fig.width=7, fig.cap="(ref:item-buffer-1)", fig.alt="(ref:item-buffer-1)"}
+(ref:item-buffer-1a) item_buffer = -0.15 (default)
+
+(ref:item-buffer-1b) item_buffer = -0.3
+
+(ref:item-buffer-1c) item_buffer = 0.0
+
+(ref:item-buffer-1d) item_buffer = 0.1
+
+```{r item-buffer-1, echo=FALSE, fig.ncol=2, out.width="50%", fig.height=5, fig.width=7, fig.cap="(ref:item-buffer-1)", fig.alt="(ref:item-buffer-1)", fig.subcap=c("xyratio=1.1", "xyratio=1.5", "xyratio=2.0", "xyratio=2.5 in columns"), fig.subcap=c("(ref:item-buffer-1a)", "(ref:item-buffer-1b)", "(ref:item-buffer-1c)", "(ref:item-buffer-1d)")}
 setlist_signed <- make_venn_test(n_items=1500,
    item_prefix="id",
    do_signed=TRUE)
 v1 <- venndir(setlist_signed, show_labels="i",
-   do_plot=FALSE, show_items="sign")
+   expand_fraction=-0.15,
+   draw_legend=FALSE,
+   show_items="sign")
 v2 <- venndir(setlist_signed, show_labels="i",
-   do_plot=FALSE, show_items="sign")
-v3 <- venndir(setlist_signed, show_labels="i",
-   do_plot=FALSE, show_items="sign")
-v4 <- venndir(setlist_signed, show_labels="i",
-   do_plot=FALSE, show_items="sign")
-
-fs <- 0.75;
-v1gt <- attr(plot(v1,
-   item_cex=fs, show_items="sign",
-   main="item_buffer = -0.15 (default)",
-   draw_legend=FALSE, do_draw=FALSE), "gtree")
-v2gt <- attr(plot(v2,
-   item_cex=fs, show_items="sign",
+   expand_fraction=-0.15,
    item_buffer=-0.3,
-   main="item_buffer = -0.3",
-   draw_legend=FALSE, do_draw=FALSE), "gtree")
-v3gt <- attr(plot(v3,
-   item_cex=fs, show_items="sign",
+   draw_legend=FALSE,
+   show_items="sign")
+v3 <- venndir(setlist_signed, show_labels="i",
+   expand_fraction=-0.15,
    item_buffer=0.0,
-   main="item_buffer = 0.0",
-   draw_legend=FALSE, do_draw=FALSE), "gtree")
-v4gt <- attr(plot(v4,
-   item_cex=fs, show_items="sign",
+   draw_legend=FALSE,
+   show_items="sign")
+v4 <- venndir(setlist_signed, show_labels="i",
+   expand_fraction=-0.15,
    item_buffer=0.1,
-   main="item_buffer = 0.1",
-   draw_legend=FALSE, do_draw=FALSE), "gtree")
-ih3 <- (wrap_elements(v1gt) +
-   wrap_elements(v2gt)) /
-   (wrap_elements(v3gt) +
-   wrap_elements(v4gt)) +
-   plot_layout(widths=c(1, 1));
-ih3
-
+   draw_legend=FALSE,
+   show_items="sign")
 ```
 
 
@@ -1299,31 +1387,31 @@ Several examples are shown in Figure \@ref(fig:font-size-1).
 
 (ref:font-size-1-1) Default
 
-(ref:font-size-1-2) font_cex=1.5
+(ref:font-size-1-2) font_cex=1.2
 
 (ref:font-size-1-3) font_cex=c(2, 1)
 
 (ref:font-size-1-4) font_cex=c(2, 1.3, 0.8)
 
-```{r font-size-1, echo=FALSE, out.width="50%", fig.height=8, fig.width=8, fig.ncol=2, fig.cap="(ref:font-size-1)", fig.alt="(ref:font-size-1)", fig.subcap=c("(ref:font-size-1-1)", "(ref:font-size-1-2)", "(ref:font-size-1-3)", "(ref:font-size-1-4)")}
+```{r font-size-1, echo=FALSE, out.width="50%", fig.height=5, fig.width=7, fig.ncol=2, fig.cap="(ref:font-size-1)", fig.alt="(ref:font-size-1)", fig.subcap=c("(ref:font-size-1-1)", "(ref:font-size-1-2)", "(ref:font-size-1-3)", "(ref:font-size-1-4)")}
 v <- venndir(make_venn_test(do_signed=TRUE),
-   expand_fraction=c(0.1, 0, 0.1, 0),
-   x_inset=grid::unit(0, "lines"))
+   expand_fraction=c(0.05, -0.15, -0.05, 0.05),
+   x_inset=grid::unit(-5, "lines"))
 
 v <- venndir(make_venn_test(do_signed=TRUE),
-   expand_fraction=c(0.1, 0, 0.1, 0),
-   x_inset=grid::unit(0, "lines"),
-   font_cex=1.5)
+   font_cex=1.2,
+   expand_fraction=c(0.05, -0.15, -0.05, 0.05),
+   x_inset=grid::unit(-5, "lines"))
 
 v <- venndir(make_venn_test(do_signed=TRUE),
-   expand_fraction=c(0.1, 0, 0.1, 0),
-   x_inset=grid::unit(0, "lines"),
-   font_cex=c(2, 1))
+   font_cex=c(2, 1),
+   expand_fraction=c(0.05, -0.15, -0.05, 0.05),
+   x_inset=grid::unit(-5, "lines"))
 
 v <- venndir(make_venn_test(do_signed=TRUE),
-   expand_fraction=c(0.1, 0, 0.1, 0),
-   x_inset=grid::unit(0, "lines"),
-   font_cex=c(2, 1.3, 0.8))
+   font_cex=c(2, 1.3, 0.8),
+   expand_fraction=c(0.05, -0.15, -0.05, 0.05),
+   x_inset=grid::unit(-5, "lines"))
 ```
 
 The last example (bottom-right panel) was created using the following code:
@@ -1343,9 +1431,9 @@ See [Available Font Families] to review other fonts available.
 Figure \@ref(fig:family-1) uses the R 'serif' font, with `fontfamily='serif'`.
 .
 
-(ref:family-1) Venn diagram showing two sets, with all labels shown using a serif font, such as 'Times'.
+(ref:family-1) Venn diagram showing two sets, with all labels shown using a serif font, such as 'Times' or 'Times New Roman'.
 
-```{r family-1, fig.height=7.5, fig.cap="(ref:family-1)", fig.alt="(ref:family-1)"}
+```{r family-1, fig.height=6, fig.width=7, fig.cap="(ref:family-1)", fig.alt="(ref:family-1)"}
 setlist <- make_venn_test(n_sets=3, do_signed=TRUE)
 v <- venndir(setlist,
    main="fontfamily='serif'",
@@ -1362,21 +1450,21 @@ and item labels 'i' inside.
 
 (ref:family-2) Venn diagram showing Two sets 'Dogs' and 'Cats' with some attributes unique to each, and shared by both. The item labels use the 'Optima' font.
 
-```{r family-2, fig.cap="(ref:family-2)"}
+```{r family-2, fig.height=5, fig.width=7, fig.cap="(ref:family-2)"}
 petlist <- list(
    Dog=c("Needs walks", "Barks", "Round eyes"),
-   Cat=c("Free roam", "Meows", "Thin pupils"),
+   Cat=c("Freely roams", "Meows", "Thin pupils"),
    "Dog&Cat"=c("Furry", "Has claws", "Lovable"))
 petsetlist <- overlaplist2setlist(petlist)
 
 petv <- venndir(petsetlist,
    font_cex=1.5,
-   item_cex_factor=0.8,
+   item_cex_factor=1.0,
    show_labels="Ni",
    draw_legend=FALSE,
    show_segment=FALSE,
    keep_item_order=TRUE,
-   item_buffer=0, xyratio=2,
+   item_buffer=0, xyratio=1.7,
    fontfamily="Optima")
 
 ```
@@ -1401,12 +1489,12 @@ Item labels can be displayed using `venn_meme()`.
 ```{r family-3, fig.cap="(ref:family-3)", fig.alt="(ref:family-3)"}
 petlist <- list(
    Dog=c("Needs walks", "Barks", "Round eyes"),
-   Cat=c("Free roam", "Meows", "Thin pupils"),
+   Cat=c("Freely roams", "Meows", "Thin pupils"),
    "Dog&Cat"=c("Furry", "Has claws", "Lovable"))
 venn_meme(petlist,
-   font_cex=1.5,
-   item_cex_factor=0.8,
-   item_buffer=0, xyratio=1.5,
+   font_cex=2,
+   item_cex_factor=1.0,
+   item_buffer=0, xyratio=1.7,
    fontfamily="Optima",
    show_labels="Ni")
 ```
@@ -1429,7 +1517,7 @@ the percentage of counts, in order.
 
 (ref:fontfamilies-1) Venn diagram showing distinct font families used for each type of label: overlap, count, and signed.
 
-```{r fontfamilies-1, fig.height=8, fig.cap="(ref:fontfamilies-1)", fig.alt="(ref:fontfamilies-1)"}
+```{r fontfamilies-1, fig.height=6.5, fig.width=7, fig.cap="(ref:fontfamilies-1)", fig.alt="(ref:fontfamilies-1)"}
 setlist <- make_venn_test(do_signed=TRUE)
 venndir(setlist,
    show_labels="Ncps",
@@ -1481,16 +1569,23 @@ Table \@ref(tab:systemfonts-1).
 subset_systemfonts(grepl("Helvetica Neue", family))
 ```
 
+(fig:systemfonts-1) Partial summary of 'Helvetica Neue' fonts via systemfonts.
+
 ```{r systemfonts-1, echo=FALSE}
 scols <- c("name", "family", "style", "weight", "width", "italic")[1:4]
-sdf <- subset_systemfonts(grepl("Helvetica Neue", family))[, scols, drop=FALSE]
+sdf <- head(
+   subset_systemfonts(grepl("Helvetica Neue", family))[, scols, drop=FALSE],
+   9)
 
 # Note 'scale_down' actually zooms the table to fit the margins
 kdf <- knitr::kable(sdf,
    caption=paste("Partial summary of 'Helvetica Neue' fonts via systemfonts."),
-   row.names=FALSE) |>
-   kableExtra::column_spec(2, bold=TRUE) |>
+   row.names=FALSE)
+kdf <- kdf |>
+   kableExtra::column_spec(2, bold=TRUE,
+      extra_css="white-space: nowrap;") |>
    kableExtra::kable_styling(latex_options="scale_down")
+kdf <- epub_kdf(kdf)
 kdf
 ```
 
@@ -1504,10 +1599,12 @@ basic way of viewing the resulting fonts. Note that there are no provisions
 to prevent overlapping labels, so this approach is considered as a
 "quick check" to view only a few fonts.
 
-(ref:systemfonts-2) Quick check of available fonts where the family name contains 'Helvetica'.
+(ref:systemfonts-2) Graphical output as a "quick check" of fonts where that match the `subset_systemfonts()` output. These fonts show fonts where 'family' contains 'Helvetica'.
 
 ```{r systemfonts-2, fig.cap="(ref:systemfonts-2)", fig.alt="(ref:systemfonts-2)"}
-ss <- subset_systemfonts(grepl("Helvetica", family), do_plot=TRUE)
+ss <- subset_systemfonts(
+   grepl("Helvetica", family),
+   do_plot=TRUE)
 ```
 
 #### Automatic font substitution
@@ -1530,8 +1627,8 @@ for example 'DejaVu Sans' or 'Helvetica'.
 The font substitutions can be pre-defined, see `systemfonts::font_fallback()`.
 
 To review the font substitution, one can use `systemfonts::font_info()`
-in the simple example below, however there is much more capability
-described in the systemfonts documentation.
+in the simple example below, shown in Table \@ref(tab:systemfonts-3).
+There are many more options described in the systemfonts documentation.
 
 ```{r systemfonts-3-show, eval=FALSE}
 data.frame(systemfonts::font_info("sans")[, 1:9])
@@ -1542,9 +1639,12 @@ idf <- data.frame(systemfonts::font_info("sans")[, 1:9]);
 kdf <- knitr::kable(idf,
    caption=paste("Output from the font info function in systemfonts",
       "showing the font substitution for 'sans'."),
-   row.names=FALSE) |>
-   kableExtra::column_spec(3, bold=TRUE) |>
+   row.names=FALSE)
+kdf <- kdf |>
+   kableExtra::column_spec(3, bold=TRUE,
+      extra_css="white-space: nowrap;") |>
    kableExtra::kable_styling(latex_options="scale_down")
+kdf <- epub_kdf(kdf)
 kdf
 
 ```
@@ -1561,7 +1661,7 @@ By default `venndir()` also calls `venndir_legender()` which adds a
 legend to each figure.
 This behavior can be skipped by using `draw_legend=FALSE`.
 
-```{r legender-1, fig.height=7, fig.cap="Default Venn diagram, showing a table legend in the bottom right corner.", fig.alt="Default Venn diagram, showing a table legend in the bottom right corner."}
+```{r legender-1, fig.height=5, fig.width=7, fig.cap="Default Venn diagram, showing a table legend in the bottom right corner.", fig.alt="Default Venn diagram, showing a table legend in the bottom right corner."}
 setlist <- make_venn_test()
 v <- venndir(setlist)
 ```
@@ -1579,7 +1679,7 @@ will also include [signed counts](#signed-counts).
 
 (ref:legender-2) Venn diagram showing a table legend in the bottom right corner, this time the column 'Size' also includes counts tabulated by up and down directionality.
 
-```{r legender-2, fig.height=7, fig.cap="(ref:legender-2)", fig.alt="(ref:legender-2)"}
+```{r legender-2, fig.height=5.5, fig.width=7, fig.cap="(ref:legender-2)", fig.alt="(ref:legender-2)"}
 setlist_signed <- make_venn_test(do_signed=TRUE)
 v <- venndir(setlist_signed)
 ```
@@ -1589,7 +1689,7 @@ a column is added `'Percent'`.
 
 (ref:legender-3) Venn diagram showing a table legend in the bottom right corner, now with new column 'Percent' since the Venn diagram also includes the percentage with each count.
 
-```{r legender-3, fig.height=7, fig.cap="(ref:legender-3)", fig.alt="(ref:legender-3)"}
+```{r legender-3, fig.height=5.5, fig.width=7, fig.cap="(ref:legender-3)", fig.alt="(ref:legender-3)"}
 v <- venndir(setlist_signed, show_labels="Ncps")
 ```
 
@@ -1608,12 +1708,11 @@ of the legend.
 
 (ref:legender-hide) Venn diagram showing counts, percentage values, and signed counts. A Venn legend is shown which includes the 'Set' and 'Size' columns, with the 'Percentage' column not shown due to argument 'legend_percentage=FALSE'.
 
-```{r legender-hide, fig.height=7, fig.cap="(ref:legender-hide)", fig.alt="(ref:legender-hide)"}
+```{r legender-hide, fig.height=5.5, fig.width=7, fig.cap="(ref:legender-hide)", fig.alt="(ref:legender-hide)"}
 v <- venndir(setlist_signed,
    show_labels="Ncps",
    legend_signed=FALSE,
    legend_percentage=FALSE)
-
 ```
 
 ### Custom legend labels
@@ -1624,7 +1723,7 @@ in the `Venndir` object so it is used in subsequent plots.
 
 (ref:legender-4) Venn diagram showing a table legend in the bottom right corner, with custom labels for each set, for example 'set_A' is renamed 'Example Set A' in the legend.
 
-```{r legender-4, fig.height=7, fig.cap="(ref:legender-4)", fig.alt="(ref:legender-4)"}
+```{r legender-4, fig.height=5.5, fig.width=7, fig.cap="(ref:legender-4)", fig.alt="(ref:legender-4)"}
 v <- venndir(setlist_signed,
    legend_labels=c("Example Set A",
       "Example Set B",
@@ -1644,7 +1743,7 @@ detailed label and one simplified label.
 
 (ref:legender-5) Venn diagram showing a table legend in the bottom right corner, with custom labels for each set. 'set_A' is renamed 'Example Set A' in the legend.
 
-```{r legender-5, fig.height=7, fig.cap="(ref:legender-5)", fig.alt="(ref:legender-5)"}
+```{r legender-5, fig.height=6.5, fig.width=7, fig.cap="(ref:legender-5)", fig.alt="(ref:legender-5)"}
 v <- venndir(setlist_signed,
    expand_fraction=c(0.2, 0, 0, 0),
    setlist_labels=c("Example\nSet A",
@@ -1668,9 +1767,11 @@ the values in `names(setlist)`.
 
 (ref:legender-6) Venn diagram showing a table legend in the bottom right corner, with custom labels for each set. 'Set A' in the Venn diagram is indicated 'A' in the legend, with a new column 'Contrast' with descriptive information.
 
-```{r legender-6, fig.height=7, fig.cap="(ref:legender-6)", fig.alt="(ref:legender-6)"}
+```{r legender-6, fig.height=5.5, fig.width=7, fig.cap="(ref:legender-6)", fig.alt="(ref:legender-6)"}
 v <- venndir(setlist_signed,
-   legend_headers=c(Set="Set", Size="Size", Percentage="Percentage", Sign="Sign", Label="Contrast"),
+   legend_headers=c(Set="Set",
+      Size="Size", Percentage="Percentage",
+      Sign="Sign", Label="Contrast"),
    alias=c(set_A="A",
       set_B="B",
       set_C="C"),
@@ -1701,7 +1802,7 @@ Two optional arguments provide alternatives to the default:
 
 (ref:legender-size) Venndir legend with separate columns for 'Size' and 'Sign'.
 
-```{r legender-size, fig.height=7, fig.cap="(ref:legender-size)", fig.alt="(ref:legender-size)"}
+```{r legender-size, fig.height=5.5, fig.width=7, fig.cap="(ref:legender-size)", fig.alt="(ref:legender-size)"}
 venndir(setlist_signed,
    combine_size=FALSE)
 ```
@@ -1711,7 +1812,7 @@ be combined and displayed in parentheses.
 
 (ref:legender-signed) Venndir legend with one column 'Size', whose values not delineated by parentheses.
 
-```{r legender-signed, fig.height=7, fig.cap="(ref:legender-signed)", fig.alt="(ref:legender-signed)"}
+```{r legender-signed, fig.height=5.5, fig.width=7, fig.cap="(ref:legender-signed)", fig.alt="(ref:legender-signed)"}
 venndir(setlist_signed,
    combine_signed=FALSE)
 ```
@@ -1721,7 +1822,7 @@ venndir(setlist_signed,
 
 (ref:legender-size-signed) Venn diagram with legend that shows separate columns with 'Size', and two additional columns with signed counts which do not have a header label.
 
-```{r legender-size-signed, fig.height=7, fig.cap="(ref:legender-size-signed)", fig.alt="(ref:legender-size-signed)"}
+```{r legender-size-signed, fig.height=5.5, fig.width=7, fig.cap="(ref:legender-size-signed)", fig.alt="(ref:legender-size-signed)"}
 venndir(setlist_signed,
    combine_signed=FALSE,
    combine_size=FALSE)
@@ -1752,7 +1853,7 @@ For example, to use no color fill, and black border:
 
 (ref:legender-bw) Venn diagram with a legend drawn using black border, and no background color.
 
-```{r legender-bw, fig.height=7, fig.cap="(ref:legender-bw)", fig.alt="(ref:legender-bw)"}
+```{r legender-bw, fig.height=5.5, fig.width=7, fig.cap="(ref:legender-bw)", fig.alt="(ref:legender-bw)"}
 v <- venndir(setlist_signed,
    legend_color_style=c("nofill", "blackborder"))
 ```
@@ -1784,7 +1885,7 @@ is 2 character lines.
 
 (ref:legender-bottomleft) Venn diagram showing the legend positioned in the bottom left corner, using argument 'legend_x' inside the `venndir()` function.
 
-```{r legender-bottomleft, fig.height=7, fig.cap="(ref:legender-bottomleft)", fig.alt="(ref:legender-bottomleft)"}
+```{r legender-bottomleft, fig.height=5, fig.width=7, fig.cap="(ref:legender-bottomleft)", fig.alt="(ref:legender-bottomleft)"}
 v <- venndir(setlist_signed,
    legend_x=c("bottomleft"))
 ```
@@ -1794,14 +1895,16 @@ and closer to the left edge, see the following example.
 Note the function `grid::grid.rect()` is used here to draw
 a draw box around the plot region.
 
-(ref:legender-inset) Venn diagram with legend in the bottom left corner, adjusted to the bottom edge, and moved more to the left of the figure.
+(ref:legender-inset) Venn diagram with legend in the bottom left corner, adjusted to the bottom edge, and moved more to the left of the figure. The grey box indicates the Venn figure region, the black box indicates the overall figure.
 
-```{r legender-inset, fig.height=7, fig.cap="(ref:legender-inset)", fig.alt="(ref:legender-inset)"}
+```{r legender-inset, fig.height=5, fig.width=7, fig.cap="(ref:legender-inset)", fig.alt="(ref:legender-inset)"}
 v <- venndir(setlist_signed,
    x_inset=grid::unit(0, "lines"),
    y_inset=grid::unit(0, "lines"),
    legend_x=c("bottomleft"))
-grid::grid.rect(gp=grid::gpar(fill=NA, col="grey"))
+grid::grid.rect(gp=grid::gpar(fill=NA, lwd=2, col="grey"),
+   vp=attr(v, "viewport"))
+grid::grid.rect(gp=grid::gpar(fill=NA, col="black"))
 ```
 
 Note the x-axis position is not the exact left
@@ -1822,16 +1925,18 @@ In Figure \@ref(fig:legender-inset-vp), the legend is positioned on the
 exact bottom-left edge of the plot, shown by the grey line
 drawn with `grid::grid.rect()`.
 
-(ref:legender-inset-vp) Venn diagram with legend in the bottom left corner, this time with the legend touching the exact bottom left edge of the overall figure.
+(ref:legender-inset-vp) Venn diagram with legend in the bottom left corner, this time with the legend touching the exact bottom left edge of the overall figure. The grey box indicates the Venn figure region, the black box indicates the overall figure.
 
-```{r legender-inset-vp, fig.height=7, fig.cap="(ref:legender-inset-vp)", fig.alt="(ref:legender-inset-vp)"}
+```{r legender-inset-vp, fig.height=5, fig.width=7, fig.cap="(ref:legender-inset-vp)", fig.alt="(ref:legender-inset-vp)"}
 v <- venndir(setlist_signed,
    draw_legend=FALSE)
+grid::grid.rect(gp=grid::gpar(fill=NA, lwd=2, col="grey"),
+   vp=attr(v, "viewport"))
+grid::grid.rect(gp=grid::gpar(fill=NA, col="black"))
 vl <- venndir_legender(v,
    x_inset=grid::unit(0, "lines"),
    y_inset=grid::unit(0, "lines"),
    x=c("bottomleft"))
-grid::grid.rect(gp=grid::gpar(fill=NA, col="grey"))
 ```
 
 Altogether, the use of `venndir()` with argument `expand_fraction`
@@ -1855,10 +1960,10 @@ by `venndir()`, otherwise it uses `font_cex` when called using
 
 (ref:legender-larger) Venn diagram with legend drawn in the bottom left corner, using font size adjusted to 1.3 times the default font size with argument 'font_cex'.
 
-```{r legender-larger, fig.height=7, fig.cap="(ref:legender-larger)", fig.alt="(ref:legender-larger)"}
+```{r legender-larger, fig.height=5, fig.width=7, fig.cap="(ref:legender-larger)", fig.alt="(ref:legender-larger)"}
 v <- venndir(setlist_signed,
    legend_font_cex=1.3,
-   x_inset=grid::unit(0, "lines"),
+   x_inset=grid::unit(-3, "lines"),
    y_inset=grid::unit(0, "lines"),
    legend_x=c("bottomleft"))
 ```
@@ -1885,7 +1990,7 @@ custom `fontfamily`.
 
 (ref:legender-fontfamily) Venn diagram with legend drawn in the bottom right, using sans font for the Venn diagram labels, and serif font for the legend.
 
-```{r legender-fontfamily, fig.height=7, fig.cap="(ref:legender-fontfamily)", fig.alt="(ref:legender-fontfamily)"}
+```{r legender-fontfamily, fig.height=5.5, fig.width=7, fig.cap="(ref:legender-fontfamily)", fig.alt="(ref:legender-fontfamily)"}
 v <- venndir(setlist_signed,
    fontfamily="sans",
    draw_legend=FALSE)
@@ -1895,7 +2000,224 @@ vl <- venndir_legender(v,
    y_inset=grid::unit(0, "lines"),
    font_cex=1.3,
    fontfamily="serif")
-
 ```
 
 
+## Figure Scale and Position
+
+The Venndir figure is automatically sized to fit within the
+graphics device, and will re-adjust even when the figure is resized
+in RStudio or an R graphics window. However, it can be helpful
+to customize the scale and position further.
+
+Common reasons to adjust scale and position:
+
+* The outside labels extend beyond the page, usually
+when text labels contains multiple lines.
+* The Venndir figure, or the outside labels overlap
+the legend.
+* The figure could be resized to fit specific output dimensions.
+
+Venndir uses the Venn circles and visible labels to create a
+square "bounding box". It is square to keep the aspect ratio 1:1,
+so circles remain circular. If the graphics device is not square,
+there will be blank space around the Venndir figure. Sometimes
+it helps to "zoom" the Venndir figure to fill the remaining
+space.
+
+The argument `expand_fraction` adjusts the whitespace "buffer" around
+the Venndir diagram.
+
+* `expand_fraction` above `0` makes the whitespace larger, shrinking the Venn circles.
+* `expand_fraction` below `0` makes the whitespace smaller, enlarging the Venn circles.
+* The font sizes are not adjusted.
+
+The `expand_fraction` accepts four values, applied in clockwise order
+from the bottom:  
+`'bottom'`, `'left'`, `'top'`, `'right'`.  
+Values are recycled to length=4, so `expand_fraction=0.1` is applied
+to all four sides.
+
+When the legend is shown, the Venndir figure is shifted up `0.18`.
+
+(ref:expand-fraction-1) Venndir figure showing different values for 'expand_fraction'.
+
+```{r expand-fraction-1, fig.ncol=2, fig.height=5, fig.width=7, out.width="50%", fig.cap="(ref:expand-fraction-1)", fig.alt="(ref:expand-fraction-1)", fig.subcap=c("Default.", "Default without legend.", "Default with title.", "Without legend, zoomed 10 percent.", "2-set default.", "2-set, zoomed 20 percent.")}
+setlist <- make_venn_test()
+venndir(setlist)
+venndir(setlist, draw_legend=FALSE)
+venndir(setlist, main="Main title")
+venndir(setlist, draw_legend=FALSE, expand_fraction=-0.1)
+venndir(setlist, sets=1:2)
+venndir(setlist, sets=1:2, expand_fraction=c(0.1, 0, 0, 0) - 0.1)
+```
+
+:::: {.tipbox data-latex=""}
+
+**Tips:**
+
+The `expand_fraction` argument rules:
+
+* When user-defined values are provided, or if they are stored in
+the metadata of the `Venndir` object, `expand_fraction` is used
+without any adjustments.
+* When `expand_fraction` is not defined, these default adjustments
+are applied:
+   1. `0.07` is added to the top margin for each line in the
+   `main` title.
+   2. If the legend is shown, using `draw_legend=TRUE`, and
+   the legend position `legend_x` includes 'top' or 'bottom',
+   `0.2` is added to the corresponding 'top' or 'bottom' margin.
+   It will not adjust the 'left' or 'right' margin.
+   3. The top and bottom margins are reduced slightly.
+
+* The `expand_fraction` is stored in the returned `Venndir` object
+metadata when the plot is prepared, for example:
+   * calling `plot()` or `render_venndir()`, or
+   * calling `venndir()` with the default `do_draw=TRUE`.
+
+::::
+
+
+### Text Venn
+
+Another convenient format for Venndir output is text Venn, intended
+for R console output. This output is convenient for analysis work
+on remote servers where interactive graphics are not available or
+not as convenient.
+
+The core function `textvenn()` mimics the input and arguments
+of `venndir()` with some key limitations:
+
+1. The input can only contain up to three sets.
+2. The display only supports Venn layout, not proportional.
+3. Output is a `data.frame` and not `Venndir` object.
+
+The output follows the typical arrangement of text labels for
+a Venn diagram, without the encompassing circular lines.
+Colors and directional arrows are represented if the console
+text output support these features, otherwise `unicode=FALSE`
+will display `'^'` for "up", and `'v'` for "down".
+
+The basic 2-way `textvenn()` output follows:
+
+```{r textvenn-1, eval=FALSE}
+setlist <- make_venn_test(set_names=LETTERS[1:3])
+textvenn(setlist, sets=c(1, 3))
+```
+
+```{r textvenn-1-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis'}
+setlist <- make_venn_test(set_names=LETTERS[1:3])
+#
+tvt <- capture.output(textvenn(setlist, sets=c(1, 3), htmlOut=TRUE))
+tv_text <- html_to_latex_color(tvt);
+cat(tv_text, sep="\n")
+```
+
+
+```{r textvenn-1-html, echo=FALSE, eval=knitr::is_html_output(), results='asis'}
+setlist <- make_venn_test(set_names=LETTERS[1:3])
+textvenn(setlist, sets=c(1, 3), htmlOut=TRUE)
+```
+
+The argument `sets` is described in [Consistent Set Colors],
+and is used to include a subset of sets while maintaining
+consistent color assignment to each set.
+
+The 3-way `textvenn()` output follows:
+
+```{r textvenn-3, eval=FALSE}
+textvenn(setlist)
+```
+
+```{r textvenn-3-html, echo=FALSE, eval=knitr::is_html_output(), results='asis'}
+textvenn(setlist, htmlOut=TRUE)
+```
+
+```{r textvenn-3-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis'}
+tvt <- capture.output(textvenn(setlist, htmlOut=TRUE))
+#
+tv_text <- html_to_latex_color(tvt);
+cat(tv_text, sep="\n")
+```
+
+These examples show only the Venn overlaps without
+directionality. However, if given a [signed setlist](#signed-setlist)
+it will also include directional tabulations:
+
+```{r textvenn-4, eval=FALSE}
+setlist3 <- make_venn_test(set_names=LETTERS[1:3],
+   do_signed=TRUE)
+textvenn(setlist3)
+```
+
+```{r textvenn-4-html, echo=FALSE, eval=knitr::is_html_output(), results='asis'}
+setlist3 <- make_venn_test(set_names=LETTERS[1:3],
+   do_signed=TRUE)
+textvenn(setlist3, htmlOut=TRUE)
+```
+
+
+
+
+```{r textvenn-4-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis'}
+setlist3 <- make_venn_test(set_names=LETTERS[1:3],
+   do_signed=TRUE)
+#
+tvt <- capture.output(textvenn(setlist3, htmlOut=TRUE))
+tv_text <- html_to_latex_color(tvt);
+cat(tv_text, sep="\n")
+```
+
+The `template` argument described in [Signed Label Placement] is
+also recognized. For example, `template='tall'` may improve the
+layout especially when using `overlap_type='each'`, an option
+for tabulating directionality that is described in [Overlap Type].
+
+```{r textvenn-5, eval=FALSE}
+textvenn(setlist3,
+   overlap_type="each",
+   template="tall")
+```
+
+```{r textvenn-5-html, echo=FALSE, eval=knitr::is_html_output(), results='asis'}
+textvenn(setlist3,
+   overlap_type="each",
+   htmlOut=TRUE,
+   template="tall")
+```
+
+```{r textvenn-5-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis'}
+tvt <- capture.output(textvenn(setlist3,
+   overlap_type="each",
+   htmlOut=TRUE,
+   template="tall"))
+#
+tv_text <- html_to_latex_color(tvt);
+cat(tv_text, sep="\n")
+
+```
+
+#### Text Venn Items
+
+A useful byproduct of `textvenn()` is that it returns a `data.frame`,
+invisibly, which means it can be assigned to a variable but otherwise
+is not printed to the output device. The `data.frame` includes the
+count summary for each overlap, in addition to the `'items'` in
+each set.
+
+It is straightforward to use `textvenn()` to show the number of shared
+and unique items, then use the `'items'` column to answer the
+*most common next question*: "What are those?"
+
+The example below captures `textvenn()` output into a variable `tv`.
+
+```{r text-venn-items-1}
+tv <- textvenn(setlist, sets=c(1, 3), do_plot=FALSE)
+```
+
+The items can be printed or used for subsequent analysis:
+
+```{r text-venn-items-2}
+tv$items
+```

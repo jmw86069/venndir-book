@@ -1,6 +1,6 @@
 # What is a Venn diagram?
 
-A venn diagram is a deceptively simple figure,
+A Venn diagram is a deceptively simple figure,
 intended to compare two or more sets in a visually intuitive way.
 
 Each set is represented by a circle, drawn with a label beside it.
@@ -13,6 +13,11 @@ sets `A` and `B`. Using mathematical symbols, the intersect is written
 but we use `A&B` for convenience since the symbol **$`r '∩'`$**
 does not exist on most computer keyboards.
 
+```{r setup-01, include=FALSE}
+suppressPackageStartupMessages(library(venndir))
+suppressPackageStartupMessages(library(patchwork))
+```
+
 (ref:whatisvenn) A simple Venn diagram is shown with two sets: A and B.
 
 ```{r whatisvenn, echo=FALSE, fig.height=4, fig.width=7, out.width="65%", fig.cap="(ref:whatisvenn)", fig.alt="(ref:whatisvenn)"}
@@ -23,7 +28,7 @@ setlist <- counts2setlist(c(
 venndir(setlist, poly_alpha=0, show_segments=FALSE, font_cex=2,
    innerborder="black", outerborder="black",
    draw_legend=FALSE,
-   expand_fraction=c(-0.3, -0.3, -0.15, -0.3),
+   expand_fraction=c(-0.3, -0.3, -0.15, -0.3) + 0.2,
    outerborder.lwd=1, innerborder.lwd=1,
    legend_color_style=c("nofill", "blackborder"))
 ```
@@ -46,20 +51,20 @@ two important questions arise:
 1. Are the genes shared? **(Venn)**
 2. Are the changes [concordant](#concordant) in direction? **(Venndir)**
 
-A Venn diagram does not include direction, and cannot answer question 2.
+A Venn diagram without directionality cannot answer question 2.
 
-Venndir proposes a simple extension to a Venn diagram, the placement
-of [signed counts](#signed-counts) beside the [main counts](#main-counts).
-The [signed counts](#signed-counts) summarize
-the directionality of the [main counts](#main-counts), and are described using
-directional arrows, up and down, and are reinforced using color,
-red for up, and blue for down.
+Venndir proposes a simple extension to a Venn diagram: Place
+[signed counts](#signed-counts) beside the [main counts](#main-counts).
+[Signed counts](#signed-counts) summarize the directionality of
+the [main counts](#main-counts). They are indicated using directional arrows,
+up and down, together with color, red for up, and blue for down.
 
 (ref:whatisvenndir) Venndir introduces an extension to a Venn diagram, with addition of directional counts beside each Venn overlap count. The direction is indicated by arrows up and down, and colors red and blue, respectively.
 
 ```{r whatisvenndir, echo=FALSE, fig.height=4, fig.width=7, out.width="65%", fig.cap="(ref:whatisvenndir)", fig.alt="(ref:whatisvenndir)"}
-setlist_dir <- make_venn_test(n_sets=2, n_items=30,
-   sizes=c(7, 5),
+setlist_dir <- make_venn_test(n_sets=2,
+   items=head(datasets::state.name, 20),
+   sizes=c(5, 5),
    do_signed=TRUE,
    set_names=c("A", "B"))
 venndir(setlist_dir,
@@ -67,17 +72,54 @@ venndir(setlist_dir,
    show_segments=FALSE, font_cex=2,
    innerborder="black", outerborder="black",
    draw_legend=FALSE,
-   expand_fraction=c(-0.3, -0.3, -0.15, -0.3),
+   expand_fraction=c(-0.3, -0.3, -0.15, -0.3) + 0.2,
    outerborder.lwd=1, innerborder.lwd=1,
    legend_color_style=c("nofill", "blackborder"))
 ```
 
+For the simple example shown in Figure \@ref(fig:whatisvenndir),
+the numbers are described as follows:
 
-```{r 01-todo, eval=FALSE, include=FALSE}
-## Todo
+* There are **4** items in 'A' and 'not B'.
 
-# * Introduce other R packages used for detailed customization
-#    * Venndir makes extensive use of grid graphics, including gridGeometry
-#    * Venndir relies heavily upon marquee, and thus systemfonts by proxy, for font handling
+   * **2** of these items are UP.
+   * **2** of these items are DOWN.
 
+* There are **4** items in 'B' and 'not A'.
+
+   * All **4** of these items are DOWN.
+
+* There is **1** item shared by 'A' and 'B'.
+
+   * This **1** item is UP.
+
+Venndir also strives to answer *the very next question*:  
+"What are those items?"
+
+(ref:whatisvenndir-items) Venndir displays the items inside the diagram.
+
+```{r whatisvenndir-items, echo=FALSE, fig.height=5, fig.width=9, out.width="100%", fig.cap="(ref:whatisvenndir-items)", fig.alt="(ref:whatisvenndir-items)"}
+vi <- venndir(setlist_dir,
+   xyratio=1.8, item_buffer=0, width_buffer=0.05,
+   show_labels="Ni",
+   item_cex=c(2, 2, 2.2) * 0.8 * 1.1,
+   poly_alpha=0.4, fill=NA,
+   show_segments=FALSE, font_cex=2,
+   innerborder="black", outerborder="black",
+   draw_legend=FALSE,
+   expand_fraction=c(-0.1, -0.1, -0.05, -0.1),
+   outerborder.lwd=1, innerborder.lwd=1)
+```
+
+
+```{r todo-intro, echo=FALSE, eval=FALSE}
+# When to use a Venn diagram
+
+# How to interpret a Venn diagram
+
+# How to interpret directional Venn diagrams
+
+# Guidance for directional Venn diagrams
+
+# Guidance for Venndir
 ```

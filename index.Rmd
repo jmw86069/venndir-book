@@ -1,25 +1,30 @@
 --- 
 title: "Venndir Book"
+description: "Venn Diagrams with Directionality"
 author: "James M. Ward"
+orcid: "0000-0002-9510-2848"
+favicon: "images/favicon.ico"
+cover-image: "images/venndir-cover.png"
+cover-image-alt: "Venndir: Venn Diagrams with Directionality"
+apple-touch-icon: 
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 output_dir: "docs"
 documentclass: book
-bibliography: [packages.bib, papers.bib]
+bibliography: [citations/packages.bib, citations/papers.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: jmw86069/venndir-book
-description: "Venn Diagrams with Directionality"
-favicon: "images/favicon.ico"
-cover-image: images/venndir-cover.png
+url: https://jmw86069.github.com/venndir-book
 links-as-notes: true
 colorlinks: true
+graphics: yes
 hidelinks: false
 monofontoptions: "Scale=0.7"
 header-includes:
   - \usepackage{fontspec}
-  - \setmonofont{Monaco}
+  - \setmonofont{Monaco}[Scale=0.8]
   - \raggedbottom
   - \raggedright
 ---
@@ -38,6 +43,12 @@ header-includes:
 # url: https://jmw86069.github.com/venndir-book
 knitr::opts_chunk$set(
    # fig.retina = 2,
+   cache=TRUE,
+   cache.lazy=FALSE,
+   cache.extra=list(
+      "cache_key_3"
+   ),
+   width=if (knitr::pandoc_to() == "epub3") 50 else 80,
    out.width='80%',
    fig.width=10,
    fig.height=8
@@ -49,7 +60,9 @@ options(knitr.kable.NA='',
 ```{r setup-2, include=FALSE}
 suppressPackageStartupMessages(library(venndir))
 suppressPackageStartupMessages(library(patchwork))
-#
+```
+
+```{r setup-3, include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(
    c(.packages(),
@@ -57,23 +70,47 @@ knitr::write_bib(
       'limma', 'DESeq2', 'systemfonts', 'gridGeometry', 'grid',
       'polyclip', 'gridExtra', 'eulerr', 'gtable',
       'colorjam', 'patchwork'
-   ), 'packages.bib')
+   ), 'citations/packages.bib')
 ```
 
+```{r kable_fns, echo=FALSE, include=FALSE}
+# kableExtra compatibility for epub3 output
+# requires bootstrap, custom lines in style.css
+if (knitr::pandoc_to() == "epub3") {
+   options("kableExtra.html.bsTable"=TRUE)
+}
+
+epub_kdf <- function(kdf){
+   if (length(kdf) == 0) {
+      return(kdf)
+   }
+   if (!inherits(kdf, "knitr_kable")) {
+      return(kdf)
+   }
+   if (knitr::pandoc_to() == "epub3") {
+      kdf <- kdf |>
+         kableExtra::kable_styling(
+            c("striped", "condensed", "bordered"),
+            latex_options="striped",
+            full_width=FALSE)
+   }
+   kdf
+}
+```
 
 # Preface {.unnumbered .unlisted}
 
 `r if (knitr::is_latex_output()) '
 
 \\vspace{-1.5em}
-\\begin{wrapfigure}{r}{0.25\\textwidth}
+\\begin{wrapfigure}{r}{0.40\\textwidth}
   \\vspace{-3.5em} % fine-tune vertical alignment
-    \\includegraphics[width=0.23\\textwidth]{images/venndir-hexsticker.png}
+    \\includegraphics[width=0.40\\textwidth]{images/venndir-cover.png}
 \\end{wrapfigure}
 '`
 
 
-<img src="images/venndir-hexsticker.png" style="width:40%; max-width:300px;float:right; margin:0 0 1em 1em;" align="right" alt="Venndir hexsticker logo" class="cover" />
+<img src="images/venndir-cover.png" style="width:40%; max-width:250px;float:right; margin:0 0 1em 1em;" align="right" alt="Venndir Book Cover" class="cover" />
 
 ```{r hexsticker, echo=FALSE, out.width="30%"}
 # fig.width=3, fig.height=3.3

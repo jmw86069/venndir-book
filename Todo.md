@@ -1,6 +1,34 @@
 
 # Venndir Book
 
+## To Consider
+
+* Add "How to Cite This Book"
+
+```
+@book{wardvenndir2025,
+  title={Venndir},
+  author={Ward, James M},
+  year={2025},
+  publisher={Ward},
+  url={https://jmw86069.github.com/venndir-book}
+}
+```
+
+* Clean up the cover image presentation in each format.
+* Short biorxiv paper to cite for Venndir.
+* How to install Venndir.
+
+
+## Debug Rendering Crash
+
+Section [advanced-signs-1c] rendering custom Unicode symbols by marquee.
+
+* Restart RStudio before rendering (Ctrl-Shift-F10).
+* Use "Arial" or "Times"
+* Try rendering in R console, not within RStudio.
+* Try previewing the chapter:
+`bookdown::preview_chapter("04-customizations.Rmd", output_format="epub_book")`
 
 ## Todo from C's Edits
 
@@ -107,25 +135,3 @@ one multi-overlap region with an outer border for example.
 * Consider editing item label positions using `grid` object editing?
 
 
-## Add citations by DOI - use this pattern.
-
-* The process is to download each bibtex entry.
-* Save them to a file `'papers.bib'`.
-* Make sure the top of `index.Rmd` YAML section includes
-all .bib files, which should be `'packages.bib'` and `'papers.bib'`
-among potentially others. For example:
-`bibliography: [packages.bib, papers.bib]`
-
-Here is an example for using DOI for a paper to create a bibtex entry:
-
-```r
-# install
-pak::pkg_install("rcrossref")
-
-bvtex <- rcrossref::cr_cn("10.3390/cells10123266", "bibtex")
-writeLines(bvtex, con="papers.bib")
-
-kmt2cd_tex <- rcrossref::cr_cn("10.1038/s41556-024-01446-3", "bibtex")
-writeLines(c(bvtex, kmt2cd_tex), con="papers.bib")
-
-```

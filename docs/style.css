@@ -29,9 +29,9 @@ td {
 }
 .tipbox {
   padding: 1em 1em 1em 4em;
-  border: 2px solid navy;
+  border: 2px solid darkred;
   border-radius: 10px;
-  background: #F5F5F5;
+  background: #FFF8F0;
   color: black;
 }
 .venndirquote {

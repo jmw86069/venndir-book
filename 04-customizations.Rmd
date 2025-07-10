@@ -8,6 +8,8 @@ knitr::opts_chunk$set(
    fig.width=8,
    fig.height=7
 )
+suppressPackageStartupMessages(library(venndir))
+suppressPackageStartupMessages(library(patchwork))
 ```
 
 
@@ -167,7 +169,6 @@ jb4@polygons$label_color <- "black"
 jp12 <- rbind2(jp, jp2, jb1, jb2, jb3, jb4)
 jp12@polygons$fontsize <- 16;
 p <- plot.JamPolygon(jp12,
-   buffer=c(0.01, 0.01, 0.01, 0.01) * -20,
    xlim=c(-0.6, 11.6), ylim=c(-0.5, 6.25))
 
 ```
@@ -252,7 +253,7 @@ A few common alternatives are shown in Figure \@ref(fig:custom-borders).
 
 (ref:custom-borders-1) Venndir shown with no borders.
 
-(ref:custom-borders-2) Venndir shown with thin black border.
+(ref:custom-borders-2) Venndir shown with thin grey border.
 
 (ref:custom-borders-3) Venndir shown with white border.
 
@@ -262,13 +263,14 @@ A few common alternatives are shown in Figure \@ref(fig:custom-borders).
 v1 <- venndir(make_venn_test(),
    innerborder=NA, outerborder=NA)
 v2 <- venndir(make_venn_test(),
-   border="black", border.lwd=1,
+   border="grey40", border.lwd=1,
    innerborder=NA, outerborder=NA)
 v3 <- venndir(make_venn_test(),
-   innerborder="white", outerborder="white")
+   innerborder="white", innerborder.lwd=1,
+   outerborder="white")
 v4 <- venndir(make_venn_test(),
    label_style="lite box", innerborder.lwd=1,
-   outerborder="white", outerborder.lwd=1)
+   outerborder="white", outerborder.lwd=2)
 ```
 
 These options are useful for global changes to borders,
@@ -306,7 +308,7 @@ See the example \@ref(fig:modify-overlap-1)
 
 (ref:modify-overlap-1) Venndir example showing a default Venn diagram, and a modified diagram (right) affecting the overlap region for `'set_A&set_B'`. Changes were made to the `fill` color, `innerborder`, `innerborder.lwd`, and `fontsize`.
 
-```{r modify-overlap-1, fig.ncol=2, fig.height=7, out.width="50%", fig.cap="(ref:modify-overlap-1)", fig.alt="(ref:modify-overlap-1)", fig.subcap=c("Default Venndir.", "Modified Venndir.")}
+```{r modify-overlap-1, fig.ncol=2, fig.height=6, fig.width=7, out.width="50%", fig.cap="(ref:modify-overlap-1)", fig.alt="(ref:modify-overlap-1)", fig.subcap=c("Default Venndir.", "Modified Venndir.")}
 # default Venndir
 v <- venndir(make_venn_test(do_signed=TRUE),
    do_plot=FALSE)
@@ -342,6 +344,8 @@ order it is drawn.
 
 The recognized Venndir overlap attributes are shown in
 Table \@ref(tab:overlap-attr-table).
+
+(fig:overlap-attr-table) List of recognized region attributes, used to customize the Venndir figure.
 
 ```{r overlap-attr-table, echo=FALSE}
 attr_list <- list(
@@ -386,13 +390,16 @@ attr_list <- list(
 attr_df <- data.frame(Attribute=names(attr_list),
    Description=unlist(attr_list))
 
-knitr::kable(attr_df,
+kdf <- knitr::kable(attr_df,
    caption="List of recognized region attributes, used to customize the Venndir figure.",
-   row.names=FALSE) |>
+   row.names=FALSE)
+kdf <- kdf |>
    kableExtra::column_spec(2, width="27em") |>
    kableExtra::group_rows(index=c(
       "Region Attributes"=8,
       "Label Attributes"=6))
+kdf <- epub_kdf(kdf)
+kdf
 ```
 
 ## Customize Any Label
@@ -419,7 +426,7 @@ The figures in Figure \@ref(fig:modify-label-1) show:
 
 (ref:modify-label-1) Venndir (left) and modified Venndir with customized label attributes (right), and how to move the label outside (bottom).
 
-```{r modify-label-1, fig.height=7, fig.ncol=2, out.width="50%", fig.cap="(ref:modify-label-1)", fig.alt="(ref:modify-label-1)", fig.subcap=c("Default Venndir.", "Modified overlap label.", "Overlap label outside.")}
+```{r modify-label-1, fig.height=6, fig.width=7, fig.ncol=2, out.width="50%", fig.cap="(ref:modify-label-1)", fig.alt="(ref:modify-label-1)", fig.subcap=c("Default Venndir.", "Modified overlap label.", "Overlap label outside.")}
 # default Venndir
 v <- venndir(make_venn_test(do_signed=TRUE),
    main="Default Venndir")
@@ -488,7 +495,7 @@ xc2 <- make_color_contrast(x, y="#FFF9EE", do_plot=TRUE);
 
 (ref:contrasting-color-1) Two examples with blue background (top) and off-white background (bottom). In each plot, the top row labels indicate the input colors, the bottom row labels are the output colors adjusted to improve contrast.
 
-```{r contrasting-color-1, echo=FALSE, fig.height=2.5, out.width="60%", fig.ncol=1, fig.cap="(ref:contrasting-color-1)", fig.subcap=c("Blue background.", "Off-white background.")}
+```{r contrasting-color-1, echo=FALSE, fig.height=2.5, fig.width=7, out.width="60%", fig.ncol=1, fig.cap="(ref:contrasting-color-1)", fig.subcap=c("Blue background.", "Off-white background.")}
 withr::with_par(list(mar=c(1, 1, 1, 1)), {
    #
    x <- c("red3", "blue", "gold", "pink", "black");
@@ -505,7 +512,7 @@ to ensure text labels have visual contrast.
 
 (ref:contrasting-color-2) Venn diagram with modifications to the label for `'set_A&set_B'`.
 
-```{r contrasting-color-2, fig.height=7, fig.cap="(ref:contrasting-color-2)", fig.alt="(ref:contrasting-color-2)"}
+```{r contrasting-color-2, fig.height=6, fig.width=7, fig.cap="(ref:contrasting-color-2)", fig.alt="(ref:contrasting-color-2)"}
 v <- venndir(make_venn_test(do_signed=TRUE), do_plot=FALSE)
 
 new_bg <- "darkgreen";
@@ -560,7 +567,7 @@ is slightly darkerned and used for the line segment as well.
 
 (ref:highlight-label-1) Example Venn diagrams showing default (left), highlighted (right), and highlighted-labeled alternatives.
 
-```{r highlight-label-1, fig.ncol=2, fig.height=7, out.width="50%", fig.cap="(ref:highlight-label-1)", fig.alt="(ref:highlight-label-1)", fig.subcap=c("Default Venndir.", "Highlighted label.", "Highlighted label outside.")}
+```{r highlight-label-1, fig.ncol=2, fig.height=6, fig.width=7, out.width="50%", fig.cap="(ref:highlight-label-1)", fig.alt="(ref:highlight-label-1)", fig.subcap=c("Default Venndir.", "Highlighted label.", "Highlighted label outside.")}
 # default Venndir
 v <- venndir(make_venn_test(do_signed=TRUE), do_plot=FALSE)
 plot(v,
@@ -661,13 +668,13 @@ the legend `'2 lines'` inside the viewport border, using 2 character
 lines of text as the unit. Any valid `grid::unit` can be provided,
 however a good starting point is to adjust by units of `'lines'`.
 
-(ref:nudge-legend) Two Euler diagrams showing default legend (left) and nudged legend (right), moving the legend to inset -2 lines.
+(ref:nudge-legend) Two Euler diagrams showing default legend (left) and legend nudged 5 character lines (right).
 
-```{r nudge-legend, out.width="50%", fig.ncol=2, fig.width=6, fig.height=5, fig.cap="(ref:nudge-legend)", fig.alt="(ref:nudge-legend)", ref.subcap=c("Default legend.", "Nudged legend.")}
+```{r nudge-legend, out.width="50%", fig.ncol=2, fig.width=7, fig.height=5, fig.cap="(ref:nudge-legend)", fig.alt="(ref:nudge-legend)", fig.subcap=c("Default legend.", "Nudged legend.")}
 v3a <- venndir(make_venn_test(),
    proportional=TRUE)
 v3b <- venndir(make_venn_test(),
-   x_inset=grid::unit(-2, "lines"),
+   x_inset=grid::unit(-5, "lines"),
    proportional=TRUE)
 ```
 
@@ -716,9 +723,9 @@ It uses custom `set_colors` to match the published figure.
 This may be a good time to point out that the Euler diagram can
 also be rotated, see [Rotate the Venndir].
 
-(ref:warnings-1) Venn diagram using test data from Bisogno et al, as Venn (left) and Euler (right) diagrams.
+(ref:warnings-1) Venn diagram using test data from Bisogno et al, as Venn (left) and Euler (right) diagrams. Notice the footnote in the bottom-right corner of the Euler diagram.
 
-```{r warnings-1, out.width="50%", fig.ncol=2, fig.cap="(ref:warnings-1)", fig.alt="(ref:warnings-1)", fig.subcap=c("Venn diagram.", "Euler diagram.")}
+```{r warnings-1, out.width="50%", fig.width=7, fig.height=5, fig.ncol=2, fig.cap="(ref:warnings-1)", fig.alt="(ref:warnings-1)", fig.subcap=c("Venn diagram.", "Euler diagram.")}
 bisogno_colors <- c(A="firebrick2", B="dodgerblue", C="#BBBBBB")
 v <- venndir(setlist,
    set_colors=bisogno_colors)
@@ -779,9 +786,12 @@ with two values, the `x` and `y` coordinate adjustment.
 The example in Figure \@ref(fig:nudge-circle-1) moves set `'A'`
 to the right, and set `'B'` to the left.
 
-(ref:nudge-circle-1) Venn diagram showing the effect of nudging set A to the right, and set B to the left. The change creates an overlap for `'A&B'` which now shows `1` count.
+(ref:nudge-circle-1) Venn diagram showing the default Euler (left) with footnote, and nudged circles (right) with no footnote indicated. The overlap for `'A&B'` now shows `1` count.
 
-```{r nudge-circle-1, fig.cap="(ref:nudge-circle-1)", fig.alt="(ref:nudge-circle-1)"}
+```{r nudge-circle-1, fig.ncol=2, fig.height=5, fig.width=6, out.width="50%", fig.cap="(ref:nudge-circle-1)", fig.alt="(ref:nudge-circle-1)", fig.subcap=c("Default Euler.", "Nudged A and B circles.")}
+ve <- venndir(setlist,
+   proportional=TRUE,
+   set_colors=bisogno_colors)
 vn <- venndir(setlist,
    circle_nudge=list(A=c(1, 0), B=c(-1, 0)),
    proportional=TRUE,
@@ -816,37 +826,27 @@ Individual changes can be made by following [Customize Any Label].
 Instead, `nudge_venndir_label()` adjusts the coordinate position
 used when placing each label 'inside' or 'outside'.
 
-(ref:nudge-labels-1) Venndir example with default label placement.
+(ref:nudge-labels-1) Venndir example with default label placement (left), and with `'set_A&set_C'` moved to the left (right).
 
-```{r nudge-labels-1, fig.height=7, fig.cap="(ref:nudge-labels-1)", fig.alt="(ref:nudge-labels-1)"}
+```{r nudge-labels-1, fig.ncol=2, out.width="50%", fig.height=6, fig.width=6, fig.cap="(ref:nudge-labels-1)", fig.alt="(ref:nudge-labels-1)", fig.subcap=c("Default labels.", "One label moved left.")}
 setlist <- make_venn_test(100, 3, do_signed=TRUE)
 vo <- venndir(setlist,
    overlap_type="each",
    label_style="lite box",
    main="Default venndir")
-```
-
-The example in Figure \@ref(fig:nudge-labels-1) is the default Venndir,
-however in this case the label **7** between `'set_A'` and `'set_C'`
-will be nudged slightly to the left.
-The result is shown in Figure \@ref(fig:nudge-labels-2) after nudging
-the label 2% to the left.
-
-(ref:nudge-labels-2) Venndir with the label `'set_A&set_C'` moved slightly to the left.
-
-```{r nudge-labels-2, fig.height=7, fig.width=9, fig.cap="(ref:nudge-labels-2)", fig.alt="(ref:nudge-labels-2)"}
 vo2 <- nudge_venndir_label(vo,
    set="set_A&set_C",
    label_location="inside",
-   x_offset=-0.02)
-plot(vo2)
+   x_offset=-0.04)
+plot(vo2, main="'set_A&set_C' moved left")
 ```
+
 
 The changes were defined by these arguments:
 
-* The overlap was defined with `set="set_A&set_C"`
-* The location was defined with `label_location="inside"`
-* The x position was adjusted with `x_offset=-0.02`, with default units
+* The overlap: `set="set_A&set_C"`
+* The location: `label_location="inside"`
+* The x position: `x_offset=-0.04`, with default units
 relative to the total size of the figure.
 
 An alternative approach may be more convenient, using argument `offset_list`.
@@ -864,10 +864,10 @@ labels `'set_A&set_C'` and `'set_C'` in one step.
 vo3 <- nudge_venndir_label(vo,
    label_location="inside",
    offset_list=list(
-      "set_A&set_C"=c(-0.02, 0),
+      "set_A&set_C"=c(-0.04, -0.02),
       "set_C"=c(0, 0.05)
    ))
-plot(vo3)
+plot(vo3, main="Two labels moved")
 ```
 
 
@@ -1037,36 +1037,62 @@ an inline style with specific font size, or specific line height.
 The **patchwork** [@R-patchwork] R package is widely used to
 assemble multi-panel R graphics, due to its ability to
 include plots from **base R**, **ggplot2**, and **grid** graphics.
-Venndir is produced using `grid` graphics, and is compatible
-with patchwork with some caveats.
+Venndir uses **grid** and is compatible with patchwork.
 
-1. Venndir fonts are absolute point sizes, and should be adjusted before
-plotting.
-2. The `grid` objects must be used with patchwork, see [Venndir gtree].
+There are two key steps:
 
-(ref:venndir-patchwork-1) Four panel figure produced using patchwork R package.
+1. Call `venndir()` with arguments:
+   * `do_plot=TRUE` which tells Venndir to create the graphical objects
+   which will be drawn. By default it is already `TRUE`.
+   * `do_draw=FALSE` which tells Venndir not to draw these objects.
+   This argument is optional, to prevent drawing the figure.
+   * capture the result into a variable:  
+   `v <- venndir(..., do_draw=FALSE)`
+   
+2. Use the Venndir `'gTree'` graphical objects:
+   * `attr(v, "gtree")` contains the Venndir objects
+   * Use patchwork syntax:  
+   `wrap_elements(attr(v, "gtree"))`
 
-```{r venndir-patchwork-1, out.width="100%", fig.width=9, fig.height=8.5, fig.cap="(ref:venndir-patchwork-1)", fig.alt="(ref:venndir-patchwork-1)"}
+Figure \@ref(fig:venndir-patchwork-1) shows two Venn diagrams side-by-side.
+
+(ref:venndir-patchwork-1) Two Venndir figures combined using the **patchwork** R package.
+
+```{r venndir-patchwork-1, out.width="100%", fig.width=9, fig.height=4.5, fig.cap="(ref:venndir-patchwork-1)", fig.alt="(ref:venndir-patchwork-1)"}
 library(patchwork)
 suppressPackageStartupMessages(library(ggplot2))
 
 setlist <- make_venn_test(do_signed=TRUE)
-v <- venndir(setlist, sets=c(1, 2), do_draw=FALSE)
-v_gtree <- attr(v, "gtree")
-v2 <- venndir(setlist, sets=c(1, 3), do_draw=FALSE)
-v2_gtree <- attr(v2, "gtree")
+v1 <- venndir(setlist, sets=c(1, 2),
+   expand_fraction=c(0.25, 0, -0.25, 0),
+   do_draw=FALSE)
+v2 <- venndir(setlist, sets=c(1, 3),
+   expand_fraction=c(0.25, 0, -0.25, 0),
+   do_draw=FALSE)
 
-gg <- ggplot(mtcars) + 
-  geom_point(aes(mpg, disp)) + 
-  ggtitle('ggplot2 example')
-
-pw3 <- (gg + wrap_elements(v_gtree)) /
-   (wrap_elements(v2_gtree) + gg) +
-   plot_layout(widths=c(1, 1), heights=c(1, 1)) +
+pw3 <- wrap_elements(attr(v1, "gtree")) +
+   wrap_elements(attr(v2, "gtree")) +
    plot_annotation(tag_levels='a')
 pw3
 
 ```
+
+:::: {.tipbox data-latex=""}
+
+**Tips:**
+
+* The Venndir font sizes are absolute points, and should be adjusted
+accordingly.
+* The Venndir circles will adjust to the available output size,
+while the fonts will remain the same size.
+* It works well to decide a target canvas size for the combined figure
+output, usually in actual inches or centimeters, then define an
+appropriate font size in that context.
+* For more details on the Venndir **grid** data, see
+[Venndir Graphics Objects].
+
+::::
+
 
 ## Custom Signs
 
@@ -1089,13 +1115,20 @@ Table \@ref(tab:curate-df-1).
 get_venndir_curate_df()
 ```
 
+
 ```{r curate-df-1, echo=FALSE}
 curate_df <- get_venndir_curate_df()
-knitr::kable(curate_df,
+# clean "-" bc interpreted as a bullet in markdown.
+curate_df$sign <- gsub("^-$", "", curate_df$sign);
+
+kdf <- knitr::kable(curate_df,
    booktabs=TRUE,
    caption="Default table used to curate sign data when generating signed count labels.",
-   row.names=FALSE) |>
+   row.names=FALSE)
+kdf <- kdf |>
    kableExtra::column_spec(column=1, bold=TRUE)
+kdf <- epub_kdf(kdf)
+kdf
 ```
 
 There is a bit to unpack in how this simple `data.frame` is used
@@ -1128,10 +1161,13 @@ ol_df <- data.frame(
    "overlap_type"=names(ol_list),
    "Description"=unlist(ol_list))
 
-knitr::kable(ol_df,
+kdf <- knitr::kable(ol_df,
    caption="Values recognized overlap type, with corresponding description.",
-   row.names=FALSE) |>
+   row.names=FALSE)
+kdf <- kdf |>
    kableExtra::column_spec(2, width="22em")
+kdf <- epub_kdf(kdf)
+kdf
 ```
 
 To summarize:
@@ -1161,18 +1197,22 @@ Consider the tabulated sign `'1 -1'`:
 `'1'` and `'-1'`.
 * The first component `'1'` is matched to 'from' in `curate_df`:
    ```{r match-1, echo=FALSE, out.width="50%"}
-   knitr::kable(row.names=FALSE,
+   kdf <- knitr::kable(row.names=FALSE,
       full_width=FALSE,
       subset(curate_df, from %in% "1"))
+   kdf <- epub_kdf(kdf)
+   kdf
    ```
    * The value in column 'sign' ($`r "\u2191"`$) is added to the sign.
    * The color 'firebrick' is added to the sign colors.
 
 * The next component `'-1'` is matched to 'from' in `curate_df`:
    ```{r match-2, echo=FALSE, out.width="50%"}
-   knitr::kable(row.names=FALSE,
+   kdf <- knitr::kable(row.names=FALSE,
       full_width=FALSE,
       subset(curate_df, from %in% "-1"))
+   kdf <- epub_kdf(kdf)
+   kdf
    ```
    * The value in column 'sign' ($`r "\u2193"`$) is added to the sign.
    * The color 'dodgerblue3' is added to the sign colors.
@@ -1199,31 +1239,44 @@ use custom symbols to indicate agreement and disagreement:
 'Checkmark' to indicate agreement, and
 'Ballot X' to indicate disagreement.
 
-> Unicode characters are described in
-[Wikipedia 'List of Unicode characters'](https://en.wikipedia.org/wiki/List_of_Unicode_characters).
-* A 'Checkmark' is Unicode U+2713 $`r "\u2713"`$.
-* A 'Ballot X' is Unicode U+2717 $`r "\u2715"`$.
+:::: {.tipbox data-latex=""}
+
+**Tips:**
+
+Unicode characters are described in
+[Wikipedia Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters).  
+Formats described as `'U+2191'` should be used in R in this form:
+`"\u2191"` in order to produce: $`r "\u2191"`$
+* **Up arrow** is Unicode U+2191: $`r "\u2191"`$
+* **Down arrow** is Unicode U+2193: $`r "\u2193"`$
+* **Checkmark** is Unicode U+2713: $`r "\u2713"`$
+* **Ballot X** is Unicode U+2717: $`r "\u2717"`$
+
+::::
 
 The following steps were used to create Figure \@ref(fig:curate-check-1):
 
-* Retrieve the default `curate_df`.
-* Edit the 'agreement' row, and update column 'sign'.
-* Edit the 'mixed' row, and update columns 'sign', and 'color'.
-* Call `venndir()` with arguments `overlap_type='agreement'` and
+1. Retrieve the default `curate_df`.
+2. Edit the 'agreement' row, and update column 'sign'.
+3. Edit the 'mixed' row, and update columns 'sign', and 'color'.
+4. Call `venndir()` with arguments `overlap_type='agreement'` and
 `curate_df=curate_df`.
 
 (ref:curate-check-1) Venn diagram using 'Checkmark' and 'Ballot X' to indicate agreement and disagreement, respectively.
 
 ```{r curate-check-1, fig.height=7, fig.cap="(ref:curate-check-1)", fig.alt="(ref:curate-check-1)"}
 curate_df <- get_venndir_curate_df()
-curate_df[curate_df$from %in% "agreement", "sign"] <- "\u2713";
-curate_df[curate_df$from %in% "mixed", "sign"] <- "\u2715";
-curate_df[curate_df$from %in% "mixed", "color"] <- "red";
+curate_df[curate_df$from %in% "agreement",
+   "sign"] <- "\u2713";
+curate_df[curate_df$from %in% "mixed",
+   "sign"] <- "\u2715";
+curate_df[curate_df$from %in% "mixed",
+   "color"] <- "red";
 
 v <- venndir(make_venn_test(do_signed=TRUE),
    overlap_type="agreement",
    innerborder="white", outerborder="white",
-   poly_alpha=1,
+   poly_alpha=0.8,
    curate_df=curate_df)
 ```
 
@@ -1231,15 +1284,20 @@ v <- venndir(make_venn_test(do_signed=TRUE),
 
 In principle, and named `list` is recognized as a value-list,
 whose names are items, and values are 'signs'. These 'signs'
-are typically `-1` and `1` to indicate directionality, however
-any value can be used.
+are typically `-1` and `1` to indicate directionality,
+*however any sign values may be used*.
 
-Figure \@ref(fig:advanced-signs-1) shows the effect of replacing
-signed values '1' and '-1' with text strings: 'up' and 'dn'.
+Any sign values not recognized by `curate_df`, as described in
+[Customize the Symbols], remain unchanged and un-colored.
+
+Figure \@ref(fig:advanced-signs-1) shows the effect of changing
+the signed list values from '1' and '-1', to strings: 'up' and 'dn'.
+Because 'up' and 'dn' are not defined in `curate_df`, they remain
+unchanged in the output Venndir.
 
 (ref:advanced-signs-1) Venndir using custom values 'up' and 'dn' instead of 1 and -1.
 
-```{r advanced-signs-1, fig.cap="(ref:advanced-signs-1)", fig.alt="(ref:advanced-signs-1)"}
+```{r advanced-signs-1, fig.height=5, fig.width=6, fig.cap="(ref:advanced-signs-1)", fig.alt="(ref:advanced-signs-1)"}
 setlist <- make_venn_test(n_sets=2, do_signed=TRUE)
 setlist2 <- lapply(setlist, function(i){
    i[] <- c("1"="up", "-1"="dn")[as.character(i)]
@@ -1251,17 +1309,16 @@ v <- venndir(setlist2,
 
 The figure shows combinations that include 'upup', 'dnup', and 'dnup'.
 Notice even the legend tabulates the signed counts using the
-'sign' values.
+sign values 'up' and 'dn'.
 
-In fact, the values 'up' and 'dn' can be assigned to Unicode characters
-as shown in  [Customize the Symbols]. The custom signs are also
-shown in the legend.
+Further, the sign values 'up' and 'dn' can be assigned to Unicode character
+as shown in  [Customize the Symbols]. The value can be a string, or even
+[markdown](#g-markdown), described in [Venndir Markdown Support].
+The custom value is also shown in the legend.
 
-Figure \@ref(fig:advanced-signs-1c) shows how to customize `curate_df`
-to match the custom signs 'up' and 'dn'. For added fun, the values
-in 'sign' are also customized to new Unicode characters.
-
-(ref:advanced-signs-1c) Venndir showing the custom signs 'up' and 'down' used to produce Unicode signs as before.
+Figure \@ref(fig:advanced-signs-1c) demonstrates how to customize `curate_df`,
+matching the sign values 'up' and 'dn', and converts them to new
+Unicode characters.
 
 ```{r advanced-signs-1c-show, eval=FALSE}
 curate_df <- get_venndir_curate_df()
@@ -1274,8 +1331,11 @@ v <- venndir(setlist2,
    overlap_type="each")
 ```
 
-```{r advanced-signs-1c, echo=FALSE, fig.cap="(ref:advanced-signs-1c)", fig.alt="(ref:advanced-signs-1c)"}
+(ref:advanced-signs-1c) Venndir showing the custom signs 'up' and 'down' used to produce Unicode signs as before.
+
+```{r advanced-signs-1c, fig.height=5, fig.width=6, echo=FALSE, fig.cap="(ref:advanced-signs-1c)", fig.alt="(ref:advanced-signs-1c)"}
 curate_df <- get_venndir_curate_df()
+#
 du_match <- match(c("-1", "1"), curate_df$from)
 curate_df[du_match, "from"] <- c("dn", "up")
 curate_df[du_match, "sign"] <- c("\u21E9", "\u21E7")
@@ -1288,24 +1348,30 @@ setlist2 <- lapply(setlist, function(i){
    i[] <- c("1"="up", "-1"="dn")[as.character(i)]
    i
 })
+
 v <- venndir(setlist2,
+   fontfamily="Arial",
    curate_df=curate_df,
    overlap_type="each")
 ```
 
-The following example pushes the limits further, using three
-signs instead of two. In this example, there are three signs:
-'a', 'b', and 'c'. See Figure \@ref(fig:advanced-signs-2).
+Although directional sign is most often 'up' and 'down',
+Venndir can recognize more than two signs.
+The following example demonstrates three signs instead of two.
+In the simplest form, it uses three letters:
+**'a'**, **'b'**, and **'c'**.
 
-(ref:advanced-signs-2) Venndir using three signs: 'a', 'b', and 'c'.
 
-```{r advanced-signs-2, fig.cap="(ref:advanced-signs-2)", fig.alt="(ref:advanced-signs-2)"}
+(ref:advanced-signs-2) Venndir using three signs: 'a', 'b', and 'c' (left), which are converted to Unicode symbols (right).
+
+```{r advanced-signs-2-show, eval=FALSE}
 setlist <- make_venn_test(n_items=150, n_sets=3, do_signed=TRUE,
    set_names=c("Set 1", "Set 2", "Set 3"))
 set.seed(123)
 setlist2 <- lapply(setlist, function(i){
    i[] <- c("1"="up", "-1"="dn")[as.character(i)]
-   i[] <- sample(letters[1:3], replace=TRUE, size=length(i))
+   i[] <- sample(letters[1:3],
+      replace=TRUE, size=length(i))
    i
 })
 v <- venndir(setlist2,
@@ -1313,14 +1379,21 @@ v <- venndir(setlist2,
    overlap_type="each")
 ```
 
-The signs 'a', 'b', and 'c' can be converted to their own
-signs with `curate_df`. The final example is shown in
-Figure \@ref(fig:advanced-signs-2c), with three custom
-Unicode symbols shown to represent 'a', 'b', and 'c'.
+```{r advanced-signs-2, echo=FALSE, fig.ncol=2, out.width="50%", eval=FALSE, fig.height=5, fig.width=6, fig.cap="(ref:advanced-signs-2)", fig.alt="(ref:advanced-signs-2)", fig.subcap=c("Three signs.", "Three signs using Unicode.")}
+setlist <- make_venn_test(n_items=150, n_sets=3, do_signed=TRUE,
+   set_names=c("Set 1", "Set 2", "Set 3"))
+set.seed(123)
+setlist2 <- lapply(setlist, function(i){
+   i[] <- c("1"="up", "-1"="dn")[as.character(i)]
+   i[] <- sample(letters[1:3],
+      replace=TRUE, size=length(i))
+   i
+})
+v <- venndir(setlist2,
+   sets=1:2,
+   overlap_type="each")
 
-(ref:advanced-signs-2c) Venndir using three signs 'a', 'b', 'c' which are converted to Unicode arrows using `curate_df`.
-
-```{r advanced-signs-2c, fig.height=7, fig.cap="(ref:advanced-signs-2c)", fig.alt="(ref:advanced-signs-2c)"}
+# Unicode
 curate_df <- get_venndir_curate_df()
 # define a, b, c
 curate_df[1, "from"] <- "a"
@@ -1339,6 +1412,73 @@ v <- venndir(setlist2,
    curate_df=curate_df,
    overlap_type="each")
 ```
+
+These signs are converted to custom symbols:
+$`r "\u2191"`$, $`r "\u2193"`$, $`r "\u2206"`$.
+
+```{r advanced-signs-2c, eval=FALSE}
+curate_df <- get_venndir_curate_df()
+# define a, b, c
+curate_df[1, "from"] <- "a"
+curate_df[2, "from"] <- "b"
+curate_df[3, "from"] <- "c"
+# define Unicode symbols
+curate_df[1, "sign"] <- "\u2191"
+curate_df[2, "sign"] <- "\u2193"
+curate_df[3, "sign"] <- "\u2206"
+# define colors
+curate_df[1, "color"] <- "firebrick"
+curate_df[2, "color"] <- "royalblue"
+curate_df[3, "color"] <- "gold"
+
+v <- venndir(setlist2,
+   curate_df=curate_df,
+   overlap_type="each")
+```
+
+Figure \@ref(fig:advanced-signs-2) shows the three-sign example
+using letters (left), and Unicode symbols (right).
+
+
+### Custom Sign Label Colors
+
+In some scenarios, colorized labels may not be appropriate, or custom
+colors may be preferred.
+Custom signed colors can be defined by editing `curate_df` as described
+in [Custom Signs] to this point.
+
+(ref:bw-signed-venn-1) Signed Venn diagrams with sign count labels in black (left), and custom colors.
+
+```{r bw-signed-venn-1, fig.ncol=2, fig.height=6, fig.width=6, out.width="50%", fig.cap="(ref:bw-signed-venn-1)", fig.alt="(ref:bw-signed-venn-1)", fig.subcap=c("Signed labels in black.", "Signed labels in custom colors.")}
+# black text labels
+curate_df <- get_venndir_curate_df()
+curate_df$color <- "black"
+v1 <- venndir(make_venn_test(do_signed=TRUE),
+   show_segments=FALSE,
+   draw_legend=FALSE,
+   curate_df=curate_df,
+   poly_alpha=0.01,
+   border="black",
+   border.lwd=2)
+# custom color labels
+k <- match(c("-1", "1", "mixed"), curate_df$from)
+curate_df$color[k] <- c("purple4", "darkorange", "red3")
+v2 <- venndir(make_venn_test(do_signed=TRUE),
+   show_segments=FALSE,
+   L_lo=65,
+   draw_legend=FALSE,
+   curate_df=curate_df,
+   poly_alpha=0.01,
+   border="black",
+   border.lwd=2)
+```
+
+The important step is to edit the column 'color' in `curate_df`.
+In the example above, the color contrast is adjusted also, with
+`make_color_contrast()`, and optional argument `L_lo=65` is passed
+to allow slightly brighter text on white background, which
+allows the orange font color saturation to be slighter more pronounced.
+
 
 ## Venndir Graphics Objects
 
@@ -1359,13 +1499,13 @@ a new plot, and which creates all the necessary grobs.
 
 ```{r grobs-1}
 v <- venndir(make_venn_test(),
-   poly_alpha=0.01,
-   border="black",
-   border.lwd=2,
    show_labels="Ni",
    main="Plot Title",
+   fontfamily="Arial",
    do_plot=TRUE,
    do_draw=FALSE,
+   poly_alpha=0.4,
+   item_cex_factor=0.6,
    legend_color_style=c("black", "blackborder"))
 ```
 
@@ -1387,7 +1527,7 @@ Figure \@ref(fig:grobs-2) shows the plot after drawing the `'gtree'` attribute.
 
 (ref:grobs-2) Venn diagram created by drawing the `'gtree'` attribute object.
 
-```{r grobs-2, fig.cap="(ref:grobs-2)", fig.alt="(ref:grobs-2)"}
+```{r grobs-2, fig.height=5, fig.width=6, fig.cap="(ref:grobs-2)", fig.alt="(ref:grobs-2)", dependson="grobs-1"}
 gtree <- attr(v, "gtree");
 grid::grid.newpage();
 grid::grid.draw(gtree);
@@ -1423,7 +1563,7 @@ from the `'grob_list'` attribute.
 
 (ref:grobs-3) Venn diagram created by drawing each component in the `'grob_list'` attribute.
 
-```{r grobs-3, fig.cap="(ref:grobs-3)", fig.alt="(ref:grobs-3)"}
+```{r grobs-3, fig.height=5, fig.width=6, fig.cap="(ref:grobs-3)", fig.alt="(ref:grobs-3)", dependson="grobs-1"}
 grob_list <- attr(v, "grob_list");
 
 grid::grid.newpage()
@@ -1435,3 +1575,117 @@ grid::grid.draw(grob_list$legend)
 grid::grid.draw(grob_list$main_title)
 ```
 
+### Manipulate grob_list
+
+The entries are named to be reognizable, for example the grob names
+in the `'jps'` entry are listed with `grid::grid.ls()`:
+
+```{r groblist-list, dependson="grobs-3"}
+grid::grid.ls(grob_list$jps)
+```
+
+Each polygon is named with substring up to the first ':' colon,
+after which are optional modifiers indicating the border applied,
+in order:
+
+* Each polygon is drawn with outer border (if outerborder is defined),
+* then polygon fill and border (if border is defined),
+* then inner fill (if innerborder is defined),
+* then inner border (if innerborder is defined).
+
+As described in [Venndir Rendering Steps], a polygon is drawn
+for each full set, denoted with polygon names having '|set' at the end.
+Then each overlap region is drawn, where polygons are named by
+the overlap sets.
+
+The example below is somewhat advanced, and demonstrates how to
+extract a specific polygon grob, use it to create a custom pattern
+fill, then reinsert the new grob into the `grob_list`.
+
+First, extract one overlap region, and draw it to confirm:
+
+(ref:groblist-list-fill) One overlap polygon is extracted from `grob_list` and drawn.
+
+```{r groblist-list-fill, fig.height=5, fig.width=6, fig.cap="(ref:groblist-list-fill)", fig.alt="(ref:groblist-list-fill)", dependson="grobs-3"}
+grobname <- "set_C:pathGrob:inner"
+use_grob <- grid::getGrob(grob_list$jps, gPath=grobname)
+grid::grid.newpage();
+grid::grid.draw(use_grob)
+```
+
+The next step is to define a grid pattern, in this case it requires
+the **gridpattern** R package, loading an image.
+
+Another alternative is to define a color gradient, for example
+with `gridpattern::grid.pattern_gradient()`.
+
+```{r groblist-list-pattern}
+bg_file <- "images/water_bg.png"
+bg_pat <- gridpattern::grid.pattern_image(filename=bg_file,
+   type="tile", scale=1, draw=FALSE)
+```
+
+Now the grob `use_grob` is used to apply a clipping region to
+the pattern fill, so the pattern is only applied to this
+specific polygon region.
+
+```{r groblist-clip, dependson=c("groblist-list-pattern", "groblist-list-fill")}
+# clip background to the grob
+clipped_name <- paste0(grobname, ".pattern")
+clipped <- list(gridpattern::clippingPathGrob(
+   clippee=bg_pat,
+   clipper=use_grob,
+   name=clipped_name));
+names(clipped) <- clipped_name
+```
+
+Now draw the clipped background image:
+
+```{r groblist-clip-draw, fig.height=5, fig.width=6, fig.cap="(ref:groblist-clip-draw)", fig.alt="(ref:groblist-clip-draw)", dependson="groblist-clip"}
+grid::grid.newpage();
+grid::grid.draw(clipped[[1]])
+```
+
+Finally, re-insert the background into the `grob_list`:
+
+```{r insert-grob, dependson="groblist-clip"}
+grob_list_jps_list <- grob_list$jps$children;
+grobmatch <- match(grobname, names(grob_list_jps_list));
+
+if (grobmatch == 1) {
+   grob_list_jps_list <- append(grob_list_jps_list,
+      clipped,
+      after=grobmatch - 1)
+} else {
+   grob_list_jps_list <- append(clipped,
+      grob_list_jps_list,
+      after=1)
+}
+# insert into grob_list
+grob_list$jps <- grid::grobTree(
+   children=do.call(grid::gList, grob_list_jps_list),
+   name="jps")
+```
+
+Bonus points: Re-create the grob tree `gTree` object:
+
+```{r make-gtree, dependson="insert-grob"}
+# make new gTree
+jps_gtree <- grid::grobTree(
+   children=do.call(grid::gList, grob_list),
+   name="venndir.figure")
+```
+
+Drawing the `gTree` is sometimes more convenient than drawing
+each element in the `grob_list`:
+
+(ref:draw-new-gtree) The custom Venndir figure is drawn, using pattern fill in one overlap region.
+
+```{r draw-new-gtree, fig.height=5*1.5, fig.width=6*1.5, fig.cap="(ref:draw-new-gtree)", fig.alt="(ref:draw-new-gtree)", dependson="make-gtree"}
+grid::grid.newpage()
+grid::grid.draw(jps_gtree)
+```
+
+Note that the original polygon fill is drawn on top of the pattern
+fill, but this layer could be removed so the pattern is shown
+without interference. This change is left to the reader.

@@ -14,5 +14,6 @@ rmd_files: ["index.Rmd",
   "03-venndir-viz.Rmd",
   "04-customizations.Rmd",
   "09-gallery.Rmd",
+  "85-whats-new.Rmd",
   "89-glossary.Rmd",
   "90-references.Rmd"]

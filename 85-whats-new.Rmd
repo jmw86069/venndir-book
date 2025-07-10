@@ -1,0 +1,80 @@
+# What's New by Version
+
+```{r setup-news, include=FALSE}
+knitr::opts_chunk$set(
+   # fig.retina = 2, out.width = '100%'
+   cache=TRUE,
+   fig.align="center",
+   fig.width=8,
+   fig.height=7
+)
+```
+
+```{r news-notes, eval=FALSE, echo=FALSE}
+# Consider presenting as a table with two columns?
+# - purpose is to keep track of documentation changes, alongside
+#   occassional venndir R package version when it changes over time.
+#
+# Venndir-book v1.0.1         | Venndir version 0.0.57.900
+#
+# Venndir book should have an
+# - Edition: 1, 2, 3 - book editioning
+#    - major rewrite - new major chapter
+# - Version: .1, .2, .3
+#    - new diagram style
+#    - feature additions
+# - Addendum? .1.1, .1.2, .1.3
+#    - minor corrections, typos
+#    - small clarifications
+
+```
+
+
+```{r news-gt, echo=FALSE, eval=FALSE}
+# library(yaml)
+library(tibble)
+
+whatsnew <- yaml::read_yaml("whatsnew.yml")
+whatsnew[[1]]
+whatsnew[[2]]
+changelog <- whatsnew
+
+tbl <- purrr::map_dfr(changelog, function(x) {
+  tibble(
+    book_version = x$book_version,
+    venndir_version = x$venndir_version,
+    change = x$changes
+  )
+})
+
+tbl %>%
+  gt(groupname_col = "book_version") %>%
+  tab_header(title = "Venndir Book Changelog") %>%
+  cols_label(venndir_version = "Venndir Version", change = "Change")
+
+```
+
+
+### venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900 {-}
+
+New chapters and sections:
+
+* Inserted Chapter \@ref(whats-new-by-version): [What's New by Version]
+* Inserted Chapter \@ref(glossary): [Glossary]
+* Section \@ref(text-venn): [Text Venn]
+* Section \@ref(figure-scale-and-position): [Figure Scale and Position]
+* Section \@ref(custom-sign-label-colors): [Custom Sign Label Colors]
+* Section \@ref(seehawer-kmt2-gene-venns): [Seehawer Kmt2 Gene Venns]
+
+### venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900 {-}
+
+* Initial release, six chapters:
+
+   1. What is a Venn Diagram?
+   2. Data Import
+   3. Venndir Basics
+   4. Deeper Customizations
+   5. Venndir Gallery
+   6. References
+
+

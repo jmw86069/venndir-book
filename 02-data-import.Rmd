@@ -3,11 +3,20 @@
 ```{r setup-02, include=FALSE}
 knitr::opts_chunk$set(
    # fig.retina = 2, out.width = '100%'
-   cache=TRUE,
+   # cache=TRUE,
+   # cache.lazy=FALSE,
+   # cache.extra=list(
+   #    "cache_key_2"
+   # ),
    fig.align="center",
    fig.width=6,
    fig.height=5
 )
+```
+
+```{r setup-02a, include=FALSE, cache=FALSE}
+suppressPackageStartupMessages(library(venndir))
+suppressPackageStartupMessages(library(patchwork))
 ```
 
 ```{r setup-02b, include=FALSE}
@@ -88,8 +97,8 @@ The next common input is a list of [signed sets](#signed-set),
 represented as `numeric` vectors with items stored as `names()`.
 
 An example is shown below, showing only the first six elements of each
-vector. Notice the vector names are `"item_014"`, `"item_195"`,
-while the values are `-1`, `-1`.
+vector. The vector names are `"item_014"`, `"item_195"`,
+while the values are `'-1'`, `'1'`.
 
 ```{r input-signed-list}
 setlist <- make_venn_test(do_signed=TRUE)
@@ -104,7 +113,7 @@ output from `venndir()`, where
 
 (ref:input-signed-list-venndir) Default Venn diagram with three signed sets. The overlap counts are each tabulated by directional sign.
 
-```{r input-signed-list-venndir, fig.cap="(ref:input-signed-list-venndir)", fig.alt="(ref:input-signed-list-venndir)"}
+```{r input-signed-list-venndir, fig.height=6, fig.cap="(ref:input-signed-list-venndir)", fig.alt="(ref:input-signed-list-venndir)"}
 venndir(setlist)
 ```
 
@@ -177,7 +186,7 @@ head(im, 10)
 
 Figure \@ref(fig:input-signed-im-venndir) shows the signed Venn
 diagram created by `venndir()` also accepts a
-[signed incidence matrix](#signed-incidence-matrix)
+[signed incidence matrix](#g-signed-incidence-matrix)
 as input data, and subsequently displays signed counts.
 
 (ref:input-signed-im-venndir) Default Venn diagram with three sets, using a signed incidence matrix as input data.
@@ -321,7 +330,7 @@ one shared by both groups which is assigned to 'A&B'.
 overlaplist <- list(
    A=c("Christina"),
    B=c("James"),
-   "A&B"=c("Jillian", "Zander", "Java Pup")
+   "A&B"=c("Jillian", "Zander")
 )
 str(overlaplist)
 ```
@@ -337,12 +346,11 @@ The `show_labels` argument is described in [Label Content].
 
 (ref:overlaplist-2) Venn diagram after converting an overlap list to `setlist`, showing overlap counts (left), and overlap item labels (right).
 
-```{r overlaplist-2, fig.ncol=2, fig.height=5, fig.width=4, out.width="50%", fig.cap="(ref:overlaplist-2)", fig.alt="(ref:overlaplist-2)", fig.subcap=c("Overlap counts.", "Overlap item labels.")}
+```{r overlaplist-2, fig.ncol=2, fig.height=5, fig.width=5, out.width="50%", fig.cap="(ref:overlaplist-2)", fig.alt="(ref:overlaplist-2)", fig.subcap=c("Overlap counts.", "Overlap item labels.")}
 setlist <- overlaplist2setlist(overlaplist)
 venndir(setlist)
-
 venndir(setlist,keep_item_order=TRUE,
-   item_cex_factor=c(0.5, 0.5, 0.8),
+   item_cex_factor=c(0.6, 0.7, 0.9),
    show_labels="Ni")
 ```
 
@@ -470,11 +478,11 @@ Figure \@ref(fig:import-meme-all) illustrates the process by showing the
 output of `venn_meme()`, with each panel using a slightly longer
 vector of items.
 
-* For 1 item, the output includes one set (not shown).
-* For 2 or 3 items, it produces two sets (a).
-* For 3 to 7 items, a 3-way Venn diagram is created (b)
-* For 8 to 15 items, a 4-way Venn diagram is created (c).
-* For 16 to 31 items, a 5-way Venn diagram is created (d).
+* For 1 item: the output includes one set (not shown).
+* For 2 or 3 items: A 2-way Venn diagram is created (a).
+* For 3 to 7 items: A 3-way Venn diagram is created (b)
+* For 8 to 15 items: A 4-way Venn diagram is created (c).
+* For 16 to 31 items: A 5-way Venn diagram is created (d).
 
 ```{r import-meme-n3, eval=FALSE}
 vm3 <- venn_meme(head(LETTERS, 3))
@@ -483,44 +491,32 @@ vm15 <- venn_meme(head(LETTERS, 15))
 vm31 <- venn_meme(1:31)
 ```
 
-(ref:import-meme-all) Four Venn diagrams showing the output from `venn_meme()` when providing 3, 7, 15, and 31 items, respectively.
+(ref:import-meme-all) Four Venn diagrams showing the output from `venn_meme()` when providing a certain different number of items.
 
-```{r import-meme-all, echo=FALSE, fig.height=8, fig.width=9, out.width="90%", fig.cap="(ref:import-meme-all)", fig.alt="(ref:import-meme-all)"}
-vm3 <- venn_meme(head(LETTERS, 3), do_plot=FALSE, font_cex=0.5, item_cex_factor=0.5)
-vm7 <- venn_meme(head(LETTERS, 7), do_plot=FALSE, font_cex=0.5, item_cex_factor=0.5)
-vm15 <- venn_meme(head(LETTERS, 15), do_plot=FALSE, font_cex=0.5, item_cex_factor=0.5)
+```{r import-meme-all, fig.ncol=2, echo=FALSE, fig.height=5, fig.width=7, out.width="50%", fig.cap="(ref:import-meme-all)", fig.alt="(ref:import-meme-all)", fig.subcap=c("2 or 3 items", "4 to 7 items", "8 to 15 items", "16 to 31 items")}
+vm3 <- venn_meme(head(LETTERS, 3),
+   item_cex_factor=1.5)
+vm7 <- venn_meme(head(LETTERS, 7),
+   item_cex_factor=1.5)
+vm15 <- venn_meme(head(LETTERS, 15),
+   item_cex_factor=1.5)
 vm31 <- venn_meme(1:31,
-   do_plot=FALSE, font_cex=0.5, item_cex_factor=0.5)
-
-use_expand <- -1 * c(0.1, 0.3, 0.1, 0.3);
-
-vm3_gt <- attr(plot(vm3, # main="head(LETTERS, 3)",
-   expand_fraction=c(1,1,1,1)*use_expand*2,
-   do_draw=FALSE), "gtree")
-vm7_gt <- attr(plot(vm7, # main="head(LETTERS, 7)",
-   expand_fraction=c(1,1,1,1)*use_expand*1.5,
-   do_draw=FALSE), "gtree")
-vm15_gt <- attr(plot(vm15, # main="head(LETTERS, 15)",
-   expand_fraction=c(1,2,3.5,2)*use_expand*1.0,
-   do_draw=FALSE), "gtree")
-vm31_gt <- attr(plot(vm31, # main="head(LETTERS, 31)",
-   expand_fraction=c(1,1,1,1)*use_expand,
-   do_draw=FALSE), "gtree")
-
-vm4 <- (wrap_elements(vm3_gt) +
-   wrap_elements(vm7_gt)) /
-   (wrap_elements(vm15_gt) +
-   wrap_elements(vm31_gt)) +
-   plot_layout(widths=c(1, 1)) +
-   plot_annotation(tag_levels='a')
-vm4
-
+   expand_fraction=-0.15,
+   item_cex_factor=1.3)
 ```
 
+:::: {.tipbox data-latex=""}
 
-Tip: A useful by-product of calling `venn_meme()` is the creation
+**Tip:**
+
+A useful by-product of calling `venn_meme()` is the creation
 of a `setlist` or `overlaplist`, without needing to provide
 all the [Venn overlap](#venn-overlap) labels upfront.
+For example, use `setlist(vm3)` to obtain the setlist,
+or `overlaplist(vm3)` to obtain the overlap list,
+created by the call to `venn_meme()`.
+
+::::
 
 ```{r import-meme-n3-setlist}
 vm3 <- venn_meme(head(LETTERS, 3), do_plot=FALSE)
@@ -673,7 +669,7 @@ im <- limma::decideTests(fit3,
    lfc=log2(1.5))
 ```
 
-The resulting [incidence matrix](#incidence-matrix) `im` contains one
+The resulting [incidence matrix](#g-incidence-matrix) `im` contains one
 column per contrast.
 
 When using only a subset of contrasts, use the argument `sets` as
@@ -689,6 +685,8 @@ venndir(im, sets=c(1, 3))
 **DESeq2** [@R-DESeq2] is widely used and excellent for RNA-seq analysis.
 The example below is adapted from `DESeq2::DESeq()` to use three groups:
 `'A'`, `'B'`, `'C'`.
+
+The following code sets up some test data.
 
 ```{r deseq2-example1}
 suppressPackageStartupMessages(library(DESeq2))
@@ -732,7 +730,9 @@ resCA <- results(dds, contrast=c("cond", "C", "A"))
 head(data.frame(check.names=FALSE, resCA))
 ```
 
-```{r deseq2-example2-real}
+(fig:deseq2-example2-real) The first 6 rows following DESeq2 statistical analysis.
+
+```{r deseq2-example2-real, echo=FALSE}
 # Contrast: 'B - A'
 resBA <- results(dds, contrast=c("cond", "B", "A"))
 
@@ -745,11 +745,16 @@ idf$baseMean <- round(idf$baseMean, digits=1)
 idf$log2FoldChange <- round(idf$log2FoldChange, digits=2)
 idf$lfcSE <- round(idf$lfcSE, digits=2)
 idf$stat <- round(idf$stat, digits=2)
+
+# EPUB specific table
 kdf <- knitr::kable(
    booktabs=TRUE,
    idf,
-   caption="The first 6 rows following DESeq2 statistical analysis.") |>
-   kableExtra::column_spec(1, bold=TRUE)
+   caption="The first 6 rows following DESeq2 statistical analysis.")
+kdf <- kdf |>
+   kableExtra::column_spec(1, bold=TRUE,
+      extra_css="white-space: nowrap;")
+kdf <- epub_kdf(kdf)
 kdf
 
 ```
@@ -795,7 +800,7 @@ visualized with `venndir()` in Figure \@ref(fig:deseq2-example4).
 
 (ref:deseq2-example4) Directional Venn diagram comparing statistical hits from two contrasts analyzed using DESeq2.
 
-```{r deseq2-example4, fig.height=5, fig.width=7, out.width="80%", fig.cap="(ref:deseq2-example4)", fig.alt="(ref:deseq2-example4)"}
+```{r deseq2-example4, out.width="80%", fig.cap="(ref:deseq2-example4)", fig.alt="(ref:deseq2-example4)"}
 setlist <- list(
    "B-A"=resBA_hits,
    "C-A"=resCA_hits)

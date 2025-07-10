@@ -1,0 +1,12 @@
+- book_version: "0.1.0"
+  date: 26-June-2025
+  venndir_version: "0.0.57.900"
+  changes:
+    - "Initial release, chapters 1-7"
+    - "Gallery 3 examples"
+
+- book_version: "0.1.1"
+  date: 01-July-2025
+  changes:
+    - "Added Text Venn subsection to chapter 3"
+    - "Gallery: Animal Venn"

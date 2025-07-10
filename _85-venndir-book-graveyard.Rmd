@@ -1,6 +1,16 @@
 
 # Venndir Ebook Graveyard
 
+`r if (knitr::is_latex_output()) '
+
+\\vspace{-1.5em}
+\\begin{wrapfigure}{r}{0.25\\textwidth}
+  \\vspace{-3.5em} % fine-tune vertical alignment
+    \\includegraphics[width=0.23\\textwidth]{images/venndir-hexsticker.png}
+\\end{wrapfigure}
+'`
+
+
 ### Font Challenges
 
 R has a long, storied history with font compatibility.
@@ -235,5 +245,102 @@ out due to non-support, which necessitated replacement.
 In the search for a lightweight replacement, ultimately
 JamPolygons was created.
 
+
+# Gallery
+
+## Venndir Case Studies
+
+### Animal Venn
+
+This example is a rather silly Venn figure, worthy of criticism
+except that it is clearly just intended to be fun. It is effective
+at showing how many animals have such different attributes!
+
+The goal is two-fold: (1) re-create the figure, and (2) see if it
+can be improved.
+
+The figure is difficult to summarize visually, it takes some work to
+read and understand each of the labels, consider what the groups mean,
+and see which animals appear in each location. These observations
+are not necessarily bad - some data *is* complex. Even an imperfect
+or "sub-optimal" figure can be extremely valuable.
+
+My measure of data visualization "value" is iof the effort is
+worth the time spent. For me, if I make one new discovery from
+a figure, it's time well spent. Then again, I do care about
+"How much time?"
+
+My first thought is maybe I could make the figure more intuitive,
+so it takes less time to understand what each circle means.
+
+```{r animal-venn-0}
+set_colors=c(
+   hl="gold",
+   ba="yellowgreen",
+   cs="dodgerblue",
+   hf="grey44")
+animal_labels <- c(
+   hl="Has Legs",
+   ba="Breathes Air",
+   cs="Can Swim",
+   hf="Has Fins")
+animal_sets <- list(
+   cs=c("1", "jellyfish",  "1"),
+   "cs&hf"=c("fish", "sharks")[2],
+   "cs&hf&ba"=c("whales"),
+   "cs&ba"=c("3", "water\nmocassins", "4"),
+   ba=c("earthworms", "5"),
+   hl=c("6", "stone\ncrabs", "7", "8")[1:3],
+   "hl&ba"=c("chickadees", "spiders", "chimpanzees"),
+   "cs&ba&hl"=c("dogs", "ducks", "humans", "sea\nturtles"),
+   "cs&hl"=c("shrimp", "9")
+)
+vm <- venn_meme(animal_sets,
+   do_draw=FALSE,
+   setlist_labels=animal_labels,
+   rotate_degrees=-100,
+   circle_nudge=list(
+      hl=c(-0.1, 0.1),
+      hf=c(0.1, -0.1),
+      ba=c(0.3, -0.01)
+   ),
+   segment_method="nearest",
+   min_degrees=10,
+   keep_item_order=FALSE,
+   proportional=TRUE,
+   show_labels="Ni",
+   item_cex_factor=1,
+   item_cex=c(1, 1),
+   item_buffer=-0.2,
+   label_style="fill box",
+   # shape="ellipse",
+   poly_alpha=0.2,
+   innerborder.lwd=0,
+   outerborder.lwd=1,
+   expand_fraction=-0.1,
+   set_colors=set_colors)
+
+# replace number labels with spaces
+nsp <- function(x){
+   xu <- grep("^[0-9]+$", x)
+   x[xu] <- " ";
+   x
+}
+vm@label_df$items <- lapply(vm@label_df$items, nsp)
+
+vm2 <- nudge_venndir_label(vm, label_location="outside",
+   offset_list=list("hf"=c(0.07, -0.10),
+      cs=c(0.02, -0.25),
+      ba=c(-0.12, 0), hl=c(-0.47, 0.04)))
+vm3 <- plot(vm2,
+   show_segments=FALSE,
+   xyratio=1.4,
+   # label_method="columns",
+   item_cex_factor=1.3,
+   item_buffer=-0.2,
+   innerborder.lwd=0,
+   outerborder.lwd=2,
+   expand_fraction=-0.1)
+```
 
 

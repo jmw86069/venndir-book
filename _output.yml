@@ -5,6 +5,7 @@ bookdown::gitbook:
   highlight: pygments
   fig_caption: yes
   df_print: kable
+  cover-image: "images/venndir-cover.png"
   config:
     favicon: favicon.ico
     toc:
@@ -29,7 +30,7 @@ bookdown::pdf_book:
   df_print: kable
   keep_tex: yes
   dev: cairo_pdf
-  monofontoptions: "Scale=0.7"
+  monofontoptions: "Scale=0.60"
   includes:
     in_header: latex/preamble.tex
     before_body: latex/frontpage.tex
