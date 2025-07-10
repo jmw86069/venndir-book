@@ -50,8 +50,8 @@ knitr::opts_chunk$set(
    ),
    width=if (knitr::pandoc_to() == "epub3") 50 else 80,
    out.width='80%',
-   fig.width=10,
-   fig.height=8
+   fig.width=7,
+   fig.height=5
 )
 options(knitr.kable.NA='',
    kableEtxra.latex.load_packages=FALSE)

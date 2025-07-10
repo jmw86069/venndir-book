@@ -1316,7 +1316,7 @@ as shown in  [Customize the Symbols]. The value can be a string, or even
 [markdown](#g-markdown), described in [Venndir Markdown Support].
 The custom value is also shown in the legend.
 
-Figure \@ref(fig:advanced-signs-1d) demonstrates how to customize `curate_df`,
+Figure \@ref(fig:advanced-signs-1e) demonstrates how to customize `curate_df`,
 matching the sign values 'up' and 'dn', and converts them to new
 Unicode characters.
 
@@ -1331,11 +1331,11 @@ v <- venndir(setlist2,
    overlap_type="each")
 ```
 
-(ref:advanced-signs-1d) Venndir showing the custom signs 'up' and 'down' used to produce Unicode signs as before.
+(ref:advanced-signs-1e) Venndir showing the custom signs 'up' and 'down' used to produce Unicode signs as before.
 
-```{r advanced-signs-1d, fig.height=5, fig.width=6, echo=FALSE, fig.cap="(ref:advanced-signs-1d)", fig.alt="(ref:advanced-signs-1d)", dependson="advanced-signs-1"}
+```{r advanced-signs-1e, fig.height=5, fig.width=6, echo=FALSE, fig.cap="(ref:advanced-signs-1e)", fig.alt="(ref:advanced-signs-1e)", dependson="advanced-signs-1", cache=FALSE}
 curate_df <- get_venndir_curate_df()
-#
+
 du_match <- match(c("-1", "1"), curate_df$from)
 curate_df[du_match, "from"] <- c("dn", "up")
 curate_df[du_match, "sign"] <- c("\u21E9", "\u21E7")

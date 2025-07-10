@@ -87,7 +87,7 @@ In Figure \@ref(fig:input-list-venndir) there are no
 
 (ref:input-list-venndir) Default Venn diagram with three sets.
 
-```{r input-list-venndir, fig.height=6, fig.cap="(ref:input-list-venndir)", fig.alt="(ref:input-list-venndir)"}
+```{r input-list-venndir, fig.width=6, fig.height=5, fig.cap="(ref:input-list-venndir)", fig.alt="(ref:input-list-venndir)"}
 venndir(setlist)
 ```
 

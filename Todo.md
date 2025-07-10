@@ -3,6 +3,8 @@
 
 ## To Consider
 
+* About the cover image - Christina Ward
+* Change "What is a Venn Diagram?" to "What is a Venndir Diagram?"?
 * Add "How to Cite This Book"
 
 ```

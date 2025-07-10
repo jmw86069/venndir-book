@@ -2106,7 +2106,7 @@ setlist <- make_venn_test(set_names=LETTERS[1:3])
 textvenn(setlist, sets=c(1, 3))
 ```
 
-```{r textvenn-1-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis'}
+```{r textvenn-1-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis', dependson="html-latex-color"}
 setlist <- make_venn_test(set_names=LETTERS[1:3])
 #
 tvt <- capture.output(textvenn(setlist, sets=c(1, 3), htmlOut=TRUE))
@@ -2134,7 +2134,7 @@ textvenn(setlist)
 textvenn(setlist, htmlOut=TRUE)
 ```
 
-```{r textvenn-3-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis'}
+```{r textvenn-3-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis', dependson="html-latex-color"}
 tvt <- capture.output(textvenn(setlist, htmlOut=TRUE))
 #
 tv_text <- html_to_latex_color(tvt);
@@ -2160,7 +2160,7 @@ textvenn(setlist3, htmlOut=TRUE)
 
 
 
-```{r textvenn-4-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis'}
+```{r textvenn-4-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis', dependson="html-latex-color"}
 setlist3 <- make_venn_test(set_names=LETTERS[1:3],
    do_signed=TRUE)
 #
@@ -2180,14 +2180,14 @@ textvenn(setlist3,
    template="tall")
 ```
 
-```{r textvenn-5-html, echo=FALSE, eval=knitr::is_html_output(), results='asis'}
+```{r textvenn-5-html, echo=FALSE, eval=knitr::is_html_output(), results='asis', dependson="textvenn-4-html"}
 textvenn(setlist3,
    overlap_type="each",
    htmlOut=TRUE,
    template="tall")
 ```
 
-```{r textvenn-5-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis'}
+```{r textvenn-5-latex, echo=FALSE, eval=knitr::is_latex_output(), comment='', results='asis', dependson="html-latex-color"}
 tvt <- capture.output(textvenn(setlist3,
    overlap_type="each",
    htmlOut=TRUE,

@@ -13,7 +13,9 @@ _bookdown_files/
 _main.Rmd
 _main.tex
 _main.rds
-
+_main_cache/
+_main_files/
+index_files/
 
 # Ignore LaTeX and knitr temp files
 *.aux
