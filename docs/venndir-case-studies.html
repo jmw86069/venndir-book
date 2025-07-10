@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -408,8 +409,6 @@ Venn diagrams <span class="citation">(<a href="#ref-Seehawer_2024">Seehawer et a
 The Venndir output is nearly identical,
 differing only by <code>1</code> gene each in the 67NR-specific overlap -
 most likely a discrepancy by rounding error.</p>
-<pre><code>## 168FARN Kmt2c.KO 168FARN Kmt2d.KO    67NR Kmt2c.KO    67NR Kmt2d.KO 
-##              904              763             6002             4759</code></pre>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:seehawer-2"></span>
 <img src="_main_files/figure-html/seehawer-2-1.png" alt="Venndir re-creation of Seehawer Ext. Fig 4h." width="100%" />
@@ -433,7 +432,7 @@ Figure 5.9: Venndir re-creation of Seehawer Ext. Fig 4h, using the complete set 
 <ul>
 <li>For <em>Kmt2c</em>_KO (left) and <em>Kmt2d</em>_KO (right), the shared genes
 represent a higher proportion of the Venn diagrams than in Seehawer.</li>
-<li>The increase in shared genes suggests that the increase is caused by
+<li>This increase in shared genes suggests that the increase is caused by
 discordant changes.</li>
 </ul>
 <p>The second row summarizes the overlap direction by <code>'agreement'</code>, described in <a href="venndir-labels.html#overlap-type">Overlap Type</a>, using <code>'='</code> for agreement, and <code>'X'</code> for disagreement.</p>

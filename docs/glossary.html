@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -635,6 +636,21 @@ sign values <code>-1</code> and <code>1</code>, there may be four tabulated valu
 </ul>
 </dd>
 </dl>
+<div id="hidden-overlaps-glossary">
+
+</div>
+<dl>
+<dt>hidden overlaps</dt>
+<dd>
+A <a href="glossary.html#venn-overlap">Venn overlap</a> which cannot be represented in a Venn
+or proportional Euler diagram, usually due to geometric constraints.
+For three or more sets, proportional Euler diagrams are not guaranteed
+to have a geometric solution when using circle or ellipse shapes.
+</dd>
+</dl>
+<p>In Venndir, hidden overlaps are indicated by placing a footnote symbol
+<span class="math inline">\(†\)</span>, also called a 'dagger', in the bottom-right corner
+of the figure.</p>
 <div id="matrix">
 
 </div>
@@ -666,7 +682,7 @@ an empty value.</p>
 <dl>
 <dt>signed incidence matrix</dt>
 <dd>
-<p>An enhanced <a href="common-data-input-types.html#incidence-matrix">incidence matrix</a> that represents
+<p>An enhanced <a href="glossary.html#g-incidence-matrix">incidence matrix</a> that represents
 set membership and directional sign.
 A signed incidence matrix encodes sign as the matrix value,
 usually values such as:</p>

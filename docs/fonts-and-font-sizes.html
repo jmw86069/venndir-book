@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -399,8 +400,8 @@ Figure 3.31: Venn diagram showing modifications to font sizes by adjusting the a
 </p>
 </div>
 <p>The last example (bottom-right panel) was created using the following code:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="fonts-and-font-sizes.html#cb71-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>),</span>
-<span id="cb71-2"><a href="fonts-and-font-sizes.html#cb71-2" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">1.3</span>, <span class="fl">0.8</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="fonts-and-font-sizes.html#cb70-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>),</span>
+<span id="cb70-2"><a href="fonts-and-font-sizes.html#cb70-2" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">1.3</span>, <span class="fl">0.8</span>))</span></code></pre></div>
 </div>
 <div id="overall-font-family" class="section level3 hasAnchor" number="3.5.2">
 <h3><span class="header-section-number">3.5.2</span> Overall Font Family<a href="fonts-and-font-sizes.html#overall-font-family" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -410,14 +411,14 @@ the argument <code>fontfamily</code>, for which the default is <code>fontfamily=
 <p>Figure <a href="fonts-and-font-sizes.html#fig:family-1">3.32</a> uses the R 'serif' font, with <code>fontfamily='serif'</code>.
 .</p>
 
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="fonts-and-font-sizes.html#cb72-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">n_sets=</span><span class="dv">3</span>, <span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
-<span id="cb72-2"><a href="fonts-and-font-sizes.html#cb72-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
-<span id="cb72-3"><a href="fonts-and-font-sizes.html#cb72-3" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;fontfamily=&#39;serif&#39;&quot;</span>,</span>
-<span id="cb72-4"><a href="fonts-and-font-sizes.html#cb72-4" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;serif&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="fonts-and-font-sizes.html#cb71-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">n_sets=</span><span class="dv">3</span>, <span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
+<span id="cb71-2"><a href="fonts-and-font-sizes.html#cb71-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
+<span id="cb71-3"><a href="fonts-and-font-sizes.html#cb71-3" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;fontfamily=&#39;serif&#39;&quot;</span>,</span>
+<span id="cb71-4"><a href="fonts-and-font-sizes.html#cb71-4" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;serif&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:family-1"></span>
-<img src="_main_files/figure-html/family-1-1.png" alt="Venn diagram showing two sets, with all labels shown using a serif font, such as 'Times'." width="80%" />
+<img src="_main_files/figure-html/family-1-1.png" alt="Venn diagram showing two sets, with all labels shown using a serif font, such as 'Times' or 'Times New Roman'." width="80%" />
 <p class="caption">
-Figure 3.32: Venn diagram showing two sets, with all labels shown using a serif font, such as 'Times'.
+Figure 3.32: Venn diagram showing two sets, with all labels shown using a serif font, such as 'Times' or 'Times New Roman'.
 </p>
 </div>
 <p>Note that all the labels use 'serif' now, including in the legend.</p>
@@ -427,21 +428,21 @@ This type of plot can be created using <code>venndir()</code>
 with argument <code>show_labels="Ni"</code>, to place set name 'N' outside,
 and item labels 'i' inside.</p>
 
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="fonts-and-font-sizes.html#cb73-1" tabindex="-1"></a>petlist <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb73-2"><a href="fonts-and-font-sizes.html#cb73-2" tabindex="-1"></a>   <span class="at">Dog=</span><span class="fu">c</span>(<span class="st">&quot;Needs walks&quot;</span>, <span class="st">&quot;Barks&quot;</span>, <span class="st">&quot;Round eyes&quot;</span>),</span>
-<span id="cb73-3"><a href="fonts-and-font-sizes.html#cb73-3" tabindex="-1"></a>   <span class="at">Cat=</span><span class="fu">c</span>(<span class="st">&quot;Free roam&quot;</span>, <span class="st">&quot;Meows&quot;</span>, <span class="st">&quot;Thin pupils&quot;</span>),</span>
-<span id="cb73-4"><a href="fonts-and-font-sizes.html#cb73-4" tabindex="-1"></a>   <span class="st">&quot;Dog&amp;Cat&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Furry&quot;</span>, <span class="st">&quot;Has claws&quot;</span>, <span class="st">&quot;Lovable&quot;</span>))</span>
-<span id="cb73-5"><a href="fonts-and-font-sizes.html#cb73-5" tabindex="-1"></a>petsetlist <span class="ot">&lt;-</span> <span class="fu">overlaplist2setlist</span>(petlist)</span>
-<span id="cb73-6"><a href="fonts-and-font-sizes.html#cb73-6" tabindex="-1"></a></span>
-<span id="cb73-7"><a href="fonts-and-font-sizes.html#cb73-7" tabindex="-1"></a>petv <span class="ot">&lt;-</span> <span class="fu">venndir</span>(petsetlist,</span>
-<span id="cb73-8"><a href="fonts-and-font-sizes.html#cb73-8" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">1.5</span>,</span>
-<span id="cb73-9"><a href="fonts-and-font-sizes.html#cb73-9" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fl">0.8</span>,</span>
-<span id="cb73-10"><a href="fonts-and-font-sizes.html#cb73-10" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
-<span id="cb73-11"><a href="fonts-and-font-sizes.html#cb73-11" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
-<span id="cb73-12"><a href="fonts-and-font-sizes.html#cb73-12" tabindex="-1"></a>   <span class="at">show_segment=</span><span class="cn">FALSE</span>,</span>
-<span id="cb73-13"><a href="fonts-and-font-sizes.html#cb73-13" tabindex="-1"></a>   <span class="at">keep_item_order=</span><span class="cn">TRUE</span>,</span>
-<span id="cb73-14"><a href="fonts-and-font-sizes.html#cb73-14" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="dv">0</span>, <span class="at">xyratio=</span><span class="dv">2</span>,</span>
-<span id="cb73-15"><a href="fonts-and-font-sizes.html#cb73-15" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;Optima&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="fonts-and-font-sizes.html#cb72-1" tabindex="-1"></a>petlist <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb72-2"><a href="fonts-and-font-sizes.html#cb72-2" tabindex="-1"></a>   <span class="at">Dog=</span><span class="fu">c</span>(<span class="st">&quot;Needs walks&quot;</span>, <span class="st">&quot;Barks&quot;</span>, <span class="st">&quot;Round eyes&quot;</span>),</span>
+<span id="cb72-3"><a href="fonts-and-font-sizes.html#cb72-3" tabindex="-1"></a>   <span class="at">Cat=</span><span class="fu">c</span>(<span class="st">&quot;Freely roams&quot;</span>, <span class="st">&quot;Meows&quot;</span>, <span class="st">&quot;Thin pupils&quot;</span>),</span>
+<span id="cb72-4"><a href="fonts-and-font-sizes.html#cb72-4" tabindex="-1"></a>   <span class="st">&quot;Dog&amp;Cat&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Furry&quot;</span>, <span class="st">&quot;Has claws&quot;</span>, <span class="st">&quot;Lovable&quot;</span>))</span>
+<span id="cb72-5"><a href="fonts-and-font-sizes.html#cb72-5" tabindex="-1"></a>petsetlist <span class="ot">&lt;-</span> <span class="fu">overlaplist2setlist</span>(petlist)</span>
+<span id="cb72-6"><a href="fonts-and-font-sizes.html#cb72-6" tabindex="-1"></a></span>
+<span id="cb72-7"><a href="fonts-and-font-sizes.html#cb72-7" tabindex="-1"></a>petv <span class="ot">&lt;-</span> <span class="fu">venndir</span>(petsetlist,</span>
+<span id="cb72-8"><a href="fonts-and-font-sizes.html#cb72-8" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">1.5</span>,</span>
+<span id="cb72-9"><a href="fonts-and-font-sizes.html#cb72-9" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fl">1.0</span>,</span>
+<span id="cb72-10"><a href="fonts-and-font-sizes.html#cb72-10" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
+<span id="cb72-11"><a href="fonts-and-font-sizes.html#cb72-11" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
+<span id="cb72-12"><a href="fonts-and-font-sizes.html#cb72-12" tabindex="-1"></a>   <span class="at">show_segment=</span><span class="cn">FALSE</span>,</span>
+<span id="cb72-13"><a href="fonts-and-font-sizes.html#cb72-13" tabindex="-1"></a>   <span class="at">keep_item_order=</span><span class="cn">TRUE</span>,</span>
+<span id="cb72-14"><a href="fonts-and-font-sizes.html#cb72-14" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="dv">0</span>, <span class="at">xyratio=</span><span class="fl">1.7</span>,</span>
+<span id="cb72-15"><a href="fonts-and-font-sizes.html#cb72-15" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;Optima&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:family-2"></span>
 <img src="_main_files/figure-html/family-2-1.png" alt="Venn diagram showing Two sets 'Dogs' and 'Cats' with some attributes unique to each, and shared by both. The item labels use the 'Optima' font." width="80%" />
 <p class="caption">
@@ -463,16 +464,16 @@ higher values tend to produce single column output.</li>
 </ul>
 <p>Item labels can be displayed using <code>venn_meme()</code>.</p>
 
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="fonts-and-font-sizes.html#cb74-1" tabindex="-1"></a>petlist <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb74-2"><a href="fonts-and-font-sizes.html#cb74-2" tabindex="-1"></a>   <span class="at">Dog=</span><span class="fu">c</span>(<span class="st">&quot;Needs walks&quot;</span>, <span class="st">&quot;Barks&quot;</span>, <span class="st">&quot;Round eyes&quot;</span>),</span>
-<span id="cb74-3"><a href="fonts-and-font-sizes.html#cb74-3" tabindex="-1"></a>   <span class="at">Cat=</span><span class="fu">c</span>(<span class="st">&quot;Free roam&quot;</span>, <span class="st">&quot;Meows&quot;</span>, <span class="st">&quot;Thin pupils&quot;</span>),</span>
-<span id="cb74-4"><a href="fonts-and-font-sizes.html#cb74-4" tabindex="-1"></a>   <span class="st">&quot;Dog&amp;Cat&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Furry&quot;</span>, <span class="st">&quot;Has claws&quot;</span>, <span class="st">&quot;Lovable&quot;</span>))</span>
-<span id="cb74-5"><a href="fonts-and-font-sizes.html#cb74-5" tabindex="-1"></a><span class="fu">venn_meme</span>(petlist,</span>
-<span id="cb74-6"><a href="fonts-and-font-sizes.html#cb74-6" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">1.5</span>,</span>
-<span id="cb74-7"><a href="fonts-and-font-sizes.html#cb74-7" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fl">0.8</span>,</span>
-<span id="cb74-8"><a href="fonts-and-font-sizes.html#cb74-8" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="dv">0</span>, <span class="at">xyratio=</span><span class="fl">1.5</span>,</span>
-<span id="cb74-9"><a href="fonts-and-font-sizes.html#cb74-9" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;Optima&quot;</span>,</span>
-<span id="cb74-10"><a href="fonts-and-font-sizes.html#cb74-10" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="fonts-and-font-sizes.html#cb73-1" tabindex="-1"></a>petlist <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb73-2"><a href="fonts-and-font-sizes.html#cb73-2" tabindex="-1"></a>   <span class="at">Dog=</span><span class="fu">c</span>(<span class="st">&quot;Needs walks&quot;</span>, <span class="st">&quot;Barks&quot;</span>, <span class="st">&quot;Round eyes&quot;</span>),</span>
+<span id="cb73-3"><a href="fonts-and-font-sizes.html#cb73-3" tabindex="-1"></a>   <span class="at">Cat=</span><span class="fu">c</span>(<span class="st">&quot;Freely roams&quot;</span>, <span class="st">&quot;Meows&quot;</span>, <span class="st">&quot;Thin pupils&quot;</span>),</span>
+<span id="cb73-4"><a href="fonts-and-font-sizes.html#cb73-4" tabindex="-1"></a>   <span class="st">&quot;Dog&amp;Cat&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Furry&quot;</span>, <span class="st">&quot;Has claws&quot;</span>, <span class="st">&quot;Lovable&quot;</span>))</span>
+<span id="cb73-5"><a href="fonts-and-font-sizes.html#cb73-5" tabindex="-1"></a><span class="fu">venn_meme</span>(petlist,</span>
+<span id="cb73-6"><a href="fonts-and-font-sizes.html#cb73-6" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="dv">2</span>,</span>
+<span id="cb73-7"><a href="fonts-and-font-sizes.html#cb73-7" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fl">1.0</span>,</span>
+<span id="cb73-8"><a href="fonts-and-font-sizes.html#cb73-8" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="dv">0</span>, <span class="at">xyratio=</span><span class="fl">1.7</span>,</span>
+<span id="cb73-9"><a href="fonts-and-font-sizes.html#cb73-9" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;Optima&quot;</span>,</span>
+<span id="cb73-10"><a href="fonts-and-font-sizes.html#cb73-10" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:family-3"></span>
 <img src="_main_files/figure-html/family-3-1.png" alt="Venn diagram showing Two sets 'Dogs' and 'Cats', this time created using venn_meme(). The item labels use the 'Optima' font." width="80%" />
 <p class="caption">
@@ -494,16 +495,16 @@ This argument expects a <code>list</code> with these elements:</p>
 two fonts for "count" which corresponds to the <a href="glossary.html#main-counts">main counts</a>, and
 the percentage of counts, in order.</p>
 
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="fonts-and-font-sizes.html#cb75-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
-<span id="cb75-2"><a href="fonts-and-font-sizes.html#cb75-2" tabindex="-1"></a><span class="fu">venndir</span>(setlist,</span>
-<span id="cb75-3"><a href="fonts-and-font-sizes.html#cb75-3" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ncps&quot;</span>,</span>
-<span id="cb75-4"><a href="fonts-and-font-sizes.html#cb75-4" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Main Title (Times New Roman)&quot;</span>,</span>
-<span id="cb75-5"><a href="fonts-and-font-sizes.html#cb75-5" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;Times New Roman&quot;</span>,</span>
-<span id="cb75-6"><a href="fonts-and-font-sizes.html#cb75-6" tabindex="-1"></a>   <span class="at">y_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;lines&quot;</span>),</span>
-<span id="cb75-7"><a href="fonts-and-font-sizes.html#cb75-7" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="fl">0.15</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
-<span id="cb75-8"><a href="fonts-and-font-sizes.html#cb75-8" tabindex="-1"></a>   <span class="at">fontfamilies=</span><span class="fu">list</span>(<span class="at">overlap=</span><span class="st">&quot;Optima&quot;</span>,</span>
-<span id="cb75-9"><a href="fonts-and-font-sizes.html#cb75-9" tabindex="-1"></a>      <span class="at">count=</span><span class="fu">c</span>(<span class="st">&quot;Arial Black&quot;</span>, <span class="st">&quot;Times&quot;</span>),</span>
-<span id="cb75-10"><a href="fonts-and-font-sizes.html#cb75-10" tabindex="-1"></a>      <span class="at">signed=</span><span class="st">&quot;Arial Narrow&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="fonts-and-font-sizes.html#cb74-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
+<span id="cb74-2"><a href="fonts-and-font-sizes.html#cb74-2" tabindex="-1"></a><span class="fu">venndir</span>(setlist,</span>
+<span id="cb74-3"><a href="fonts-and-font-sizes.html#cb74-3" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ncps&quot;</span>,</span>
+<span id="cb74-4"><a href="fonts-and-font-sizes.html#cb74-4" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Main Title (Times New Roman)&quot;</span>,</span>
+<span id="cb74-5"><a href="fonts-and-font-sizes.html#cb74-5" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;Times New Roman&quot;</span>,</span>
+<span id="cb74-6"><a href="fonts-and-font-sizes.html#cb74-6" tabindex="-1"></a>   <span class="at">y_inset=</span>grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">&quot;lines&quot;</span>),</span>
+<span id="cb74-7"><a href="fonts-and-font-sizes.html#cb74-7" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="fl">0.15</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb74-8"><a href="fonts-and-font-sizes.html#cb74-8" tabindex="-1"></a>   <span class="at">fontfamilies=</span><span class="fu">list</span>(<span class="at">overlap=</span><span class="st">&quot;Optima&quot;</span>,</span>
+<span id="cb74-9"><a href="fonts-and-font-sizes.html#cb74-9" tabindex="-1"></a>      <span class="at">count=</span><span class="fu">c</span>(<span class="st">&quot;Arial Black&quot;</span>, <span class="st">&quot;Times&quot;</span>),</span>
+<span id="cb74-10"><a href="fonts-and-font-sizes.html#cb74-10" tabindex="-1"></a>      <span class="at">signed=</span><span class="st">&quot;Arial Narrow&quot;</span>))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:fontfamilies-1"></span>
 <img src="_main_files/figure-html/fontfamilies-1-1.png" alt="Venn diagram showing distinct font families used for each type of label: overlap, count, and signed." width="80%" />
 <p class="caption">
@@ -539,7 +540,8 @@ R package <span class="citation">(<a href="#ref-R-marquee">Pedersen and Mitáš 
 fonts on the system running R. The following example demonstrates how
 to summarize available fonts for 'Helvetica Neue', shown in
 Table <a href="fonts-and-font-sizes.html#tab:systemfonts-1">3.5</a>.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="fonts-and-font-sizes.html#cb76-1" tabindex="-1"></a><span class="fu">subset_systemfonts</span>(<span class="fu">grepl</span>(<span class="st">&quot;Helvetica Neue&quot;</span>, family))</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="fonts-and-font-sizes.html#cb75-1" tabindex="-1"></a><span class="fu">subset_systemfonts</span>(<span class="fu">grepl</span>(<span class="st">&quot;Helvetica Neue&quot;</span>, family))</span></code></pre></div>
+<p>(fig:systemfonts-1) Partial summary of 'Helvetica Neue' fonts via systemfonts.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:systemfonts-1">Table 3.5: </span><span id="tab:systemfonts-1">Table 3.6: </span>Partial summary of 'Helvetica Neue' fonts via systemfonts.
@@ -565,7 +567,7 @@ weight
 <td style="text-align:left;">
 HelveticaNeue-UltraLight
 </td>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 Helvetica Neue
 </td>
 <td style="text-align:left;">
@@ -579,7 +581,7 @@ thin
 <td style="text-align:left;">
 HelveticaNeue-Thin
 </td>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 Helvetica Neue
 </td>
 <td style="text-align:left;">
@@ -593,7 +595,7 @@ ultralight
 <td style="text-align:left;">
 HelveticaNeue-Light
 </td>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 Helvetica Neue
 </td>
 <td style="text-align:left;">
@@ -607,7 +609,7 @@ light
 <td style="text-align:left;">
 HelveticaNeue
 </td>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 Helvetica Neue
 </td>
 <td style="text-align:left;">
@@ -621,7 +623,7 @@ normal
 <td style="text-align:left;">
 HelveticaNeue-Medium
 </td>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 Helvetica Neue
 </td>
 <td style="text-align:left;">
@@ -635,7 +637,7 @@ medium
 <td style="text-align:left;">
 HelveticaNeue-Bold
 </td>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 Helvetica Neue
 </td>
 <td style="text-align:left;">
@@ -649,7 +651,7 @@ bold
 <td style="text-align:left;">
 HelveticaNeue-CondensedBold
 </td>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 Helvetica Neue
 </td>
 <td style="text-align:left;">
@@ -663,7 +665,7 @@ bold
 <td style="text-align:left;">
 HelveticaNeue-CondensedBlack
 </td>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 Helvetica Neue
 </td>
 <td style="text-align:left;">
@@ -677,7 +679,7 @@ heavy
 <td style="text-align:left;">
 HelveticaNeue-UltraLightItalic
 </td>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 Helvetica Neue
 </td>
 <td style="text-align:left;">
@@ -685,76 +687,6 @@ UltraLight Italic
 </td>
 <td style="text-align:left;">
 thin
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-HelveticaNeue-ThinItalic
-</td>
-<td style="text-align:left;font-weight: bold;">
-Helvetica Neue
-</td>
-<td style="text-align:left;">
-Thin Italic
-</td>
-<td style="text-align:left;">
-ultralight
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-HelveticaNeue-LightItalic
-</td>
-<td style="text-align:left;font-weight: bold;">
-Helvetica Neue
-</td>
-<td style="text-align:left;">
-Light Italic
-</td>
-<td style="text-align:left;">
-light
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-HelveticaNeue-Italic
-</td>
-<td style="text-align:left;font-weight: bold;">
-Helvetica Neue
-</td>
-<td style="text-align:left;">
-Italic
-</td>
-<td style="text-align:left;">
-normal
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-HelveticaNeue-MediumItalic
-</td>
-<td style="text-align:left;font-weight: bold;">
-Helvetica Neue
-</td>
-<td style="text-align:left;">
-Medium Italic
-</td>
-<td style="text-align:left;">
-medium
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-HelveticaNeue-BoldItalic
-</td>
-<td style="text-align:left;font-weight: bold;">
-Helvetica Neue
-</td>
-<td style="text-align:left;">
-Bold Italic
-</td>
-<td style="text-align:left;">
-bold
 </td>
 </tr>
 </tbody>
@@ -768,11 +700,13 @@ basic way of viewing the resulting fonts. Note that there are no provisions
 to prevent overlapping labels, so this approach is considered as a
 "quick check" to view only a few fonts.</p>
 
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="fonts-and-font-sizes.html#cb77-1" tabindex="-1"></a>ss <span class="ot">&lt;-</span> <span class="fu">subset_systemfonts</span>(<span class="fu">grepl</span>(<span class="st">&quot;Helvetica&quot;</span>, family), <span class="at">do_plot=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="fonts-and-font-sizes.html#cb76-1" tabindex="-1"></a>ss <span class="ot">&lt;-</span> <span class="fu">subset_systemfonts</span>(</span>
+<span id="cb76-2"><a href="fonts-and-font-sizes.html#cb76-2" tabindex="-1"></a>   <span class="fu">grepl</span>(<span class="st">&quot;Helvetica&quot;</span>, family),</span>
+<span id="cb76-3"><a href="fonts-and-font-sizes.html#cb76-3" tabindex="-1"></a>   <span class="at">do_plot=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:systemfonts-2"></span>
-<img src="_main_files/figure-html/systemfonts-2-1.png" alt="Quick check of available fonts where the family name contains 'Helvetica'." width="80%" />
+<img src="_main_files/figure-html/systemfonts-2-1.png" alt="Graphical output as a "quick check" of fonts where that match the subset_systemfonts() output. These fonts show fonts where 'family' contains 'Helvetica'." width="80%" />
 <p class="caption">
-Figure 3.36: Quick check of available fonts where the family name contains 'Helvetica'.
+Figure 3.36: Graphical output as a "quick check" of fonts where that match the <code>subset_systemfonts()</code> output. These fonts show fonts where 'family' contains 'Helvetica'.
 </p>
 </div>
 </div>
@@ -792,9 +726,9 @@ The typical defaults, for example:
 for example 'DejaVu Sans' or 'Helvetica'.</p>
 <p>The font substitutions can be pre-defined, see <code>systemfonts::font_fallback()</code>.</p>
 <p>To review the font substitution, one can use <code>systemfonts::font_info()</code>
-in the simple example below, however there is much more capability
-described in the systemfonts documentation.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="fonts-and-font-sizes.html#cb78-1" tabindex="-1"></a><span class="fu">data.frame</span>(systemfonts<span class="sc">::</span><span class="fu">font_info</span>(<span class="st">&quot;sans&quot;</span>)[, <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>])</span></code></pre></div>
+in the simple example below, shown in Table <a href="fonts-and-font-sizes.html#tab:systemfonts-3">3.7</a>.
+There are many more options described in the systemfonts documentation.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="fonts-and-font-sizes.html#cb77-1" tabindex="-1"></a><span class="fu">data.frame</span>(systemfonts<span class="sc">::</span><span class="fu">font_info</span>(<span class="st">&quot;sans&quot;</span>)[, <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>])</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:systemfonts-3">Table 3.7: </span><span id="tab:systemfonts-3">Table 3.8: </span>Output from the font info function in systemfonts showing the font substitution for 'sans'.
@@ -838,7 +772,7 @@ width
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 Helvetica
 </td>
 <td style="text-align:left;">

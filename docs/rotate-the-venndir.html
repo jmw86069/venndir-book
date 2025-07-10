@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -335,20 +336,20 @@ is created.</p>
 <p>The default 3-way Venn diagram has 60-degree symmetry, so rotations
 with multiples of 30 degrees tend to work best.</p>
 
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="rotate-the-venndir.html#cb110-1" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(),</span>
-<span id="cb110-2"><a href="rotate-the-venndir.html#cb110-2" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;rotated 0{.sup o}&quot;</span>,</span>
-<span id="cb110-3"><a href="rotate-the-venndir.html#cb110-3" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">0</span>)</span>
-<span id="cb110-4"><a href="rotate-the-venndir.html#cb110-4" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(),</span>
-<span id="cb110-5"><a href="rotate-the-venndir.html#cb110-5" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;rotated 60{.sup o}&quot;</span>,</span>
-<span id="cb110-6"><a href="rotate-the-venndir.html#cb110-6" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">60</span>)</span>
-<span id="cb110-7"><a href="rotate-the-venndir.html#cb110-7" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(),</span>
-<span id="cb110-8"><a href="rotate-the-venndir.html#cb110-8" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>,</span>
-<span id="cb110-9"><a href="rotate-the-venndir.html#cb110-9" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;rotated 0{.sup o}&quot;</span>,</span>
-<span id="cb110-10"><a href="rotate-the-venndir.html#cb110-10" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">0</span>)</span>
-<span id="cb110-11"><a href="rotate-the-venndir.html#cb110-11" tabindex="-1"></a>v4 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(),</span>
-<span id="cb110-12"><a href="rotate-the-venndir.html#cb110-12" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>,</span>
-<span id="cb110-13"><a href="rotate-the-venndir.html#cb110-13" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;rotated 90{.sup o}&quot;</span>,</span>
-<span id="cb110-14"><a href="rotate-the-venndir.html#cb110-14" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">90</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="rotate-the-venndir.html#cb109-1" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(),</span>
+<span id="cb109-2"><a href="rotate-the-venndir.html#cb109-2" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;rotated 0{.sup o}&quot;</span>,</span>
+<span id="cb109-3"><a href="rotate-the-venndir.html#cb109-3" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">0</span>)</span>
+<span id="cb109-4"><a href="rotate-the-venndir.html#cb109-4" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(),</span>
+<span id="cb109-5"><a href="rotate-the-venndir.html#cb109-5" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;rotated 60{.sup o}&quot;</span>,</span>
+<span id="cb109-6"><a href="rotate-the-venndir.html#cb109-6" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">60</span>)</span>
+<span id="cb109-7"><a href="rotate-the-venndir.html#cb109-7" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(),</span>
+<span id="cb109-8"><a href="rotate-the-venndir.html#cb109-8" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>,</span>
+<span id="cb109-9"><a href="rotate-the-venndir.html#cb109-9" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;rotated 0{.sup o}&quot;</span>,</span>
+<span id="cb109-10"><a href="rotate-the-venndir.html#cb109-10" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">0</span>)</span>
+<span id="cb109-11"><a href="rotate-the-venndir.html#cb109-11" tabindex="-1"></a>v4 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(),</span>
+<span id="cb109-12"><a href="rotate-the-venndir.html#cb109-12" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>,</span>
+<span id="cb109-13"><a href="rotate-the-venndir.html#cb109-13" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;rotated 90{.sup o}&quot;</span>,</span>
+<span id="cb109-14"><a href="rotate-the-venndir.html#cb109-14" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">90</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:rotate-venndir"></span>
 <img src="_main_files/figure-html/rotate-venndir-1.png" alt="Several examples of rotated Venn and Euler diagrams." width="50%" /><img src="_main_files/figure-html/rotate-venndir-2.png" alt="Several examples of rotated Venn and Euler diagrams." width="50%" /><img src="_main_files/figure-html/rotate-venndir-3.png" alt="Several examples of rotated Venn and Euler diagrams." width="50%" /><img src="_main_files/figure-html/rotate-venndir-4.png" alt="Several examples of rotated Venn and Euler diagrams." width="50%" />
 <p class="caption">

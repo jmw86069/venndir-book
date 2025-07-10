@@ -1316,7 +1316,7 @@ as shown in  [Customize the Symbols]. The value can be a string, or even
 [markdown](#g-markdown), described in [Venndir Markdown Support].
 The custom value is also shown in the legend.
 
-Figure \@ref(fig:advanced-signs-1c) demonstrates how to customize `curate_df`,
+Figure \@ref(fig:advanced-signs-1d) demonstrates how to customize `curate_df`,
 matching the sign values 'up' and 'dn', and converts them to new
 Unicode characters.
 
@@ -1331,9 +1331,9 @@ v <- venndir(setlist2,
    overlap_type="each")
 ```
 
-(ref:advanced-signs-1c) Venndir showing the custom signs 'up' and 'down' used to produce Unicode signs as before.
+(ref:advanced-signs-1d) Venndir showing the custom signs 'up' and 'down' used to produce Unicode signs as before.
 
-```{r advanced-signs-1c, fig.height=5, fig.width=6, echo=FALSE, fig.cap="(ref:advanced-signs-1c)", fig.alt="(ref:advanced-signs-1c)"}
+```{r advanced-signs-1d, fig.height=5, fig.width=6, echo=FALSE, fig.cap="(ref:advanced-signs-1d)", fig.alt="(ref:advanced-signs-1d)", dependson="advanced-signs-1"}
 curate_df <- get_venndir_curate_df()
 #
 du_match <- match(c("-1", "1"), curate_df$from)
@@ -1379,7 +1379,7 @@ v <- venndir(setlist2,
    overlap_type="each")
 ```
 
-```{r advanced-signs-2, echo=FALSE, fig.ncol=2, out.width="50%", eval=FALSE, fig.height=5, fig.width=6, fig.cap="(ref:advanced-signs-2)", fig.alt="(ref:advanced-signs-2)", fig.subcap=c("Three signs.", "Three signs using Unicode.")}
+```{r advanced-signs-2, echo=FALSE, fig.ncol=2, out.width="50%", fig.height=5, fig.width=6, fig.cap="(ref:advanced-signs-2)", fig.alt="(ref:advanced-signs-2)", fig.subcap=c("Three signs.", "Three signs using Unicode.")}
 setlist <- make_venn_test(n_items=150, n_sets=3, do_signed=TRUE,
    set_names=c("Set 1", "Set 2", "Set 3"))
 set.seed(123)

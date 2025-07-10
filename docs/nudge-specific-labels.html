@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -347,16 +348,16 @@ Individual changes can be made by following <a href="customize-any-label.html#cu
 <p>Instead, <code>nudge_venndir_label()</code> adjusts the coordinate position
 used when placing each label 'inside' or 'outside'.</p>
 
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="nudge-specific-labels.html#cb119-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="dv">100</span>, <span class="dv">3</span>, <span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
-<span id="cb119-2"><a href="nudge-specific-labels.html#cb119-2" tabindex="-1"></a>vo <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
-<span id="cb119-3"><a href="nudge-specific-labels.html#cb119-3" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;each&quot;</span>,</span>
-<span id="cb119-4"><a href="nudge-specific-labels.html#cb119-4" tabindex="-1"></a>   <span class="at">label_style=</span><span class="st">&quot;lite box&quot;</span>,</span>
-<span id="cb119-5"><a href="nudge-specific-labels.html#cb119-5" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Default venndir&quot;</span>)</span>
-<span id="cb119-6"><a href="nudge-specific-labels.html#cb119-6" tabindex="-1"></a>vo2 <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(vo,</span>
-<span id="cb119-7"><a href="nudge-specific-labels.html#cb119-7" tabindex="-1"></a>   <span class="at">set=</span><span class="st">&quot;set_A&amp;set_C&quot;</span>,</span>
-<span id="cb119-8"><a href="nudge-specific-labels.html#cb119-8" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;inside&quot;</span>,</span>
-<span id="cb119-9"><a href="nudge-specific-labels.html#cb119-9" tabindex="-1"></a>   <span class="at">x_offset=</span><span class="sc">-</span><span class="fl">0.04</span>)</span>
-<span id="cb119-10"><a href="nudge-specific-labels.html#cb119-10" tabindex="-1"></a><span class="fu">plot</span>(vo2, <span class="at">main=</span><span class="st">&quot;&#39;set_A&amp;set_C&#39; moved left&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="nudge-specific-labels.html#cb118-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="dv">100</span>, <span class="dv">3</span>, <span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
+<span id="cb118-2"><a href="nudge-specific-labels.html#cb118-2" tabindex="-1"></a>vo <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
+<span id="cb118-3"><a href="nudge-specific-labels.html#cb118-3" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;each&quot;</span>,</span>
+<span id="cb118-4"><a href="nudge-specific-labels.html#cb118-4" tabindex="-1"></a>   <span class="at">label_style=</span><span class="st">&quot;lite box&quot;</span>,</span>
+<span id="cb118-5"><a href="nudge-specific-labels.html#cb118-5" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Default venndir&quot;</span>)</span>
+<span id="cb118-6"><a href="nudge-specific-labels.html#cb118-6" tabindex="-1"></a>vo2 <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(vo,</span>
+<span id="cb118-7"><a href="nudge-specific-labels.html#cb118-7" tabindex="-1"></a>   <span class="at">set=</span><span class="st">&quot;set_A&amp;set_C&quot;</span>,</span>
+<span id="cb118-8"><a href="nudge-specific-labels.html#cb118-8" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;inside&quot;</span>,</span>
+<span id="cb118-9"><a href="nudge-specific-labels.html#cb118-9" tabindex="-1"></a>   <span class="at">x_offset=</span><span class="sc">-</span><span class="fl">0.04</span>)</span>
+<span id="cb118-10"><a href="nudge-specific-labels.html#cb118-10" tabindex="-1"></a><span class="fu">plot</span>(vo2, <span class="at">main=</span><span class="st">&quot;&#39;set_A&amp;set_C&#39; moved left&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:nudge-labels-1"></span>
 <img src="_main_files/figure-html/nudge-labels-1-1.png" alt="Venndir example with default label placement (left), and with 'set_A&amp;set_C' moved to the left (right)." width="50%" /><img src="_main_files/figure-html/nudge-labels-1-2.png" alt="Venndir example with default label placement (left), and with 'set_A&amp;set_C' moved to the left (right)." width="50%" />
 <p class="caption">
@@ -378,13 +379,13 @@ Note that <code>label_location</code> is still required.</p>
 <p>Figure <a href="nudge-specific-labels.html#fig:nudge-labels-3">4.13</a> shows the effects after nudging
 labels <code>'set_A&amp;set_C'</code> and <code>'set_C'</code> in one step.</p>
 
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="nudge-specific-labels.html#cb120-1" tabindex="-1"></a>vo3 <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(vo,</span>
-<span id="cb120-2"><a href="nudge-specific-labels.html#cb120-2" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;inside&quot;</span>,</span>
-<span id="cb120-3"><a href="nudge-specific-labels.html#cb120-3" tabindex="-1"></a>   <span class="at">offset_list=</span><span class="fu">list</span>(</span>
-<span id="cb120-4"><a href="nudge-specific-labels.html#cb120-4" tabindex="-1"></a>      <span class="st">&quot;set_A&amp;set_C&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.04</span>, <span class="sc">-</span><span class="fl">0.02</span>),</span>
-<span id="cb120-5"><a href="nudge-specific-labels.html#cb120-5" tabindex="-1"></a>      <span class="st">&quot;set_C&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>)</span>
-<span id="cb120-6"><a href="nudge-specific-labels.html#cb120-6" tabindex="-1"></a>   ))</span>
-<span id="cb120-7"><a href="nudge-specific-labels.html#cb120-7" tabindex="-1"></a><span class="fu">plot</span>(vo3, <span class="at">main=</span><span class="st">&quot;Two labels moved&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="nudge-specific-labels.html#cb119-1" tabindex="-1"></a>vo3 <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(vo,</span>
+<span id="cb119-2"><a href="nudge-specific-labels.html#cb119-2" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;inside&quot;</span>,</span>
+<span id="cb119-3"><a href="nudge-specific-labels.html#cb119-3" tabindex="-1"></a>   <span class="at">offset_list=</span><span class="fu">list</span>(</span>
+<span id="cb119-4"><a href="nudge-specific-labels.html#cb119-4" tabindex="-1"></a>      <span class="st">&quot;set_A&amp;set_C&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.04</span>, <span class="sc">-</span><span class="fl">0.02</span>),</span>
+<span id="cb119-5"><a href="nudge-specific-labels.html#cb119-5" tabindex="-1"></a>      <span class="st">&quot;set_C&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>)</span>
+<span id="cb119-6"><a href="nudge-specific-labels.html#cb119-6" tabindex="-1"></a>   ))</span>
+<span id="cb119-7"><a href="nudge-specific-labels.html#cb119-7" tabindex="-1"></a><span class="fu">plot</span>(vo3, <span class="at">main=</span><span class="st">&quot;Two labels moved&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:nudge-labels-3"></span>
 <img src="_main_files/figure-html/nudge-labels-3-1.png" alt="Venndir after moving labels 'set_A&amp;set_C' and 'set_C' using offset_list." width="80%" />
 <p class="caption">

@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -347,13 +348,13 @@ or signed sets with argument <code>do_signed=TRUE</code>.</p>
 <li><code>items</code>: The full universe of items to use, optional.</li>
 <li><code>set_names</code>: Specific set names, optional.</li>
 </ul>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="default-venndir.html#cb53-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="default-venndir.html#cb52-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>()</span></code></pre></div>
 </div>
 <div id="create-the-venn" class="section level3 hasAnchor" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Create the Venn<a href="default-venndir.html#create-the-venn" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Given a <code>setlist</code>, a Venn diagram is straightforward with <code>venndir()</code>.</p>
 
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="default-venndir.html#cb54-1" tabindex="-1"></a><span class="fu">venndir</span>(setlist)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="default-venndir.html#cb53-1" tabindex="-1"></a><span class="fu">venndir</span>(setlist)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:default-venn"></span>
 <img src="_main_files/figure-html/default-venn-1.png" alt="Default Venn diagram with three sets." width="60%" />
 <p class="caption">
@@ -368,8 +369,8 @@ if desired.</p>
 required to make a figure, in addition to other relevant data that can
 be exported for review, or edited to customize the figure.</p>
 <p>A <code>Venndir</code> object can be printed which shows a brief summary.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="default-venndir.html#cb55-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist, <span class="at">do_plot=</span><span class="cn">FALSE</span>)</span>
-<span id="cb55-2"><a href="default-venndir.html#cb55-2" tabindex="-1"></a>v</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="default-venndir.html#cb54-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist, <span class="at">do_plot=</span><span class="cn">FALSE</span>)</span>
+<span id="cb54-2"><a href="default-venndir.html#cb54-2" tabindex="-1"></a>v</span></code></pre></div>
 <pre><code>## class: Venndir
 ## number of sets: 3
 ## number of polygons: 3 sets, 7 overlaps
@@ -387,7 +388,7 @@ throughout this user guide.</p>
 <p>To make a proportional <a href="glossary.html#euler-diagram">Euler diagram</a>, use argument
 <code>proportional=TRUE</code>, Figure <a href="default-venndir.html#fig:default-euler">3.3</a>.</p>
 
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="default-venndir.html#cb57-1" tabindex="-1"></a><span class="fu">venndir</span>(setlist, <span class="at">proportional=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="default-venndir.html#cb56-1" tabindex="-1"></a><span class="fu">venndir</span>(setlist, <span class="at">proportional=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:default-euler"></span>
 <img src="_main_files/figure-html/default-euler-1.png" alt="Default proportional Euler diagram with three sets." width="70%" />
 <p class="caption">
@@ -404,14 +405,14 @@ argument <code>shape="ellipse"</code>.</p>
 and illustrates that neither option is perfect. The circular option
 shows one empty set</p>
 
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="default-venndir.html#cb58-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">sizes=</span><span class="fu">c</span>(<span class="dv">33</span>, <span class="dv">18</span>, <span class="dv">69</span>))</span>
-<span id="cb58-2"><a href="default-venndir.html#cb58-2" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
-<span id="cb58-3"><a href="default-venndir.html#cb58-3" tabindex="-1"></a>   <span class="at">vector_method=</span><span class="st">&quot;label&quot;</span>,</span>
-<span id="cb58-4"><a href="default-venndir.html#cb58-4" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span>
-<span id="cb58-5"><a href="default-venndir.html#cb58-5" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
-<span id="cb58-6"><a href="default-venndir.html#cb58-6" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>,</span>
-<span id="cb58-7"><a href="default-venndir.html#cb58-7" tabindex="-1"></a>   <span class="at">vector_method=</span><span class="st">&quot;label&quot;</span>,</span>
-<span id="cb58-8"><a href="default-venndir.html#cb58-8" tabindex="-1"></a>   <span class="at">shape=</span><span class="st">&quot;ellipse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="default-venndir.html#cb57-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">sizes=</span><span class="fu">c</span>(<span class="dv">33</span>, <span class="dv">18</span>, <span class="dv">69</span>))</span>
+<span id="cb57-2"><a href="default-venndir.html#cb57-2" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
+<span id="cb57-3"><a href="default-venndir.html#cb57-3" tabindex="-1"></a>   <span class="at">vector_method=</span><span class="st">&quot;label&quot;</span>,</span>
+<span id="cb57-4"><a href="default-venndir.html#cb57-4" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span>
+<span id="cb57-5"><a href="default-venndir.html#cb57-5" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
+<span id="cb57-6"><a href="default-venndir.html#cb57-6" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>,</span>
+<span id="cb57-7"><a href="default-venndir.html#cb57-7" tabindex="-1"></a>   <span class="at">vector_method=</span><span class="st">&quot;label&quot;</span>,</span>
+<span id="cb57-8"><a href="default-venndir.html#cb57-8" tabindex="-1"></a>   <span class="at">shape=</span><span class="st">&quot;ellipse&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:default-euler-2"></span>
 <img src="_main_files/figure-html/default-euler-2-1.png" alt="Proportional Euler diagram using circle (left) and ellipse (right)." width="50%" /><img src="_main_files/figure-html/default-euler-2-2.png" alt="Proportional Euler diagram using circle (left) and ellipse (right)." width="50%" />
 <p class="caption">
@@ -424,20 +425,17 @@ guarantees the overlap regions will be exactly proportional to
 the number of items in each region.</p>
 <p>Now is a good time to mention that Euler diagrams are useful but imperfect.</p>
 <div class="tipbox">
-<p><strong>Key Point:</strong></p>
-<p>Euler diagrams are <strong>approximately proportional</strong> for three or more sets.
-No geometric solution is guaranteed to be exactly proportional
-to the number of items.</p>
+<p><strong>Key Points:</strong></p>
 <ol style="list-style-type: decimal">
-<li>Areas in Euler diagrams are <em>approximately proportional</em>.</li>
+<li>Euler diagrams are only <em>approximately proportional</em> for three or more sets.</li>
 <li>Some overlap regions may be shown which have no items.</li>
-<li>Some overlap regions may not be shown which do have items.</li>
+<li>Some overlap regions may not be shown which contain items.</li>
 </ol>
-<p>By default, a diagram with any hidden overlaps will display a small
-footnote symbol <span class="math inline">\(†\)</span> in the bottom-left corner.</p>
+<p>A diagram with any <a href="glossary.html#hidden-overlaps-glossary">hidden overlaps</a> will display a small
+footnote symbol <span class="math inline">\(†\)</span> in the bottom-right corner.</p>
 </div>
 <p>Points <strong>1</strong> and <strong>2</strong> test one's coping skills:
-(It is <em>okay</em> not to be perfect.)</p>
+"When is it <em>okay</em> not to be perfect?"</p>
 <p>Point <strong>3</strong> is more concerning, and is discussed in detail
 in the section <a href="hidden-overlaps.html#hidden-overlaps">Hidden Overlaps</a>. Briefly:</p>
 <ul>
@@ -458,15 +456,15 @@ Notably, argument <code>footnote_style</code> can be:</p>
 <p>The intention is for the footnote to be subtle, but visible, so
 there is clear indication when something should be reviewed in detail.</p>
 
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="default-venndir.html#cb59-1" tabindex="-1"></a>setlist3 <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="dv">500</span>, <span class="at">n_sets=</span><span class="dv">4</span>)</span>
-<span id="cb59-2"><a href="default-venndir.html#cb59-2" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist3,</span>
-<span id="cb59-3"><a href="default-venndir.html#cb59-3" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
-<span id="cb59-4"><a href="default-venndir.html#cb59-4" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span>
-<span id="cb59-5"><a href="default-venndir.html#cb59-5" tabindex="-1"></a>v3b <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist3,</span>
-<span id="cb59-6"><a href="default-venndir.html#cb59-6" tabindex="-1"></a>   <span class="at">footnote_style=</span><span class="st">&quot;footnote&quot;</span>,</span>
-<span id="cb59-7"><a href="default-venndir.html#cb59-7" tabindex="-1"></a>   <span class="at">footnote_fontsize=</span><span class="dv">12</span>,</span>
-<span id="cb59-8"><a href="default-venndir.html#cb59-8" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
-<span id="cb59-9"><a href="default-venndir.html#cb59-9" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="default-venndir.html#cb58-1" tabindex="-1"></a>setlist3 <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="dv">500</span>, <span class="at">n_sets=</span><span class="dv">4</span>)</span>
+<span id="cb58-2"><a href="default-venndir.html#cb58-2" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist3,</span>
+<span id="cb58-3"><a href="default-venndir.html#cb58-3" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
+<span id="cb58-4"><a href="default-venndir.html#cb58-4" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span>
+<span id="cb58-5"><a href="default-venndir.html#cb58-5" tabindex="-1"></a>v3b <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist3,</span>
+<span id="cb58-6"><a href="default-venndir.html#cb58-6" tabindex="-1"></a>   <span class="at">footnote_style=</span><span class="st">&quot;footnote&quot;</span>,</span>
+<span id="cb58-7"><a href="default-venndir.html#cb58-7" tabindex="-1"></a>   <span class="at">footnote_fontsize=</span><span class="dv">12</span>,</span>
+<span id="cb58-8"><a href="default-venndir.html#cb58-8" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
+<span id="cb58-9"><a href="default-venndir.html#cb58-9" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:default-euler-3"></span>
 <img src="_main_files/figure-html/default-euler-3-1.png" alt="Euler diagrams showing a footnote symbol (left panel), and footnote comment (right panel)." width="50%" /><img src="_main_files/figure-html/default-euler-3-2.png" alt="Euler diagrams showing a footnote symbol (left panel), and footnote comment (right panel)." width="50%" />
 <p class="caption">

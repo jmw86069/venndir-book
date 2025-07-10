@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -340,15 +341,15 @@ grobs are not drawn to the graphical device.</li>
 </ol>
 <p>The following example creates a <code>Venndir</code> object without creating
 a new plot, and which creates all the necessary grobs.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="venndir-graphics-objects.html#cb136-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(),</span>
-<span id="cb136-2"><a href="venndir-graphics-objects.html#cb136-2" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.01</span>,</span>
-<span id="cb136-3"><a href="venndir-graphics-objects.html#cb136-3" tabindex="-1"></a>   <span class="at">border=</span><span class="st">&quot;black&quot;</span>,</span>
-<span id="cb136-4"><a href="venndir-graphics-objects.html#cb136-4" tabindex="-1"></a>   <span class="at">border.lwd=</span><span class="dv">2</span>,</span>
-<span id="cb136-5"><a href="venndir-graphics-objects.html#cb136-5" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
-<span id="cb136-6"><a href="venndir-graphics-objects.html#cb136-6" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Plot Title&quot;</span>,</span>
-<span id="cb136-7"><a href="venndir-graphics-objects.html#cb136-7" tabindex="-1"></a>   <span class="at">do_plot=</span><span class="cn">TRUE</span>,</span>
-<span id="cb136-8"><a href="venndir-graphics-objects.html#cb136-8" tabindex="-1"></a>   <span class="at">do_draw=</span><span class="cn">FALSE</span>,</span>
-<span id="cb136-9"><a href="venndir-graphics-objects.html#cb136-9" tabindex="-1"></a>   <span class="at">legend_color_style=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;blackborder&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="venndir-graphics-objects.html#cb135-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(),</span>
+<span id="cb135-2"><a href="venndir-graphics-objects.html#cb135-2" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
+<span id="cb135-3"><a href="venndir-graphics-objects.html#cb135-3" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Plot Title&quot;</span>,</span>
+<span id="cb135-4"><a href="venndir-graphics-objects.html#cb135-4" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;Arial&quot;</span>,</span>
+<span id="cb135-5"><a href="venndir-graphics-objects.html#cb135-5" tabindex="-1"></a>   <span class="at">do_plot=</span><span class="cn">TRUE</span>,</span>
+<span id="cb135-6"><a href="venndir-graphics-objects.html#cb135-6" tabindex="-1"></a>   <span class="at">do_draw=</span><span class="cn">FALSE</span>,</span>
+<span id="cb135-7"><a href="venndir-graphics-objects.html#cb135-7" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.4</span>,</span>
+<span id="cb135-8"><a href="venndir-graphics-objects.html#cb135-8" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fl">0.6</span>,</span>
+<span id="cb135-9"><a href="venndir-graphics-objects.html#cb135-9" tabindex="-1"></a>   <span class="at">legend_color_style=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;blackborder&quot;</span>))</span></code></pre></div>
 <p>The relevant attribute names are described as follows:</p>
 <ul>
 <li><code>'gtree'</code>: the single <code>grid</code> object that contains all Venndir grobs.</li>
@@ -362,15 +363,15 @@ coordinates to unit 'nspc' scaled values between 0 and 1.</li>
 <p>The <code>'gtree'</code> attribute contains a <code>grid:gTree</code> object, which can be
 drawn directly. The <code>gtree</code> object already contains the relevant
 <code>viewport</code>.</p>
-<p>Figure <a href="venndir-graphics-objects.html#fig:grobs-2">4.24</a> shows the plot after drawing the <code>'gtree'</code> attribute.</p>
+<p>Figure <a href="venndir-graphics-objects.html#fig:grobs-2">4.23</a> shows the plot after drawing the <code>'gtree'</code> attribute.</p>
 
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="venndir-graphics-objects.html#cb137-1" tabindex="-1"></a>gtree <span class="ot">&lt;-</span> <span class="fu">attr</span>(v, <span class="st">&quot;gtree&quot;</span>);</span>
-<span id="cb137-2"><a href="venndir-graphics-objects.html#cb137-2" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.newpage</span>();</span>
-<span id="cb137-3"><a href="venndir-graphics-objects.html#cb137-3" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(gtree);</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="venndir-graphics-objects.html#cb136-1" tabindex="-1"></a>gtree <span class="ot">&lt;-</span> <span class="fu">attr</span>(v, <span class="st">&quot;gtree&quot;</span>);</span>
+<span id="cb136-2"><a href="venndir-graphics-objects.html#cb136-2" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.newpage</span>();</span>
+<span id="cb136-3"><a href="venndir-graphics-objects.html#cb136-3" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(gtree);</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:grobs-2"></span>
 <img src="_main_files/figure-html/grobs-2-1.png" alt="Venn diagram created by drawing the 'gtree' attribute object." width="80%" />
 <p class="caption">
-Figure 4.24: Venn diagram created by drawing the <code>'gtree'</code> attribute object.
+Figure 4.23: Venn diagram created by drawing the <code>'gtree'</code> attribute object.
 </p>
 </div>
 <p>A detailed list of all grobs within the <code>gtree</code> can be seen by calling
@@ -396,24 +397,148 @@ where relevant.</li>
 if relevant.</li>
 <li><code>'main_title'</code>: the title object, only if defined by argument <code>main</code>.</li>
 </ul>
-<p>Figure <a href="venndir-graphics-objects.html#fig:grobs-3">4.25</a> shows the plot after drawing each <code>grid</code> component
+<p>Figure <a href="venndir-graphics-objects.html#fig:grobs-3">4.24</a> shows the plot after drawing each <code>grid</code> component
 from the <code>'grob_list'</code> attribute.</p>
 
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="venndir-graphics-objects.html#cb138-1" tabindex="-1"></a>grob_list <span class="ot">&lt;-</span> <span class="fu">attr</span>(v, <span class="st">&quot;grob_list&quot;</span>);</span>
-<span id="cb138-2"><a href="venndir-graphics-objects.html#cb138-2" tabindex="-1"></a></span>
-<span id="cb138-3"><a href="venndir-graphics-objects.html#cb138-3" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.newpage</span>()</span>
-<span id="cb138-4"><a href="venndir-graphics-objects.html#cb138-4" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>jps)</span>
-<span id="cb138-5"><a href="venndir-graphics-objects.html#cb138-5" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>item_labels)</span>
-<span id="cb138-6"><a href="venndir-graphics-objects.html#cb138-6" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>labels)</span>
-<span id="cb138-7"><a href="venndir-graphics-objects.html#cb138-7" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>segments)</span>
-<span id="cb138-8"><a href="venndir-graphics-objects.html#cb138-8" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>legend)</span>
-<span id="cb138-9"><a href="venndir-graphics-objects.html#cb138-9" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>main_title)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="venndir-graphics-objects.html#cb137-1" tabindex="-1"></a>grob_list <span class="ot">&lt;-</span> <span class="fu">attr</span>(v, <span class="st">&quot;grob_list&quot;</span>);</span>
+<span id="cb137-2"><a href="venndir-graphics-objects.html#cb137-2" tabindex="-1"></a></span>
+<span id="cb137-3"><a href="venndir-graphics-objects.html#cb137-3" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.newpage</span>()</span>
+<span id="cb137-4"><a href="venndir-graphics-objects.html#cb137-4" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>jps)</span>
+<span id="cb137-5"><a href="venndir-graphics-objects.html#cb137-5" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>item_labels)</span>
+<span id="cb137-6"><a href="venndir-graphics-objects.html#cb137-6" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>labels)</span>
+<span id="cb137-7"><a href="venndir-graphics-objects.html#cb137-7" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>segments)</span>
+<span id="cb137-8"><a href="venndir-graphics-objects.html#cb137-8" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>legend)</span>
+<span id="cb137-9"><a href="venndir-graphics-objects.html#cb137-9" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(grob_list<span class="sc">$</span>main_title)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:grobs-3"></span>
 <img src="_main_files/figure-html/grobs-3-1.png" alt="Venn diagram created by drawing each component in the 'grob_list' attribute." width="80%" />
 <p class="caption">
-Figure 4.25: Venn diagram created by drawing each component in the <code>'grob_list'</code> attribute.
+Figure 4.24: Venn diagram created by drawing each component in the <code>'grob_list'</code> attribute.
 </p>
 </div>
+</div>
+<div id="manipulate-grob_list" class="section level3 hasAnchor" number="4.13.3">
+<h3><span class="header-section-number">4.13.3</span> Manipulate grob_list<a href="venndir-graphics-objects.html#manipulate-grob_list" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The entries are named to be reognizable, for example the grob names
+in the <code>'jps'</code> entry are listed with <code>grid::grid.ls()</code>:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="venndir-graphics-objects.html#cb138-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.ls</span>(grob_list<span class="sc">$</span>jps)</span></code></pre></div>
+<pre><code>## jps
+##   set_A|set:pathGrob:outer:1
+##   set_A|set:pathGrob
+##   set_B|set:pathGrob:outer:1
+##   set_B|set:pathGrob
+##   set_C|set:pathGrob:outer:1
+##   set_C|set:pathGrob
+##   set_A:pathGrob:inner
+##   set_A:pathGrob:inner:1
+##   set_A:pathGrob
+##   set_B:pathGrob:inner
+##   set_B:pathGrob:inner:1
+##   set_B:pathGrob
+##   set_C:pathGrob:inner
+##   set_C:pathGrob:inner:1
+##   set_C:pathGrob
+##   set_A&amp;set_B:pathGrob:inner
+##   set_A&amp;set_B:pathGrob:inner:1
+##   set_A&amp;set_B:pathGrob
+##   set_A&amp;set_C:pathGrob:inner
+##   set_A&amp;set_C:pathGrob:inner:1
+##   set_A&amp;set_C:pathGrob
+##   set_B&amp;set_C:pathGrob:inner
+##   set_B&amp;set_C:pathGrob:inner:1
+##   set_B&amp;set_C:pathGrob
+##   set_A&amp;set_B&amp;set_C:pathGrob:inner
+##   set_A&amp;set_B&amp;set_C:pathGrob:inner:1
+##   set_A&amp;set_B&amp;set_C:pathGrob</code></pre>
+<p>Each polygon is named with substring up to the first ':' colon,
+after which are optional modifiers indicating the border applied,
+in order:</p>
+<ul>
+<li>Each polygon is drawn with outer border (if outerborder is defined),</li>
+<li>then polygon fill and border (if border is defined),</li>
+<li>then inner fill (if innerborder is defined),</li>
+<li>then inner border (if innerborder is defined).</li>
+</ul>
+<p>As described in <a href="venndir-borders.html#venndir-rendering-steps">Venndir Rendering Steps</a>, a polygon is drawn
+for each full set, denoted with polygon names having '|set' at the end.
+Then each overlap region is drawn, where polygons are named by
+the overlap sets.</p>
+<p>The example below is somewhat advanced, and demonstrates how to
+extract a specific polygon grob, use it to create a custom pattern
+fill, then reinsert the new grob into the <code>grob_list</code>.</p>
+<p>First, extract one overlap region, and draw it to confirm:</p>
+
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="venndir-graphics-objects.html#cb140-1" tabindex="-1"></a>grobname <span class="ot">&lt;-</span> <span class="st">&quot;set_C:pathGrob:inner&quot;</span></span>
+<span id="cb140-2"><a href="venndir-graphics-objects.html#cb140-2" tabindex="-1"></a>use_grob <span class="ot">&lt;-</span> grid<span class="sc">::</span><span class="fu">getGrob</span>(grob_list<span class="sc">$</span>jps, <span class="at">gPath=</span>grobname)</span>
+<span id="cb140-3"><a href="venndir-graphics-objects.html#cb140-3" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.newpage</span>();</span>
+<span id="cb140-4"><a href="venndir-graphics-objects.html#cb140-4" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(use_grob)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:groblist-list-fill"></span>
+<img src="_main_files/figure-html/groblist-list-fill-1.png" alt="One overlap polygon is extracted from grob_list and drawn." width="80%" />
+<p class="caption">
+Figure 4.25: One overlap polygon is extracted from <code>grob_list</code> and drawn.
+</p>
+</div>
+<p>The next step is to define a grid pattern, in this case it requires
+the <strong>gridpattern</strong> R package, loading an image.</p>
+<p>Another alternative is to define a color gradient, for example
+with <code>gridpattern::grid.pattern_gradient()</code>.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="venndir-graphics-objects.html#cb141-1" tabindex="-1"></a>bg_file <span class="ot">&lt;-</span> <span class="st">&quot;images/water_bg.png&quot;</span></span>
+<span id="cb141-2"><a href="venndir-graphics-objects.html#cb141-2" tabindex="-1"></a>bg_pat <span class="ot">&lt;-</span> gridpattern<span class="sc">::</span><span class="fu">grid.pattern_image</span>(<span class="at">filename=</span>bg_file,</span>
+<span id="cb141-3"><a href="venndir-graphics-objects.html#cb141-3" tabindex="-1"></a>   <span class="at">type=</span><span class="st">&quot;tile&quot;</span>, <span class="at">scale=</span><span class="dv">1</span>, <span class="at">draw=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p>Now the grob <code>use_grob</code> is used to apply a clipping region to
+the pattern fill, so the pattern is only applied to this
+specific polygon region.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="venndir-graphics-objects.html#cb142-1" tabindex="-1"></a><span class="co"># clip background to the grob</span></span>
+<span id="cb142-2"><a href="venndir-graphics-objects.html#cb142-2" tabindex="-1"></a>clipped_name <span class="ot">&lt;-</span> <span class="fu">paste0</span>(grobname, <span class="st">&quot;.pattern&quot;</span>)</span>
+<span id="cb142-3"><a href="venndir-graphics-objects.html#cb142-3" tabindex="-1"></a>clipped <span class="ot">&lt;-</span> <span class="fu">list</span>(gridpattern<span class="sc">::</span><span class="fu">clippingPathGrob</span>(</span>
+<span id="cb142-4"><a href="venndir-graphics-objects.html#cb142-4" tabindex="-1"></a>   <span class="at">clippee=</span>bg_pat,</span>
+<span id="cb142-5"><a href="venndir-graphics-objects.html#cb142-5" tabindex="-1"></a>   <span class="at">clipper=</span>use_grob,</span>
+<span id="cb142-6"><a href="venndir-graphics-objects.html#cb142-6" tabindex="-1"></a>   <span class="at">name=</span>clipped_name));</span>
+<span id="cb142-7"><a href="venndir-graphics-objects.html#cb142-7" tabindex="-1"></a><span class="fu">names</span>(clipped) <span class="ot">&lt;-</span> clipped_name</span></code></pre></div>
+<p>Now draw the clipped background image:</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="venndir-graphics-objects.html#cb143-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.newpage</span>();</span>
+<span id="cb143-2"><a href="venndir-graphics-objects.html#cb143-2" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(clipped[[<span class="dv">1</span>]])</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:groblist-clip-draw"></span>
+<img src="_main_files/figure-html/groblist-clip-draw-1.png" alt="(ref:groblist-clip-draw)" width="80%" />
+<p class="caption">
+Figure 4.26: (ref:groblist-clip-draw)
+</p>
+</div>
+<p>Finally, re-insert the background into the <code>grob_list</code>:</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="venndir-graphics-objects.html#cb144-1" tabindex="-1"></a>grob_list_jps_list <span class="ot">&lt;-</span> grob_list<span class="sc">$</span>jps<span class="sc">$</span>children;</span>
+<span id="cb144-2"><a href="venndir-graphics-objects.html#cb144-2" tabindex="-1"></a>grobmatch <span class="ot">&lt;-</span> <span class="fu">match</span>(grobname, <span class="fu">names</span>(grob_list_jps_list));</span>
+<span id="cb144-3"><a href="venndir-graphics-objects.html#cb144-3" tabindex="-1"></a></span>
+<span id="cb144-4"><a href="venndir-graphics-objects.html#cb144-4" tabindex="-1"></a><span class="cf">if</span> (grobmatch <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb144-5"><a href="venndir-graphics-objects.html#cb144-5" tabindex="-1"></a>   grob_list_jps_list <span class="ot">&lt;-</span> <span class="fu">append</span>(grob_list_jps_list,</span>
+<span id="cb144-6"><a href="venndir-graphics-objects.html#cb144-6" tabindex="-1"></a>      clipped,</span>
+<span id="cb144-7"><a href="venndir-graphics-objects.html#cb144-7" tabindex="-1"></a>      <span class="at">after=</span>grobmatch <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb144-8"><a href="venndir-graphics-objects.html#cb144-8" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb144-9"><a href="venndir-graphics-objects.html#cb144-9" tabindex="-1"></a>   grob_list_jps_list <span class="ot">&lt;-</span> <span class="fu">append</span>(clipped,</span>
+<span id="cb144-10"><a href="venndir-graphics-objects.html#cb144-10" tabindex="-1"></a>      grob_list_jps_list,</span>
+<span id="cb144-11"><a href="venndir-graphics-objects.html#cb144-11" tabindex="-1"></a>      <span class="at">after=</span><span class="dv">1</span>)</span>
+<span id="cb144-12"><a href="venndir-graphics-objects.html#cb144-12" tabindex="-1"></a>}</span>
+<span id="cb144-13"><a href="venndir-graphics-objects.html#cb144-13" tabindex="-1"></a><span class="co"># insert into grob_list</span></span>
+<span id="cb144-14"><a href="venndir-graphics-objects.html#cb144-14" tabindex="-1"></a>grob_list<span class="sc">$</span>jps <span class="ot">&lt;-</span> grid<span class="sc">::</span><span class="fu">grobTree</span>(</span>
+<span id="cb144-15"><a href="venndir-graphics-objects.html#cb144-15" tabindex="-1"></a>   <span class="at">children=</span><span class="fu">do.call</span>(grid<span class="sc">::</span>gList, grob_list_jps_list),</span>
+<span id="cb144-16"><a href="venndir-graphics-objects.html#cb144-16" tabindex="-1"></a>   <span class="at">name=</span><span class="st">&quot;jps&quot;</span>)</span></code></pre></div>
+<p>Bonus points: Re-create the grob tree <code>gTree</code> object:</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="venndir-graphics-objects.html#cb145-1" tabindex="-1"></a><span class="co"># make new gTree</span></span>
+<span id="cb145-2"><a href="venndir-graphics-objects.html#cb145-2" tabindex="-1"></a>jps_gtree <span class="ot">&lt;-</span> grid<span class="sc">::</span><span class="fu">grobTree</span>(</span>
+<span id="cb145-3"><a href="venndir-graphics-objects.html#cb145-3" tabindex="-1"></a>   <span class="at">children=</span><span class="fu">do.call</span>(grid<span class="sc">::</span>gList, grob_list),</span>
+<span id="cb145-4"><a href="venndir-graphics-objects.html#cb145-4" tabindex="-1"></a>   <span class="at">name=</span><span class="st">&quot;venndir.figure&quot;</span>)</span></code></pre></div>
+<p>Drawing the <code>gTree</code> is sometimes more convenient than drawing
+each element in the <code>grob_list</code>:</p>
+
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="venndir-graphics-objects.html#cb146-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.newpage</span>()</span>
+<span id="cb146-2"><a href="venndir-graphics-objects.html#cb146-2" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(jps_gtree)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:draw-new-gtree"></span>
+<img src="_main_files/figure-html/draw-new-gtree-1.png" alt="The custom Venndir figure is drawn, using pattern fill in one overlap region." width="80%" />
+<p class="caption">
+Figure 4.27: The custom Venndir figure is drawn, using pattern fill in one overlap region.
+</p>
+</div>
+<p>Note that the original polygon fill is drawn on top of the pattern
+fill, but this layer could be removed so the pattern is shown
+without interference. This change is left to the reader.</p>
 
 </div>
 </div>

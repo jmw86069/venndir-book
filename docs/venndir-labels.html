@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -339,8 +340,9 @@ or z-score of directionality.</p>
 <p>There are so many types of labels, it became unwieldy to assign
 a separate function argument for each label, which is why
 labels are controlled by one argument: <code>show_labels</code>.</p>
-<p>Each type of label is assigned a letter, and is described in
-<a href="venndir-labels.html#tab:label-table">3.1</a>.</p>
+<p>Table <a href="venndir-labels.html#tab:label-table">3.1</a> describes each type of label,
+and the letter assigned to each.</p>
+<p>(fig:label-table) Summary of recognized options for the argument show labels.</p>
 <table>
 <caption>
 <span id="tab:label-table">Table 3.1: </span><span id="tab:label-table">Table 3.2: </span>Summary of recognized options for the argument show labels.
@@ -360,10 +362,10 @@ Notes
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 4em; ">
+<td style="text-align:left;width: 4em; white-space: nowrap;">
 Name
 </td>
-<td style="text-align:left;width: 4em; ">
+<td style="text-align:left;width: 4em; white-space: nowrap;">
 'N' or 'n'
 </td>
 <td style="text-align:left;width: 20em; ">
@@ -371,10 +373,10 @@ The set name provided in 'setlist'.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4em; ">
+<td style="text-align:left;width: 4em; white-space: nowrap;">
 Count
 </td>
-<td style="text-align:left;width: 4em; ">
+<td style="text-align:left;width: 4em; white-space: nowrap;">
 'C' or 'c'
 </td>
 <td style="text-align:left;width: 20em; ">
@@ -382,10 +384,10 @@ The count of the number of items in each Venn region. This label is sometimes re
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4em; ">
+<td style="text-align:left;width: 4em; white-space: nowrap;">
 Signed
 </td>
-<td style="text-align:left;width: 4em; ">
+<td style="text-align:left;width: 4em; white-space: nowrap;">
 'S' or 's'
 </td>
 <td style="text-align:left;width: 20em; ">
@@ -393,10 +395,10 @@ The count of the number of items by each observed combination of signs.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4em; ">
+<td style="text-align:left;width: 4em; white-space: nowrap;">
 Percent
 </td>
-<td style="text-align:left;width: 4em; ">
+<td style="text-align:left;width: 4em; white-space: nowrap;">
 'P' or 'p'
 </td>
 <td style="text-align:left;width: 20em; ">
@@ -404,10 +406,10 @@ The percent of items in each Venn region, related to the total items represented
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4em; ">
+<td style="text-align:left;width: 4em; white-space: nowrap;">
 Item
 </td>
-<td style="text-align:left;width: 4em; ">
+<td style="text-align:left;width: 4em; white-space: nowrap;">
 'i'
 </td>
 <td style="text-align:left;width: 20em; ">
@@ -445,7 +447,8 @@ Figure 3.13: Four examples of various Venndir labels, placed inside or outside e
 <p>The argument <code>overlap_type</code> provides different approaches to
 summarize directional overlaps. This option determines which
 count labels will be displayed in the Venndir figure.</p>
-<p>The different options are summarized in Table <a href="venndir-labels.html#tab:overlap-type-table">3.3</a>.</p>
+<p>Table <a href="venndir-labels.html#tab:overlap-type-table">3.3</a> summarizes the options for <code>overlap_type</code>.</p>
+<p>(fig:overlap-type-table) Summary of recognized overlap types, with a description of the associated output in a Venndir figure.</p>
 <table>
 <caption>
 <span id="tab:overlap-type-table">Table 3.3: </span><span id="tab:overlap-type-table">Table 3.4: </span>Summary of recognized overlap types, with a description of the associated output in a Venndir figure.
@@ -528,9 +531,9 @@ main overlap counts.</li>
 main overlap counts.</li>
 </ol>
 
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="venndir-labels.html#cb64-1" tabindex="-1"></a>setlist3 <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">n_sets=</span><span class="dv">3</span>, <span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
-<span id="cb64-2"><a href="venndir-labels.html#cb64-2" tabindex="-1"></a>vt1 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist3)</span>
-<span id="cb64-3"><a href="venndir-labels.html#cb64-3" tabindex="-1"></a>vt2 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist3, <span class="at">template=</span><span class="st">&quot;tall&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="venndir-labels.html#cb63-1" tabindex="-1"></a>setlist3 <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">n_sets=</span><span class="dv">3</span>, <span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
+<span id="cb63-2"><a href="venndir-labels.html#cb63-2" tabindex="-1"></a>vt1 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist3)</span>
+<span id="cb63-3"><a href="venndir-labels.html#cb63-3" tabindex="-1"></a>vt2 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist3, <span class="at">template=</span><span class="st">&quot;tall&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:template-wide"></span>
 <img src="_main_files/figure-html/template-wide-1.png" alt="Venn diagram with signed counts labeled beside overlap counts (left) using template='wide'; and below overlap counts (right) using template='tall'." width="50%" /><img src="_main_files/figure-html/template-wide-2.png" alt="Venn diagram with signed counts labeled beside overlap counts (left) using template='wide'; and below overlap counts (right) using template='tall'." width="50%" />
 <p class="caption">
@@ -553,8 +556,8 @@ background color fill, and optional border.</p>
 <p>A straightforward example is shown in Figure <a href="venndir-labels.html#fig:label-style-0">3.16</a>
 using <code>label_style="lite box"</code> with <a href="glossary.html#signed-counts">signed counts</a>.</p>
 
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="venndir-labels.html#cb65-1" tabindex="-1"></a>setlistS <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
-<span id="cb65-2"><a href="venndir-labels.html#cb65-2" tabindex="-1"></a>vS <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlistS, <span class="at">label_style=</span><span class="st">&quot;lite box&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="venndir-labels.html#cb64-1" tabindex="-1"></a>setlistS <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>)</span>
+<span id="cb64-2"><a href="venndir-labels.html#cb64-2" tabindex="-1"></a>vS <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlistS, <span class="at">label_style=</span><span class="st">&quot;lite box&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:label-style-0"></span>
 <img src="_main_files/figure-html/label-style-0-1.png" alt="Venn diagram showing signed counts, using label style 'lite box'." width="80%" />
 <p class="caption">
@@ -584,11 +587,12 @@ use <code>nudge_venndir_label()</code>.</p>
 <p>Note that <code>venndir()</code> will define a label position for every Venn overlap,
 and defines a position 'inside' and 'outside' the Venn region.</p>
 <div class="tipbox">
-<p><strong>Key Point:</strong></p>
-<p>The exception to the rule that every overlap has a label position
-occurs when a Venn overlap cannot be represented in the diagram,
-which sometimes happens in proportional Euler diagrams.
-For a discussion of that issue, see <a href="hidden-overlaps.html#hidden-overlaps">Hidden Overlaps</a>.</p>
+<p><strong>Exception:</strong></p>
+<p>Sometimes a proportional Euler diagram cannot represent
+every overlap, due to geometric constraints.
+In this case, not every overlap will be assigned a label position.</p>
+<p>For a discussion of that issue, see Section <a href="hidden-overlaps.html#hidden-overlaps">4.8</a>
+<a href="hidden-overlaps.html#hidden-overlaps">Hidden Overlaps</a>.</p>
 </div>
 <p>To nudge a label, define the label to nudge using these two arguments:</p>
 <ul>
@@ -607,16 +611,16 @@ In the example below, a simple 3-way Venn diagram is stored
 in variable <code>v</code>.
 The label for <code>'set_C'</code> is moved left (decreasing the x coordinate),
 and up (increasing the y coordinate).</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="venndir-labels.html#cb66-1" tabindex="-1"></a><span class="co"># default Venn</span></span>
-<span id="cb66-2"><a href="venndir-labels.html#cb66-2" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>()</span>
-<span id="cb66-3"><a href="venndir-labels.html#cb66-3" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist)</span>
-<span id="cb66-4"><a href="venndir-labels.html#cb66-4" tabindex="-1"></a></span>
-<span id="cb66-5"><a href="venndir-labels.html#cb66-5" tabindex="-1"></a><span class="co"># nudge &#39;set_C&#39; up-and-left</span></span>
-<span id="cb66-6"><a href="venndir-labels.html#cb66-6" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(v,</span>
-<span id="cb66-7"><a href="venndir-labels.html#cb66-7" tabindex="-1"></a>   <span class="at">x_offset=</span><span class="sc">-</span><span class="fl">0.45</span>, <span class="at">y_offset=</span><span class="fl">0.25</span>,</span>
-<span id="cb66-8"><a href="venndir-labels.html#cb66-8" tabindex="-1"></a>   <span class="at">set=</span><span class="st">&quot;set_C&quot;</span>,</span>
-<span id="cb66-9"><a href="venndir-labels.html#cb66-9" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;outside&quot;</span>)</span>
-<span id="cb66-10"><a href="venndir-labels.html#cb66-10" tabindex="-1"></a><span class="fu">plot</span>(v2)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="venndir-labels.html#cb65-1" tabindex="-1"></a><span class="co"># default Venn</span></span>
+<span id="cb65-2"><a href="venndir-labels.html#cb65-2" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">make_venn_test</span>()</span>
+<span id="cb65-3"><a href="venndir-labels.html#cb65-3" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist)</span>
+<span id="cb65-4"><a href="venndir-labels.html#cb65-4" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="venndir-labels.html#cb65-5" tabindex="-1"></a><span class="co"># nudge &#39;set_C&#39; up-and-left</span></span>
+<span id="cb65-6"><a href="venndir-labels.html#cb65-6" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(v,</span>
+<span id="cb65-7"><a href="venndir-labels.html#cb65-7" tabindex="-1"></a>   <span class="at">x_offset=</span><span class="sc">-</span><span class="fl">0.45</span>, <span class="at">y_offset=</span><span class="fl">0.25</span>,</span>
+<span id="cb65-8"><a href="venndir-labels.html#cb65-8" tabindex="-1"></a>   <span class="at">set=</span><span class="st">&quot;set_C&quot;</span>,</span>
+<span id="cb65-9"><a href="venndir-labels.html#cb65-9" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;outside&quot;</span>)</span>
+<span id="cb65-10"><a href="venndir-labels.html#cb65-10" tabindex="-1"></a><span class="fu">plot</span>(v2)</span></code></pre></div>
 <p>Figure <a href="venndir-labels.html#fig:nudge-label-1">3.18</a> shows the Venn with
 default labels (left), and with the label <code>'set_C'</code> adjusted (right).</p>
 

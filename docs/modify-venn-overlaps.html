@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -349,24 +350,24 @@ overlapping sets.
 <p>The overlap name is provided with argument <code>overlap_set</code>.
 See the example <a href="modify-venn-overlaps.html#fig:modify-overlap-1">4.3</a></p>
 
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="modify-venn-overlaps.html#cb105-1" tabindex="-1"></a><span class="co"># default Venndir</span></span>
-<span id="cb105-2"><a href="modify-venn-overlaps.html#cb105-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>),</span>
-<span id="cb105-3"><a href="modify-venn-overlaps.html#cb105-3" tabindex="-1"></a>   <span class="at">do_plot=</span><span class="cn">FALSE</span>)</span>
-<span id="cb105-4"><a href="modify-venn-overlaps.html#cb105-4" tabindex="-1"></a><span class="fu">plot</span>(v,</span>
-<span id="cb105-5"><a href="modify-venn-overlaps.html#cb105-5" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Default Venndir&quot;</span>)</span>
-<span id="cb105-6"><a href="modify-venn-overlaps.html#cb105-6" tabindex="-1"></a></span>
-<span id="cb105-7"><a href="modify-venn-overlaps.html#cb105-7" tabindex="-1"></a><span class="co"># modified Venndir</span></span>
-<span id="cb105-8"><a href="modify-venn-overlaps.html#cb105-8" tabindex="-1"></a>v_mod <span class="ot">&lt;-</span> <span class="fu">modify_venndir_overlap</span>(v,</span>
-<span id="cb105-9"><a href="modify-venn-overlaps.html#cb105-9" tabindex="-1"></a>   <span class="at">overlap_set=</span><span class="st">&quot;set_A&amp;set_B&quot;</span>,</span>
-<span id="cb105-10"><a href="modify-venn-overlaps.html#cb105-10" tabindex="-1"></a>   <span class="at">params=</span><span class="fu">list</span>(</span>
-<span id="cb105-11"><a href="modify-venn-overlaps.html#cb105-11" tabindex="-1"></a>      <span class="at">fill=</span><span class="st">&quot;orange&quot;</span>,</span>
-<span id="cb105-12"><a href="modify-venn-overlaps.html#cb105-12" tabindex="-1"></a>      <span class="at">alpha=</span><span class="fl">0.8</span>,</span>
-<span id="cb105-13"><a href="modify-venn-overlaps.html#cb105-13" tabindex="-1"></a>      <span class="at">fontsize=</span><span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">16</span>, <span class="dv">16</span>),</span>
-<span id="cb105-14"><a href="modify-venn-overlaps.html#cb105-14" tabindex="-1"></a>      <span class="at">innerborder=</span><span class="st">&quot;royalblue&quot;</span>,</span>
-<span id="cb105-15"><a href="modify-venn-overlaps.html#cb105-15" tabindex="-1"></a>      <span class="at">innerborder.lwd=</span><span class="dv">5</span>)</span>
-<span id="cb105-16"><a href="modify-venn-overlaps.html#cb105-16" tabindex="-1"></a>   )</span>
-<span id="cb105-17"><a href="modify-venn-overlaps.html#cb105-17" tabindex="-1"></a><span class="fu">plot</span>(v_mod,</span>
-<span id="cb105-18"><a href="modify-venn-overlaps.html#cb105-18" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Modified &#39;set_A&amp;set_B&#39;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="modify-venn-overlaps.html#cb104-1" tabindex="-1"></a><span class="co"># default Venndir</span></span>
+<span id="cb104-2"><a href="modify-venn-overlaps.html#cb104-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>),</span>
+<span id="cb104-3"><a href="modify-venn-overlaps.html#cb104-3" tabindex="-1"></a>   <span class="at">do_plot=</span><span class="cn">FALSE</span>)</span>
+<span id="cb104-4"><a href="modify-venn-overlaps.html#cb104-4" tabindex="-1"></a><span class="fu">plot</span>(v,</span>
+<span id="cb104-5"><a href="modify-venn-overlaps.html#cb104-5" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Default Venndir&quot;</span>)</span>
+<span id="cb104-6"><a href="modify-venn-overlaps.html#cb104-6" tabindex="-1"></a></span>
+<span id="cb104-7"><a href="modify-venn-overlaps.html#cb104-7" tabindex="-1"></a><span class="co"># modified Venndir</span></span>
+<span id="cb104-8"><a href="modify-venn-overlaps.html#cb104-8" tabindex="-1"></a>v_mod <span class="ot">&lt;-</span> <span class="fu">modify_venndir_overlap</span>(v,</span>
+<span id="cb104-9"><a href="modify-venn-overlaps.html#cb104-9" tabindex="-1"></a>   <span class="at">overlap_set=</span><span class="st">&quot;set_A&amp;set_B&quot;</span>,</span>
+<span id="cb104-10"><a href="modify-venn-overlaps.html#cb104-10" tabindex="-1"></a>   <span class="at">params=</span><span class="fu">list</span>(</span>
+<span id="cb104-11"><a href="modify-venn-overlaps.html#cb104-11" tabindex="-1"></a>      <span class="at">fill=</span><span class="st">&quot;orange&quot;</span>,</span>
+<span id="cb104-12"><a href="modify-venn-overlaps.html#cb104-12" tabindex="-1"></a>      <span class="at">alpha=</span><span class="fl">0.8</span>,</span>
+<span id="cb104-13"><a href="modify-venn-overlaps.html#cb104-13" tabindex="-1"></a>      <span class="at">fontsize=</span><span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">16</span>, <span class="dv">16</span>),</span>
+<span id="cb104-14"><a href="modify-venn-overlaps.html#cb104-14" tabindex="-1"></a>      <span class="at">innerborder=</span><span class="st">&quot;royalblue&quot;</span>,</span>
+<span id="cb104-15"><a href="modify-venn-overlaps.html#cb104-15" tabindex="-1"></a>      <span class="at">innerborder.lwd=</span><span class="dv">5</span>)</span>
+<span id="cb104-16"><a href="modify-venn-overlaps.html#cb104-16" tabindex="-1"></a>   )</span>
+<span id="cb104-17"><a href="modify-venn-overlaps.html#cb104-17" tabindex="-1"></a><span class="fu">plot</span>(v_mod,</span>
+<span id="cb104-18"><a href="modify-venn-overlaps.html#cb104-18" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Modified &#39;set_A&amp;set_B&#39;&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:modify-overlap-1"></span>
 <img src="_main_files/figure-html/modify-overlap-1-1.png" alt="Venndir example showing a default Venn diagram, and a modified diagram (right) affecting the overlap region for 'set_A&amp;set_B'. Changes were made to the fill color, innerborder, innerborder.lwd, and fontsize." width="50%" /><img src="_main_files/figure-html/modify-overlap-1-2.png" alt="Venndir example showing a default Venn diagram, and a modified diagram (right) affecting the overlap region for 'set_A&amp;set_B'. Changes were made to the fill color, innerborder, innerborder.lwd, and fontsize." width="50%" />
 <p class="caption">
@@ -387,6 +388,7 @@ order it is drawn.</p>
 <h3><span class="header-section-number">4.2.1</span> Overlap Attributes<a href="modify-venn-overlaps.html#overlap-attributes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The recognized Venndir overlap attributes are shown in
 Table <a href="modify-venn-overlaps.html#tab:overlap-attr-table">4.1</a>.</p>
+<p>(fig:overlap-attr-table) List of recognized region attributes, used to customize the Venndir figure.</p>
 <table>
 <caption>
 <span id="tab:overlap-attr-table">Table 4.1: </span><span id="tab:overlap-attr-table">Table 4.2: </span>List of recognized region attributes, used to customize the Venndir figure.

@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -364,7 +365,7 @@ This function returns <code>limma::TestResults-class</code> which is equivalent 
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="specialized-input-types.html#cb43-1" tabindex="-1"></a>im <span class="ot">&lt;-</span> limma<span class="sc">::</span><span class="fu">decideTests</span>(fit3,</span>
 <span id="cb43-2"><a href="specialized-input-types.html#cb43-2" tabindex="-1"></a>   <span class="at">p.value=</span><span class="fl">0.05</span>,</span>
 <span id="cb43-3"><a href="specialized-input-types.html#cb43-3" tabindex="-1"></a>   <span class="at">lfc=</span><span class="fu">log2</span>(<span class="fl">1.5</span>))</span></code></pre></div>
-<p>The resulting <a href="common-data-input-types.html#incidence-matrix">incidence matrix</a> <code>im</code> contains one
+<p>The resulting <a href="glossary.html#g-incidence-matrix">incidence matrix</a> <code>im</code> contains one
 column per contrast.</p>
 <p>When using only a subset of contrasts, use the argument <code>sets</code> as
 described in <a href="venn-set-colors.html#consistent-set-colors">Consistent Set Colors</a>.
@@ -376,6 +377,7 @@ The example below chooses <code>sets=c(1, 3)</code>.</p>
 <p><strong>DESeq2</strong> <span class="citation">(<a href="#ref-R-DESeq2">Love, Anders, and Huber 2025</a>)</span> is widely used and excellent for RNA-seq analysis.
 The example below is adapted from <code>DESeq2::DESeq()</code> to use three groups:
 <code>'A'</code>, <code>'B'</code>, <code>'C'</code>.</p>
+<p>The following code sets up some test data.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="specialized-input-types.html#cb45-1" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(DESeq2))</span>
 <span id="cb45-2"><a href="specialized-input-types.html#cb45-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb45-3"><a href="specialized-input-types.html#cb45-3" tabindex="-1"></a>cnts <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnbinom</span>(<span class="at">n=</span><span class="dv">1500</span>, <span class="at">mu=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span><span class="sc">/</span><span class="fl">0.5</span>), <span class="at">ncol=</span><span class="dv">15</span>)</span>
@@ -409,24 +411,7 @@ this point, there are too many possible workflows to cover here.</p>
 <span id="cb46-6"><a href="specialized-input-types.html#cb46-6" tabindex="-1"></a></span>
 <span id="cb46-7"><a href="specialized-input-types.html#cb46-7" tabindex="-1"></a><span class="co"># Print the first few rows of the &quot;C - A&quot; contrast results</span></span>
 <span id="cb46-8"><a href="specialized-input-types.html#cb46-8" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">check.names=</span><span class="cn">FALSE</span>, resCA))</span></code></pre></div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="specialized-input-types.html#cb47-1" tabindex="-1"></a><span class="co"># Contrast: &#39;B - A&#39;</span></span>
-<span id="cb47-2"><a href="specialized-input-types.html#cb47-2" tabindex="-1"></a>resBA <span class="ot">&lt;-</span> <span class="fu">results</span>(dds, <span class="at">contrast=</span><span class="fu">c</span>(<span class="st">&quot;cond&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>))</span>
-<span id="cb47-3"><a href="specialized-input-types.html#cb47-3" tabindex="-1"></a></span>
-<span id="cb47-4"><a href="specialized-input-types.html#cb47-4" tabindex="-1"></a><span class="co"># Contrast: &#39;C - A&#39;</span></span>
-<span id="cb47-5"><a href="specialized-input-types.html#cb47-5" tabindex="-1"></a>resCA <span class="ot">&lt;-</span> <span class="fu">results</span>(dds, <span class="at">contrast=</span><span class="fu">c</span>(<span class="st">&quot;cond&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>))</span>
-<span id="cb47-6"><a href="specialized-input-types.html#cb47-6" tabindex="-1"></a></span>
-<span id="cb47-7"><a href="specialized-input-types.html#cb47-7" tabindex="-1"></a><span class="co"># Print the first few rows of the &quot;C - A&quot; contrast results</span></span>
-<span id="cb47-8"><a href="specialized-input-types.html#cb47-8" tabindex="-1"></a>idf <span class="ot">&lt;-</span> <span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">check.names=</span><span class="cn">FALSE</span>, resCA))</span>
-<span id="cb47-9"><a href="specialized-input-types.html#cb47-9" tabindex="-1"></a>idf<span class="sc">$</span>baseMean <span class="ot">&lt;-</span> <span class="fu">round</span>(idf<span class="sc">$</span>baseMean, <span class="at">digits=</span><span class="dv">1</span>)</span>
-<span id="cb47-10"><a href="specialized-input-types.html#cb47-10" tabindex="-1"></a>idf<span class="sc">$</span>log2FoldChange <span class="ot">&lt;-</span> <span class="fu">round</span>(idf<span class="sc">$</span>log2FoldChange, <span class="at">digits=</span><span class="dv">2</span>)</span>
-<span id="cb47-11"><a href="specialized-input-types.html#cb47-11" tabindex="-1"></a>idf<span class="sc">$</span>lfcSE <span class="ot">&lt;-</span> <span class="fu">round</span>(idf<span class="sc">$</span>lfcSE, <span class="at">digits=</span><span class="dv">2</span>)</span>
-<span id="cb47-12"><a href="specialized-input-types.html#cb47-12" tabindex="-1"></a>idf<span class="sc">$</span>stat <span class="ot">&lt;-</span> <span class="fu">round</span>(idf<span class="sc">$</span>stat, <span class="at">digits=</span><span class="dv">2</span>)</span>
-<span id="cb47-13"><a href="specialized-input-types.html#cb47-13" tabindex="-1"></a>kdf <span class="ot">&lt;-</span> knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb47-14"><a href="specialized-input-types.html#cb47-14" tabindex="-1"></a>   <span class="at">booktabs=</span><span class="cn">TRUE</span>,</span>
-<span id="cb47-15"><a href="specialized-input-types.html#cb47-15" tabindex="-1"></a>   idf,</span>
-<span id="cb47-16"><a href="specialized-input-types.html#cb47-16" tabindex="-1"></a>   <span class="at">caption=</span><span class="st">&quot;The first 6 rows following DESeq2 statistical analysis.&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb47-17"><a href="specialized-input-types.html#cb47-17" tabindex="-1"></a>   kableExtra<span class="sc">::</span><span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold=</span><span class="cn">TRUE</span>)</span>
-<span id="cb47-18"><a href="specialized-input-types.html#cb47-18" tabindex="-1"></a>kdf</span></code></pre></div>
+<p>(fig:deseq2-example2-real) The first 6 rows following DESeq2 statistical analysis.</p>
 <table>
 <caption>
 <span id="tab:deseq2-example2-real">Table 2.1: </span><span id="tab:deseq2-example2-real">Table 2.2: </span>The first 6 rows following DESeq2 statistical analysis.
@@ -457,7 +442,7 @@ padj
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 row001
 </td>
 <td style="text-align:right;">
@@ -480,7 +465,7 @@ row001
 </td>
 </tr>
 <tr>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 row002
 </td>
 <td style="text-align:right;">
@@ -503,7 +488,7 @@ row002
 </td>
 </tr>
 <tr>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 row003
 </td>
 <td style="text-align:right;">
@@ -526,7 +511,7 @@ row003
 </td>
 </tr>
 <tr>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 row004
 </td>
 <td style="text-align:right;">
@@ -549,7 +534,7 @@ row004
 </td>
 </tr>
 <tr>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 row005
 </td>
 <td style="text-align:right;">
@@ -572,7 +557,7 @@ row005
 </td>
 </tr>
 <tr>
-<td style="text-align:left;font-weight: bold;">
+<td style="text-align:left;font-weight: bold;white-space: nowrap;">
 row006
 </td>
 <td style="text-align:right;">
@@ -606,39 +591,39 @@ row006
 <li>Convert to <a href="glossary.html#signed-set">signed set</a>, assigning names using the DESeq2
 result rownames.</li>
 </ol>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="specialized-input-types.html#cb48-1" tabindex="-1"></a><span class="co"># filter statistics</span></span>
-<span id="cb48-2"><a href="specialized-input-types.html#cb48-2" tabindex="-1"></a>resBA_hitdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(resBA, </span>
-<span id="cb48-3"><a href="specialized-input-types.html#cb48-3" tabindex="-1"></a>   padj <span class="sc">&lt;=</span> <span class="fl">0.2</span> <span class="sc">&amp;</span> </span>
-<span id="cb48-4"><a href="specialized-input-types.html#cb48-4" tabindex="-1"></a>   <span class="fu">abs</span>(log2FoldChange) <span class="sc">&gt;</span> <span class="fu">log2</span>(<span class="dv">1</span>))</span>
-<span id="cb48-5"><a href="specialized-input-types.html#cb48-5" tabindex="-1"></a></span>
-<span id="cb48-6"><a href="specialized-input-types.html#cb48-6" tabindex="-1"></a><span class="co"># generate named vector</span></span>
-<span id="cb48-7"><a href="specialized-input-types.html#cb48-7" tabindex="-1"></a>resBA_hits <span class="ot">&lt;-</span> <span class="fu">setNames</span>(</span>
-<span id="cb48-8"><a href="specialized-input-types.html#cb48-8" tabindex="-1"></a>   <span class="fu">sign</span>(resBA_hitdf<span class="sc">$</span>log2FoldChange),</span>
-<span id="cb48-9"><a href="specialized-input-types.html#cb48-9" tabindex="-1"></a>   <span class="fu">rownames</span>(resBA_hitdf))</span>
-<span id="cb48-10"><a href="specialized-input-types.html#cb48-10" tabindex="-1"></a></span>
-<span id="cb48-11"><a href="specialized-input-types.html#cb48-11" tabindex="-1"></a>resBA_hits</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="specialized-input-types.html#cb47-1" tabindex="-1"></a><span class="co"># filter statistics</span></span>
+<span id="cb47-2"><a href="specialized-input-types.html#cb47-2" tabindex="-1"></a>resBA_hitdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(resBA, </span>
+<span id="cb47-3"><a href="specialized-input-types.html#cb47-3" tabindex="-1"></a>   padj <span class="sc">&lt;=</span> <span class="fl">0.2</span> <span class="sc">&amp;</span> </span>
+<span id="cb47-4"><a href="specialized-input-types.html#cb47-4" tabindex="-1"></a>   <span class="fu">abs</span>(log2FoldChange) <span class="sc">&gt;</span> <span class="fu">log2</span>(<span class="dv">1</span>))</span>
+<span id="cb47-5"><a href="specialized-input-types.html#cb47-5" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="specialized-input-types.html#cb47-6" tabindex="-1"></a><span class="co"># generate named vector</span></span>
+<span id="cb47-7"><a href="specialized-input-types.html#cb47-7" tabindex="-1"></a>resBA_hits <span class="ot">&lt;-</span> <span class="fu">setNames</span>(</span>
+<span id="cb47-8"><a href="specialized-input-types.html#cb47-8" tabindex="-1"></a>   <span class="fu">sign</span>(resBA_hitdf<span class="sc">$</span>log2FoldChange),</span>
+<span id="cb47-9"><a href="specialized-input-types.html#cb47-9" tabindex="-1"></a>   <span class="fu">rownames</span>(resBA_hitdf))</span>
+<span id="cb47-10"><a href="specialized-input-types.html#cb47-10" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="specialized-input-types.html#cb47-11" tabindex="-1"></a>resBA_hits</span></code></pre></div>
 <pre><code>## row001 row002 row022 row023 row040 row045 row096 
 ##     -1      1      1      1     -1      1      1</code></pre>
 <p>The same steps are performed for contrast 'C - A'.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="specialized-input-types.html#cb50-1" tabindex="-1"></a>resCA_hitdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(resCA,</span>
-<span id="cb50-2"><a href="specialized-input-types.html#cb50-2" tabindex="-1"></a>   padj <span class="sc">&lt;=</span> <span class="fl">0.2</span> <span class="sc">&amp;</span></span>
-<span id="cb50-3"><a href="specialized-input-types.html#cb50-3" tabindex="-1"></a>   <span class="fu">abs</span>(log2FoldChange) <span class="sc">&gt;</span> <span class="fu">log2</span>(<span class="dv">1</span>))</span>
-<span id="cb50-4"><a href="specialized-input-types.html#cb50-4" tabindex="-1"></a>resCA_hits <span class="ot">&lt;-</span> <span class="fu">setNames</span>(</span>
-<span id="cb50-5"><a href="specialized-input-types.html#cb50-5" tabindex="-1"></a>   <span class="fu">sign</span>(resCA_hitdf<span class="sc">$</span>log2FoldChange),</span>
-<span id="cb50-6"><a href="specialized-input-types.html#cb50-6" tabindex="-1"></a>   <span class="fu">rownames</span>(resCA_hitdf))</span>
-<span id="cb50-7"><a href="specialized-input-types.html#cb50-7" tabindex="-1"></a></span>
-<span id="cb50-8"><a href="specialized-input-types.html#cb50-8" tabindex="-1"></a>resCA_hits</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="specialized-input-types.html#cb49-1" tabindex="-1"></a>resCA_hitdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(resCA,</span>
+<span id="cb49-2"><a href="specialized-input-types.html#cb49-2" tabindex="-1"></a>   padj <span class="sc">&lt;=</span> <span class="fl">0.2</span> <span class="sc">&amp;</span></span>
+<span id="cb49-3"><a href="specialized-input-types.html#cb49-3" tabindex="-1"></a>   <span class="fu">abs</span>(log2FoldChange) <span class="sc">&gt;</span> <span class="fu">log2</span>(<span class="dv">1</span>))</span>
+<span id="cb49-4"><a href="specialized-input-types.html#cb49-4" tabindex="-1"></a>resCA_hits <span class="ot">&lt;-</span> <span class="fu">setNames</span>(</span>
+<span id="cb49-5"><a href="specialized-input-types.html#cb49-5" tabindex="-1"></a>   <span class="fu">sign</span>(resCA_hitdf<span class="sc">$</span>log2FoldChange),</span>
+<span id="cb49-6"><a href="specialized-input-types.html#cb49-6" tabindex="-1"></a>   <span class="fu">rownames</span>(resCA_hitdf))</span>
+<span id="cb49-7"><a href="specialized-input-types.html#cb49-7" tabindex="-1"></a></span>
+<span id="cb49-8"><a href="specialized-input-types.html#cb49-8" tabindex="-1"></a>resCA_hits</span></code></pre></div>
 <pre><code>## row003 row004 row023 row045 row056 
 ##      1      1      1      1      1</code></pre>
 <p>The two <a href="glossary.html#signed-set">signed sets</a> are combined into a <code>list</code> then
 visualized with <code>venndir()</code> in Figure <a href="specialized-input-types.html#fig:deseq2-example4">2.12</a>.</p>
 
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="specialized-input-types.html#cb52-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb52-2"><a href="specialized-input-types.html#cb52-2" tabindex="-1"></a>   <span class="st">&quot;B-A&quot;</span><span class="ot">=</span>resBA_hits,</span>
-<span id="cb52-3"><a href="specialized-input-types.html#cb52-3" tabindex="-1"></a>   <span class="st">&quot;C-A&quot;</span><span class="ot">=</span>resCA_hits)</span>
-<span id="cb52-4"><a href="specialized-input-types.html#cb52-4" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
-<span id="cb52-5"><a href="specialized-input-types.html#cb52-5" tabindex="-1"></a>   <span class="at">legend_headers=</span><span class="fu">c</span>(<span class="at">Set=</span><span class="st">&quot;Contrast&quot;</span>, <span class="at">Size=</span><span class="st">&quot;Differential Genes&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:deseq2-example4"></span>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="specialized-input-types.html#cb51-1" tabindex="-1"></a>setlist <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb51-2"><a href="specialized-input-types.html#cb51-2" tabindex="-1"></a>   <span class="st">&quot;B-A&quot;</span><span class="ot">=</span>resBA_hits,</span>
+<span id="cb51-3"><a href="specialized-input-types.html#cb51-3" tabindex="-1"></a>   <span class="st">&quot;C-A&quot;</span><span class="ot">=</span>resCA_hits)</span>
+<span id="cb51-4"><a href="specialized-input-types.html#cb51-4" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(setlist,</span>
+<span id="cb51-5"><a href="specialized-input-types.html#cb51-5" tabindex="-1"></a>   <span class="at">legend_headers=</span><span class="fu">c</span>(<span class="at">Set=</span><span class="st">&quot;Contrast&quot;</span>, <span class="at">Size=</span><span class="st">&quot;Differential Genes&quot;</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:deseq2-example4"></span>
 <img src="_main_files/figure-html/deseq2-example4-1.png" alt="Directional Venn diagram comparing statistical hits from two contrasts analyzed using DESeq2." width="80%" />
 <p class="caption">
 Figure 2.12: Directional Venn diagram comparing statistical hits from two contrasts analyzed using DESeq2.

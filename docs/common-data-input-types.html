@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -343,7 +344,7 @@ In Figure <a href="common-data-input-types.html#fig:input-list-venndir">2.1</a> 
 <a href="glossary.html#signed-counts">signed counts</a> displayed.</p>
 
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="common-data-input-types.html#cb3-1" tabindex="-1"></a><span class="fu">venndir</span>(setlist)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:input-list-venndir"></span>
+<div class="figure"><span style="display:block;" id="fig:input-list-venndir"></span>
 <img src="_main_files/figure-html/input-list-venndir-1.png" alt="Default Venn diagram with three sets." width="80%" />
 <p class="caption">
 Figure 2.1: Default Venn diagram with three sets.
@@ -377,7 +378,7 @@ output from <code>venndir()</code>, where
 <a href="glossary.html#signed-setlist">signed setlist</a>.</p>
 
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="common-data-input-types.html#cb6-1" tabindex="-1"></a><span class="fu">venndir</span>(setlist)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:input-signed-list-venndir"></span>
+<div class="figure"><span style="display:block;" id="fig:input-signed-list-venndir"></span>
 <img src="_main_files/figure-html/input-signed-list-venndir-1.png" alt="Default Venn diagram with three signed sets. The overlap counts are each tabulated by directional sign." width="80%" />
 <p class="caption">
 Figure 2.2: Default Venn diagram with three signed sets. The overlap counts are each tabulated by directional sign.
@@ -438,7 +439,7 @@ created by <code>venndir()</code> accepts an incidence matrix as input data.
 The input data is converted to a <code>setlist</code> within the function.</p>
 
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="common-data-input-types.html#cb9-1" tabindex="-1"></a><span class="fu">venndir</span>(im)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:input-im-venndir"></span>
+<div class="figure"><span style="display:block;" id="fig:input-im-venndir"></span>
 <img src="_main_files/figure-html/input-im-venndir-1.png" alt="Default Venn diagram with three sets, using an incidence matrix as input data." width="80%" />
 <p class="caption">
 Figure 2.3: Default Venn diagram with three sets, using an incidence matrix as input data.
@@ -468,11 +469,11 @@ except that it may include positive and negative values.</p>
 ## item_090    -1     0    -1</code></pre>
 <p>Figure <a href="common-data-input-types.html#fig:input-signed-im-venndir">2.4</a> shows the signed Venn
 diagram created by <code>venndir()</code> also accepts a
-<a href="common-data-input-types.html#signed-incidence-matrix">signed incidence matrix</a>
+<a href="glossary.html#g-signed-incidence-matrix">signed incidence matrix</a>
 as input data, and subsequently displays signed counts.</p>
 
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="common-data-input-types.html#cb12-1" tabindex="-1"></a><span class="fu">venndir</span>(im)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:input-signed-im-venndir"></span>
+<div class="figure"><span style="display:block;" id="fig:input-signed-im-venndir"></span>
 <img src="_main_files/figure-html/input-signed-im-venndir-1.png" alt="Default Venn diagram with three sets, using a signed incidence matrix as input data." width="80%" />
 <p class="caption">
 Figure 2.4: Default Venn diagram with three sets, using a signed incidence matrix as input data.
@@ -504,7 +505,7 @@ so the ampersand <code>'&amp;'</code> is stored properly.</p>
 using this <code>setlist</code> as input.</p>
 
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="common-data-input-types.html#cb15-1" tabindex="-1"></a><span class="fu">venndir</span>(setlist)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:input-counts-venndir"></span>
+<div class="figure"><span style="display:block;" id="fig:input-counts-venndir"></span>
 <img src="_main_files/figure-html/input-counts-venndir-1.png" alt="Venn diagram created by using overlap counts as input data." width="80%" />
 <p class="caption">
 Figure 2.5: Venn diagram created by using overlap counts as input data.
@@ -533,7 +534,7 @@ the following:<br />
 <span id="cb16-3"><a href="common-data-input-types.html#cb16-3" tabindex="-1"></a>      <span class="st">&quot;Set B:</span><span class="sc">\n</span><span class="st">test state&quot;</span>),</span>
 <span id="cb16-4"><a href="common-data-input-types.html#cb16-4" tabindex="-1"></a>   <span class="at">legend_labels=</span><span class="fu">c</span>(<span class="st">&quot;A: control state&quot;</span>,</span>
 <span id="cb16-5"><a href="common-data-input-types.html#cb16-5" tabindex="-1"></a>      <span class="st">&quot;B: test state&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:input-counts-venndir-2"></span>
+<div class="figure"><span style="display:block;" id="fig:input-counts-venndir-2"></span>
 <img src="_main_files/figure-html/input-counts-venndir-2-1.png" alt="Venn diagram using custom set names using setlist_labels and legend_labels." width="80%" />
 <p class="caption">
 Figure 2.6: Venn diagram using custom set names using <code>setlist_labels</code> and <code>legend_labels</code>.
@@ -593,7 +594,7 @@ are not otherwise useful.</p>
 visualized with <code>venndir()</code>.</p>
 
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="common-data-input-types.html#cb21-1" tabindex="-1"></a><span class="fu">venndir</span>(setlist, <span class="at">overlap_type=</span><span class="st">&quot;each&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:input-signed-counts-venndir"></span>
+<div class="figure"><span style="display:block;" id="fig:input-signed-counts-venndir"></span>
 <img src="_main_files/figure-html/input-signed-counts-venndir-1.png" alt="Venndir showing signed counts summarized using overlap_type="each", which includes counts for each combination of signs." width="80%" />
 <p class="caption">
 Figure 2.7: Venndir showing signed counts summarized using <code>overlap_type="each"</code>, which includes counts for each combination of signs.
@@ -634,7 +635,7 @@ The <code>show_labels</code> argument is described in <a href="venndir-labels.ht
 <span id="cb24-3"><a href="common-data-input-types.html#cb24-3" tabindex="-1"></a><span class="fu">venndir</span>(setlist,<span class="at">keep_item_order=</span><span class="cn">TRUE</span>,</span>
 <span id="cb24-4"><a href="common-data-input-types.html#cb24-4" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fu">c</span>(<span class="fl">0.6</span>, <span class="fl">0.7</span>, <span class="fl">0.9</span>),</span>
 <span id="cb24-5"><a href="common-data-input-types.html#cb24-5" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:overlaplist-2"></span>
+<div class="figure"><span style="display:block;" id="fig:overlaplist-2"></span>
 <img src="_main_files/figure-html/overlaplist-2-1.png" alt="Venn diagram after converting an overlap list to setlist, showing overlap counts (left), and overlap item labels (right)." width="50%" /><img src="_main_files/figure-html/overlaplist-2-2.png" alt="Venn diagram after converting an overlap list to setlist, showing overlap counts (left), and overlap item labels (right)." width="50%" />
 <p class="caption">
 Figure 2.8: Venn diagram after converting an overlap list to <code>setlist</code>, showing overlap counts (left), and overlap item labels (right).
@@ -696,7 +697,7 @@ a directional arrow, and are colored by the sign.</p>
 <span id="cb27-3"><a href="common-data-input-types.html#cb27-3" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
 <span id="cb27-4"><a href="common-data-input-types.html#cb27-4" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fl">0.6</span>,</span>
 <span id="cb27-5"><a href="common-data-input-types.html#cb27-5" tabindex="-1"></a>   <span class="at">xyratio=</span><span class="fl">1.5</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:signed-overlaplist-2"></span>
+<div class="figure"><span style="display:block;" id="fig:signed-overlaplist-2"></span>
 <img src="_main_files/figure-html/signed-overlaplist-2-1.png" alt="Venn diagram derived from a signed overlap list. The figure shows item labels which are colored by sign, and placed beside a directional arrow." width="80%" />
 <p class="caption">
 Figure 2.9: Venn diagram derived from a signed overlap list. The figure shows item labels which are colored by sign, and placed beside a directional arrow.
@@ -780,7 +781,7 @@ vector of items.</p>
 <span id="cb31-3"><a href="common-data-input-types.html#cb31-3" tabindex="-1"></a>vm15 <span class="ot">&lt;-</span> <span class="fu">venn_meme</span>(<span class="fu">head</span>(LETTERS, <span class="dv">15</span>))</span>
 <span id="cb31-4"><a href="common-data-input-types.html#cb31-4" tabindex="-1"></a>vm31 <span class="ot">&lt;-</span> <span class="fu">venn_meme</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">31</span>)</span></code></pre></div>
 
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:import-meme-all"></span>
+<div class="figure"><span style="display:block;" id="fig:import-meme-all"></span>
 <img src="_main_files/figure-html/import-meme-all-1.png" alt="Four Venn diagrams showing the output from venn_meme() when providing a certain different number of items." width="50%" /><img src="_main_files/figure-html/import-meme-all-2.png" alt="Four Venn diagrams showing the output from venn_meme() when providing a certain different number of items." width="50%" /><img src="_main_files/figure-html/import-meme-all-3.png" alt="Four Venn diagrams showing the output from venn_meme() when providing a certain different number of items." width="50%" /><img src="_main_files/figure-html/import-meme-all-4.png" alt="Four Venn diagrams showing the output from venn_meme() when providing a certain different number of items." width="50%" />
 <p class="caption">
 Figure 2.10: Four Venn diagrams showing the output from <code>venn_meme()</code> when providing a certain different number of items.
@@ -935,7 +936,7 @@ The vector should be the sign, then <em>named</em> by 'item'.</p>
 ##     -1     -1      1     -1     -1      1     -1      1     -1      1      1</code></pre>
 <p>Figure <a href="common-data-input-types.html#fig:input-df-signed-list-venndir">2.11</a> shows the resulting Venn diagram without sign (left) and with sign (right).</p>
 
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:input-df-signed-list-venndir"></span>
+<div class="figure"><span style="display:block;" id="fig:input-df-signed-list-venndir"></span>
 <img src="_main_files/figure-html/input-df-signed-list-venndir-1.png" alt="Venn diagram using a list of data frames to a setlist (left) and signed setlist (right)." width="50%" /><img src="_main_files/figure-html/input-df-signed-list-venndir-2.png" alt="Venn diagram using a list of data frames to a setlist (left) and signed setlist (right)." width="50%" />
 <p class="caption">
 Figure 2.11: Venn diagram using a list of data frames to a <code>setlist</code> (left) and signed <code>setlist</code> (right).

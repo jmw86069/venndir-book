@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -344,26 +345,26 @@ border and label fill.</p>
 <li>moving this overlap label outside the figure.</li>
 </ul>
 
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="customize-any-label.html#cb106-1" tabindex="-1"></a><span class="co"># default Venndir</span></span>
-<span id="cb106-2"><a href="customize-any-label.html#cb106-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>),</span>
-<span id="cb106-3"><a href="customize-any-label.html#cb106-3" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Default Venndir&quot;</span>)</span>
-<span id="cb106-4"><a href="customize-any-label.html#cb106-4" tabindex="-1"></a><span class="co"># modified Venndir</span></span>
-<span id="cb106-5"><a href="customize-any-label.html#cb106-5" tabindex="-1"></a>v_mod <span class="ot">&lt;-</span> <span class="fu">modify_venndir_overlap</span>(v,</span>
-<span id="cb106-6"><a href="customize-any-label.html#cb106-6" tabindex="-1"></a>   <span class="at">overlap_set=</span><span class="st">&quot;set_A&amp;set_C&quot;</span>,</span>
-<span id="cb106-7"><a href="customize-any-label.html#cb106-7" tabindex="-1"></a>   <span class="at">params=</span><span class="fu">list</span>(<span class="at">fill=</span><span class="st">&quot;royalblue&quot;</span>,</span>
-<span id="cb106-8"><a href="customize-any-label.html#cb106-8" tabindex="-1"></a>      <span class="at">alpha=</span><span class="dv">1</span>,</span>
-<span id="cb106-9"><a href="customize-any-label.html#cb106-9" tabindex="-1"></a>      <span class="at">fontsize=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">12</span>),</span>
-<span id="cb106-10"><a href="customize-any-label.html#cb106-10" tabindex="-1"></a>      <span class="at">label.border=</span><span class="st">&quot;navy&quot;</span>,</span>
-<span id="cb106-11"><a href="customize-any-label.html#cb106-11" tabindex="-1"></a>      <span class="at">label.fill=</span><span class="st">&quot;royalblue3&quot;</span>,</span>
-<span id="cb106-12"><a href="customize-any-label.html#cb106-12" tabindex="-1"></a>      <span class="at">label.color=</span><span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;pink&quot;</span>, <span class="st">&quot;skyblue&quot;</span>),</span>
-<span id="cb106-13"><a href="customize-any-label.html#cb106-13" tabindex="-1"></a>      <span class="at">innerborder=</span><span class="st">&quot;royalblue4&quot;</span>,</span>
-<span id="cb106-14"><a href="customize-any-label.html#cb106-14" tabindex="-1"></a>      <span class="at">innerborder.lwd=</span><span class="dv">5</span>))</span>
-<span id="cb106-15"><a href="customize-any-label.html#cb106-15" tabindex="-1"></a><span class="fu">plot</span>(v_mod, <span class="at">main=</span><span class="st">&quot;Modified &#39;set_A&amp;set_C&#39;&quot;</span>)</span>
-<span id="cb106-16"><a href="customize-any-label.html#cb106-16" tabindex="-1"></a><span class="co"># move the label outside</span></span>
-<span id="cb106-17"><a href="customize-any-label.html#cb106-17" tabindex="-1"></a>v_mod1 <span class="ot">&lt;-</span> <span class="fu">modify_venndir_overlap</span>(v_mod,</span>
-<span id="cb106-18"><a href="customize-any-label.html#cb106-18" tabindex="-1"></a>   <span class="at">overlap_set=</span><span class="st">&quot;set_A&amp;set_C&quot;</span>,</span>
-<span id="cb106-19"><a href="customize-any-label.html#cb106-19" tabindex="-1"></a>   <span class="at">params=</span><span class="fu">list</span>(<span class="at">label.count=</span><span class="st">&quot;outside&quot;</span>))</span>
-<span id="cb106-20"><a href="customize-any-label.html#cb106-20" tabindex="-1"></a><span class="fu">plot</span>(v_mod1,<span class="at">main=</span><span class="st">&quot;Outside &#39;set_A&amp;set_C&#39;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="customize-any-label.html#cb105-1" tabindex="-1"></a><span class="co"># default Venndir</span></span>
+<span id="cb105-2"><a href="customize-any-label.html#cb105-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">venndir</span>(<span class="fu">make_venn_test</span>(<span class="at">do_signed=</span><span class="cn">TRUE</span>),</span>
+<span id="cb105-3"><a href="customize-any-label.html#cb105-3" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Default Venndir&quot;</span>)</span>
+<span id="cb105-4"><a href="customize-any-label.html#cb105-4" tabindex="-1"></a><span class="co"># modified Venndir</span></span>
+<span id="cb105-5"><a href="customize-any-label.html#cb105-5" tabindex="-1"></a>v_mod <span class="ot">&lt;-</span> <span class="fu">modify_venndir_overlap</span>(v,</span>
+<span id="cb105-6"><a href="customize-any-label.html#cb105-6" tabindex="-1"></a>   <span class="at">overlap_set=</span><span class="st">&quot;set_A&amp;set_C&quot;</span>,</span>
+<span id="cb105-7"><a href="customize-any-label.html#cb105-7" tabindex="-1"></a>   <span class="at">params=</span><span class="fu">list</span>(<span class="at">fill=</span><span class="st">&quot;royalblue&quot;</span>,</span>
+<span id="cb105-8"><a href="customize-any-label.html#cb105-8" tabindex="-1"></a>      <span class="at">alpha=</span><span class="dv">1</span>,</span>
+<span id="cb105-9"><a href="customize-any-label.html#cb105-9" tabindex="-1"></a>      <span class="at">fontsize=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">12</span>),</span>
+<span id="cb105-10"><a href="customize-any-label.html#cb105-10" tabindex="-1"></a>      <span class="at">label.border=</span><span class="st">&quot;navy&quot;</span>,</span>
+<span id="cb105-11"><a href="customize-any-label.html#cb105-11" tabindex="-1"></a>      <span class="at">label.fill=</span><span class="st">&quot;royalblue3&quot;</span>,</span>
+<span id="cb105-12"><a href="customize-any-label.html#cb105-12" tabindex="-1"></a>      <span class="at">label.color=</span><span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;pink&quot;</span>, <span class="st">&quot;skyblue&quot;</span>),</span>
+<span id="cb105-13"><a href="customize-any-label.html#cb105-13" tabindex="-1"></a>      <span class="at">innerborder=</span><span class="st">&quot;royalblue4&quot;</span>,</span>
+<span id="cb105-14"><a href="customize-any-label.html#cb105-14" tabindex="-1"></a>      <span class="at">innerborder.lwd=</span><span class="dv">5</span>))</span>
+<span id="cb105-15"><a href="customize-any-label.html#cb105-15" tabindex="-1"></a><span class="fu">plot</span>(v_mod, <span class="at">main=</span><span class="st">&quot;Modified &#39;set_A&amp;set_C&#39;&quot;</span>)</span>
+<span id="cb105-16"><a href="customize-any-label.html#cb105-16" tabindex="-1"></a><span class="co"># move the label outside</span></span>
+<span id="cb105-17"><a href="customize-any-label.html#cb105-17" tabindex="-1"></a>v_mod1 <span class="ot">&lt;-</span> <span class="fu">modify_venndir_overlap</span>(v_mod,</span>
+<span id="cb105-18"><a href="customize-any-label.html#cb105-18" tabindex="-1"></a>   <span class="at">overlap_set=</span><span class="st">&quot;set_A&amp;set_C&quot;</span>,</span>
+<span id="cb105-19"><a href="customize-any-label.html#cb105-19" tabindex="-1"></a>   <span class="at">params=</span><span class="fu">list</span>(<span class="at">label.count=</span><span class="st">&quot;outside&quot;</span>))</span>
+<span id="cb105-20"><a href="customize-any-label.html#cb105-20" tabindex="-1"></a><span class="fu">plot</span>(v_mod1,<span class="at">main=</span><span class="st">&quot;Outside &#39;set_A&amp;set_C&#39;&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:modify-label-1"></span>
 <img src="_main_files/figure-html/modify-label-1-1.png" alt="Venndir (left) and modified Venndir with customized label attributes (right), and how to move the label outside (bottom)." width="50%" /><img src="_main_files/figure-html/modify-label-1-2.png" alt="Venndir (left) and modified Venndir with customized label attributes (right), and how to move the label outside (bottom)." width="50%" /><img src="_main_files/figure-html/modify-label-1-3.png" alt="Venndir (left) and modified Venndir with customized label attributes (right), and how to move the label outside (bottom)." width="50%" />
 <p class="caption">

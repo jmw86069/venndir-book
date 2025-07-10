@@ -23,7 +23,7 @@
 <meta name="author" content="James M. Ward" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -284,6 +284,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.13.1" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-gtree"><i class="fa fa-check"></i><b>4.13.1</b> Venndir gtree</a></li>
 <li class="chapter" data-level="4.13.2" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#venndir-grob_list"><i class="fa fa-check"></i><b>4.13.2</b> Venndir grob_list</a></li>
+<li class="chapter" data-level="4.13.3" data-path="venndir-graphics-objects.html"><a href="venndir-graphics-objects.html#manipulate-grob_list"><i class="fa fa-check"></i><b>4.13.3</b> Manipulate grob_list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="venndir-gallery.html"><a href="venndir-gallery.html"><i class="fa fa-check"></i><b>5</b> Venndir Gallery</a>
@@ -300,7 +301,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html"><i class="fa fa-check"></i><b>6</b> What's New by Version</a>
 <ul>
-<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.57.950"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.57.950</a></li>
+<li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.2.0-06-july-2025-venndir-v0.0.58.900"><i class="fa fa-check"></i>venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900</a></li>
 <li class="chapter" data-level="" data-path="whats-new-by-version.html"><a href="whats-new-by-version.html#venndir-book-v0.1.0-26-june-2025-venndir-v0.0.56.900"><i class="fa fa-check"></i>venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
@@ -363,24 +364,24 @@ customizes the innerborder and outerborder. The second calls
 <code>modify_venndir_overlap()</code> to highlight the center region.</p>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:me-electron"></span>
-<img src="images/MeElectron.png" alt="Figure from Reddit r/physicsmemes (top left), re-created by Venndir (top right). Two alternatives are shown (bottom row) adding some visual flair." width="50%" /><img src="_main_files/figure-html/me-electron-2.png" alt="Figure from Reddit r/physicsmemes (top left), re-created by Venndir (top right). Two alternatives are shown (bottom row) adding some visual flair." width="50%" /><img src="_main_files/figure-html/me-electron-3.png" alt="Figure from Reddit r/physicsmemes (top left), re-created by Venndir (top right). Two alternatives are shown (bottom row) adding some visual flair." width="50%" /><img src="_main_files/figure-html/me-electron-4.png" alt="Figure from Reddit r/physicsmemes (top left), re-created by Venndir (top right). Two alternatives are shown (bottom row) adding some visual flair." width="50%" />
+<img src="images/MeElectron.png" alt="Target figure from r/physicsmemes (top left), re-created (top right), with two alternatives (bottom)." width="50%" /><img src="_main_files/figure-html/me-electron-2.png" alt="Target figure from r/physicsmemes (top left), re-created (top right), with two alternatives (bottom)." width="50%" /><img src="_main_files/figure-html/me-electron-3.png" alt="Target figure from r/physicsmemes (top left), re-created (top right), with two alternatives (bottom)." width="50%" /><img src="_main_files/figure-html/me-electron-4.png" alt="Target figure from r/physicsmemes (top left), re-created (top right), with two alternatives (bottom)." width="50%" />
 <p class="caption">
-Figure 5.1: Figure from Reddit r/physicsmemes (top left), re-created by Venndir (top right). Two alternatives are shown (bottom row) adding some visual flair.
+Figure 5.1: Target figure from r/physicsmemes (top left), re-created (top right), with two alternatives (bottom).
 </p>
 </div>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="figure-boosting.html#cb139-1" tabindex="-1"></a>olist <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Me&quot;</span>,</span>
-<span id="cb139-2"><a href="figure-boosting.html#cb139-2" tabindex="-1"></a>   <span class="st">&quot;Electron&quot;</span>,</span>
-<span id="cb139-3"><a href="figure-boosting.html#cb139-3" tabindex="-1"></a>   <span class="fu">paste</span>(<span class="at">collapse=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb139-4"><a href="figure-boosting.html#cb139-4" tabindex="-1"></a>      <span class="fu">c</span>(<span class="st">&quot;start&quot;</span>, <span class="st">&quot;behaving&quot;</span>,</span>
-<span id="cb139-5"><a href="figure-boosting.html#cb139-5" tabindex="-1"></a>         <span class="st">&quot;differently&quot;</span>, <span class="st">&quot;when&quot;</span>,</span>
-<span id="cb139-6"><a href="figure-boosting.html#cb139-6" tabindex="-1"></a>         <span class="st">&quot;observed&quot;</span>))</span>
-<span id="cb139-7"><a href="figure-boosting.html#cb139-7" tabindex="-1"></a>)</span>
-<span id="cb139-8"><a href="figure-boosting.html#cb139-8" tabindex="-1"></a><span class="fu">venn_meme</span>(olist,</span>
-<span id="cb139-9"><a href="figure-boosting.html#cb139-9" tabindex="-1"></a>   <span class="at">outerborder.lwd=</span><span class="dv">2</span>, <span class="at">innerborder.lwd=</span><span class="dv">2</span>,</span>
-<span id="cb139-10"><a href="figure-boosting.html#cb139-10" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.7</span>,</span>
-<span id="cb139-11"><a href="figure-boosting.html#cb139-11" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.9</span>),</span>
-<span id="cb139-12"><a href="figure-boosting.html#cb139-12" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;serif&quot;</span>,</span>
-<span id="cb139-13"><a href="figure-boosting.html#cb139-13" tabindex="-1"></a>   <span class="at">set_colors=</span><span class="fu">c</span>(<span class="st">&quot;#BFFAD6&quot;</span>, <span class="st">&quot;#C4D8F6&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="figure-boosting.html#cb147-1" tabindex="-1"></a>olist <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Me&quot;</span>,</span>
+<span id="cb147-2"><a href="figure-boosting.html#cb147-2" tabindex="-1"></a>   <span class="st">&quot;Electron&quot;</span>,</span>
+<span id="cb147-3"><a href="figure-boosting.html#cb147-3" tabindex="-1"></a>   <span class="fu">paste</span>(<span class="at">collapse=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb147-4"><a href="figure-boosting.html#cb147-4" tabindex="-1"></a>      <span class="fu">c</span>(<span class="st">&quot;start&quot;</span>, <span class="st">&quot;behaving&quot;</span>,</span>
+<span id="cb147-5"><a href="figure-boosting.html#cb147-5" tabindex="-1"></a>         <span class="st">&quot;differently&quot;</span>, <span class="st">&quot;when&quot;</span>,</span>
+<span id="cb147-6"><a href="figure-boosting.html#cb147-6" tabindex="-1"></a>         <span class="st">&quot;observed&quot;</span>))</span>
+<span id="cb147-7"><a href="figure-boosting.html#cb147-7" tabindex="-1"></a>)</span>
+<span id="cb147-8"><a href="figure-boosting.html#cb147-8" tabindex="-1"></a><span class="fu">venn_meme</span>(olist,</span>
+<span id="cb147-9"><a href="figure-boosting.html#cb147-9" tabindex="-1"></a>   <span class="at">outerborder.lwd=</span><span class="dv">2</span>, <span class="at">innerborder.lwd=</span><span class="dv">2</span>,</span>
+<span id="cb147-10"><a href="figure-boosting.html#cb147-10" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.7</span>,</span>
+<span id="cb147-11"><a href="figure-boosting.html#cb147-11" tabindex="-1"></a>   <span class="at">item_cex_factor=</span><span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.9</span>),</span>
+<span id="cb147-12"><a href="figure-boosting.html#cb147-12" tabindex="-1"></a>   <span class="at">fontfamily=</span><span class="st">&quot;serif&quot;</span>,</span>
+<span id="cb147-13"><a href="figure-boosting.html#cb147-13" tabindex="-1"></a>   <span class="at">set_colors=</span><span class="fu">c</span>(<span class="st">&quot;#BFFAD6&quot;</span>, <span class="st">&quot;#C4D8F6&quot;</span>))</span></code></pre></div>
 </div>
 <div id="eulerglyphs" class="section level3 hasAnchor" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> eulerGlyphs<a href="figure-boosting.html#eulerglyphs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -407,33 +408,33 @@ and is a common reference dataset to study the visual perception of statistics.<
 sign, which for agreement uses <code>'='</code> the equals sign. Items are
 rotated with <code>jitter_degrees</code> to provide some visual randomness.</p>
 
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="figure-boosting.html#cb140-1" tabindex="-1"></a>mammo_counts <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb140-2"><a href="figure-boosting.html#cb140-2" tabindex="-1"></a>   <span class="at">wob=</span><span class="dv">895</span>,</span>
-<span id="cb140-3"><a href="figure-boosting.html#cb140-3" tabindex="-1"></a>   <span class="at">wwbc=</span><span class="dv">2</span>,</span>
-<span id="cb140-4"><a href="figure-boosting.html#cb140-4" tabindex="-1"></a>   <span class="st">&quot;wob&amp;wwpm&quot;</span><span class="ot">=</span><span class="dv">95</span>,</span>
-<span id="cb140-5"><a href="figure-boosting.html#cb140-5" tabindex="-1"></a>   <span class="st">&quot;wwbc&amp;wwpm&quot;</span><span class="ot">=</span><span class="dv">8</span>)</span>
-<span id="cb140-6"><a href="figure-boosting.html#cb140-6" tabindex="-1"></a>mammo_list <span class="ot">&lt;-</span> <span class="fu">counts2setlist</span>(mammo_counts)</span>
-<span id="cb140-7"><a href="figure-boosting.html#cb140-7" tabindex="-1"></a>mammo_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb140-8"><a href="figure-boosting.html#cb140-8" tabindex="-1"></a>   <span class="at">wob=</span><span class="st">&quot;women without</span><span class="sc">\n</span><span class="st">breast cancer&quot;</span>,</span>
-<span id="cb140-9"><a href="figure-boosting.html#cb140-9" tabindex="-1"></a>   <span class="at">wwbc=</span><span class="st">&quot;women with</span><span class="sc">\n</span><span class="st">breast cancer&quot;</span>,</span>
-<span id="cb140-10"><a href="figure-boosting.html#cb140-10" tabindex="-1"></a>   <span class="at">wwpm=</span><span class="st">&quot;women with</span><span class="sc">\n</span><span class="st">positive mammography&quot;</span>)</span>
-<span id="cb140-11"><a href="figure-boosting.html#cb140-11" tabindex="-1"></a>mammo_colors<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;#AEAEFF&quot;</span>, <span class="st">&quot;#FF9D9D&quot;</span>, <span class="st">&quot;#896699&quot;</span>)</span>
-<span id="cb140-12"><a href="figure-boosting.html#cb140-12" tabindex="-1"></a>v_mammo <span class="ot">&lt;-</span> <span class="fu">venndir</span>(mammo_list,</span>
-<span id="cb140-13"><a href="figure-boosting.html#cb140-13" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;agreement&quot;</span>,</span>
-<span id="cb140-14"><a href="figure-boosting.html#cb140-14" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.3</span>,</span>
-<span id="cb140-15"><a href="figure-boosting.html#cb140-15" tabindex="-1"></a>   <span class="at">set_colors=</span>mammo_colors,</span>
-<span id="cb140-16"><a href="figure-boosting.html#cb140-16" tabindex="-1"></a>   <span class="at">setlist_labels=</span>mammo_labels,</span>
-<span id="cb140-17"><a href="figure-boosting.html#cb140-17" tabindex="-1"></a>   <span class="at">xyratio=</span><span class="fl">0.4</span>,</span>
-<span id="cb140-18"><a href="figure-boosting.html#cb140-18" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
-<span id="cb140-19"><a href="figure-boosting.html#cb140-19" tabindex="-1"></a>   <span class="at">show_items=</span><span class="st">&quot;sign&quot;</span>,</span>
-<span id="cb140-20"><a href="figure-boosting.html#cb140-20" tabindex="-1"></a>   <span class="at">jitter_degrees=</span><span class="dv">45</span>,</span>
-<span id="cb140-21"><a href="figure-boosting.html#cb140-21" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="sc">-</span><span class="fl">0.01</span>, <span class="at">width_buffer=</span><span class="fl">0.05</span>,</span>
-<span id="cb140-22"><a href="figure-boosting.html#cb140-22" tabindex="-1"></a>   <span class="at">item_cex=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb140-23"><a href="figure-boosting.html#cb140-23" tabindex="-1"></a>   <span class="at">segment_distance=</span><span class="fl">0.02</span>,</span>
-<span id="cb140-24"><a href="figure-boosting.html#cb140-24" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.2</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="dv">0</span>),</span>
-<span id="cb140-25"><a href="figure-boosting.html#cb140-25" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">180</span>,</span>
-<span id="cb140-26"><a href="figure-boosting.html#cb140-26" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
-<span id="cb140-27"><a href="figure-boosting.html#cb140-27" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="figure-boosting.html#cb148-1" tabindex="-1"></a>mammo_counts <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb148-2"><a href="figure-boosting.html#cb148-2" tabindex="-1"></a>   <span class="at">wob=</span><span class="dv">895</span>,</span>
+<span id="cb148-3"><a href="figure-boosting.html#cb148-3" tabindex="-1"></a>   <span class="at">wwbc=</span><span class="dv">2</span>,</span>
+<span id="cb148-4"><a href="figure-boosting.html#cb148-4" tabindex="-1"></a>   <span class="st">&quot;wob&amp;wwpm&quot;</span><span class="ot">=</span><span class="dv">95</span>,</span>
+<span id="cb148-5"><a href="figure-boosting.html#cb148-5" tabindex="-1"></a>   <span class="st">&quot;wwbc&amp;wwpm&quot;</span><span class="ot">=</span><span class="dv">8</span>)</span>
+<span id="cb148-6"><a href="figure-boosting.html#cb148-6" tabindex="-1"></a>mammo_list <span class="ot">&lt;-</span> <span class="fu">counts2setlist</span>(mammo_counts)</span>
+<span id="cb148-7"><a href="figure-boosting.html#cb148-7" tabindex="-1"></a>mammo_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb148-8"><a href="figure-boosting.html#cb148-8" tabindex="-1"></a>   <span class="at">wob=</span><span class="st">&quot;women without</span><span class="sc">\n</span><span class="st">breast cancer&quot;</span>,</span>
+<span id="cb148-9"><a href="figure-boosting.html#cb148-9" tabindex="-1"></a>   <span class="at">wwbc=</span><span class="st">&quot;women with</span><span class="sc">\n</span><span class="st">breast cancer&quot;</span>,</span>
+<span id="cb148-10"><a href="figure-boosting.html#cb148-10" tabindex="-1"></a>   <span class="at">wwpm=</span><span class="st">&quot;women with</span><span class="sc">\n</span><span class="st">positive mammography&quot;</span>)</span>
+<span id="cb148-11"><a href="figure-boosting.html#cb148-11" tabindex="-1"></a>mammo_colors<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;#AEAEFF&quot;</span>, <span class="st">&quot;#FF9D9D&quot;</span>, <span class="st">&quot;#896699&quot;</span>)</span>
+<span id="cb148-12"><a href="figure-boosting.html#cb148-12" tabindex="-1"></a>v_mammo <span class="ot">&lt;-</span> <span class="fu">venndir</span>(mammo_list,</span>
+<span id="cb148-13"><a href="figure-boosting.html#cb148-13" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;agreement&quot;</span>,</span>
+<span id="cb148-14"><a href="figure-boosting.html#cb148-14" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.3</span>,</span>
+<span id="cb148-15"><a href="figure-boosting.html#cb148-15" tabindex="-1"></a>   <span class="at">set_colors=</span>mammo_colors,</span>
+<span id="cb148-16"><a href="figure-boosting.html#cb148-16" tabindex="-1"></a>   <span class="at">setlist_labels=</span>mammo_labels,</span>
+<span id="cb148-17"><a href="figure-boosting.html#cb148-17" tabindex="-1"></a>   <span class="at">xyratio=</span><span class="fl">0.4</span>,</span>
+<span id="cb148-18"><a href="figure-boosting.html#cb148-18" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
+<span id="cb148-19"><a href="figure-boosting.html#cb148-19" tabindex="-1"></a>   <span class="at">show_items=</span><span class="st">&quot;sign&quot;</span>,</span>
+<span id="cb148-20"><a href="figure-boosting.html#cb148-20" tabindex="-1"></a>   <span class="at">jitter_degrees=</span><span class="dv">45</span>,</span>
+<span id="cb148-21"><a href="figure-boosting.html#cb148-21" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="sc">-</span><span class="fl">0.01</span>, <span class="at">width_buffer=</span><span class="fl">0.05</span>,</span>
+<span id="cb148-22"><a href="figure-boosting.html#cb148-22" tabindex="-1"></a>   <span class="at">item_cex=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb148-23"><a href="figure-boosting.html#cb148-23" tabindex="-1"></a>   <span class="at">segment_distance=</span><span class="fl">0.02</span>,</span>
+<span id="cb148-24"><a href="figure-boosting.html#cb148-24" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.2</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="dv">0</span>),</span>
+<span id="cb148-25"><a href="figure-boosting.html#cb148-25" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">180</span>,</span>
+<span id="cb148-26"><a href="figure-boosting.html#cb148-26" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
+<span id="cb148-27"><a href="figure-boosting.html#cb148-27" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:euler-glyphs-1"></span>
 <img src="_main_files/figure-html/euler-glyphs-1-1.png" alt="Initial attempt at re-creating the EulerGlyphs figure." width="80%" />
 <p class="caption">
@@ -456,57 +457,57 @@ symbol as one option.)</p>
 and colors assigned to approximate the colors in eulerGlyphs.
 The set labels are nudged.</p>
 
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="figure-boosting.html#cb141-1" tabindex="-1"></a>curate_df3 <span class="ot">&lt;-</span> <span class="fu">get_venndir_curate_df</span>();</span>
-<span id="cb141-2"><a href="figure-boosting.html#cb141-2" tabindex="-1"></a>agg3 <span class="ot">&lt;-</span> <span class="fu">which</span>(curate_df3<span class="sc">$</span>from <span class="sc">%in%</span> <span class="st">&quot;agreement&quot;</span>)</span>
-<span id="cb141-3"><a href="figure-boosting.html#cb141-3" tabindex="-1"></a>curate_df3[agg3, <span class="st">&quot;sign&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;\u25CF&quot;</span>;</span>
-<span id="cb141-4"><a href="figure-boosting.html#cb141-4" tabindex="-1"></a></span>
-<span id="cb141-5"><a href="figure-boosting.html#cb141-5" tabindex="-1"></a><span class="co"># create a new Venndir</span></span>
-<span id="cb141-6"><a href="figure-boosting.html#cb141-6" tabindex="-1"></a>v_mammo3 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(mammo_list,</span>
-<span id="cb141-7"><a href="figure-boosting.html#cb141-7" tabindex="-1"></a>   <span class="at">do_plot=</span><span class="cn">FALSE</span>,</span>
-<span id="cb141-8"><a href="figure-boosting.html#cb141-8" tabindex="-1"></a>   <span class="at">circle_nudge=</span><span class="fu">list</span>(</span>
-<span id="cb141-9"><a href="figure-boosting.html#cb141-9" tabindex="-1"></a>      <span class="at">wwbc=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.8</span>, <span class="dv">0</span>),</span>
-<span id="cb141-10"><a href="figure-boosting.html#cb141-10" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.6</span>, <span class="dv">0</span>)),</span>
-<span id="cb141-11"><a href="figure-boosting.html#cb141-11" tabindex="-1"></a>   <span class="at">innerborder.lwd=</span><span class="dv">1</span>, <span class="at">outerborder.lwd=</span><span class="dv">1</span>,</span>
-<span id="cb141-12"><a href="figure-boosting.html#cb141-12" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;agreement&quot;</span>,</span>
-<span id="cb141-13"><a href="figure-boosting.html#cb141-13" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.1</span>,</span>
-<span id="cb141-14"><a href="figure-boosting.html#cb141-14" tabindex="-1"></a>   <span class="at">set_colors=</span>mammo_colors,</span>
-<span id="cb141-15"><a href="figure-boosting.html#cb141-15" tabindex="-1"></a>   <span class="at">curate_df=</span>curate_df3,</span>
-<span id="cb141-16"><a href="figure-boosting.html#cb141-16" tabindex="-1"></a>   <span class="at">setlist_labels=</span>mammo_labels,</span>
-<span id="cb141-17"><a href="figure-boosting.html#cb141-17" tabindex="-1"></a>   <span class="at">xyratio=</span><span class="fl">0.6</span>,</span>
-<span id="cb141-18"><a href="figure-boosting.html#cb141-18" tabindex="-1"></a>   <span class="at">fontfaces=</span><span class="fu">list</span>(<span class="at">overlap=</span><span class="st">&quot;plain&quot;</span>),</span>
-<span id="cb141-19"><a href="figure-boosting.html#cb141-19" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
-<span id="cb141-20"><a href="figure-boosting.html#cb141-20" tabindex="-1"></a>   <span class="at">show_items=</span><span class="st">&quot;sign&quot;</span>,</span>
-<span id="cb141-21"><a href="figure-boosting.html#cb141-21" tabindex="-1"></a>   <span class="at">segment_buffer=</span><span class="sc">-</span><span class="fl">0.05</span>,</span>
-<span id="cb141-22"><a href="figure-boosting.html#cb141-22" tabindex="-1"></a>   <span class="at">jitter_cex=</span><span class="dv">0</span>, <span class="at">jitter_color=</span><span class="dv">0</span>,</span>
-<span id="cb141-23"><a href="figure-boosting.html#cb141-23" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">0.8</span>,</span>
-<span id="cb141-24"><a href="figure-boosting.html#cb141-24" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="sc">-</span><span class="fl">0.02</span>,</span>
-<span id="cb141-25"><a href="figure-boosting.html#cb141-25" tabindex="-1"></a>   <span class="at">item_cex=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="dv">1</span>,</span>
-<span id="cb141-26"><a href="figure-boosting.html#cb141-26" tabindex="-1"></a>   <span class="at">segment_distance=</span><span class="fl">0.02</span>,</span>
-<span id="cb141-27"><a href="figure-boosting.html#cb141-27" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">180</span>,</span>
-<span id="cb141-28"><a href="figure-boosting.html#cb141-28" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
-<span id="cb141-29"><a href="figure-boosting.html#cb141-29" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span>
-<span id="cb141-30"><a href="figure-boosting.html#cb141-30" tabindex="-1"></a></span>
-<span id="cb141-31"><a href="figure-boosting.html#cb141-31" tabindex="-1"></a><span class="co"># edit the label colors</span></span>
-<span id="cb141-32"><a href="figure-boosting.html#cb141-32" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wob&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;blue1&quot;</span>;</span>
-<span id="cb141-33"><a href="figure-boosting.html#cb141-33" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wwbc&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;red2&quot;</span>;</span>
-<span id="cb141-34"><a href="figure-boosting.html#cb141-34" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wob.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> mammo_colors[<span class="dv">1</span>];</span>
-<span id="cb141-35"><a href="figure-boosting.html#cb141-35" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wob&amp;wwpm.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;royalblue&quot;</span>;</span>
-<span id="cb141-36"><a href="figure-boosting.html#cb141-36" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wwbc&amp;wwpm.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;#DD6666&quot;</span>;</span>
-<span id="cb141-37"><a href="figure-boosting.html#cb141-37" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wwbc.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> mammo_colors[<span class="dv">2</span>];</span>
-<span id="cb141-38"><a href="figure-boosting.html#cb141-38" tabindex="-1"></a></span>
-<span id="cb141-39"><a href="figure-boosting.html#cb141-39" tabindex="-1"></a><span class="co"># nudge labels</span></span>
-<span id="cb141-40"><a href="figure-boosting.html#cb141-40" tabindex="-1"></a>v_mammo3n <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(v_mammo3,</span>
-<span id="cb141-41"><a href="figure-boosting.html#cb141-41" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;outside&quot;</span>,</span>
-<span id="cb141-42"><a href="figure-boosting.html#cb141-42" tabindex="-1"></a>   <span class="at">offset_list=</span><span class="fu">list</span>(<span class="at">wwbc=</span><span class="fu">c</span>(<span class="fl">0.0</span>, <span class="fl">0.03</span>),</span>
-<span id="cb141-43"><a href="figure-boosting.html#cb141-43" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.07</span>, <span class="fl">0.1</span>),</span>
-<span id="cb141-44"><a href="figure-boosting.html#cb141-44" tabindex="-1"></a>      <span class="at">wob=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.06</span>)))</span>
-<span id="cb141-45"><a href="figure-boosting.html#cb141-45" tabindex="-1"></a></span>
-<span id="cb141-46"><a href="figure-boosting.html#cb141-46" tabindex="-1"></a><span class="co"># visualize</span></span>
-<span id="cb141-47"><a href="figure-boosting.html#cb141-47" tabindex="-1"></a><span class="fu">plot</span>(v_mammo3n,</span>
-<span id="cb141-48"><a href="figure-boosting.html#cb141-48" tabindex="-1"></a>   <span class="at">jitter_color=</span><span class="dv">0</span>, <span class="at">width_buffer=</span><span class="fl">0.02</span>,</span>
-<span id="cb141-49"><a href="figure-boosting.html#cb141-49" tabindex="-1"></a>   <span class="at">L_lo=</span><span class="dv">80</span>, <span class="at">L_hi=</span><span class="dv">85</span>, <span class="at">C_floor=</span><span class="dv">50</span>,</span>
-<span id="cb141-50"><a href="figure-boosting.html#cb141-50" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.10</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.05</span>),</span>
-<span id="cb141-51"><a href="figure-boosting.html#cb141-51" tabindex="-1"></a>   <span class="at">innerborder.lwd=</span><span class="dv">0</span>, <span class="at">outerborder.lwd=</span><span class="fl">0.7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="figure-boosting.html#cb149-1" tabindex="-1"></a>curate_df3 <span class="ot">&lt;-</span> <span class="fu">get_venndir_curate_df</span>();</span>
+<span id="cb149-2"><a href="figure-boosting.html#cb149-2" tabindex="-1"></a>agg3 <span class="ot">&lt;-</span> <span class="fu">which</span>(curate_df3<span class="sc">$</span>from <span class="sc">%in%</span> <span class="st">&quot;agreement&quot;</span>)</span>
+<span id="cb149-3"><a href="figure-boosting.html#cb149-3" tabindex="-1"></a>curate_df3[agg3, <span class="st">&quot;sign&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;\u25CF&quot;</span>;</span>
+<span id="cb149-4"><a href="figure-boosting.html#cb149-4" tabindex="-1"></a></span>
+<span id="cb149-5"><a href="figure-boosting.html#cb149-5" tabindex="-1"></a><span class="co"># create a new Venndir</span></span>
+<span id="cb149-6"><a href="figure-boosting.html#cb149-6" tabindex="-1"></a>v_mammo3 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(mammo_list,</span>
+<span id="cb149-7"><a href="figure-boosting.html#cb149-7" tabindex="-1"></a>   <span class="at">do_plot=</span><span class="cn">FALSE</span>,</span>
+<span id="cb149-8"><a href="figure-boosting.html#cb149-8" tabindex="-1"></a>   <span class="at">circle_nudge=</span><span class="fu">list</span>(</span>
+<span id="cb149-9"><a href="figure-boosting.html#cb149-9" tabindex="-1"></a>      <span class="at">wwbc=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.8</span>, <span class="dv">0</span>),</span>
+<span id="cb149-10"><a href="figure-boosting.html#cb149-10" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.6</span>, <span class="dv">0</span>)),</span>
+<span id="cb149-11"><a href="figure-boosting.html#cb149-11" tabindex="-1"></a>   <span class="at">innerborder.lwd=</span><span class="dv">1</span>, <span class="at">outerborder.lwd=</span><span class="dv">1</span>,</span>
+<span id="cb149-12"><a href="figure-boosting.html#cb149-12" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;agreement&quot;</span>,</span>
+<span id="cb149-13"><a href="figure-boosting.html#cb149-13" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.1</span>,</span>
+<span id="cb149-14"><a href="figure-boosting.html#cb149-14" tabindex="-1"></a>   <span class="at">set_colors=</span>mammo_colors,</span>
+<span id="cb149-15"><a href="figure-boosting.html#cb149-15" tabindex="-1"></a>   <span class="at">curate_df=</span>curate_df3,</span>
+<span id="cb149-16"><a href="figure-boosting.html#cb149-16" tabindex="-1"></a>   <span class="at">setlist_labels=</span>mammo_labels,</span>
+<span id="cb149-17"><a href="figure-boosting.html#cb149-17" tabindex="-1"></a>   <span class="at">xyratio=</span><span class="fl">0.6</span>,</span>
+<span id="cb149-18"><a href="figure-boosting.html#cb149-18" tabindex="-1"></a>   <span class="at">fontfaces=</span><span class="fu">list</span>(<span class="at">overlap=</span><span class="st">&quot;plain&quot;</span>),</span>
+<span id="cb149-19"><a href="figure-boosting.html#cb149-19" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;Ni&quot;</span>,</span>
+<span id="cb149-20"><a href="figure-boosting.html#cb149-20" tabindex="-1"></a>   <span class="at">show_items=</span><span class="st">&quot;sign&quot;</span>,</span>
+<span id="cb149-21"><a href="figure-boosting.html#cb149-21" tabindex="-1"></a>   <span class="at">segment_buffer=</span><span class="sc">-</span><span class="fl">0.05</span>,</span>
+<span id="cb149-22"><a href="figure-boosting.html#cb149-22" tabindex="-1"></a>   <span class="at">jitter_cex=</span><span class="dv">0</span>, <span class="at">jitter_color=</span><span class="dv">0</span>,</span>
+<span id="cb149-23"><a href="figure-boosting.html#cb149-23" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">0.8</span>,</span>
+<span id="cb149-24"><a href="figure-boosting.html#cb149-24" tabindex="-1"></a>   <span class="at">item_buffer=</span><span class="sc">-</span><span class="fl">0.02</span>,</span>
+<span id="cb149-25"><a href="figure-boosting.html#cb149-25" tabindex="-1"></a>   <span class="at">item_cex=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="dv">1</span>,</span>
+<span id="cb149-26"><a href="figure-boosting.html#cb149-26" tabindex="-1"></a>   <span class="at">segment_distance=</span><span class="fl">0.02</span>,</span>
+<span id="cb149-27"><a href="figure-boosting.html#cb149-27" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">180</span>,</span>
+<span id="cb149-28"><a href="figure-boosting.html#cb149-28" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
+<span id="cb149-29"><a href="figure-boosting.html#cb149-29" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span>
+<span id="cb149-30"><a href="figure-boosting.html#cb149-30" tabindex="-1"></a></span>
+<span id="cb149-31"><a href="figure-boosting.html#cb149-31" tabindex="-1"></a><span class="co"># edit the label colors</span></span>
+<span id="cb149-32"><a href="figure-boosting.html#cb149-32" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wob&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;blue1&quot;</span>;</span>
+<span id="cb149-33"><a href="figure-boosting.html#cb149-33" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wwbc&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;red2&quot;</span>;</span>
+<span id="cb149-34"><a href="figure-boosting.html#cb149-34" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wob.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> mammo_colors[<span class="dv">1</span>];</span>
+<span id="cb149-35"><a href="figure-boosting.html#cb149-35" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wob&amp;wwpm.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;royalblue&quot;</span>;</span>
+<span id="cb149-36"><a href="figure-boosting.html#cb149-36" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wwbc&amp;wwpm.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;#DD6666&quot;</span>;</span>
+<span id="cb149-37"><a href="figure-boosting.html#cb149-37" tabindex="-1"></a>v_mammo3<span class="sc">@</span>label_df[<span class="st">&quot;wwbc.agreement&quot;</span>, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> mammo_colors[<span class="dv">2</span>];</span>
+<span id="cb149-38"><a href="figure-boosting.html#cb149-38" tabindex="-1"></a></span>
+<span id="cb149-39"><a href="figure-boosting.html#cb149-39" tabindex="-1"></a><span class="co"># nudge labels</span></span>
+<span id="cb149-40"><a href="figure-boosting.html#cb149-40" tabindex="-1"></a>v_mammo3n <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(v_mammo3,</span>
+<span id="cb149-41"><a href="figure-boosting.html#cb149-41" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;outside&quot;</span>,</span>
+<span id="cb149-42"><a href="figure-boosting.html#cb149-42" tabindex="-1"></a>   <span class="at">offset_list=</span><span class="fu">list</span>(<span class="at">wwbc=</span><span class="fu">c</span>(<span class="fl">0.0</span>, <span class="fl">0.03</span>),</span>
+<span id="cb149-43"><a href="figure-boosting.html#cb149-43" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.07</span>, <span class="fl">0.1</span>),</span>
+<span id="cb149-44"><a href="figure-boosting.html#cb149-44" tabindex="-1"></a>      <span class="at">wob=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.06</span>)))</span>
+<span id="cb149-45"><a href="figure-boosting.html#cb149-45" tabindex="-1"></a></span>
+<span id="cb149-46"><a href="figure-boosting.html#cb149-46" tabindex="-1"></a><span class="co"># visualize</span></span>
+<span id="cb149-47"><a href="figure-boosting.html#cb149-47" tabindex="-1"></a><span class="fu">plot</span>(v_mammo3n,</span>
+<span id="cb149-48"><a href="figure-boosting.html#cb149-48" tabindex="-1"></a>   <span class="at">jitter_color=</span><span class="dv">0</span>, <span class="at">width_buffer=</span><span class="fl">0.02</span>,</span>
+<span id="cb149-49"><a href="figure-boosting.html#cb149-49" tabindex="-1"></a>   <span class="at">L_lo=</span><span class="dv">80</span>, <span class="at">L_hi=</span><span class="dv">85</span>, <span class="at">C_floor=</span><span class="dv">50</span>,</span>
+<span id="cb149-50"><a href="figure-boosting.html#cb149-50" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.10</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.05</span>),</span>
+<span id="cb149-51"><a href="figure-boosting.html#cb149-51" tabindex="-1"></a>   <span class="at">innerborder.lwd=</span><span class="dv">0</span>, <span class="at">outerborder.lwd=</span><span class="fl">0.7</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:euler-glyphs-3"></span>
 <img src="_main_files/figure-html/euler-glyphs-3-1.png" alt="Second attempt at the EulerGlyphs figure. It already looks cleaner." width="80%" />
 <p class="caption">
@@ -529,79 +530,83 @@ To mimic this effect requires using proper points.</p>
 <li>Render <code>grid::pointsGrob()</code> in the correct <code>viewport</code>.</li>
 </ol>
 <p>Steps 1 and 2 are shown below:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="figure-boosting.html#cb142-1" tabindex="-1"></a><span class="co"># create a new Venndir</span></span>
-<span id="cb142-2"><a href="figure-boosting.html#cb142-2" tabindex="-1"></a>v_mammo4 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(mammo_list,</span>
-<span id="cb142-3"><a href="figure-boosting.html#cb142-3" tabindex="-1"></a>   <span class="at">do_plot=</span><span class="cn">FALSE</span>,</span>
-<span id="cb142-4"><a href="figure-boosting.html#cb142-4" tabindex="-1"></a>   <span class="at">circle_nudge=</span><span class="fu">list</span>(</span>
-<span id="cb142-5"><a href="figure-boosting.html#cb142-5" tabindex="-1"></a>      <span class="at">wwbc=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.4</span>, <span class="dv">0</span>),</span>
-<span id="cb142-6"><a href="figure-boosting.html#cb142-6" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.6</span>, <span class="dv">0</span>)),</span>
-<span id="cb142-7"><a href="figure-boosting.html#cb142-7" tabindex="-1"></a>   <span class="at">innerborder.lwd=</span><span class="dv">1</span>, <span class="at">outerborder.lwd=</span><span class="dv">1</span>,</span>
-<span id="cb142-8"><a href="figure-boosting.html#cb142-8" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;agreement&quot;</span>,</span>
-<span id="cb142-9"><a href="figure-boosting.html#cb142-9" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.1</span>,</span>
-<span id="cb142-10"><a href="figure-boosting.html#cb142-10" tabindex="-1"></a>   <span class="at">set_colors=</span>mammo_colors,</span>
-<span id="cb142-11"><a href="figure-boosting.html#cb142-11" tabindex="-1"></a>   <span class="at">setlist_labels=</span>mammo_labels,</span>
-<span id="cb142-12"><a href="figure-boosting.html#cb142-12" tabindex="-1"></a>   <span class="at">fontfaces=</span><span class="fu">list</span>(<span class="at">overlap=</span><span class="st">&quot;plain&quot;</span>),</span>
-<span id="cb142-13"><a href="figure-boosting.html#cb142-13" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;N&quot;</span>, <span class="at">keep_items=</span><span class="cn">TRUE</span>,</span>
-<span id="cb142-14"><a href="figure-boosting.html#cb142-14" tabindex="-1"></a>   <span class="at">segment_buffer=</span><span class="sc">-</span><span class="fl">0.05</span>,</span>
-<span id="cb142-15"><a href="figure-boosting.html#cb142-15" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">0.8</span>,</span>
-<span id="cb142-16"><a href="figure-boosting.html#cb142-16" tabindex="-1"></a>   <span class="at">segment_distance=</span><span class="fl">0.02</span>,</span>
-<span id="cb142-17"><a href="figure-boosting.html#cb142-17" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">180</span>,</span>
-<span id="cb142-18"><a href="figure-boosting.html#cb142-18" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
-<span id="cb142-19"><a href="figure-boosting.html#cb142-19" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span>
-<span id="cb142-20"><a href="figure-boosting.html#cb142-20" tabindex="-1"></a><span class="co"># edit the label colors</span></span>
-<span id="cb142-21"><a href="figure-boosting.html#cb142-21" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;wob&quot;</span>, <span class="st">&quot;wwbc&quot;</span>)</span>
-<span id="cb142-22"><a href="figure-boosting.html#cb142-22" tabindex="-1"></a>v_mammo4<span class="sc">@</span>label_df[k, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb142-23"><a href="figure-boosting.html#cb142-23" tabindex="-1"></a><span class="co"># nudge labels</span></span>
-<span id="cb142-24"><a href="figure-boosting.html#cb142-24" tabindex="-1"></a>v_mammo4n <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(v_mammo4,</span>
-<span id="cb142-25"><a href="figure-boosting.html#cb142-25" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;outside&quot;</span>,</span>
-<span id="cb142-26"><a href="figure-boosting.html#cb142-26" tabindex="-1"></a>   <span class="at">offset_list=</span><span class="fu">list</span>(<span class="at">wwbc=</span><span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.045</span>),</span>
-<span id="cb142-27"><a href="figure-boosting.html#cb142-27" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.09</span>, <span class="fl">0.06</span>),</span>
-<span id="cb142-28"><a href="figure-boosting.html#cb142-28" tabindex="-1"></a>      <span class="at">wob=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.01</span>, <span class="sc">-</span><span class="fl">0.06</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="figure-boosting.html#cb150-1" tabindex="-1"></a><span class="co"># create a new Venndir</span></span>
+<span id="cb150-2"><a href="figure-boosting.html#cb150-2" tabindex="-1"></a>v_mammo4 <span class="ot">&lt;-</span> <span class="fu">venndir</span>(mammo_list,</span>
+<span id="cb150-3"><a href="figure-boosting.html#cb150-3" tabindex="-1"></a>   <span class="at">do_plot=</span><span class="cn">FALSE</span>,</span>
+<span id="cb150-4"><a href="figure-boosting.html#cb150-4" tabindex="-1"></a>   <span class="at">circle_nudge=</span><span class="fu">list</span>(</span>
+<span id="cb150-5"><a href="figure-boosting.html#cb150-5" tabindex="-1"></a>      <span class="at">wwbc=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.4</span>, <span class="dv">0</span>),</span>
+<span id="cb150-6"><a href="figure-boosting.html#cb150-6" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.6</span>, <span class="dv">0</span>)),</span>
+<span id="cb150-7"><a href="figure-boosting.html#cb150-7" tabindex="-1"></a>   <span class="at">innerborder.lwd=</span><span class="dv">1</span>, <span class="at">outerborder.lwd=</span><span class="dv">1</span>,</span>
+<span id="cb150-8"><a href="figure-boosting.html#cb150-8" tabindex="-1"></a>   <span class="at">overlap_type=</span><span class="st">&quot;agreement&quot;</span>,</span>
+<span id="cb150-9"><a href="figure-boosting.html#cb150-9" tabindex="-1"></a>   <span class="at">poly_alpha=</span><span class="fl">0.1</span>,</span>
+<span id="cb150-10"><a href="figure-boosting.html#cb150-10" tabindex="-1"></a>   <span class="at">set_colors=</span>mammo_colors,</span>
+<span id="cb150-11"><a href="figure-boosting.html#cb150-11" tabindex="-1"></a>   <span class="at">setlist_labels=</span>mammo_labels,</span>
+<span id="cb150-12"><a href="figure-boosting.html#cb150-12" tabindex="-1"></a>   <span class="at">fontfaces=</span><span class="fu">list</span>(<span class="at">overlap=</span><span class="st">&quot;plain&quot;</span>),</span>
+<span id="cb150-13"><a href="figure-boosting.html#cb150-13" tabindex="-1"></a>   <span class="at">show_labels=</span><span class="st">&quot;N&quot;</span>, <span class="at">keep_items=</span><span class="cn">TRUE</span>,</span>
+<span id="cb150-14"><a href="figure-boosting.html#cb150-14" tabindex="-1"></a>   <span class="at">segment_buffer=</span><span class="sc">-</span><span class="fl">0.05</span>,</span>
+<span id="cb150-15"><a href="figure-boosting.html#cb150-15" tabindex="-1"></a>   <span class="at">font_cex=</span><span class="fl">0.8</span>,</span>
+<span id="cb150-16"><a href="figure-boosting.html#cb150-16" tabindex="-1"></a>   <span class="at">segment_distance=</span><span class="fl">0.02</span>,</span>
+<span id="cb150-17"><a href="figure-boosting.html#cb150-17" tabindex="-1"></a>   <span class="at">rotate_degrees=</span><span class="dv">180</span>,</span>
+<span id="cb150-18"><a href="figure-boosting.html#cb150-18" tabindex="-1"></a>   <span class="at">draw_legend=</span><span class="cn">FALSE</span>,</span>
+<span id="cb150-19"><a href="figure-boosting.html#cb150-19" tabindex="-1"></a>   <span class="at">proportional=</span><span class="cn">TRUE</span>)</span>
+<span id="cb150-20"><a href="figure-boosting.html#cb150-20" tabindex="-1"></a><span class="co"># edit the label colors</span></span>
+<span id="cb150-21"><a href="figure-boosting.html#cb150-21" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;wob&quot;</span>, <span class="st">&quot;wwbc&quot;</span>)</span>
+<span id="cb150-22"><a href="figure-boosting.html#cb150-22" tabindex="-1"></a>v_mammo4<span class="sc">@</span>label_df[k, <span class="st">&quot;color&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb150-23"><a href="figure-boosting.html#cb150-23" tabindex="-1"></a><span class="co"># nudge labels</span></span>
+<span id="cb150-24"><a href="figure-boosting.html#cb150-24" tabindex="-1"></a>v_mammo4n <span class="ot">&lt;-</span> <span class="fu">nudge_venndir_label</span>(v_mammo4,</span>
+<span id="cb150-25"><a href="figure-boosting.html#cb150-25" tabindex="-1"></a>   <span class="at">label_location=</span><span class="st">&quot;outside&quot;</span>,</span>
+<span id="cb150-26"><a href="figure-boosting.html#cb150-26" tabindex="-1"></a>   <span class="at">offset_list=</span><span class="fu">list</span>(<span class="at">wwbc=</span><span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.045</span>),</span>
+<span id="cb150-27"><a href="figure-boosting.html#cb150-27" tabindex="-1"></a>      <span class="at">wwpm=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.09</span>, <span class="fl">0.06</span>),</span>
+<span id="cb150-28"><a href="figure-boosting.html#cb150-28" tabindex="-1"></a>      <span class="at">wob=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.01</span>, <span class="sc">-</span><span class="fl">0.06</span>)))</span></code></pre></div>
 <p>The internal function <code>label_fill_JamPolygon()</code> defines
 coordinates for item labels inside a <code>JamPolygon</code>.
 The example iterates each overlap region that contains items,
 then stores item coordinates to use later.
 The point fill color and border are defined for each region as well.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="figure-boosting.html#cb143-1" tabindex="-1"></a><span class="co"># JamPolygon</span></span>
-<span id="cb143-2"><a href="figure-boosting.html#cb143-2" tabindex="-1"></a>v_items <span class="ot">&lt;-</span> jamba<span class="sc">::</span><span class="fu">rmNULL</span>(v_mammo4<span class="sc">@</span>label_df<span class="sc">$</span>items)</span>
-<span id="cb143-3"><a href="figure-boosting.html#cb143-3" tabindex="-1"></a>v_colors <span class="ot">&lt;-</span> mammo_colors[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)];</span>
-<span id="cb143-4"><a href="figure-boosting.html#cb143-4" tabindex="-1"></a>v_borders <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb143-5"><a href="figure-boosting.html#cb143-5" tabindex="-1"></a>v_buffers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="sc">-</span><span class="fl">0.2</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.15</span>)</span>
-<span id="cb143-6"><a href="figure-boosting.html#cb143-6" tabindex="-1"></a>xy <span class="ot">&lt;-</span> jamba<span class="sc">::</span><span class="fu">rbindList</span>(<span class="fu">lapply</span>(<span class="fu">seq_along</span>(v_items), <span class="cf">function</span>(i){</span>
-<span id="cb143-7"><a href="figure-boosting.html#cb143-7" tabindex="-1"></a>   which_jp <span class="ot">&lt;-</span> <span class="fu">match</span>(<span class="fu">gsub</span>(<span class="st">&quot;[|].+&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="fu">names</span>(v_items)[i]),</span>
-<span id="cb143-8"><a href="figure-boosting.html#cb143-8" tabindex="-1"></a>      <span class="fu">names</span>(v_mammo4<span class="sc">@</span>jps))</span>
-<span id="cb143-9"><a href="figure-boosting.html#cb143-9" tabindex="-1"></a>   xy <span class="ot">&lt;-</span> <span class="fu">label_fill_JamPolygon</span>(<span class="at">jp=</span>v_mammo4<span class="sc">@</span>jps[which_jp],</span>
-<span id="cb143-10"><a href="figure-boosting.html#cb143-10" tabindex="-1"></a>      <span class="at">width_buffer=</span><span class="fl">0.01</span>,</span>
-<span id="cb143-11"><a href="figure-boosting.html#cb143-11" tabindex="-1"></a>      <span class="at">buffer=</span>v_buffers[i], <span class="at">xyratio=</span><span class="fl">0.5</span>,</span>
-<span id="cb143-12"><a href="figure-boosting.html#cb143-12" tabindex="-1"></a>      <span class="at">labels=</span><span class="fu">seq_along</span>(v_items[[i]]))<span class="sc">$</span>items_df;</span>
-<span id="cb143-13"><a href="figure-boosting.html#cb143-13" tabindex="-1"></a>   xy<span class="sc">$</span>color <span class="ot">&lt;-</span> v_colors[i];</span>
-<span id="cb143-14"><a href="figure-boosting.html#cb143-14" tabindex="-1"></a>   xy<span class="sc">$</span>border <span class="ot">&lt;-</span> v_borders[i];</span>
-<span id="cb143-15"><a href="figure-boosting.html#cb143-15" tabindex="-1"></a>   xy;</span>
-<span id="cb143-16"><a href="figure-boosting.html#cb143-16" tabindex="-1"></a>}))</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="figure-boosting.html#cb151-1" tabindex="-1"></a><span class="co"># JamPolygon</span></span>
+<span id="cb151-2"><a href="figure-boosting.html#cb151-2" tabindex="-1"></a>v_items <span class="ot">&lt;-</span> jamba<span class="sc">::</span><span class="fu">rmNULL</span>(v_mammo4<span class="sc">@</span>label_df<span class="sc">$</span>items)</span>
+<span id="cb151-3"><a href="figure-boosting.html#cb151-3" tabindex="-1"></a>v_colors <span class="ot">&lt;-</span> mammo_colors[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)];</span>
+<span id="cb151-4"><a href="figure-boosting.html#cb151-4" tabindex="-1"></a>v_borders <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb151-5"><a href="figure-boosting.html#cb151-5" tabindex="-1"></a>v_buffers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="sc">-</span><span class="fl">0.2</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.15</span>)</span>
+<span id="cb151-6"><a href="figure-boosting.html#cb151-6" tabindex="-1"></a>xy <span class="ot">&lt;-</span> jamba<span class="sc">::</span><span class="fu">rbindList</span>(<span class="fu">lapply</span>(<span class="fu">seq_along</span>(v_items), <span class="cf">function</span>(i){</span>
+<span id="cb151-7"><a href="figure-boosting.html#cb151-7" tabindex="-1"></a>   which_jp <span class="ot">&lt;-</span> <span class="fu">match</span>(<span class="fu">gsub</span>(<span class="st">&quot;[|].+&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="fu">names</span>(v_items)[i]),</span>
+<span id="cb151-8"><a href="figure-boosting.html#cb151-8" tabindex="-1"></a>      <span class="fu">names</span>(v_mammo4<span class="sc">@</span>jps))</span>
+<span id="cb151-9"><a href="figure-boosting.html#cb151-9" tabindex="-1"></a>   xy <span class="ot">&lt;-</span> <span class="fu">label_fill_JamPolygon</span>(<span class="at">jp=</span>v_mammo4<span class="sc">@</span>jps[which_jp],</span>
+<span id="cb151-10"><a href="figure-boosting.html#cb151-10" tabindex="-1"></a>      <span class="at">width_buffer=</span><span class="fl">0.01</span>,</span>
+<span id="cb151-11"><a href="figure-boosting.html#cb151-11" tabindex="-1"></a>      <span class="at">buffer=</span>v_buffers[i], <span class="at">xyratio=</span><span class="fl">0.5</span>,</span>
+<span id="cb151-12"><a href="figure-boosting.html#cb151-12" tabindex="-1"></a>      <span class="at">labels=</span><span class="fu">seq_along</span>(v_items[[i]]))<span class="sc">$</span>items_df;</span>
+<span id="cb151-13"><a href="figure-boosting.html#cb151-13" tabindex="-1"></a>   xy<span class="sc">$</span>color <span class="ot">&lt;-</span> v_colors[i];</span>
+<span id="cb151-14"><a href="figure-boosting.html#cb151-14" tabindex="-1"></a>   xy<span class="sc">$</span>border <span class="ot">&lt;-</span> v_borders[i];</span>
+<span id="cb151-15"><a href="figure-boosting.html#cb151-15" tabindex="-1"></a>   xy;</span>
+<span id="cb151-16"><a href="figure-boosting.html#cb151-16" tabindex="-1"></a>}))</span></code></pre></div>
 <p>Finally, the item coordinates are used with <code>grid::pointsGrob()</code>
 with some visual noise added by <code>rnorm()</code> for visual flair.</p>
 <p>Figure <a href="figure-boosting.html#fig:euler-glyphs-4">5.5</a> shows the result from the final
 steps, drawing the points in the correct <code>viewport</code>.</p>
 
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="figure-boosting.html#cb144-1" tabindex="-1"></a><span class="co"># plot the Venndir</span></span>
-<span id="cb144-2"><a href="figure-boosting.html#cb144-2" tabindex="-1"></a>v_mammo4p <span class="ot">&lt;-</span> <span class="fu">plot</span>(v_mammo4n,</span>
-<span id="cb144-3"><a href="figure-boosting.html#cb144-3" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.10</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.05</span>))</span>
-<span id="cb144-4"><a href="figure-boosting.html#cb144-4" tabindex="-1"></a><span class="co"># extract the viewport adjustments</span></span>
-<span id="cb144-5"><a href="figure-boosting.html#cb144-5" tabindex="-1"></a>vp <span class="ot">&lt;-</span> <span class="fu">attr</span>(v_mammo4p, <span class="st">&quot;viewport&quot;</span>);</span>
-<span id="cb144-6"><a href="figure-boosting.html#cb144-6" tabindex="-1"></a>adjx <span class="ot">&lt;-</span> <span class="fu">attr</span>(v_mammo4p, <span class="st">&quot;adjx&quot;</span>);</span>
-<span id="cb144-7"><a href="figure-boosting.html#cb144-7" tabindex="-1"></a>adjy <span class="ot">&lt;-</span> <span class="fu">attr</span>(v_mammo4p, <span class="st">&quot;adjy&quot;</span>);</span>
-<span id="cb144-8"><a href="figure-boosting.html#cb144-8" tabindex="-1"></a><span class="co"># create pointsGrob</span></span>
-<span id="cb144-9"><a href="figure-boosting.html#cb144-9" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>);</span>
-<span id="cb144-10"><a href="figure-boosting.html#cb144-10" tabindex="-1"></a>pts <span class="ot">&lt;-</span> grid<span class="sc">::</span><span class="fu">grid.points</span>(<span class="at">x=</span><span class="fu">adjx</span>(xy<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)<span class="sc">/</span><span class="dv">6</span>),</span>
-<span id="cb144-11"><a href="figure-boosting.html#cb144-11" tabindex="-1"></a>   <span class="at">draw=</span><span class="cn">FALSE</span>,</span>
-<span id="cb144-12"><a href="figure-boosting.html#cb144-12" tabindex="-1"></a>   <span class="at">y=</span><span class="fu">adjy</span>(xy<span class="sc">$</span>y <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)<span class="sc">/</span><span class="dv">6</span>), <span class="at">pch=</span><span class="dv">21</span>,</span>
-<span id="cb144-13"><a href="figure-boosting.html#cb144-13" tabindex="-1"></a>   <span class="at">gp=</span>grid<span class="sc">::</span><span class="fu">gpar</span>(<span class="at">col=</span>xy<span class="sc">$</span>border, <span class="at">fill=</span>xy<span class="sc">$</span>color, <span class="at">cex=</span><span class="fl">0.6</span>),</span>
-<span id="cb144-14"><a href="figure-boosting.html#cb144-14" tabindex="-1"></a>   <span class="at">vp=</span><span class="fu">attr</span>(v_mammo4p, <span class="st">&quot;viewport&quot;</span>),</span>
-<span id="cb144-15"><a href="figure-boosting.html#cb144-15" tabindex="-1"></a>   <span class="at">default.units=</span><span class="st">&quot;native&quot;</span>)</span>
-<span id="cb144-16"><a href="figure-boosting.html#cb144-16" tabindex="-1"></a><span class="co"># draw inside the viewport</span></span>
-<span id="cb144-17"><a href="figure-boosting.html#cb144-17" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">pushViewport</span>(vp)</span>
-<span id="cb144-18"><a href="figure-boosting.html#cb144-18" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(pts)</span>
-<span id="cb144-19"><a href="figure-boosting.html#cb144-19" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">popViewport</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="figure-boosting.html#cb152-1" tabindex="-1"></a><span class="co"># plot the Venndir</span></span>
+<span id="cb152-2"><a href="figure-boosting.html#cb152-2" tabindex="-1"></a>v_mammo4p <span class="ot">&lt;-</span> <span class="fu">plot</span>(v_mammo4n,</span>
+<span id="cb152-3"><a href="figure-boosting.html#cb152-3" tabindex="-1"></a>   <span class="at">expand_fraction=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.10</span>,</span>
+<span id="cb152-4"><a href="figure-boosting.html#cb152-4" tabindex="-1"></a>      <span class="sc">-</span><span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">0.05</span>))</span>
+<span id="cb152-5"><a href="figure-boosting.html#cb152-5" tabindex="-1"></a><span class="co"># extract the viewport adjustments</span></span>
+<span id="cb152-6"><a href="figure-boosting.html#cb152-6" tabindex="-1"></a>vp <span class="ot">&lt;-</span> <span class="fu">attr</span>(v_mammo4p, <span class="st">&quot;viewport&quot;</span>);</span>
+<span id="cb152-7"><a href="figure-boosting.html#cb152-7" tabindex="-1"></a>adjx <span class="ot">&lt;-</span> <span class="fu">attr</span>(v_mammo4p, <span class="st">&quot;adjx&quot;</span>);</span>
+<span id="cb152-8"><a href="figure-boosting.html#cb152-8" tabindex="-1"></a>adjy <span class="ot">&lt;-</span> <span class="fu">attr</span>(v_mammo4p, <span class="st">&quot;adjy&quot;</span>);</span>
+<span id="cb152-9"><a href="figure-boosting.html#cb152-9" tabindex="-1"></a><span class="co"># create pointsGrob</span></span>
+<span id="cb152-10"><a href="figure-boosting.html#cb152-10" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>);</span>
+<span id="cb152-11"><a href="figure-boosting.html#cb152-11" tabindex="-1"></a>pts <span class="ot">&lt;-</span> grid<span class="sc">::</span><span class="fu">grid.points</span>(</span>
+<span id="cb152-12"><a href="figure-boosting.html#cb152-12" tabindex="-1"></a>   <span class="at">x=</span><span class="fu">adjx</span>(xy<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)<span class="sc">/</span><span class="dv">6</span>),</span>
+<span id="cb152-13"><a href="figure-boosting.html#cb152-13" tabindex="-1"></a>   <span class="at">draw=</span><span class="cn">FALSE</span>,</span>
+<span id="cb152-14"><a href="figure-boosting.html#cb152-14" tabindex="-1"></a>   <span class="at">y=</span><span class="fu">adjy</span>(xy<span class="sc">$</span>y <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)<span class="sc">/</span><span class="dv">6</span>),</span>
+<span id="cb152-15"><a href="figure-boosting.html#cb152-15" tabindex="-1"></a>   <span class="at">pch=</span><span class="dv">21</span>,</span>
+<span id="cb152-16"><a href="figure-boosting.html#cb152-16" tabindex="-1"></a>   <span class="at">gp=</span>grid<span class="sc">::</span><span class="fu">gpar</span>(<span class="at">col=</span>xy<span class="sc">$</span>border,</span>
+<span id="cb152-17"><a href="figure-boosting.html#cb152-17" tabindex="-1"></a>      <span class="at">fill=</span>xy<span class="sc">$</span>color, <span class="at">cex=</span><span class="fl">0.6</span>),</span>
+<span id="cb152-18"><a href="figure-boosting.html#cb152-18" tabindex="-1"></a>   <span class="at">vp=</span><span class="fu">attr</span>(v_mammo4p, <span class="st">&quot;viewport&quot;</span>),</span>
+<span id="cb152-19"><a href="figure-boosting.html#cb152-19" tabindex="-1"></a>   <span class="at">default.units=</span><span class="st">&quot;native&quot;</span>)</span>
+<span id="cb152-20"><a href="figure-boosting.html#cb152-20" tabindex="-1"></a><span class="co"># draw inside the viewport</span></span>
+<span id="cb152-21"><a href="figure-boosting.html#cb152-21" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">pushViewport</span>(vp)</span>
+<span id="cb152-22"><a href="figure-boosting.html#cb152-22" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(pts)</span>
+<span id="cb152-23"><a href="figure-boosting.html#cb152-23" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">popViewport</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:euler-glyphs-4"></span>
 <img src="_main_files/figure-html/euler-glyphs-4-1.png" alt="Third attempt at re-creating the eulerGlyphs figure." width="100%" />
 <p class="caption">
@@ -618,15 +623,18 @@ since it depends upon the <code>expand_fraction</code> adjustments.</li>
 </div>
 <p>The result turned out better than expected, and the workflow could
 be re-used for other datasets.</p>
-<p><strong>Can it be improved?</strong> Yes, this is the challenge.</p>
-<p>In re-creating the figure, the first question that arose was this:<br />
-<strong>"How many points are in each region?"</strong></p>
-<p>Figure <a href="figure-boosting.html#fig:euler-glyphs-5">5.6</a> shows some potential improvement.</p>
+<p><strong>Can it be improved?</strong></p>
+<p>While creating the figure, the first question that arose:<br />
+<strong>"How many points are in each region?"</strong><br />
+In truth, it took some effort to discover these values, despite
+being the focal point of the study (and the study about the study).</p>
+<p>Figure <a href="figure-boosting.html#fig:euler-glyphs-5">5.6</a> shows some potential improvement,
+labeling each section with the number of points.</p>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:euler-glyphs-5"></span>
-<img src="_main_files/figure-html/euler-glyphs-5-1.png" alt="Update which labels the number of points in each region. In fact, this is the number of women out of 1,000 involved in the study, not just "points"." width="100%" />
+<img src="_main_files/figure-html/euler-glyphs-5-1.png" alt="Update which labels the number of points in each region. The title reveals each point represents one woman tested per 1,000 in the study." width="100%" />
 <p class="caption">
-Figure 5.6: Update which labels the number of points in each region. In fact, this is the number of women out of 1,000 involved in the study, not just "points".
+Figure 5.6: Update which labels the number of points in each region. The title reveals each point represents one woman tested per 1,000 in the study.
 </p>
 </div>
 </div>
