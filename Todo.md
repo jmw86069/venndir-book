@@ -1,7 +1,24 @@
 
 # Venndir Book
 
-## To Consider
+## 13jul2025
+
+* Add examples for adding fonts: systemfonts:
+   `systemfonts::get_from_google_fonts("familyname")
+
+* Document any unexpected dependencies for building the Venndir book
+
+   * Fonts:
+   Bradley Hand: "Shadows Into Light"
+   Optima: "Commissioner"
+   Futura: "Play"
+   Chalkduster: "Bubblegum Sans"
+   La Parisienne Script: "Parisienne"
+   Proxima Nova: "Monda"
+   * Consider encoding alternative fonts upfront, hidden R code?
+   Or converting each to a Google Font?
+
+## 10jul2025 To Consider
 
 * About the cover image - Christina Ward
 * Change "What is a Venn Diagram?" to "What is a Venndir Diagram?"?
@@ -20,6 +37,7 @@
 * Clean up the cover image presentation in each format.
 * Short biorxiv paper to cite for Venndir.
 * How to install Venndir.
+
 
 
 ## Debug Rendering Crash

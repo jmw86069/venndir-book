@@ -26,44 +26,48 @@ suppressPackageStartupMessages(library(patchwork))
 # knitr::opts_chunk$set(fig.pos='H')
 ```
 
-The first key step in using Venndir is to import data in a
-recognized format. There are several formats available:
+The first key step in using Venndir is to convert data into a
+recognized format.
+The two native formats are **[List of sets]** and **[List of signed sets]**.
 
-* **[List of sets]**, referred to as a `setlist`
+
+There are several formats available:
+
+1. **[List of sets]**, referred to as a `setlist`
    * a `list` of `character` item vectors.
    * sets are represented by `names(setlist)`
    
-* **[List of signed sets]**, referred to as a signed `setlist`
+2. **[List of signed sets]**, referred to as a signed `setlist`
    * a `list` of *signed* `numeric` vectors.
    * signed vectors use values `-1` or `1`, and store items in `names()`.
    * sets are represented by `names(setlist)`
 
-* **[Incidence matrix]**
+3. **[Incidence matrix]**
    * a `numeric` matrix with items as `rownames()`, sets as `colnames()`.
    * items are indicated by the value `1` in the appropriate
    row and column.
 
-* **[Signed incidence matrix]**
+4. **[Signed incidence matrix]**
    * a `numeric` matrix with items as `rownames()`, sets as `colnames()`.
    * items are indicated by `-1` or `1` in the appropriate
    row and column.
 
-* **[Overlap counts]**
+5. **[Overlap counts]**
    * a `numeric` vector with the number of items in each overlap.
    * the overlap name is stored in `names()`, in format: `'A'`, `'B'`,
    `'A&B'`.
 
-* **[Signed overlap counts]**
+6. **[Signed overlap counts]**
    * a `list` of `numeric` vectors, named by overlap set.
    * each overlap is also a `list` named by the directionality.
 
-* **Other formats**
+7. **Other formats**
    * [Items]
    * [Overlap list]
    * [Signed overlap list]
    * [List of data frames]
 
-* **Specialized formats**
+8. **Specialized formats**
    * [limma]
    * [DESeq2]
 

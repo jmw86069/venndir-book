@@ -1316,7 +1316,7 @@ as shown in  [Customize the Symbols]. The value can be a string, or even
 [markdown](#g-markdown), described in [Venndir Markdown Support].
 The custom value is also shown in the legend.
 
-Figure \@ref(fig:advanced-signs-1e) demonstrates how to customize `curate_df`,
+Figure \@ref(fig:advanced-signs-1f) demonstrates how to customize `curate_df`,
 matching the sign values 'up' and 'dn', and converts them to new
 Unicode characters.
 
@@ -1331,9 +1331,9 @@ v <- venndir(setlist2,
    overlap_type="each")
 ```
 
-(ref:advanced-signs-1e) Venndir showing the custom signs 'up' and 'down' used to produce Unicode signs as before.
+(ref:advanced-signs-1f) Venndir showing the custom signs 'up' and 'down' used to produce Unicode signs as before.
 
-```{r advanced-signs-1e, fig.height=5, fig.width=6, echo=FALSE, fig.cap="(ref:advanced-signs-1e)", fig.alt="(ref:advanced-signs-1e)", dependson="advanced-signs-1", cache=FALSE}
+```{r advanced-signs-1prep, echo=FALSE, dependson="advanced-signs-1"}
 curate_df <- get_venndir_curate_df()
 
 du_match <- match(c("-1", "1"), curate_df$from)
@@ -1348,7 +1348,10 @@ setlist2 <- lapply(setlist, function(i){
    i[] <- c("1"="up", "-1"="dn")[as.character(i)]
    i
 })
+```
 
+```{r advanced-signs-1f, fig.height=5, fig.width=6, echo=FALSE, fig.cap="(ref:advanced-signs-1f)", fig.alt="(ref:advanced-signs-1f)", dependson="advanced-signs-1prep", cache=FALSE}
+#
 v <- venndir(setlist2,
    fontfamily="Arial",
    curate_df=curate_df,

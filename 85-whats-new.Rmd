@@ -54,8 +54,11 @@ tbl %>%
 
 ```
 
+### v0.3.0 | 13 July 2025
 
-### venndir-book v0.2.0 | 06 July 2025 | venndir v0.0.58.900 {-}
+* Edits to Preface, Introduction.
+
+### v0.2.0 | 06 July 2025 | venndir v0.0.58.900 {-}
 
 New chapters and sections:
 
@@ -66,7 +69,7 @@ New chapters and sections:
 * Section \@ref(custom-sign-label-colors): [Custom Sign Label Colors]
 * Section \@ref(seehawer-kmt2-gene-venns): [Seehawer Kmt2 Gene Venns]
 
-### venndir-book v0.1.0 | 26 June 2025 | venndir v0.0.56.900 {-}
+### v0.1.0 | 26 June 2025 | venndir v0.0.56.900 {-}
 
 * Initial release, six chapters:
 

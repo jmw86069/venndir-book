@@ -8,6 +8,8 @@ cover-image: "images/venndir-cover.png"
 cover-image-alt: "Venndir: Venn Diagrams with Directionality"
 apple-touch-icon: 
 date: "`r Sys.Date()`"
+edition: "First Edition"
+version: "v0.3.0"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 output_dir: "docs"
@@ -98,7 +100,7 @@ epub_kdf <- function(kdf){
 }
 ```
 
-# Preface {.unnumbered .unlisted}
+# Preface {.unnumbered}
 
 `r if (knitr::is_latex_output()) '
 
@@ -130,76 +132,128 @@ epub_kdf <- function(kdf){
 This book describes the `venndir` [R package](#r-package),
 intended for the display
 [Venn diagrams](#venn-diagram) with directionality using [R](#r).
-These visualizations are the product
-of many years creating Venn diagrams, and incorporating feedback and
-suggestions from many fantastic colleagues.
+These visualizations reflect many years developing Venn diagrams,
+refining features like directional arrows, and integrating the
+thoughtful suggestions and shared wisdom of many brilliant colleagues.
+
 
 `r if (knitr::is_latex_output()) '
 
 \\par\\noindent\\hspace{0pt}\\vspace{1em}
 '`
 
-## Does the world need another Venn tool? {-}
+## Does the world need another Venn tool? {.unnumbered}
 
 You may think the world has enough Venn.  
 Venndir boldly suggests there is room for more,  
-with arrows and a point to make.
+with arrows, labels, and points to make.
 
 
-### Some gene sets don’t just overlap—they *lean in.* {-}
+### Venndir is customizable {-}
 
-This book illustrates the need for directionality in a Venn diagram,
-particularly for biological data where genes are often the basis for comparison.
-In the study of genes and their effects,
-change isn't just a matter of up or down --
-it can signify sickness or health, disease or cure, even life or death.
+In fact, Venndir enables some of the most customizable Venn and Euler
+diagrams available, short of using a graphics design tool.
+Set labels, fonts, borders, colors, placement, highlights, and item labels,
+are all customizable when needed.
+Text labels even support Markdown, and with robust Unicode character rendering.
+
+That said, Venndir aims to deliver publication-ready figures, as closely as
+possible, using default settings. But still, they're still just Venn diagrams.
 
 
-### The arrows aren't just decorative, they're judgmental. {-}
+### Directionality is important {-}
 
-It is quietly satisfying when Venndir reveals that two sets,
-although overlapping, are moving in different directions, surfacing
-inconsistencies that might otherwise be missed.
-It's a reminder that clarity doesn't just come from what overlaps,
-but from how things move together.
+This book focuses on the techniques used to create Venn diagrams,
+including the use of directionality where appropriate.
+The need to indicate directionality depends on the questions asked
+and the conclusions one hopes to draw from the figure.
+
+\@ref(seehawer-kmt2-gene-venns) [Seehawer Kmt2 Gene Venns]
+Examples such as Section 5 illustrate a common pattern:
+They tested only the items showing [concordance](#concordance),
+agreement in direction, then interpreted the findings without
+evaluating discordance at all.
+
+Without also evaluating the discordance, they lacked the proper context to
+interpret the results.
+
+Conclusions drawn when testing only concordance, without also assessing
+discordance, are inherently biased, with limited validity of interpretation.
+
+In the study of genes and their effects, change is more than just
+up or down -- it can signify sickness or health, disease or cure,
+even life or death.
+
+
+### The arrows aren't just decorative, they're insightful {-}
+
+It is quietly satisfying when Venndir illustrates that although two sets
+my overlap, they are moving in different directions -- revealing
+inconsistencies that may otherwise be missed.
+Clarity doesn't just come from what overlaps, but from how things
+move together.
 
 
 ### Visualize with purpose. Annotate with direction. {-}
 
-One of the most challenging parts of making a Venn diagram is
-placing the labels.  
+One of the most challenging components in Venndir is placing the labels.  
 Who knew?  
-Venndir provides many techniques to position labels, customize colors,
-fonts, and lines; even insert images or other graphics.
-It handles a lot of text font quirks so you can avoid the hassle,
-and focus on how Venndir renders.
+Venndir automates the job of placing labels inside or outside the Venn circles,
+then allows you to nudge, style, highlight, and customize.
+
+Together with **marquee** [@R-marquee], Venndir provides robust support for
+custom fonts across all graphics devices, with Unicode character substitution,
+Markdown and inline styling, and ability to embed images or other graphics.
+
+Venndir figures use **grid** graphics, are compatible with
+**patchwork** [@R-patchwork] for multi-panel figures, and can be customized
+down to the level of **grid** graphics objects (grobs).
 
 
-### Putting *‘What is that again?’* to rest, one label at a time. {-}
+### Put *‘What are those?’* to rest, one label at a time. {-}
 
-Perhaps the most surprising 'favorite feature' in Venndir
-is its ability to display items inside the Venn diagram.
-The best data visualizations anticipate the next question,
-and most often it is simply:  
+One of the most unexpectedly fun features in Venndir is
+the ability to display item names inside the figure.
+The best data visualizations anticipate and answer that "next question."  
+For a Venn diagram it is most often:
+
 *‘What are those?’*
 
 
 ### Inspired by curiosity, designed for clarity, sharpened by use. {-}
 
-Venndir exists because I really enjoyed the process of creating it.
-Many of the features were born of random ideas that grew into
-challenges to see if it could be done. The idea list is still
-impossibly long, and that gives me great joy.
+Venndir exists mostly because I thoroughly enjoyed creating it.
+It touches many interesting aspects of algorithm development,
+problem solving, data visualization design, and the practical driver
+of publication.
+It has received substantial feedback, and I always love listening
+to new ideas and suggestions.
 
-There were many pitfalls on the road to creating Venndir --
-many lessons learned, many helpful suggestions, and many advances by
-other incredible [R packages](#r-package).
+Yes, there are a lot of labels.  
+Yes, the figures can become very busy.  
+And yes, I still think the results are useful and necessary.
 
-Venndir came together from many pitfalls, learned lessons,
-shared insights, and new capabilities.
-The aim was to create a clear first figure with immediate insight,
-then offer enough customizations to evolve into a great final figure.
-Venndir has met these goals, and so here we are.
+All that said, Venndir with directionality (see "each" in [Overlap Type])
+is a **lot** to look at, and may be most useful *during analysis*.
+The final published figure may or may not be simplified for
+visual clarity.
+
+My philosophy is to make the figure useful for me before anyone else,
+then for my colleagues next, finally polishing it to present to others.
+Venndir tries to accomplish that in one step, but failing that it tries
+to make it useful for your.
+
+The typical Venndir figure often follows the same progression:
+complicated details for me, optimized improvements for colleagues,
+then clear and simplified for others.
+
+This book roughly follow the same progression:
+
+* Introduction
+* Data Import
+* Venndir Basics
+* Advanced Customization
+* Venn Figures and Case Studies
 
 
 ## Supporting Tools {-}

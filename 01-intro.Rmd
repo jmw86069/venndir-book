@@ -48,20 +48,21 @@ in each logical grouping:
 When comparing biological effects on genes in two experiments,
 two important questions arise:
 
-1. Are the genes shared? **(Venn)**
-2. Are the changes [concordant](#concordant) in direction? **(Venndir)**
+1. Are the affected genes shared?
+2. Are the changes in direction [concordant](#concordant)?
 
-A Venn diagram without directionality cannot answer question 2.
+A standard Venn diagram can address shared gene membership,
+but without directionality they fall short of answering question 2.
 
-Venndir proposes a simple extension to a Venn diagram: Place
-[signed counts](#signed-counts) beside the [main counts](#main-counts).
-[Signed counts](#signed-counts) summarize the directionality of
-the [main counts](#main-counts). They are indicated using directional arrows,
-up and down, together with color, red for up, and blue for down.
+Venndir proposes a simple yet powerful extension to Venn diagrams:
+placing [signed counts](#signed-counts) beside the [main counts](#main-counts).
+The signed counts summarize directionality, indicating whether directions
+of change were up or down. Direction is indicated using arrows and color cues,
+red for changes up, and blue for changes down.
 
 (ref:whatisvenndir) Venndir introduces an extension to a Venn diagram, with addition of directional counts beside each Venn overlap count. The direction is indicated by arrows up and down, and colors red and blue, respectively.
 
-```{r whatisvenndir, echo=FALSE, fig.height=4, fig.width=7, out.width="65%", fig.cap="(ref:whatisvenndir)", fig.alt="(ref:whatisvenndir)"}
+```{r whatisvenndir, echo=FALSE, fig.height=5, fig.width=9, out.width="100%", fig.cap="(ref:whatisvenndir)", fig.alt="(ref:whatisvenndir)"}
 setlist_dir <- make_venn_test(n_sets=2,
    items=head(datasets::state.name, 20),
    sizes=c(5, 5),
@@ -72,7 +73,7 @@ venndir(setlist_dir,
    show_segments=FALSE, font_cex=2,
    innerborder="black", outerborder="black",
    draw_legend=FALSE,
-   expand_fraction=c(-0.3, -0.3, -0.15, -0.3) + 0.2,
+   expand_fraction=c(-0.1, -0.1, -0.05, -0.1),
    outerborder.lwd=1, innerborder.lwd=1,
    legend_color_style=c("nofill", "blackborder"))
 ```
